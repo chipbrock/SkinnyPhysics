@@ -5,14 +5,17 @@ project:
 book:
   title: "Skinny Physics for QS&BB"
   author: "Chip Brock"
-  date: "9/12/2025"
+  date: "2025-09-12"
   chapters:
     - index.qmd
     - intro.qmd
+    - part: "Part I. Mechanics"
+      chapters:
+        - mechanics/index.qmd
+        - mechanics/motion.qmd
+        - mechanics/momentum.qmd
     - summary.qmd
     - references.qmd
-    - ./motion/motion.qmd
-    - ./momentum/momentum.qmd
 
 bibliography: references.bib
 

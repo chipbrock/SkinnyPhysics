@@ -1,0 +1,6 @@
+---
+title: Part I. Mechanics
+---
+
+This section introduces motion and momentum — the core of classical mechanics.
+Here you can outline the main themes, key equations, or learning goals before readers dive into each chapter.
