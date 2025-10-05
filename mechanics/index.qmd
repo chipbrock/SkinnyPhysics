@@ -1,5 +1,7 @@
 ---
-title: Part I. Mechanics
+title: "Part I: Mechanics"          # or keep "Part I. Mechanics — Overview"
+numbered: false            # <- key: do NOT number this chapter
+toc: false                 # optional: no in-page ToC
 ---
 
 This section introduces motion and momentum — the core of classical mechanics.

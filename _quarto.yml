@@ -9,11 +9,10 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
-    - part: "Part I. Mechanics"
+    - part: mechanics/index.qmd
       chapters:
-        - mechanics/index.qmd
-        - mechanics/motion.qmd
-        - mechanics/momentum.qmd
+        - mechanics/motion/motion.qmd
+        - mechanics/momentum/momentum.qmd
     - summary.qmd
     - references.qmd
 
