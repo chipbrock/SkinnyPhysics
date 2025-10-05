@@ -1,0 +1,28 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Skinny Physics for QS&BB"
+  author: "Chip Brock"
+  date: "9/12/2025"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+    - ./motion/motion.qmd
+    - ./momentum/momentum.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    fontsize: 1.3em
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
