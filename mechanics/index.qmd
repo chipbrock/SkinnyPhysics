@@ -4,5 +4,13 @@ numbered: false            # <- key: do NOT number this chapter
 toc: false                 # optional: no in-page ToC
 ---
 
-This section introduces motion and momentum — the core of classical mechanics.
-Here you can outline the main themes, key equations, or learning goals before readers dive into each chapter.
+This Part introduces mechanics — the core of classical physics and a source of important concepts for **QS&BB**, not to mention a lot of vocabulary of physics...momentum, force, energy, and so on.
+
+Here you can see the main themes as a review or for the first time, key equations, or learning goals before readers dive into each chapter.
+
+Each chapter has four levels of detail:
+1. Just the facts. The equations for those of you who might have had some physics in your background and need a referesher
+2. Different way. There are some places where I introduce ways of approaching thingss in QSBB that you wouldn't have seen elsewhere. So follow those links for sure.
+4. Gentle explanations of... This is textbook-like, but textbook-lite. From the beginning but not overpowering. Some videos of explanation.
+3. Pointers to topics so you can quickly go to a topic where you need more than just the equations. That's #4 just above 👆
+
