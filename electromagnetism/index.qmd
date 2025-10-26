@@ -1,5 +1,5 @@
 ---
-title: "Part II: Electromagnetism" # or keep "Part II. Electromagnetism — Overview"
+title: "Part III: Electromagnetism" # or keep "Part III. Electromagnetism — Overview"
 numbered: false            # <- key: do NOT number this chapter
 toc: false                 # optional: no in-page ToC
 ---

@@ -1,0 +1,9 @@
+---
+title: "Part II: Gravitation " # or keep "Part II. Gravitation— Overview"
+numbered: false            # <- key: do NOT number this chapter
+toc: false                 # optional: no in-page ToC
+---
+
+This Part introduces gravitation – or astronomy – the first physical science and the consequence of 3000 years of speculation about the heavens. Our concern for cosmology **QS&BB** has its roots in the progress made by the Greeks, Arabs, Rennaisance scientists, to Copernicus, Kepler, Galileo and Isaac Newton. And beyond? Einstein and the big bang.
+
+👈 Read or skim, depending on your background. So many of these concepts have stood the test of time. As always, my goal is to get you ready for the 21st century physics of particle physics and cosmology.
