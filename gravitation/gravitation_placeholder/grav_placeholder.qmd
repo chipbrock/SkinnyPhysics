@@ -1,0 +1,16 @@
+---
+author: "Chip Brock"
+number-sections: true
+date: 2025-08-24# (your last edit date)
+categories: [Ptolemy, Copernicus, Galileo, Kepler's Laws, Newton's Gravitation]
+description: "Gotta move."
+draft: false
+---
+
+------------------------------------------------------------------------
+
+# Placeholder!
+
+at work here.
+
+😵‍💫

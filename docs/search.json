@@ -251,11 +251,11 @@
   {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "4  Summary",
+    "title": "5  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Summary</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Summary</span>"
     ]
   },
   {
@@ -419,6 +419,48 @@
     "text": "This Part introduces electricity and magnetism — another of the core of classical physics and also a source of important concepts for QS&BB. Much of quantum theory was finding a modern view of light and in particle physics we use the quantum particles of light all the time. But electricity, magnetism, and optics are all the same side of a theoretical coin (which I guess suggests a three-sided coin…but Quantum Mechanics is strange).\n👈 Read or skim, depending on your background. So many of these concepts have stood the test of time. As always, my goal is to get you ready for the 21st century physics of particle physics and cosmology.",
     "crumbs": [
       "Part III: Electromagnetism"
+    ]
+  },
+  {
+    "objectID": "Electromagnetism/index.html",
+    "href": "Electromagnetism/index.html",
+    "title": "Part III: Electromagnetism",
+    "section": "",
+    "text": "This Part introduces electricity and magnetism — another of the core of classical physics and also a source of important concepts for QS&BB. Much of quantum theory was finding a modern view of light and in particle physics we use the quantum particles of light all the time. But electricity, magnetism, and optics are all the same side of a theoretical coin (which I guess suggests a three-sided coin…but Quantum Mechanics is strange).\n👈 Read or skim, depending on your background. So many of these concepts have stood the test of time. As always, my goal is to get you ready for the 21st century physics of particle physics and cosmology.",
+    "crumbs": [
+      "Part III: Electromagnetism"
+    ]
+  },
+  {
+    "objectID": "gravitation/index.html",
+    "href": "gravitation/index.html",
+    "title": "Part II: Gravitation",
+    "section": "",
+    "text": "This Part introduces gravitation – or astronomy – the first physical science and the consequence of 3000 years of speculation about the heavens. Our concern for cosmology QS&BB has its roots in the progress made by the Greeks, Arabs, Rennaisance scientists, to Copernicus, Kepler, Galileo and Isaac Newton. And beyond? Einstein and the big bang.\n👈 Read or skim, depending on your background. So many of these concepts have stood the test of time. As always, my goal is to get you ready for the 21st century physics of particle physics and cosmology.",
+    "crumbs": [
+      "Part II: Gravitation"
+    ]
+  },
+  {
+    "objectID": "electromagnetism/electromagnetism_placeholder/em_placeholder.html",
+    "href": "electromagnetism/electromagnetism_placeholder/em_placeholder.html",
+    "title": "6  Placeholder!",
+    "section": "",
+    "text": "at work here.\n😵‍💫",
+    "crumbs": [
+      "Part III: Electromagnetism",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Placeholder!</span>"
+    ]
+  },
+  {
+    "objectID": "gravitation/gravitation_placeholder/grav_placeholder.html",
+    "href": "gravitation/gravitation_placeholder/grav_placeholder.html",
+    "title": "5  Placeholder!",
+    "section": "",
+    "text": "at work here.\n😵‍💫",
+    "crumbs": [
+      "Part II: Gravitation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Placeholder!</span>"
     ]
   }
 ]

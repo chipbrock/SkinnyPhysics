@@ -26,8 +26,12 @@ book:
         - mechanics/motion/motion.qmd
         - mechanics/momentum/momentum.qmd
         - mechanics/collisions/collisions.qmd
+    - part: gravitation/index.qmd
+      chapters:
+        - gravitation/gravitation_placeholder/grav_placeholder.qmd
     - part: electromagnetism/index.qmd
-
+      chapters:
+        - electromagnetism/electromagnetism_placeholder/em_placeholder.qmd
     - summary.qmd
     - references.qmd
 
