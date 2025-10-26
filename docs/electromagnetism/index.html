@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Chip Brock">
-<meta name="dcterms.date" content="2025-09-12">
 
-<title>Skinny Physics for QS&amp;BB</title>
+<title>Part II: Electromagnetism – Skinny Physics for QS&amp;BB</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,23 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./mechanics/index.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b40302a2e0fd6694a0ed819b4450bbe.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../summary.html" rel="next">
+<link href="../mechanics/collisions/collisions.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b40302a2e0fd6694a0ed819b4450bbe.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -82,14 +81,14 @@ window.MathJax = {
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar floating nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Skinny Physics for QS&amp;BB</span>
     </a>
   </div>
@@ -114,7 +113,7 @@ window.MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Skinny Physics</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../electromagnetism/index.html">Part II: Electromagnetism</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,8 +127,8 @@ window.MathJax = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/logo_orange_words.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logo_orange_words.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -141,13 +140,13 @@ window.MathJax = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Skinny Physics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./mechanics/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../mechanics/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Part I: Mechanics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -156,19 +155,19 @@ window.MathJax = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mechanics/motion/motion.html" class="sidebar-item-text sidebar-link">
+  <a href="../mechanics/motion/motion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Skinny Motion, Speed, and Acceleration</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mechanics/momentum/momentum.html" class="sidebar-item-text sidebar-link">
+  <a href="../mechanics/momentum/momentum.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Skinny Momentum and Force</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mechanics/collisions/collisions.html" class="sidebar-item-text sidebar-link">
+  <a href="../mechanics/collisions/collisions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Skinny Collisions</span></span></a>
   </div>
 </li>
@@ -180,13 +179,13 @@ window.MathJax = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+  <a href="../summary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -195,43 +194,20 @@ window.MathJax = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#introduction-to-skinny-physics" id="toc-introduction-to-skinny-physics" class="nav-link active" data-scroll-target="#introduction-to-skinny-physics"><span class="header-section-number">1</span> Introduction to Skinny Physics</a>
-  <ul class="collapse">
-  <li><a href="#chapter-structure" id="toc-chapter-structure" class="nav-link" data-scroll-target="#chapter-structure"><span class="header-section-number">1.1</span> Chapter structure</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Skinny Physics for QS&amp;BB</h1>
+<h1 class="title">Part II: Electromagnetism</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Chip Brock </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">September 12, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -241,47 +217,10 @@ window.MathJax = {
 </header>
 
 
-<section id="introduction-to-skinny-physics" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introduction to Skinny Physics</h1>
-<p>I’m guessing that you might come from various backgrounds and since posts in <strong>QS&amp;BB</strong> may rely on a small bit of background, I’ve created this Skinny Physics collection to help you whether you’re an English major with little physics in your life to an engineer with more.</p>
-<section id="chapter-structure" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="chapter-structure"><span class="header-section-number">1.1</span> Chapter structure</h2>
-<p>Each chapter has the same structure in support of your particular level of preparation:</p>
-<ol type="1">
-<li><strong>Just the facts.</strong> The equations for those of you who might have had some physics in your background and need a referesher</li>
-<li><strong>Different way.</strong> There are some places where I introduce ways of approaching thingss in QSBB that you wouldn’t have seen elsewhere. So follow those links for sure.</li>
-<li><strong>Gentle explanations of..</strong>. This is textbook-like, but textbook-lite. From the beginning but not overpowering. Some videos of explanation.</li>
-<li><strong>Pointers</strong> to topics so you can quickly go to a topic where you need more than just the equations. That’s #4 just above 👆</li>
-</ol>
-<p>The Parts are:</p>
-<ol type="1">
-<li>Mechanics
-<ol type="1">
-<li>Motion</li>
-<li>Momentum and Force</li>
-<li>Collisions</li>
-<li>Energy</li>
-</ol></li>
-<li>Gravitation
-<ol type="1">
-<li>Copernicus’ heliocentric proposal</li>
-<li>Galileo’s Astronomy</li>
-<li>Kepler’s Astrophysics</li>
-<li>Newton’s Gravitation</li>
-</ol></li>
-<li>Electricity and Magnetism
-<ol type="1">
-<li>Electric Charge and Magnetism</li>
-<li>Faraday’s Experiments and Conclusions</li>
-<li>Maxwell’s Theory</li>
-<li>Forces on electrical charges</li>
-</ol></li>
-<li>Einstein’s Theory of Special Relativity</li>
-</ol>
+<p>This Part introduces electricity and magnetism — another of the core of classical physics and also a source of important concepts for <strong>QS&amp;BB</strong>. Much of quantum theory was finding a modern view of light and in particle physics we use the quantum particles of light all the time. But electricity, magnetism, and optics are all the same side of a theoretical coin (which I guess suggests a three-sided coin…but Quantum Mechanics is strange).</p>
+<p>👈 Read or skim, depending on your background. So many of these concepts have stood the test of time. As always, my goal is to get you ready for the 21st century physics of particle physics and cosmology.</p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -703,10 +642,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../mechanics/collisions/collisions.html" class="pagination-link" aria-label="Skinny Collisions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Skinny Collisions</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mechanics/index.html" class="pagination-link" aria-label="Part I: Mechanics">
-        <span class="nav-page-text">Part I: Mechanics</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../summary.html" class="pagination-link" aria-label="Summary">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

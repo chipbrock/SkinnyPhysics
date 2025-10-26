@@ -26,6 +26,8 @@ book:
         - mechanics/motion/motion.qmd
         - mechanics/momentum/momentum.qmd
         - mechanics/collisions/collisions.qmd
+    - part: electromagnetism/index.qmd
+
     - summary.qmd
     - references.qmd
 
