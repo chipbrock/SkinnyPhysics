@@ -1,0 +1,272 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Skinny Physics for QS&BB",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction to Skinny Physics",
+    "section": "",
+    "text": "1.1 Chapter structure\nI’m guessing that you might come from various backgrounds and since posts in QS&BB may rely on a small bit of background, I’ve created this Skinny Physics collection to help you whether you’re an English major with little physics in your life to an engineer with more.\nEach chapter has the same structure in support of your particular level of preparation:\nThe Parts are:",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Skinny Physics</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#chapter-structure",
+    "href": "intro.html#chapter-structure",
+    "title": "1  Introduction to Skinny Physics",
+    "section": "",
+    "text": "Just the facts. The equations for those of you who might have had some physics in your background and need a referesher\nDifferent way. There are some places where I introduce ways of approaching thingss in QSBB that you wouldn’t have seen elsewhere. So follow those links for sure.\nGentle explanations of... This is textbook-like, but textbook-lite. From the beginning but not overpowering. Some videos of explanation.\nPointers to topics so you can quickly go to a topic where you need more than just the equations. That’s #4 just above 👆\n\n\n\nMechanics\n\nMotion\nMomentum and Force\nCollisions\nEnergy\n\nGravitation\n\nCopernicus’ heliocentric proposal\nGalileo’s Astronomy\nKepler’s Astrophysics\nNewton’s Gravitation\n\nElectricity and Magnetism\n\nElectric Charge and Magnetism\nFaraday’s Experiments and Conclusions\nMaxwell’s Theory\nForces on electrical charges\n\nEinstein’s Theory of Special Relativity",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Skinny Physics</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/index.html",
+    "href": "mechanics/index.html",
+    "title": "Part I: Mechanics",
+    "section": "",
+    "text": "This Part introduces mechanics — the core of classical physics and a source of important concepts for QS&BB, not to mention a lot of vocabulary of physics…momentum, force, energy, and so on.\nHere you can see the main themes as a review or for the first time, key equations, or learning goals before readers dive into each chapter.\nEach chapter has four levels of detail: 1. Just the facts. The equations for those of you who might have had some physics in your background and need a referesher 2. Different way. There are some places where I introduce ways of approaching thingss in QSBB that you wouldn’t have seen elsewhere. So follow those links for sure. 4. Gentle explanations of… This is textbook-like, but textbook-lite. From the beginning but not overpowering. Some videos of explanation. 3. Pointers to topics so you can quickly go to a topic where you need more than just the equations. That’s #4 just above 👆",
+    "crumbs": [
+      "Part I: Mechanics"
+    ]
+  },
+  {
+    "objectID": "mechanics/motion/motion.html",
+    "href": "mechanics/motion/motion.html",
+    "title": "2  Skinny Motion, Speed, and Acceleration",
+    "section": "",
+    "text": "2.1 Different way\nThis is the first of three outlines of some basic physics ideas so that I can refer to them in other posts. If you’d like more, including history and examples, then visit full textbook for a textbook-level presentation. If you only need the basic simple equations, they’re here. If you’d like some explanation, that’s next!\nUnits. Sorry. In QS&BB we won’t care about English versus metric units but for this motion review we’ll sometimes have to convert. I’ll do it for you but you can check me at places like unitjuggler…or often just Google.",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Skinny Motion, Speed, and Acceleration</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/motion/motion.html#just-the-facts",
+    "href": "mechanics/motion/motion.html#just-the-facts",
+    "title": "2  Skinny Motion, Speed, and Acceleration",
+    "section": "2.2 Just the facts:",
+    "text": "2.2 Just the facts:\nchanges in something\nI’ll use:\n\n\\(x_0\\) to be where we start in distance\n\\(x\\) to be where we end up (sometimes, I’ll be explicit and say “\\(x_f\\)” for “final.”)\nWe’ll use the Greek symbol Delta, \\(\\Delta\\) to mean “change of”…this will come up a lot.\nchange in position is \\(\\Delta x = x_{\\text{ended up}}-x_{\\text{where we started}} = x-x_0\\)\nsame goes for time, from \\(\\Delta t= t_{\\text{ended up}}-t_{\\text{when we started}} = t - t_0\\)\nsymbol for average: \\(&lt;A&gt;\\)\nsymbol for the (nearly) constant acceleration due to gravity close to the Earth’s surface: \\(g\\)\n\naverage anything\nFour objects, A, B, C, D…average is:\n\\[\n&lt;h&gt; = \\frac{A+B+C+D}{4}\n\\]\naverage velocity\nThe average speed that an object has after going a distance of \\(x_f\\) after starting at position \\(x_0\\) in a time \\(\\Delta t\\) is:\n\\[\n\\begin{equation}\n&lt;v&gt; = \\frac{\\Delta x}{\\Delta t} = \\frac{x_f-x_0}{t_f - t_0}\n\\end{equation}\n\\]\nso:\naverage distance traveled\n\\[\nx =x_0 +&lt;v&gt;\\times(t-t_0)\n\\]\noften abstracted to:\n\\[\nx=vt\n\\]\n\n2.2.1 constant acceleration\ndefinition of acceleration\nNot restricted to constant acceleration: \\[\na = \\frac{v-v_0}{t-t_0}\n\\] Velocity for constant acceleration after given time \\[\nv = v_0 +at\n\\] Distance traveled for constant acceleration \\[\nx = x_0 + v_0t + \\dfrac{1}{2} at^2\n\\] Velocity for constant acceleration after given distance \\[\nv^2   = v_0^2 + 2ax\n\\] Distance fallen under constant acceleration due to gravity\nDown ↓ presumed to be in the positive direction (same direction as the motion and the force of gravity)\n\\[\ny = y_0 + v_0t + \\dfrac{1}{2} gt^2Different way\n\\]",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Skinny Motion, Speed, and Acceleration</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/motion/motion.html#different-way",
+    "href": "mechanics/motion/motion.html#different-way",
+    "title": "2  Skinny Motion, Speed, and Acceleration",
+    "section": "",
+    "text": "Important\n\n\n\n🫵 Even if you know some of the basics of velocity and acceleration, you need to be comfortable with spacetime diagrams in Section 2.6 ! That’s how we’ll pursue Feynman Diagrams.",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Skinny Motion, Speed, and Acceleration</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/motion/motion.html#pointers-to-topics",
+    "href": "mechanics/motion/motion.html#pointers-to-topics",
+    "title": "2  Skinny Motion, Speed, and Acceleration",
+    "section": "2.3 Pointers to topics:",
+    "text": "2.3 Pointers to topics:\n\n\n\n\n\n\nTip\n\n\n\n🔐 Bottom line sections with stuff to remember in this chapter:\n\naverage speed Section 2.4.2\nspacespace and spacetime diagrams Section 2.6\nthe set of equations for 1-dimensional motion Section 2.9\n2 dimensional motion: projectiles Section 2.10",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Skinny Motion, Speed, and Acceleration</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/motion/motion.html#gentle-explanations-of-velocity-and-acceleration",
+    "href": "mechanics/motion/motion.html#gentle-explanations-of-velocity-and-acceleration",
+    "title": "2  Skinny Motion, Speed, and Acceleration",
+    "section": "2.4 Gentle explanations of Velocity and Acceleration",
+    "text": "2.4 Gentle explanations of Velocity and Acceleration\n\n2.4.1 Getting From Here to There: At Constant Speed\nWhether it’s runners on a track, the cosmic rays piercing us all the time, orbiting planets, electrons in a wire, electromagnetic waves, quark wavefunctions inside a proton, electrons and holes in a semiconductor, or the stretching of spacetime itself. Everything is about “motion.” Motion is both the easiest and the hardest concept in physics and so much of what comes for us will constantly stretch at ideas about what motion is and how we can describe it. So we need to start at the beginning. Because:\n\nmotion: it’s everywhere Almost everything in physics boils down to: motion. (Even boiling.)\n\nBut at its most basic, our physics will be all about how to get from here to there and from then to now, and to be able to explain how that happened and predict what will come next.\n\n\n\n\n\n\nCharacterizing motion is simple in principle! You need two things:\n\n\n\nThe complete set of tools to characterize motion.\n\n\nAnd for everyday motion, that seems reasonable and you already know a lot about that.\nSuppose you’re on a trip and you timed yourself between the two mile markers.\nWhat was your speed? I know you know this and your brain would quickly calculate:\n\nI went 350 – 50 = 300 miies\nit took me 6 hours\nso my speed was 300/6 = 50 “miles per hour,” mph\n\nSo: \\[\nv=50 \\text{ mph}\n\\] Now, what if we stop and then start up after a break? How do we refer to the speed then?\n\n\n\nStopping for a rest\n\n\n\n\n\n2.4.2 Average speed\nSo as time marches on, part of it we’d be moving and part of it we’d be stationary. But notice that the times are no different and the distances are no different. Now your brain would be doing an average speed calculation with exactly the same beginning and ending times and distances. You’d now say that:\n\\[\n&lt;v&gt; = 50 \\text{ mph}\n\\]\nThis bracketing notation means “average” or “mean”…the average speed only depends on the beginning and ending points. Since the same number of hours elapsed, as before without the stop, we must have gone faster than the average before the stop and/or faster after the stop. Average speeds are not that unfamiliar, but that’s because you don’t probably think of it that way. But you’ve all asked yourselves the question, “I’ve got to go 100 miles and I think I can travel at 70 mph, so I”ll be home in about one and a half hours.”\nSo you’ve known for a long time that\n\\[\n\\text{speed} = \\dfrac{\\text{distance traveled}}{\\text{time taken}}\n\\]\nis the rate at which distance changes with time.\n\n\n2.4.3 Speed in Modern Terms\nLet’s make this more compact by inserting customary symbols to get rid of the English words. Here are some grammar rules in QS&BB:\n\nWe’ll limit ourselves almost exclusively to motion in one dimension in space.\nWe’ll use the symbol \\(v\\) for speed (because customarily, we’ll speak of “velocity”…more about this below).\n\\(&lt;A&gt;\\) is the average of the quantity \\(A\\)\nWe’ll use the symbol \\(x\\) for distance in one dimension, regardless of which direction it points.\nWe’ll use the symbol \\(t\\) for time and almost always presume that we set our clocks so that the beginning time of any interval is \\(t_0=0\\).\nOh, and we’ll use the subscript \\(\\text{ }_{0}\\) to indicate the beginning of some time or location interval—” \\(t_0\\)” or ” \\(x_0\\) ”—in a sequence of events.\nWe’ll use the Greek symbol Delta, \\(\\Delta\\) to mean “change of”…this will come up a lot.\n\nWith this, then we can “solve” this simple problem: \\[\n\\begin{align}\nv &= \\text{speed}=\\dfrac{\\text{distance traveled}}{\\text{time taken}} \\nonumber \\\\\nv &=\\dfrac{x-x_0}{t-t_0} \\label{speeddef} \\\\\n&= \\dfrac{350-50}{6}=50  \\text{mph} \\nonumber\n\\end{align}\n\\] where “\\(v\\)” is the velocity and it’s defined by the middle equation in equation \\(\\ref{speeddef}\\).",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Skinny Motion, Speed, and Acceleration</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/motion/motion.html#sec-averagespeed",
+    "href": "mechanics/motion/motion.html#sec-averagespeed",
+    "title": "2  Skinny Motion, Speed, and Acceleration",
+    "section": "2.5 Average speed",
+    "text": "2.5 Average speed\nSo as time marches on, part of it we’d be moving and part of it we’d be stationary. But notice that the times are no different and the distances are no different. Now your brain would be doing an average speed calculation with exactly the same beginning and ending times and distances. You’d now say that:\n\\[\n&lt;v&gt; = 50 \\text{ mph}\n\\]\nThis bracketing notation means “average” or “mean”…the average speed only depends on the beginning and ending points. Since the same number of hours elapsed, as before without the stop, we must have gone faster than the average before the stop and/or faster after the stop. Average speeds are not that unfamiliar, but that’s because you don’t probably think of it that way. But you’ve all asked yourselves the question, “I’ve got to go 100 miles and I think I can travel at 70 mph, so I”ll be home in about one and a half hours.”\nSo you’ve known for a long time that\n\\[\n\\text{speed} = \\dfrac{\\text{distance traveled}}{\\text{time taken}}\n\\]\nis the rate at which distance changes with time.\n\n2.5.1 Speed in Modern Terms\nLet’s make this more compact by inserting customary symbols to get rid of the English words. Here are some grammar rules in QS&BB:\n\nWe’ll limit ourselves almost exclusively to motion in one dimension in space.\nWe’ll use the symbol \\(v\\) for speed (because customarily, we’ll speak of “velocity”…more about this below).\n\\(&lt;A&gt;\\) is the average of the quantity \\(A\\)\nWe’ll use the symbol \\(x\\) for distance in one dimension, regardless of which direction it points.\nWe’ll use the symbol \\(t\\) for time and almost always presume that we set our clocks so that the beginning time of any interval is \\(t_0=0\\).\nOh, and we’ll use the subscript \\(\\text{ }_{0}\\) to indicate the beginning of some time or location interval—” \\(t_0\\)” or ” \\(x_0\\) ”—in a sequence of events.\nWe’ll use the Greek symbol Delta, \\(\\Delta\\) to mean “change of”…this will come up a lot.\n\nWith this, then we can “solve” this simple problem: \\[\n\\begin{align}\nv &= \\text{speed}=\\dfrac{\\text{distance traveled}}{\\text{time taken}} \\nonumber \\\\\nv &=\\dfrac{x-x_0}{t-t_0} \\label{speeddef} \\\\\n&= \\dfrac{350-50}{6}=50  \\text{mph} \\nonumber\n\\end{align}\n\\] where “\\(v\\)” is the velocity and it’s defined by the middle equation in equation \\(\\ref{speeddef}\\).",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Skinny Motion, Speed, and Acceleration</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/motion/motion.html#dimensional-analysis",
+    "href": "mechanics/motion/motion.html#dimensional-analysis",
+    "title": "2  Skinny Motion, Speed, and Acceleration",
+    "section": "2.5 Dimensional Analysis",
+    "text": "2.5 Dimensional Analysis\nThis might be superfluous for most of your interests, but sometimes it’s usefult to keep track of the dimensions of quantities. It can check an answer after a calculation – if the dimension of a result should be mph but it comes out to be “pounds” then you made a mistake somewhere. But it’s also useful to keep track of changing from one set of units to another, like miles per hour to meters per second.\nThe usual way of keeping track of the dimensions is a different kind of bracket: \\([A]\\) would refer to the “dimension of \\(A\\)”. For \\(A=50\\) mph, \\([A]=\\) mph. Get it?\nSo if our distance units were feet and our time units were hours, then we would say that the dimensions of velocity could be determined to be: \\[\n\\dfrac{[\\text{distance}]}{[\\text{time}]}=\\dfrac{\\text{feet}}{\\text{hours}} = [v] = \\text{feet per hour}\n\\]\n\n\n\n\n\n\nDimensions of acceleration are a little unfamiliar but we can work them out:\n\n\n\n\n\n\nOf course the simplest acceleration is a constant one…that during any time interval, the speed increases and the rate at which the speed increases is constant.",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Skinny Motion, Speed, and Acceleration</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/motion/motion.html#sec-spacetimediagrams",
+    "href": "mechanics/motion/motion.html#sec-spacetimediagrams",
+    "title": "2  Skinny Motion, Speed, and Acceleration",
+    "section": "2.6 Spacespace and Spacetime Diagrams",
+    "text": "2.6 Spacespace and Spacetime Diagrams\nThere are multiple ways to represent motion… an equation like Equation \\(\\ref{speeddef}\\) is a model. But graphical representation is also very useful. Here are two:\n\n2.6.1 spacespace diagram, stationary\nLet’s imagine a pool table. Here it is with a set of x-y axes. Notice that I’ve placed a ball at the intial coordinates (x0, y0):\nWait a while…here it still is:\n\n\n\nOur platform for describing motion. A ball on a pool table…sitting there minding its own business.\n\n\n\nLet’s plot it on an x-y axis set.\n\n\n\nA “space-space” diagram for the ball sitting still. Time marches on for it in that position.\n\n\n\nI call this diagram a spacespace diagram since both axes are space coordinates. It’s how you think about things normally. As time progresses, our ball doesn’t move on the table, so the x and y coordinates of the ball at any time are the same.\n\n\n2.6.2 spacetime diagram, stationary\nNow supposed I plot the ball’s trajectory (yes, “trajectory”) as a function of space and time.\n\n\n\nA spacetime diagram for the ball sitting still…still.\n\n\n\nNow you see “movement”…the stationary ball is moving in time. This picture is an example of a spacetime diagram. Not very interesting.\n\n\n2.6.3 spacespace diagram, moving!\nJust sitting still isn’t interesting, so let’s roll the ball across the pool table:\n\n\n\nRolling the ball in a straight line on the pool table. The \\(y\\) coordinate doesn’t change but the \\(x\\) coordinate does.\n\n\n\nWhile the ball moves in space, it’s also moving in time but the time coordinate is implied or hidden. The clocks show what it might be if one were to use a stopwatch to monitor its motion for 4 points along the trajectory.\nSince the ball moves only horizontally, \\(y_0\\) doesn’t change and so I can represent the motion in a space (\\(x\\)) and time (\\(t\\)) way and here is the spacetime diagram for this simple situation\n\n\n\nThe spacetime diagram for the ball moving at a constant speed long the pool table. The \\(x\\) coordinate changes as time advances and the straight line tells you that the speed is constant.\n\n\n\nNotice that the trajectory in spacetime is a straight line and its slope? The velocity, which is a continuous curve in this diagram, and the dashed line shows it.",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Skinny Motion, Speed, and Acceleration</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/motion/motion.html#graphing-motion",
+    "href": "mechanics/motion/motion.html#graphing-motion",
+    "title": "2  Skinny Motion, Speed, and Acceleration",
+    "section": "2.7 Graphing motion",
+    "text": "2.7 Graphing motion\nThis is a model of motion, which for physicists is always a curve in some coordinate system. Here the slope is \\[\n\\begin{align}\nv &=\\dfrac{x-x_0}{t-t_0} \\nonumber \\\\\nv &= \\dfrac{\\Delta x}{\\Delta t} \\nonumber\n\\end{align}\n\\]\nWe can easily imagine that the motion might not be smooth (like the stopping and starting on the road above) and so the concept of the average is always in play:\n\n\n\nThe average speed depends only on the beginning and ending points.\n\n\n\nThe more precisely we sample the motion, the more precisely we converge on an instantaneous speed, which you’re familiar with while driving with a speedometer in front of you. You think it’s telling you exaclty what your speed is, but it is actually digitally sampling the rotation of your tires, but very finely.\nIn physics:\n\n“kinematics” is the subject of motion\n“dynamics” is the subject of forces…which cause the motion\n\nGalileo introduced the idea of kinematics…he characterized motion without regard to what made the motion happen. Isaac Newton did the first legitimate analysis – model – of dynamics. He explained how to characterize forces and the motions that result. That’s the subject of the next chapter.\n\n2.7.1 Graphing accelerated motion\nThe rolling ball’s motion in spacetime had the same slope between any two time intervals – a straight line. So the velocity never changes.\nBut of course for motion to get started one has begin from rest and get going, so the velocity has to increase in time. That’s what acceleration is.\n\nVelocity is the rate at which distance changes in time.\nAcceleration is the rate at which velocity changes in time.\n\nHere are the two models of motion: \\[\n\\begin{align}\nv &=\\dfrac{x-x_0}{t-t_0} \\text{  model of velocity} \\label{eq1} \\\\\nv &= \\dfrac{\\Delta x}{\\Delta t} \\text{ and } \\nonumber \\\\\na &=\\dfrac{v-v_0}{t-t_0}  \\text{  model of acceleration} \\nonumber \\\\\na &= \\dfrac{\\Delta v}{\\Delta t} \\nonumber\n\\end{align}\n\\] So if the speed is uniform, like the ball above, then the acceleration is zero (since \\(\\Delta v = 0\\)).\nIf the speed changes in time, then we have accelerated motion since \\(\\Delta v \\ne 0\\).\n\n\n\nCAPTION\n\n\n\nBut sometimes you put on the brakes, and you know that you slow down because you can feel it and the speedometer is telling you that. So in increasing time intervals, the rate at which the speed changes is negative.\n\n\n\nCAPTION\n\n\n\nIn the diagram, \\(\\Delta v &lt; 0\\). This is a negative acceleration and is called decceleration.\nI’ve concentrated on acceleration and deceleration which are constant…the speed changes at a uniform rate, up or down. But that’s not the only kind. Think about a sprinter. Just after the starting gun, a runner’s speed out of the blocks is high and remains high for the first few steps. As the runner starts to become a little more vertical, air resistance becomes a factor and while the runner goes faster, she does so at a lower rate of speed increase. That’s a non-constant acceleration.\n\n\n\nA sprinter’s changing acceleration. Notice that the slope changes as time increases\n\n\n\nNow you can design a sports video game. All you have to do is measure an athlete’s personal acceleration parameters and code them. I found this years ago for Madden NFL11 of a particular running back:\n\n\n\n\n\n\n\n\nFigure 2.1: Madden NFL11 acceleration coded for an unnamed running back.",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Skinny Motion, Speed, and Acceleration</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/motion/motion.html#gravity",
+    "href": "mechanics/motion/motion.html#gravity",
+    "title": "2  Skinny Motion, Speed, and Acceleration",
+    "section": "2.8 Gravity",
+    "text": "2.8 Gravity\nFamously, Galileo Galilei determined that any object near the earth would fall at a constant acceleration. How he determined this was clever and you can read the story at Galileo. What he found was that the speed of a falling object would increase linearly with the time of it’s fall. A competing idea from other natural philosophers including Leonardo DaVinci, proposed that the speed would increase linearly with distance, not time.\nWhat Galileo knew from medieval considerations was that this linearity with time for \\(v\\) meant that distance had to increase quadratically with time.\nSo, a model of Galileo’s qualitative conclusion is: \\[\n\\begin{align}\nv(t) &\\propto t \\nonumber \\\\\nx(t) &\\propto t^2 \\nonumber\n\\end{align}\n\\] The symbol \\(\\propto\\) means “proportional to” and when we find a relationship like that, we can turn it into an equation by inserting some constant of proportionality. For falling bodies near the earth, the symbol for that constant is called “\\(g\\)” or “little g.” Now we can fully-form the model as: \\[\n\\begin{align}\nv(t) &= gt \\nonumber \\\\\nx(t) &= 1/2gt^2 \\nonumber\n\\end{align}\n\\] There are simplicity reasons for the 1/2…if we’d absorbed that into \\(g\\) then the first equation would have had to change. The value of \\(g\\) comes from experiment and is about \\[\n\\begin{equation}\ng = 9.8 \\text{ m/s$^2$} = 32 \\text{ ft/s$^2$}.  \\nonumber \\\\\n\\end{equation}\n\\] While this is a story that started with gravity, it’s nonetheless a completely general description of any accelerated motion (your car) if that acceleration is constant. In general, then, we’d use the symbol \\(a\\) and treat falling as a special case of constantly accelerated motion in which case \\(a=g\\).\nWhile we defined speed in terms of distance, we can rewrite Equation \\(\\ref{eq1}\\). \\[\n\\begin{align}\n\\text{For constant speed,}&\\text{ no acceleration} \\\\\nv &=\\dfrac{x-x_0}{t-t_0} \\nonumber \\\\\nx-x_0 &=v(t-t_0) \\nonumber \\text{ let's take our initial time be 0} \\\\\nx &= x_0 + vt\n\\end{align}\n\\] And for constant acceleration, we can find a general relationship for distance as well with a simple calculation.\n\n\n\n\n\n\nWarning\n\n\n\n⚠️ A bit of algebra is required to derive the complete quartet of equations for motion with a constant acceleration. I do that for you in equations of motion",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Skinny Motion, Speed, and Acceleration</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/motion/motion.html#sec-equationsofmotion",
+    "href": "mechanics/motion/motion.html#sec-equationsofmotion",
+    "title": "2  Skinny Motion, Speed, and Acceleration",
+    "section": "2.9 Complete model for motion",
+    "text": "2.9 Complete model for motion\nSo collectively, here are our definitions for motion: \\[\n\\begin{align}\n\\text{Constant speed,}&\\text{ no acceleration} \\nonumber \\\\\nx &= x_0 + vt \\nonumber \\\\\nv &= \\text{ constant} \\nonumber \\\\\na &= 0 \\nonumber \\\\\n\\text{Constant}&\\text{ acceleration}& \\nonumber \\\\\na &=\\dfrac{v-v_0}{t-t_0} \\nonumber \\\\\na &= \\dfrac{\\Delta v}{\\Delta t} \\nonumber \\\\\n\\end{align}\n\\] And here are the complete set of equations for one-dimentional constant acceleration. Each relation relates two of the three variables: \\(x, t, v\\). \\[\n\\begin{align}\n& \\text{1. } \\; x = \\langle v \\rangle t \\label{avev} \\\\\n& \\text{2.  } \\; v   = v_0 + at \\label{vat} \\\\\n& \\text{3. }  \\; x   = x_0+v_0 t + \\frac{1}{2} at^2 \\label{xat}  \\\\\n& \\text{4. }\\; v^2   = v_0^2 + 2ax \\label{vax}\n\\end{align}\n\\]\nNotice two things. If the motion is at a constant velocity, then setting \\(a=0\\) recovers that special case. And notice that \\(\\eqref{vax}\\) does not have time as a variable and that will turn out to be interesting when we talk about energy.",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Skinny Motion, Speed, and Acceleration</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/motion/motion.html#sec-projectiles",
+    "href": "mechanics/motion/motion.html#sec-projectiles",
+    "title": "2  Skinny Motion, Speed, and Acceleration",
+    "section": "2.10 Projectiles",
+    "text": "2.10 Projectiles\nWhen you throw a ball from centerfield to home plate, the ball executes what looks like a parabollic trajectory. The ball goes forward while it probably rises for a while and then drops toward the ground. That’s two-dimensional motion and Galileo had the insipiration to figure out what was going on and how to do experiments to confirm his hypothesis that the up-and-down would follow the shape of a parabola.\nHis insight was that when motion is imparted to an object and the source of the motion is taken away (you throw the ball and it leaves your hand and is then in its own), that something stays with the ball. He called it “impeto” and we call it “momentum.” The ball acquires momentum.\nAnd he realized that whatever impeto the ball acquires in the horizontal direction is preserved, but the moment the ball leaves your hand, it starts to head toward the Earth. In modern words, we’d say that once released, the ball has a horizontal momentum that stays constant and a vertical momentum that changes and points down. The two motions are in some sense overlaid or shared by the ball.\n\n\n\n\n\n\n\n\nFigure 2.2: Throwing a ball. The vertical axis is the height above the ground and the horizontal axis is the range. The curve shows the trajectory of a thrown ball in the absence of any air resistance – a perfect parabola. The intitial velocity is shown as the arrow at location 1. At each of the five points the overall velocity is broken into horizontal and vertical components.\n\n\n\n\n\nIn the figure you can see that the original velocity \\(v_1\\) points up and foward and I’ve broken up this arrow (a vector) into it’s horizontal component which you can see at 1, 2, 3, 4, and 5 is the same length. It’s “impeto” is constant. The vertical component changes at each point – disappearing at the top – and then increasing down as the ball heads to Earth. Gravity wins.\nFor QS&BB we’ll not need two dimensional kinematics.",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Skinny Motion, Speed, and Acceleration</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/momentum/momentum.html",
+    "href": "mechanics/momentum/momentum.html",
+    "title": "3  Skinny Momentum and Force",
+    "section": "",
+    "text": "3.1 Just the facts:\nThis is the first of three outlines of some basic physics ideas so that I can refer to them in other posts. If you’d like more, including history and examples, then visit full textbook for a textbook-level presentation. If you only need the basic simple equations, they’re here. If you’d like some explanation, that’s next!\nUnits. Sorry. In QS&BB we won’t care about English versus metric units but for this motion review we’ll sometimes have to convert. I’ll do it for you but you can check me at places like unitjuggler…or often just Google.",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Big Mo: Momentum and Force</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/momentum/momentum.html#just-the-facts",
+    "href": "mechanics/momentum/momentum.html#just-the-facts",
+    "title": "3  Skinny Momentum and Force",
+    "section": "",
+    "text": "3.1.1 some definitions\n\nmass, \\(m\\), is the quantity of matter…but this concept changes over history and is somewhat circular. It has a couple of jobs to do.\nJob 1: inertia is the reluctance of an object to move and the measure of interia is mass.\nJob 2: impulse is related and sort of intuitive: push on something hard and it will go faster, push on something for a long time and it will go faster: \\(F\\Delta t\\) is proportional to the change in velocity and the proportionality constant is \\(m\\)\n\nimpulse \\[\n\\begin{equation}\nF\\Delta t = m\\Delta v\n\\end{equation}\n\\]\nmomentum\nDefinition: \\[\np=mv\n\\] How it fits into impulse: \\[\n\\begin{align}\nF\\Delta t &= \\Delta (mv) \\text{ and since }p = mv, \\nonumber \\\\\nF\\Delta t &= \\Delta p \\\\\n\\end{align}\n\\]\nforce\nfrom the above:\n\\[\n\\begin{align}\n\\text{rearranging impulse: }F &= \\frac{\\Delta p}{\\Delta t} \\\\\n\\text{if the mass is constant } F &= ma\n\\end{align}\n\\]",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Big Mo: Momentum and Force</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/momentum/momentum.html#pointers-to-topics",
+    "href": "mechanics/momentum/momentum.html#pointers-to-topics",
+    "title": "3  Skinny Momentum and Force",
+    "section": "3.2 Pointers to topics:",
+    "text": "3.2 Pointers to topics:\n\n\n\n\n\n\nTip\n\n\n\n🔐 Bottom line sections with stuff to remember in this chapter:\n\naverage speed Section 2.4.2\nspacespace and spacetime diagrams Section 2.6\nthe set of equations for 1-dimensional motion Section 2.9\n2 dimensional motion: projectiles Section 2.10",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Big Mo: Momentum and Force</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/momentum/momentum.html#isaac-newtons-important-idea",
+    "href": "mechanics/momentum/momentum.html#isaac-newtons-important-idea",
+    "title": "3  Skinny Momentum and Force",
+    "section": "4.1 Isaac Newton’s important idea",
+    "text": "4.1 Isaac Newton’s important idea\nTo start something moving from rest? Apply a force. To speed up or slow down something already moving? Apply a force! To cause something to deviate from a straight line? Yes. Another force. To keep something moving at a constant speed? No (net) force required, thank you.\nHere’s what he said:\n\n\n\n\n\n\nImportant\n\n\n\n🫵 Whenever there’s a change of velocity on any object, a force is at work: since acceleration is a change in velocity, forces are responsible for acceleration. Note: because velocity is technically a vector, then changing direction is also changing velocity.\n\n\nOne of the many ways that Newton got into the textbooks was to argue with Aristotle who insisted that all motion requires a pusher in physical contact: No, Newton said. Constant motion is free. It’s only accelerated motion that requires payment in the form of the action of a force.\nLet’s start slowly and sneak up on this idea. Impulsively.\n\n4.1.1 Impulse – Every sport\nIn QS&BB we don’t need much depth, but we do need three important concepts…the ones that underpinned Newton’s system: force, mass, and momentum. Let’s move:\nIn the previous lesson we laid out the rules that govern an object’s motion.\nNewton: To get something up to speed, you need to whack it or shove it — either a sharp collision or a steady push increases the speed of an object. Push harder? More speed. Push longer? Again, more speed.\nSo let’s codify that everyday notion into a model of forces and motion. Let’s imagine a force, \\(F\\) that pushes during some time interval, \\(\\Delta t\\). A whack means that \\(\\Delta t\\) is small (like a golf club hitting a ball) while a steady shove (like a rugby scrum) means that the force is slowly applied so \\(\\Delta t\\) is larger.\nHere’s what we know from experience: applying a force (\\(F\\)) to something for a time interval (\\(\\Delta t\\)) results in the speed increasing in proportion, (\\(\\Delta v\\)). We have the beginnings of a model:\n\\[\n\\begin{equation}\nF\\Delta t \\propto \\Delta v. \\label{eq:impulse1}\n\\end{equation}\n\\]\nIncrease \\(F\\), \\(\\Delta t\\), or both on the left-hand side, and the speed goes up on the right-hand side. The quantity on the left side is called the Impulse. It’s the sports-quantity. Any game involving a ball involves impulse and exceptional athletes can control both the \\(F\\) and the \\(\\Delta t\\). The quantity on the right implies that the speed changed and of course if the speed changed, then the object accelerated and/or it changed direction.\nWe need to refine the model. But first some units and language:\n\nMay the force be with you by so many different names We will use forces many times in QS&BB, which is a common quantity in our lives because of “weight.” But if you’re from the United States, when you step on the bathroom scale it reports back to you your weight in the Imperial measurement system (or “customary measures system”) as too many Pounds, lbs. In a minute, you’ll see why that’s confusing when comparing to the rest of the world where the bathroom scale would report kilograms.  The unit of force in the International System of Units (SI), which includes the older “metric system” or MKS (Meter, Kilogram, Second) is the Newton, N. If you go to the gas station in Berlin, you’ll fill your tires to a pressure measured in Pascals, which is Newtons per square meter. Of course up the street from me, our Michigan gas station reports pounds per square inch for my pressure.\n\nWe’ll predominantly use the unit of Newton as the modern measure of a force – like the rest of the civilized world. I’ll not obsess with units and so I’m happy for you to rely on Mr. Google in almost all instances.\n\n\n\n\n\n\nImportant\n\n\n\n🔐 Type this into your browser: “convert 10 pounds into newtons” and you’ll be rewarded with the answer and a tool for all kinds of unit conversions. You’re welcome.\n\n\n\n\n4.1.2 Inertia\nPressing forward (see what I did there?). Let’s think about pushing.\nSuppose I apply a force of \\(F=100\\) pounds for 60 seconds to a Volkswagen and you apply a force of \\(F=100\\) pounds for 60 seconds to a little red wagon. We both begin our efforts at point A:\n\n# #| out.width: “700px”  \n# #| column: screen\n#| echo: false\nknitr::include_graphics(\"./iwagon.png\")\n\n\n\n\n\n\n\nFigure 4.1: The same force applied to two red objects, of very different sizes\n\n\n\n\n\nWill the resulting \\(\\Delta v\\) at point B be the same for both vehicles?\nOf course not. The little red wagon will gain more speed than the Volkswagen (regardless of its color). The VW is more reluctant to be accelerated than the wagon. So Equation \\(\\eqref{eq:impulse1}\\) is not the whole story. What’s missing is just that reluctance that any object has to being accelerated, which has a name: inertia.",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Skinny Momentum and Force</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/momentum/momentum.html#sec-mechmass",
+    "href": "mechanics/momentum/momentum.html#sec-mechmass",
+    "title": "3  Skinny Momentum and Force",
+    "section": "4.2 Newton’s Mass",
+    "text": "4.2 Newton’s Mass\nMass is a toughy and we’ll see over and over how complicated it is – to the current day. Here’s how he defined it in the Principia:\n“Mass is the quantity of matter arising from its density and bulk conjointly.”\nThere you go. Useful? …no?\nYou do perfectly well to accept the idea that mass is the quantitative measure of an object’s reluctance to be coaxed into changing its motion.\nHere begins our love-hate relationship with mass. This much works:\n\n\n\n\n\n\nImportant\n\n\n\n🫵 Inertia is an object’s resistance to being accelerated and the measure of an object’s inertia is its mass.\n\n\nThis is the most profound and at the same time, the most mundane idea that Newton had!\n\n\n\n\n\n\nTip\n\n\n\n🔐 At the deep level of elementary particles, mass confuses us, perhaps in a different way from how it confuses engineering freshmen. We think that mass may actually not be an actual property of object, but rather a result of an object’s interaction with a spooky field that sprang into existence just after the birth of the Universe. Now, in the 21st century, we’ve got a whole new set of neuroses about this subject, as understanding it occupies almost the entire Particle Physics community. So, Mass has been a problematic subject since its beginning in Newton’s hands.",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Big Mo: Momentum and Force</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/momentum/momentum.html#sec-mechmomentum",
+    "href": "mechanics/momentum/momentum.html#sec-mechmomentum",
+    "title": "3  Skinny Momentum and Force",
+    "section": "4.3 The “Quantity of Motion”: Momentum",
+    "text": "4.3 The “Quantity of Motion”: Momentum\nWe just developed a sense that our hand-built, car-pushing formula, Equation \\(\\eqref{eq:impulse1}\\) has to depend on speed and mass and so we’ll just add it in on the right-hand side to get:\n\\[\n\\begin{equation}\nF\\Delta t = m\\Delta v  \\label{impulse2}\n\\end{equation}\n\\]\nBeing more explicit, when fleshed out impulse is\n\\[\n\\begin{equation}\nF\\Delta t = m(v - v_0) \\label{fullimpulse}\n\\end{equation}\n\\]\n\nThere’s more to this story To be totally correct, the right hand side of this equation can be written as \\(\\Delta (mv)\\) which recognizes that the mass might change instead of, or in addition to, the velocity changing. This is how a balloon jumps from your hand when you stop pinching the nozzle, or how a rocket is propelled by ejecting burned propellent out the back. In each case, the mass of the moving object changes and that results in a thrust. But we’ll not encounter that in QS&BB.\n\nThis quantity on the right, \\(mv\\) is the definition of momentum. So the impulse is: $$ \\[\\begin{align}\nF\\Delta t &= \\Delta (mv) \\nonumber \\\\\nF\\Delta t &= \\Delta p \\label{momentumdef} \\\\\n\n\\end{align}\\] $$\nThe athletic use of this is instinctive and learned…but with muscles and your neurosystem not paper and pencil:\n\n# #| out.width: “700px”  \n# #| column: screen\n#| echo: false\nknitr::include_graphics(\"screenshot_3684.png\")\n\n\n\n\n\n\n\nFigure 4.2: The left-hand version where you want to change the velocity of a ball for example, in baseball, tennis, soccer, and golf…anything with a ball. The right-hand version where you have a fixed goal – like stopping precisely – fits football, gymnastics, and track and field.\n\n\n\n\n\n\nSo, repeat after me:\n\nIf there is no net force on an object\n\nit’s motion doesn’t change\n👉 if its speed was zero…it stays zero\n👉 if its speed was 55 mph…it stays at 55 mph\n\n\nSaid another way, if you see the motion of any object changing… then somewhere there is a force actiing (it might be invisible, like a magnetic field).\nOne quick change of Equation \\(\\eqref{momentumdef}\\):\n\\[\n\\begin{align}\nF\\Delta t &= \\Delta p \\nonumber \\\\\nF &= \\frac{\\Delta p}{\\Delta t} \\label{newtons2} \\\\\n\\text{since }&=\\Delta p = \\Delta (mv) \\nonumber \\\\\n\\text{and if the mass is constant } &= \\Delta p =m\\Delta v \\nonumber\\\\\nF &= m \\frac{\\Delta v}{\\Delta t} \\nonumber \\\\\n\\text{and since } &= \\frac{\\Delta v}{\\Delta t} = a \\nonumber \\\\\nF &= ma \\label{newtons2b}\n\\end{align}\n\\] A couple of these are suitable for a T-shirt: Equation \\(\\eqref{newtons2}\\) is “Newton’s Second law of Motion” in its most general physics-major form. Equation \\(\\eqref{newtons2b}\\) is the T-shirt version for motion in which the mass of an object undergoing a push doesn’t change.\n\n4.3.1 Newton’s 3 laws of motion\nIf there’s a second law, there must be a first one and there is…and a third one. Here they are for completeness:\n\nAn object with constant velociy will retain that constant velocity of zero or another value.\nBest expressed as an equation as \\(\\eqref{newtons2}\\).\nFor every force that object A applies to object B, an equal and opposite force will be appled by B to A.\n\nThe Third law is very useful for solving problems, but that’s not what we’re about in QS&BB.\n\n\n4.3.2 Weight\nThere’s an important special case of Equation \\(\\eqref{newtons2b}\\) which has to do with the earth and, well, everything that’s not nailed down. The earth attracts all objects with a force (which we’ll talk about in a bit) that seems constant and has a partcular value of acceleration, that of gravity., We affectionately call it \\(g\\). So your weight is the force that the earth applies to you and so we simply have: \\[\n\\begin{align}\nF &= ma \\text{ ...now modify for gravitational force}\\nonumber \\\\\nF &= W \\text{ for the special force called \"weight\"} \\nonumber \\\\\na &= g \\text{ for the special acceleration of gravity} \\nonumber\\\\\nW &=mg \\text{ which is weight on earth} \\label{weight}\n\\end{align}\n\\] Two caveats:\n\nWe call this \\(g\\) “little g” and it’s only got a specific value for the earth. There are different little g’s for other planets, moons, or stars.\nThe force of gravity is actually not constant – stay tuned. But miles above tthe earth it’s still so close to \\(g\\) that we often pretend that it’s constant.\n\nSo little g is an important number:\n\nIn the american system, \\(g = 32\\) feet/second\\(^2\\) , 32 ft/s\\(^2\\)\nFor the rest of the world, \\(g = 9.8\\) meters/second\\(^2\\), 9.8 m/s$2",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Big Mo: Momentum and Force</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/momentum/momentum.html#sec-circular",
+    "href": "mechanics/momentum/momentum.html#sec-circular",
+    "title": "3  Skinny Momentum and Force",
+    "section": "4.4 Circular Motion",
+    "text": "4.4 Circular Motion\nRemember that if a velocity changes, then there’s an force acting as a cause and an acceleration is the result. Well, what about driving around a curve keeping your accelerator at 50 mph? This is the one time in QS&BB we’ll care about the vector nature of velocity. A true (for a professional physicist or student) velocity has a magnitude (what your speedometer reads back) and a direction. So going 50 mph north is a different velocity than going 50 mph east. Same speed, different velocity.\nOkay, what’s going on with you turning that corner where your direction changes but your speed doesn’t. From the formal definition, the velocity must change 👉 so there must be a force acting 👉 so there is an acceleration.\nIt might be easier to think of twirling something overhead. Suppose you tie a ball to a thin rope and get it rotating above your head in a horizontal plane, like our little guy in the margin.\n\n\n\n\n\n\n\n\nFigure 4.3: Twirling a ball over your head in a horizontal plane.\n\n\n\nYou can feel a tug. That is, the ball seems to exert a force on your hand through the rope. But what’s really going on is that the ball wants to go forward (Newton’s first law) and you pull it back incrementally, bit by bit as it goes around. You’re supplying that force necessary to defeat its straight line motion.\nThis force-towards-the-center is called “centripetal force” – you’ve maybe heard of “centrifugal force” but that’s different and sometimes called “ficticious” which seems sort of insulting. But when you’re a passenger in a car that’s going around a curve, you feel a force that’s away from the center of the curve…that’s centifugal. But that’s just your body trying to obey that first law and go straight, while you’re in this car going, well, not straight. Where do you get the force that makes you follow the car? The door against your shoulder, the friction of the back of your lap on the seat, and hopefully your seatbelt. Absent those forces which pull you toward the center of the curve, you’d go flying.\nThe acceleration that you (or the ball) experience is toward the center of the circle (which we’ll say has radius \\(R\\), following the direction of the force, and has its own formula and name of “centripetal acceleration” (\\(a_c\\)): \\[\na_c=\\frac{v^2}{R} \\label{centripetala}\n\\] From Newton’s second law, there’s then a centripetal force. That tug you provide to the ball of mass \\(m\\) is: \\[\n\\begin{align}\nF_c &= m a_c \\nonumber \\\\\nF_c &=m \\frac{v^2}{R} \\label{centripetalf}\n\\end{align}\n\\]",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Big Mo: Momentum and Force</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "4  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "mechanics/momentum/momentum.html#momentu-isaac-newtons-important-idea",
+    "href": "mechanics/momentum/momentum.html#momentu-isaac-newtons-important-idea",
+    "title": "3  Skinny Momentum and Force",
+    "section": "4.1 Momentu: Isaac Newton’s important idea",
+    "text": "4.1 Momentu: Isaac Newton’s important idea\nTo start something moving from rest? Apply a force. To speed up or slow down something already moving? Apply a force! To cause something to deviate from a straight line? Yes. Another force. To keep something moving at a constant speed? No (net) force required, thank you.\nHere’s what he said:\n\n\n\n\n\n\nImportant\n\n\n\n🫵 Whenever there’s a change of velocity on any object, a force is at work: since acceleration is a change in velocity, forces are responsible for acceleration. Note: because velocity is technically a vector, then changing direction is also changing velocity.\n\n\nOne of the many ways that Newton got into the textbooks was to argue with Aristotle who insisted that all motion requires a pusher in physical contact: No, Newton said. Constant motion is free. It’s only accelerated motion that requires payment in the form of the action of a force.\nLet’s start slowly and sneak up on this idea. Impulsively.\n\n4.1.1 Impulse – Every sport\nIn QS&BB we don’t need much depth, but we do need three important concepts…the ones that underpinned Newton’s system: force, mass, and momentum. Let’s move:\nIn the previous lesson we laid out the rules that govern an object’s motion.\nNewton: To get something up to speed, you need to whack it or shove it — either a sharp collision or a steady push increases the speed of an object. Push harder? More speed. Push longer? Again, more speed.\nSo let’s codify that everyday notion into a model of forces and motion. Let’s imagine a force, \\(F\\) that pushes during some time interval, \\(\\Delta t\\). A whack means that \\(\\Delta t\\) is small (like a golf club hitting a ball) while a steady shove (like a rugby scrum) means that the force is slowly applied so \\(\\Delta t\\) is larger.\nHere’s what we know from experience: applying a force (\\(F\\)) to something for a time interval (\\(\\Delta t\\)) results in the speed increasing in proportion, (\\(\\Delta v\\)). We have the beginnings of a model:\n\\[\n\\begin{equation}\nF\\Delta t \\propto \\Delta v. \\label{eq:impulse1}\n\\end{equation}\n\\]\nIncrease \\(F\\), \\(\\Delta t\\), or both on the left-hand side, and the speed goes up on the right-hand side. The quantity on the left side is called the Impulse. It’s the sports-quantity. Any game involving a ball involves impulse and exceptional athletes can control both the \\(F\\) and the \\(\\Delta t\\). The quantity on the right implies that the speed changed and of course if the speed changed, then the object accelerated and/or it changed direction.\nWe need to refine the model. But first some units and language:\n\nMay the force be with you by so many different names We will use forces many times in QS&BB, which is a common quantity in our lives because of “weight.” But if you’re from the United States, when you step on the bathroom scale it reports back to you your weight in the Imperial measurement system (or “customary measures system”) as too many Pounds, lbs. In a minute, you’ll see why that’s confusing when comparing to the rest of the world where the bathroom scale would report kilograms.  The unit of force in the International System of Units (SI), which includes the older “metric system” or MKS (Meter, Kilogram, Second) is the Newton, N. If you go to the gas station in Berlin, you’ll fill your tires to a pressure measured in Pascals, which is Newtons per square meter. Of course up the street from me, our Michigan gas station reports pounds per square inch for my pressure.\n\nWe’ll predominantly use the unit of Newton as the modern measure of a force – like the rest of the civilized world. I’ll not obsess with units and so I’m happy for you to rely on Mr. Google in almost all instances.\n\n\n\n\n\n\nImportant\n\n\n\n🔐 Type this into your browser: “convert 10 pounds into newtons” and you’ll be rewarded with the answer and a tool for all kinds of unit conversions. You’re welcome.\n\n\n\n\n4.1.2 Inertia\nPressing forward (see what I did there?). Let’s think about pushing.\nSuppose I apply a force of \\(F=100\\) pounds for 60 seconds to a Volkswagen and you apply a force of \\(F=100\\) pounds for 60 seconds to a little red wagon. We both begin our efforts at point A:\n\n# #| out.width: “700px”  \n# #| column: screen\n#| echo: false\nknitr::include_graphics(\"./iwagon.png\")\n\n\n\n\n\n\n\nFigure 4.1: The same force applied to two red objects, of very different sizes\n\n\n\n\n\nWill the resulting \\(\\Delta v\\) at point B be the same for both vehicles?\nOf course not. The little red wagon will gain more speed than the Volkswagen (regardless of its color). The VW is more reluctant to be accelerated than the wagon. So Equation \\(\\eqref{eq:impulse1}\\) is not the whole story. What’s missing is just that reluctance that any object has to being accelerated, which has a name: inertia.",
+    "crumbs": [
+      "Part I: Mechanics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Big Mo: Momentum and Force</span>"
+    ]
+  }
+]

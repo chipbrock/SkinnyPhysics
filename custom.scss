@@ -1,0 +1,136 @@
+/*-- scss:defaults --*/
+/* (optional: bootstrap variable overrides go here) */
+
+/*-- scss:rules --*/
+
+/* body text + lists */
+#quarto-document-content p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.1rem;
+}
+#quarto-document-content ul,
+#quarto-document-content ol {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.1rem;
+}
+
+/* Make section/chapter numbers match heading text color */
+#quarto-content h1 .header-section-number,
+#quarto-content h2 .header-section-number,
+#quarto-content h3 .header-section-number,
+#quarto-content h4 .header-section-number,
+#quarto-content h5 .header-section-number,
+#quarto-content h6 .header-section-number {
+  color: inherit !important;
+}
+
+/* Chapter number in the title block (books) */
+.quarto-title-block .chapter-number {
+  color: inherit !important;
+}
+
+/* TOC numbers too (if you show them) */
+#TOC .toc-section-number {
+  color: inherit !important;
+}
+
+/* chapter title and section headings */
+.quarto-title-block h1.title {
+  font-family: "Helvetica", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.9rem !important;
+  margin-top: 1.2rem !important;
+}
+#quarto-content h1,
+#quarto-content h2,
+#quarto-content h3,
+#quarto-content h4,
+#quarto-content h5,
+#quarto-content h6,
+#quarto-content .anchored h1,
+#quarto-content .anchored h2,
+#quarto-content .anchored h3,
+#quarto-content .anchored h4,
+#quarto-content .anchored h5,
+#quarto-content .anchored h6 {
+  font-family: "Helvetica", "Helvetica Neue", Arial, sans-serif;
+}
+#quarto-content h1 {
+  font-size: 1.9rem !important;
+}
+#quarto-content h2 {
+  color: #4563a7;
+  font-size: 1.5rem !important;
+}
+#quarto-content h3 {
+  color: #ff6600;
+  font-size: 1.3rem !important;
+}
+#quarto-content h4 {
+  font-size: 1.1rem !important;
+}
+#quarto-content h5 {
+  font-size: 1.3rem !important;
+}
+#quarto-content h6 {
+  font-size: 1.1rem !important;
+}
+
+/* links */
+a {
+  color: #4563a7 !important;
+  text-decoration: none;
+}
+a:hover {
+  color: #ff6600 !important;
+  text-decoration: underline;
+}
+.sidebar nav a,
+.sidebar nav a:visited {
+  color: #050505 !important;
+}
+.sidebar nav a:hover {
+  color: #ff6600 !important;
+}
+
+/*-- scss:uses --*/
+/* (optional: @use directives) */
+
+/*-- scss:mixins --*/
+/* (optional) */
+
+/*-- scss:functions --*/
+/* (optional) */
+
+/* links */
+a {
+  color: #4563a7 !important;
+  text-decoration: none;
+}
+a:hover {
+  color: #ff6600 !important;
+  text-decoration: underline;
+}
+.sidebar nav a,
+.sidebar nav a:visited {
+  color: #050505 !important;
+}
+.sidebar nav a:hover {
+  color: #ff6600 !important;
+}
+
+.margin-figure {
+  float: right;
+  clear: right;
+  width: 35%; /* adjust to fit your layout */
+  margin-left: 1rem;
+  margin-right: -5rem; /* pushes into outer margin */
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+.margin-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}

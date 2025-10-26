@@ -8,5 +8,7 @@
 			"path": "skinny_physics-1"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"quarto.render.renderOnSave": true
+	}
 }

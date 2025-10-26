@@ -6,6 +6,18 @@ book:
   title: "Skinny Physics for QS&BB"
   author: "Chip Brock"
   date: "2025-09-12"
+  search:
+    location: sidebar
+    type: textbox
+  navbar:
+    right:
+      - icon: arrow-up-right-circle-fill
+        href: https://chipbrock.github.io/qsandbb/
+        aria-label: QS&BB
+        text: QS&BB
+  sidebar:
+    search: true
+    logo: images/logo_orange_words.png
   chapters:
     - index.qmd
     - intro.qmd
@@ -13,6 +25,7 @@ book:
       chapters:
         - mechanics/motion/motion.qmd
         - mechanics/momentum/momentum.qmd
+        - mechanics/collisions/collisions.qmd
     - summary.qmd
     - references.qmd
 
@@ -21,9 +34,20 @@ bibliography: references.bib
 format:
   html:
     theme: [cosmo, brand, custom.scss]
-    toc: true
-    toc-location: left
-    toc-depth: 3
+    html-math-method: mathjax
+    # Force-enable AMS numbering for MathJax v3
+    include-in-header:
+      text: |
+        <script>
+        window.MathJax = {
+          tex: {
+            tags: 'ams',         // number align, gather, etc.
+            tagSide: 'right',    // numbers on the right
+            packages: {'[+]': ['ams']} // be explicit about AMS package
+          },
+          chtml: { scale: 0.9 }
+        };
+        </script>
   pdf:
     documentclass: scrreprt
 

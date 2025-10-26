@@ -1,61 +1,82 @@
-/*---------------------------------------------------
-  custom.scss  — used only for section headers & links
-  (loaded after cosmo)
-----------------------------------------------------*/
+/* skinny-physics.scss — fonts + section headings only */
 
-/* Base fonts for headings */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* ---------- Base text ---------- */
+#quarto-document-content p {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 500;
+  font-size: 1.3rem; /* blog-matched body size */
 }
 
-/* Section title colors & sizes */
-h1 {
+/* Lists (same face + size as blog) */
+#quarto-document-content ul,
+#quarto-document-content ol {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.3rem;
+}
+
+/* ---------- Headings ---------- */
+/* Chapter title block on chapter pages */
+.quarto-title-block h1.title {
+  font-family: "Helvetica", "Helvetica Neue", Arial, sans-serif;
   font-size: 1.9rem !important;
-  color: #050505 !important; /*  */
+  margin-top: 1.2rem !important; /* matches your blog’s smaller top space */
 }
 
-h2 {
+/* Section headings inside content */
+#quarto-content h1,
+#quarto-content h2,
+#quarto-content h3,
+#quarto-content h4,
+#quarto-content h5,
+#quarto-content h6,
+#quarto-content .anchored h1,
+#quarto-content .anchored h2,
+#quarto-content .anchored h3,
+#quarto-content .anchored h4,
+#quarto-content .anchored h5,
+#quarto-content .anchored h6 {
+  font-family: "Helvetica", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Sizes to mirror your blog */
+#quarto-content h1 {
+  font-size: 1.9rem !important;
+}
+#quarto-content h2 {
   font-size: 1.5rem !important;
-  color: #4563a7 !important;
 }
-
-h3 {
+#quarto-content h3 {
   font-size: 1.3rem !important;
-  color: rgba(0, 0, 0, 0.45) !important;
 }
-
-/* Optional smaller headers */
-h4 {
+#quarto-content h4 {
   font-size: 1.1rem !important;
-  color: rgba(0, 0, 0, 0.55) !important;
 }
-h5 {
-  font-size: 1rem !important;
-  color: rgba(0, 0, 0, 0.55) !important;
+#quarto-content h5 {
+  font-size: 1.3rem !important;
 }
-h6 {
-  font-size: 0.9rem !important;
-  color: rgba(0, 0, 0, 0.55) !important;
+#quarto-content h6 {
+  font-size: 1.1rem !important;
 }
 
-/* Links (in text, TOC, nav) */
+/* ---------- (Optional) colors — uncomment if you want them
+#quarto-content h2 { color: #4563A7 !important; }
+#quarto-content h3 { color: rgba(0,0,0,0.45) !important; }
+*/
+
+/* ---------- Links ---------- */
+
+/* Default link color everywhere */
 a {
   color: #4563a7 !important; /* main site blue */
   text-decoration: none;
 }
 
+/* Hover color */
 a:hover {
-  color: #ff6600 !important; /* orange hover like navbar brand */
+  color: #ff6600 !important; /* orange hover like blog navbar */
   text-decoration: underline;
 }
 
-/* Make sure the ToC links follow same color scheme */
+/* Sidebar & TOC links (so they match too) */
 .sidebar nav a,
 .sidebar nav a:visited {
   color: #050505 !important;

@@ -6,10 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Chip Brock">
 <meta name="dcterms.date" content="2025-08-24">
 <meta name="description" content="Momentum and Force are critical discoveries.">
 
-<title>3&nbsp; The Big Mo: Momentum and Force – Skinny Physics for QS&amp;BB</title>
+<title>3&nbsp; Skinny Momentum and Force – Skinny Physics for QS&amp;BB</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -76,7 +43,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-626149efe8f5d16e1d391ba177679bf0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-efea375af4dd131f0254261e332a2263.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -89,7 +56,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "/",
     "s"
   ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -104,6 +70,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script>
+window.MathJax = {
+  tex: {
+    tags: 'ams',         // number align, gather, etc.
+    tagSide: 'right',    // numbers on the right
+    packages: {'[+]': ['ams']} // be explicit about AMS package
+  },
+  chtml: { scale: 0.9 }
+};
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -137,16 +113,39 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating slimcontent">
+<body class="nav-sidebar floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Skinny Physics for QS&amp;BB</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://chipbrock.github.io/qsandbb/"> <i class="bi bi-arrow-up-right-circle-fill" role="img" aria-label="QS&amp;BB">
+</i> 
+<span class="menu-text">QS&amp;BB</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../mechanics/index.html">Part I: Mechanics</a></li><li class="breadcrumb-item"><a href="../../mechanics/momentum/momentum.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Big Mo: Momentum and Force</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../mechanics/index.html">Part I: Mechanics</a></li><li class="breadcrumb-item"><a href="../../mechanics/momentum/momentum.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Skinny Momentum and Force</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -156,13 +155,13 @@ window.Quarto = {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../../">Skinny Physics for QS&amp;BB</a> 
-    </div>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../images/logo_orange_words.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -195,13 +194,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../mechanics/motion/motion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Motion, Speed, and Acceleration</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Skinny Motion, Speed, and Acceleration</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../mechanics/momentum/momentum.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Big Mo: Momentum and Force</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Skinny Momentum and Force</span></span></a>
   </div>
 </li>
       </ul>
@@ -220,49 +219,44 @@ window.Quarto = {
 </li>
     </ul>
     </div>
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#skinny-momentum-and-force" id="toc-skinny-momentum-and-force" class="nav-link active" data-scroll-target="#skinny-momentum-and-force"><span class="header-section-number">4</span> Skinny Momentum and Force</a>
-  <ul class="collapse">
-  <li><a href="#just-the-facts" id="toc-just-the-facts" class="nav-link" data-scroll-target="#just-the-facts"><span class="header-section-number">4.1</span> Just the facts:</a>
-  <ul class="collapse">
-  <li><a href="#some-defintions" id="toc-some-defintions" class="nav-link" data-scroll-target="#some-defintions"><span class="header-section-number">4.1.1</span> some defintions</a></li>
-  <li><a href="#impulse" id="toc-impulse" class="nav-link" data-scroll-target="#impulse"><span class="header-section-number">4.1.2</span> impulse</a></li>
-  <li><a href="#momentum" id="toc-momentum" class="nav-link" data-scroll-target="#momentum"><span class="header-section-number">4.1.3</span> momentum</a></li>
-  <li><a href="#force" id="toc-force" class="nav-link" data-scroll-target="#force"><span class="header-section-number">4.1.4</span> force</a></li>
-  </ul></li>
-  <li><a href="#pointers-to-topics" id="toc-pointers-to-topics" class="nav-link" data-scroll-target="#pointers-to-topics"><span class="header-section-number">4.2</span> Pointers to topics:</a></li>
-  </ul></li>
-  <li><a href="#gentle-explanations-of-momentum-and-force" id="toc-gentle-explanations-of-momentum-and-force" class="nav-link" data-scroll-target="#gentle-explanations-of-momentum-and-force"><span class="header-section-number">5</span> Gentle explanations of Momentum and Force</a>
-  <ul class="collapse">
-  <li><a href="#isaac-newtons-important-idea" id="toc-isaac-newtons-important-idea" class="nav-link" data-scroll-target="#isaac-newtons-important-idea"><span class="header-section-number">5.1</span> Isaac Newton’s important idea</a>
-  <ul class="collapse">
-  <li><a href="#impulse-every-sport" id="toc-impulse-every-sport" class="nav-link" data-scroll-target="#impulse-every-sport"><span class="header-section-number">5.1.1</span> Impulse – Every sport</a></li>
-  <li><a href="#inertia" id="toc-inertia" class="nav-link" data-scroll-target="#inertia"><span class="header-section-number">5.1.2</span> Inertia</a></li>
-  </ul></li>
-  <li><a href="#sec-mechmass" id="toc-sec-mechmass" class="nav-link" data-scroll-target="#sec-mechmass"><span class="header-section-number">5.2</span> Newton’s Mass</a></li>
-  <li><a href="#sec-mechmomentum" id="toc-sec-mechmomentum" class="nav-link" data-scroll-target="#sec-mechmomentum"><span class="header-section-number">5.3</span> The “Quantity of Motion”: Momentum</a>
-  <ul class="collapse">
-  <li><a href="#sec-newtonslaws" id="toc-sec-newtonslaws" class="nav-link" data-scroll-target="#sec-newtonslaws"><span class="header-section-number">5.3.1</span> Newton’s 3 laws of motion</a></li>
-  <li><a href="#sec-weight" id="toc-sec-weight" class="nav-link" data-scroll-target="#sec-weight"><span class="header-section-number">5.3.2</span> Weight</a></li>
-  </ul></li>
-  <li><a href="#sec-circular" id="toc-sec-circular" class="nav-link" data-scroll-target="#sec-circular"><span class="header-section-number">5.4</span> Circular Motion</a></li>
-  </ul></li>
-  </ul>
-</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#just-the-facts" id="toc-just-the-facts" class="nav-link active" data-scroll-target="#just-the-facts"><span class="header-section-number">3.1</span> Just the facts:</a>
+  <ul class="collapse">
+  <li><a href="#some-definitions" id="toc-some-definitions" class="nav-link" data-scroll-target="#some-definitions"><span class="header-section-number">3.1.1</span> some definitions</a></li>
+  </ul></li>
+  <li><a href="#pointers-to-topics" id="toc-pointers-to-topics" class="nav-link" data-scroll-target="#pointers-to-topics"><span class="header-section-number">3.2</span> Pointers to topics:</a></li>
+  <li><a href="#gentle-explanations-of-momentum-and-force" id="toc-gentle-explanations-of-momentum-and-force" class="nav-link" data-scroll-target="#gentle-explanations-of-momentum-and-force"><span class="header-section-number">4</span> Gentle explanations of Momentum and Force</a>
+  <ul class="collapse">
+  <li><a href="#sec-momentum" id="toc-sec-momentum" class="nav-link" data-scroll-target="#sec-momentum"><span class="header-section-number">4.1</span> Momentum: Isaac Newton’s important idea</a>
+  <ul class="collapse">
+  <li><a href="#impulse-every-sport" id="toc-impulse-every-sport" class="nav-link" data-scroll-target="#impulse-every-sport"><span class="header-section-number">4.1.1</span> Impulse – Every sport</a></li>
+  <li><a href="#inertia" id="toc-inertia" class="nav-link" data-scroll-target="#inertia"><span class="header-section-number">4.1.2</span> Inertia</a></li>
+  </ul></li>
+  <li><a href="#sec-mechmass" id="toc-sec-mechmass" class="nav-link" data-scroll-target="#sec-mechmass"><span class="header-section-number">4.2</span> Newton’s Mass</a></li>
+  <li><a href="#sec-mechmomentum" id="toc-sec-mechmomentum" class="nav-link" data-scroll-target="#sec-mechmomentum"><span class="header-section-number">4.3</span> The “Quantity of Motion”: Momentum</a></li>
+  <li><a href="#sec-secondlaw" id="toc-sec-secondlaw" class="nav-link" data-scroll-target="#sec-secondlaw"><span class="header-section-number">4.4</span> Newton’s second law of motion</a>
+  <ul class="collapse">
+  <li><a href="#sec-newtonslaws" id="toc-sec-newtonslaws" class="nav-link" data-scroll-target="#sec-newtonslaws"><span class="header-section-number">4.4.1</span> Newton’s three laws of motion</a></li>
+  <li><a href="#sec-weight" id="toc-sec-weight" class="nav-link" data-scroll-target="#sec-weight"><span class="header-section-number">4.4.2</span> Weight</a></li>
+  </ul></li>
+  <li><a href="#sec-circular" id="toc-sec-circular" class="nav-link" data-scroll-target="#sec-circular"><span class="header-section-number">4.5</span> Circular Motion</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../mechanics/index.html">Part I: Mechanics</a></li><li class="breadcrumb-item"><a href="../../mechanics/momentum/momentum.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Big Mo: Momentum and Force</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../mechanics/index.html">Part I: Mechanics</a></li><li class="breadcrumb-item"><a href="../../mechanics/momentum/momentum.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Skinny Momentum and Force</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Big Mo: Momentum and Force</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Skinny Momentum and Force</span></h1>
   <div class="quarto-categories">
     <div class="quarto-category">Mechanics</div>
     <div class="quarto-category">physics</div>
@@ -275,6 +269,12 @@ window.Quarto = {
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Chip Brock </p>
+          </div>
+  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
@@ -291,56 +291,57 @@ window.Quarto = {
 </header>
 
 
-<div style="font-size:0.85em; color:#555; margin-top:0.5em;">
-<p>Author: Chip Brock · Drafted: April 15, 2025</p>
-</div>
 <hr>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p><img src="screenshot_3679.png" class="img-fluid" style="width:100.0%"></p>
-</div></div><p>This is the first of three outlines of some basic physics ideas so that I can refer to them in other posts. If you’d like more, including history and examples, then visit <a href="https://qstbb.pa.msu.edu/storage/ISP220_fall2020/QS&amp;BB2020/intro.html">full textbook</a> for a textbook-level presentation. If you only need the basic simple equations, they’re here. If you’d like some explanation, that’s next!</p>
-<section id="skinny-momentum-and-force" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Skinny Momentum and Force</h1>
+<p>This is the first of three outlines of some basic physics ideas so that I can refer to them in other posts. If you’d like more, including history and examples, then visit <a href="https://qstbb.pa.msu.edu/storage/ISP220_fall2020/QS&amp;BB2020/intro.html">full textbook</a> for a textbook-level presentation. If you only need the basic simple equations, they’re here. If you’d like some explanation, that’s next!</p>
 <p>Units. Sorry. In QS&amp;BB we won’t care about English versus metric units but for this motion review we’ll sometimes have to convert. I’ll do it for you but you can check me at places like <a href="https://www.unitjuggler.com/index.html">unitjuggler</a>…or often just Google.</p>
-<section id="just-the-facts" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="just-the-facts"><span class="header-section-number">4.1</span> Just the facts:</h2>
-<section id="some-defintions" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="some-defintions"><span class="header-section-number">4.1.1</span> some defintions</h3>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🫵 Even if you know some of the basics of velocity and acceleration, you need to be comfortable with spacetime diagrams in <a href="../motion/motion.html#sec-spacetimediagrams" class="quarto-xref"><span>Section 2.6</span></a> ! That’s how we’ll pursue Feynman Diagrams.</p>
+</div>
+</div>
+<section id="just-the-facts" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="just-the-facts"><span class="header-section-number">3.1</span> Just the facts:</h2>
+<section id="some-definitions" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="some-definitions"><span class="header-section-number">3.1.1</span> some definitions</h3>
 <ul>
 <li>mass, <span class="math inline">\(m\)</span>, is the quantity of matter…but this concept changes over history and is somewhat circular. It has a couple of jobs to do.</li>
 <li>Job 1: inertia is the reluctance of an object to move and the measure of interia is mass.</li>
 <li>Job 2: impulse is related and sort of intuitive: push on something hard and it will go faster, push on something for a long time and it will go faster: <span class="math inline">\(F\Delta t\)</span> is proportional to the change in velocity and the proportionality constant is <span class="math inline">\(m\)</span></li>
 </ul>
-</section>
-<section id="impulse" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="impulse"><span class="header-section-number">4.1.2</span> impulse</h3>
-<p><span class="math display">\[
+<p><strong>impulse</strong> <span class="math display">\[
 \begin{equation}
-F\Delta t = m\Delta v
+F\Delta t = m\Delta v \nonumber
 \end{equation}
 \]</span></p>
-</section>
-<section id="momentum" class="level3" data-number="4.1.3">
-<h3 data-number="4.1.3" class="anchored" data-anchor-id="momentum"><span class="header-section-number">4.1.3</span> momentum</h3>
-<p>$$ <span class="math display">\[\begin{align}
-F\Delta t &amp;= \Delta (mv) \nonumber \\
-p &amp;= mv \\
-F\Delta t &amp;= \Delta p \\
-
-\end{align}\]</span> $$</p>
-</section>
-<section id="force" class="level3" data-number="4.1.4">
-<h3 data-number="4.1.4" class="anchored" data-anchor-id="force"><span class="header-section-number">4.1.4</span> force</h3>
-<p>from the above: <span class="math display">\[
+<p><strong>momentum</strong></p>
+<p>Definition: <span class="math display">\[
+p=mv \nonumber
+\]</span> How it fits into impulse: <span class="math display">\[
 \begin{align}
-\text{rearranging impulse: }F &amp;= \frac{\Delta p}{\Delta t} \\
-\text{if the mass is constant } F &amp;= ma
+F\Delta t &amp;= \Delta (mv) \text{ and since }p = mv, \nonumber \\
+F\Delta t &amp;= \Delta p \nonumber \\
+\end{align}
+\]</span></p>
+<p><strong>force</strong></p>
+<p>from the above:</p>
+<p><span class="math display">\[
+\begin{align}
+\text{rearranging impulse: }F &amp;= \frac{\Delta p}{\Delta t} \nonumber \\
+\text{if the mass is constant } F &amp;= ma \nonumber
 \end{align}
 \]</span></p>
 </section>
 </section>
-<section id="pointers-to-topics" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="pointers-to-topics"><span class="header-section-number">4.2</span> Pointers to topics:</h2>
+<section id="pointers-to-topics" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="pointers-to-topics"><span class="header-section-number">3.2</span> Pointers to topics:</h2>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -353,19 +354,19 @@ Tip
 <div class="callout-body-container callout-body">
 <p>🔐 Bottom line sections with stuff to remember in this chapter:</p>
 <ul>
-<li><p>average speed <a href="../motion/motion.html#sec-averagespeed" class="quarto-xref"><span>Section 3.2</span></a></p></li>
-<li><p>spacespace and spacetime diagrams <a href="../motion/motion.html#sec-spacetimediagrams" class="quarto-xref"><span>Section 3.4</span></a></p></li>
-<li><p>the set of equations for 1-dimensional motion <a href="../motion/motion.html#sec-equationsofmotion" class="quarto-xref"><span>Section 3.6</span></a></p></li>
-<li><p>2 dimensional motion: projectiles <a href="../motion/motion.html#sec-projectiles" class="quarto-xref"><span>Section 3.7</span></a></p></li>
+<li><p>impuse is in Section <a href="#sec-momentum" class="quarto-xref"><span>Section 4.1</span></a></p></li>
+<li><p>mass is in Section <a href="#sec-mechmass" class="quarto-xref"><span>Section 4.2</span></a></p></li>
+<li><p>momentum is in Section <a href="#sec-mechmomentum" class="quarto-xref"><span>Section 4.3</span></a></p></li>
+<li><p>Newton’s second law of motion is in Section <a href="#sec-secondlaw" class="quarto-xref"><span>Section 4.4</span></a></p></li>
+<li><p>Circular motion is in Section <a href="#sec-circular" class="quarto-xref"><span>Section 4.5</span></a></p></li>
 </ul>
 </div>
 </div>
 </section>
-</section>
-<section id="gentle-explanations-of-momentum-and-force" class="level1 page-columns page-full" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Gentle explanations of Momentum and Force</h1>
-<section id="isaac-newtons-important-idea" class="level2 page-columns page-full" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="isaac-newtons-important-idea"><span class="header-section-number">5.1</span> Isaac Newton’s important idea</h2>
+<section id="gentle-explanations-of-momentum-and-force" class="level1 page-columns page-full" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Gentle explanations of Momentum and Force</h1>
+<section id="sec-momentum" class="level2 page-columns page-full" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="sec-momentum"><span class="header-section-number">4.1</span> Momentum: Isaac Newton’s important idea</h2>
 <p>To start something moving from rest? Apply a force. To speed up or slow down something already moving? Apply a force! To cause something to deviate from a straight line? Yes. Another force. To keep something moving at a constant speed? No (net) force required, thank you.</p>
 <p>Here’s what he said:</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
@@ -383,31 +384,31 @@ Important
 </div>
 <p>One of the many ways that Newton got into the textbooks was to argue with Aristotle who insisted that <em>all motion</em> requires a pusher in physical contact: No, Newton said. Constant motion <em>is</em> free. It’s only accelerated motion that requires payment in the form of the action of a force.</p>
 <p>Let’s start slowly and sneak up on this idea. Impulsively.</p>
-<section id="impulse-every-sport" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="impulse-every-sport"><span class="header-section-number">5.1.1</span> Impulse – Every sport</h3>
-<p>In QS&amp;BB we don’t need much depth, but we do need three important concepts…the ones that underpinned Newton’s system: <strong>force</strong>, <strong>mass</strong>, and <strong>momentum</strong>. Let’s move:</p>
+<section id="impulse-every-sport" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="impulse-every-sport"><span class="header-section-number">4.1.1</span> Impulse – Every sport</h3>
+<p>In <strong>QS&amp;BB</strong> we don’t need much depth, but we do need three important concepts…the ones that underpinned Newton’s system: <strong>force</strong>, <strong>mass</strong>, and <strong>momentum</strong>. Let’s move:</p>
 <p>In the previous lesson we laid out the rules that govern an object’s motion.</p>
-<p>Newton: To get something up to speed, you need to whack it or shove it — either <em>a sharp collision or a steady push</em> increases the speed of an object. Push harder? More speed. Push longer? Again, more speed.</p>
+<p>Newton: To get something up to speed, you need to push it or shove it — either <em>a sharp collision or a steady push</em> increases the speed of an object. Push harder? More speed. Push longer? Again, more speed.</p>
 <p>So let’s codify that everyday notion into a model of forces and motion. Let’s imagine a force, <span class="math inline">\(F\)</span> that pushes during some time interval, <span class="math inline">\(\Delta t\)</span>. A whack means that <span class="math inline">\(\Delta t\)</span> is small (like a golf club hitting a ball) while a steady shove (like a rugby scrum) means that the force is slowly applied so <span class="math inline">\(\Delta t\)</span> is larger.</p>
 <p>Here’s what we know from experience: applying a force (<span class="math inline">\(F\)</span>) to something for a time interval (<span class="math inline">\(\Delta t\)</span>) results in the speed increasing in proportion, (<span class="math inline">\(\Delta v\)</span>). We have the beginnings of a model:</p>
 <p><span class="math display">\[
 \begin{equation}
-F\Delta t \propto \Delta v. \label{eq:impulse1}
+F\Delta t \propto \Delta v. \label{impulse1}
 \end{equation}
 \]</span></p>
-<p>Increase <span class="math inline">\(F\)</span>, <span class="math inline">\(\Delta t\)</span>, or both on the left-hand side, and the speed goes up on the right-hand side. The quantity on the left side is called the <strong>Impulse</strong>. It’s the sports-quantity. Any game involving a ball involves impulse and exceptional athletes can control both the <span class="math inline">\(F\)</span> and the <span class="math inline">\(\Delta t\)</span>. The quantity on the right implies that the speed changed and of course if the speed changed, then the object accelerated and/or it changed direction.</p>
+<p>Increase <span class="math inline">\(F\)</span>, <span class="math inline">\(\Delta t\)</span>, or both on the left-hand side, and the speed goes up on the right-hand side. The quantity on the left side is called the <strong>Impulse</strong>. It’s the sports-quantity. Any game involving a ball or a human body under stress (I guess not chess or checkers) involves impulse and exceptional athletes can control both the <span class="math inline">\(F\)</span> and the <span class="math inline">\(\Delta t\)</span>. The quantity on the right implies that the speed changed and of course if the speed changed, then the object accelerated and/or it changed direction.</p>
 <p>We need to refine the model. But first some units and language:</p>
 <blockquote class="blockquote">
-<p><strong>May the force be with you by so many different names</strong><br><br> We will use forces many times in QS&amp;BB, which is a common quantity in our lives because of “weight.” But if you’re from the United States, when you step on the bathroom scale it reports back to you your weight in the Imperial measurement system (or “customary measures system”) as too many <strong>Pounds</strong>, lbs. In a minute, you’ll see why that’s confusing when comparing to the rest of the world where the bathroom scale would report kilograms. <br><br> The unit of force in the International System of Units (SI), which includes the older “metric system” or MKS (Meter, Kilogram, Second) is the <strong>Newton</strong>, N. If you go to the gas station in Berlin, you’ll fill your tires to a pressure measured in Pascals, which is Newtons per square meter. Of course up the street from me, our Michigan gas station reports pounds per square inch for my pressure.</p>
+<p><strong>May the force be with you by so many different names</strong><br><br> We will use forces many times in <strong>QS&amp;BB</strong>, which is a common quantity in our lives because of “weight.” But if you’re from the United States, when you step on the bathroom scale it reports back to you your weight in the <a href="https://en.wikipedia.org/wiki/Imperial_and_US_customary_measurement_systems">Imperial Measurement System</a> (or “customary measures system”) as Pounds<strong>, lbs. In a minute, you’ll see why that’s confusing when comparing to the rest of the world where the bathroom scale would report kilograms. <br><br> The unit of force in the <a href="https://en.wikipedia.org/wiki/International_System_of_Units">International System of Units (SI)</a> , which includes the older “metric system” or MKS (Meter, Kilogram, Second) is the </strong>Newton**, N. If you go to the gas station in Berlin, you’ll fill your tires to a pressure measured in Pascals, which is Newtons per square meter. Of course up the street from me, our Michigan gas station reports pounds per square inch for my pressure.</p>
 </blockquote>
 <p>We’ll predominantly use the unit of Newton as the modern measure of a force – like the rest of the civilized world. I’ll not obsess with units and so I’m happy for you to rely on Mr.&nbsp;Google in almost all instances.</p>
-<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -415,15 +416,11 @@ Important
 </div>
 </div>
 </section>
-<section id="inertia" class="level3 page-columns page-full" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="inertia"><span class="header-section-number">5.1.2</span> Inertia</h3>
+<section id="inertia" class="level3 page-columns page-full" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="inertia"><span class="header-section-number">4.1.2</span> Inertia</h3>
 <p><em>Pressing</em> forward (see what I did there?). Let’s think about pushing.</p>
 <p>Suppose I apply a force of <span class="math inline">\(F=100\)</span> pounds for 60 seconds to a Volkswagen and you apply a force of <span class="math inline">\(F=100\)</span> pounds for 60 seconds to a little red wagon. We both begin our efforts at point A:</p>
 <div class="cell page-columns page-full" data-cap-location="margin">
-<div class="sourceCode cell-code" id="cb1" data-cap-location="margin"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #| out.width: “700px”  </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># #| column: screen</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"./iwagon.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display page-columns page-full">
 <div id="fig-motion_head2" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" data-cap-location="margin">
 <figure class="quarto-float quarto-float-fig figure page-columns page-full">
@@ -431,20 +428,22 @@ Important
 <img src="./iwagon.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-motion_head2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.1: The same force applied to two red objects, of very different sizes
+Figure&nbsp;4.1: The same force applied to two red objects, of very different sizes
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Will the resulting <span class="math inline">\(\Delta v\)</span> at point B be the same for both vehicles?</p>
-<p>Of course not. The little red wagon will gain more speed than the Volkswagen (regardless of its color). The VW is more reluctant to be accelerated than the wagon. So Equation <span class="math inline">\(\eqref{eq:impulse1}\)</span> is not the whole story. What’s missing is just that reluctance that any object has to being accelerated, which has a name: <strong>inertia</strong>.</p>
+<p>Of course not. The little red wagon will gain more speed than the Volkswagen (regardless of its color). The VW is more reluctant to be accelerated than the wagon. So Equation <span class="math inline">\(\ref{impulse1}\)</span> is not the whole story. What’s missing is just that reluctance that any object has to being accelerated, which has a name: <strong>inertia</strong>. With that we can turn the proportionality in Equation <span class="math inline">\(\ref{impulse1}\)</span> into an equality.</p>
 </section>
 </section>
-<section id="sec-mechmass" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="sec-mechmass"><span class="header-section-number">5.2</span> Newton’s Mass</h2>
+<section id="sec-mechmass" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="sec-mechmass"><span class="header-section-number">4.2</span> Newton’s Mass</h2>
 <p>Mass is a toughy and we’ll see over and over how complicated it is – to the current day. Here’s how he defined it in the <em>Principia</em>:</p>
+<blockquote class="blockquote">
 <p>“Mass is the quantity of matter arising from its density and bulk conjointly.”</p>
+</blockquote>
 <p>There you go. Useful? …no?</p>
 <p>You do perfectly well to accept the idea that mass is the <strong>quantitative measure of an object’s reluctance to be coaxed into changing its motion.</strong></p>
 <p>Here begins our love-hate relationship with mass. This much works:</p>
@@ -458,7 +457,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>🫵 <em>Inertia</em> is an object’s resistance to being accelerated and the measure of an object’s inertia is its <em>mass</em>.</p>
+<p>🫵 <em>Inertia</em> is an object’s resistance to being accelerated and the <em>measure of an object’s inertia</em> is its <em>mass</em>.</p>
 </div>
 </div>
 <p>This is the most profound and at the same time, the most mundane idea that Newton had!</p>
@@ -476,9 +475,9 @@ Tip
 </div>
 </div>
 </section>
-<section id="sec-mechmomentum" class="level2 page-columns page-full" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="sec-mechmomentum"><span class="header-section-number">5.3</span> The “Quantity of Motion”: Momentum</h2>
-<p>We just developed a sense that our hand-built, car-pushing formula, Equation <span class="math inline">\(\eqref{eq:impulse1}\)</span> has to depend on speed <em>and</em> mass and so we’ll just add it in on the right-hand side to get:</p>
+<section id="sec-mechmomentum" class="level2 page-columns page-full" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="sec-mechmomentum"><span class="header-section-number">4.3</span> The “Quantity of Motion”: Momentum</h2>
+<p>We just developed a sense that our hand-built, car-pushing formula, Equation <span class="math inline">\(\ref{impulse1}\)</span> has to depend on speed <em>and</em> mass and so we’ll just add it in on the right-hand side to get:</p>
 <p><span class="math display">\[
 \begin{equation}
 F\Delta t = m\Delta v  \label{impulse2}
@@ -491,19 +490,22 @@ F\Delta t = m(v - v_0) \label{fullimpulse}
 \end{equation}
 \]</span></p>
 <blockquote class="blockquote">
-<p>There’s more to this story<br><br> To be totally correct, the right hand side of this equation can be written as <span class="math inline">\(\Delta (mv)\)</span> which recognizes that the mass might change instead of, or in addition to, the velocity changing. This is how a balloon jumps from your hand when you stop pinching the nozzle, or how a rocket is propelled by ejecting burned propellent out the back. In each case, the mass of the moving object changes and that results in a thrust. But we’ll not encounter that in QS&amp;BB.</p>
+<p>There’s more to this story<br><br> To be totally correct, the right hand side of Equation <span class="math inline">\(\ref{impulse2}\)</span> can be written as <span class="math inline">\(\Delta (mv)\)</span> which recognizes that the mass might change instead of, or in addition to, the velocity changing. This is how a balloon jumps from your hand when you stop pinching the nozzle, or how a rocket is propelled by ejecting burned propellent out the back. In each case, the mass of the moving object changes and that results in a thrust. But we’ll not encounter that in QS&amp;BB.</p>
 </blockquote>
-<p>This quantity on the right, <span class="math inline">\(mv\)</span> is the definition of momentum. So the impulse is: $$ <span class="math display">\[\begin{align}
+<p>This quantity on the right, <span class="math inline">\(mv\)</span> is Newton’s definition of momentum. <span class="math display">\[
+\begin{equation}
+p = mv \label{momentum}
+\end{equation}
+\]</span></p>
+<p>So the impulse can be rewritten with the definition in Equation <span class="math inline">\(\ref{momentum}\)</span>:</p>
+<p><span class="math display">\[
+\begin{align}
 F\Delta t &amp;= \Delta (mv) \nonumber \\
 F\Delta t &amp;= \Delta p \label{momentumdef} \\
-
-\end{align}\]</span> $$</p>
+\end{align}
+\]</span></p>
 <p>The athletic use of this is instinctive and learned…but with muscles and your neurosystem not paper and pencil:</p>
 <div class="cell page-columns page-full" data-cap-location="margin">
-<div class="sourceCode cell-code" id="cb2" data-cap-location="margin"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #| out.width: “700px”  </span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># #| column: screen</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"screenshot_3684.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display page-columns page-full">
 <div id="fig-impulse_balls" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" data-cap-location="margin">
 <figure class="quarto-float quarto-float-fig figure page-columns page-full">
@@ -511,7 +513,7 @@ F\Delta t &amp;= \Delta p \label{momentumdef} \\
 <img src="screenshot_3684.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-impulse_balls-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.2: The left-hand version where you want to change the velocity of a ball for example, in baseball, tennis, soccer, and golf…anything with a ball. The right-hand version where you have a fixed goal – like stopping precisely – fits football, gymnastics, and track and field.
+Figure&nbsp;4.2: The left-hand version where you want to change the velocity of a ball for example, in baseball, tennis, soccer, and golf…anything with a ball. The right-hand version where you have a fixed goal – like stopping precisely – fits football, gymnastics, and track and field.
 </figcaption>
 </figure>
 </div>
@@ -522,26 +524,30 @@ Figure&nbsp;5.2: The left-hand version where you want to change the velocity of 
 <ul>
 <li><p>If there is no net force on an object</p>
 <ul>
-<li><p>it’s motion doesn’t change</p>
+<li><p>its motion doesn’t change</p>
 <p>👉 if its speed was zero…it stays zero</p>
 <p>👉 if its speed was 55 mph…it stays at 55 mph</p></li>
 </ul></li>
 </ul>
 <p>Said another way, if you see the motion of any object changing… then somewhere there is a force actiing (it might be invisible, like a magnetic field).</p>
-<p>One quick change of Equation <span class="math inline">\(\eqref{momentumdef}\)</span>:</p>
+</section>
+<section id="sec-secondlaw" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="sec-secondlaw"><span class="header-section-number">4.4</span> Newton’s second law of motion</h2>
+<p>One quick change of Equation <span class="math inline">\(\ref{momentum}\)</span>:</p>
 <p><span class="math display">\[
 \begin{align}
 F\Delta t &amp;= \Delta p \nonumber \\
 F &amp;= \frac{\Delta p}{\Delta t} \label{newtons2} \\
-\text{since }&amp;=\Delta p = \Delta (mv) \nonumber \\
-\text{and if the mass is constant } &amp;= \Delta p =m\Delta v \nonumber\\
+\text{since: }&amp;=\Delta p = \Delta (mv) \nonumber \\
+\text{if the mass is constant: } \nonumber \\
+F &amp;= \Delta p =m\Delta v \nonumber\\
 F &amp;= m \frac{\Delta v}{\Delta t} \nonumber \\
-\text{and since } &amp;= \frac{\Delta v}{\Delta t} = a \nonumber \\
+\text{and since: } &amp;= \frac{\Delta v}{\Delta t} = a \nonumber \\
 F &amp;= ma \label{newtons2b}
 \end{align}
-\]</span> A couple of these are suitable for a T-shirt: Equation <span class="math inline">\(\eqref{newtons2}\)</span> is “Newton’s Second law of Motion” in its most general physics-major form. Equation <span class="math inline">\(\eqref{newtons2b}\)</span> is the T-shirt version for motion in which the mass of an object undergoing a push doesn’t change.</p>
-<section id="sec-newtonslaws" class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="sec-newtonslaws"><span class="header-section-number">5.3.1</span> Newton’s 3 laws of motion</h3>
+\]</span> A couple of these are suitable for a T-shirt: Equation <span class="math inline">\(\ref{newtons2}\)</span> is formally “Newton’s Second law of Motion” in its most general physics-major form. Equation <span class="math inline">\(\ref{newtons2b}\)</span> is the T-shirt version for motion in which the mass of an object undergoing a push doesn’t change.</p>
+<section id="sec-newtonslaws" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="sec-newtonslaws"><span class="header-section-number">4.4.1</span> Newton’s three laws of motion</h3>
 <p>If there’s a second law, there must be a first one and there is…and a third one. Here they are for completeness:</p>
 <ol type="1">
 <li>An object with constant velociy will retain that constant velocity of zero or another value.</li>
@@ -550,9 +556,9 @@ F &amp;= ma \label{newtons2b}
 </ol>
 <p>The Third law is very useful for solving problems, but that’s not what we’re about in <strong>QS&amp;BB</strong>.</p>
 </section>
-<section id="sec-weight" class="level3" data-number="5.3.2">
-<h3 data-number="5.3.2" class="anchored" data-anchor-id="sec-weight"><span class="header-section-number">5.3.2</span> Weight</h3>
-<p>There’s an important special case of Equation <span class="math inline">\(\eqref{newtons2b}\)</span> which has to do with the earth and, well, everything that’s not nailed down. The earth attracts all objects with a force (which we’ll talk about in a bit) that seems constant and has a partcular value of acceleration, that of gravity., We affectionately call it <span class="math inline">\(g\)</span>. So your weight is the force that the earth applies to you and so we simply have: <span class="math display">\[
+<section id="sec-weight" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="sec-weight"><span class="header-section-number">4.4.2</span> Weight</h3>
+<p>There’s an important special case of Equation <span class="math inline">\(\ref{newtons2b}\)</span> which has to do with the earth and, well, everything that’s not nailed down. The earth attracts all objects with a force (which we’ll talk about in a bit) that appears to be constant and has a particular value of acceleration, that of gravity., We affectionately call it <span class="math inline">\(g\)</span>. So your weight is the force that the earth applies to you and so we simply have: <span class="math display">\[
 \begin{align}
 F &amp;= ma \text{ ...now modify for gravitational force}\nonumber \\
 F &amp;= W \text{ for the special force called "weight"} \nonumber \\
@@ -562,42 +568,56 @@ W &amp;=mg \text{ which is weight on earth} \label{weight}
 \]</span> Two caveats:</p>
 <ol type="1">
 <li>We call this <span class="math inline">\(g\)</span> “little g” and it’s only got a specific value for the earth. There are different little g’s for other planets, moons, or stars.</li>
-<li>The force of gravity is actually not constant – stay tuned. But miles above tthe earth it’s still so close to <span class="math inline">\(g\)</span> that we often pretend that it’s constant.</li>
+<li>The force of gravity is actually not constant – stay tuned. But miles above tthe earth it’s still so close to <span class="math inline">\(g\)</span> that we often pretend that it’s constant. (Stay tuned for the Gravitation chapter.)</li>
 </ol>
 <p>So little g is an important number:</p>
 <ul>
 <li>In the american system, <span class="math inline">\(g = 32\)</span> feet/second<span class="math inline">\(^2\)</span> , 32 ft/s<span class="math inline">\(^2\)</span></li>
 <li>For the rest of the world, <span class="math inline">\(g = 9.8\)</span> meters/second<span class="math inline">\(^2\)</span>, 9.8 m/s$<sup>2</sup></li>
 </ul>
+<p>(Notice the units for acceleration.)</p>
 </section>
 </section>
-<section id="sec-circular" class="level2 page-columns page-full" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="sec-circular"><span class="header-section-number">5.4</span> Circular Motion</h2>
-<p>Remember that if a velocity changes, then there’s an force acting as a cause and an acceleration is the result. Well, what about driving around a curve keeping your accelerator at 50 mph? This is the one time in <strong>QS&amp;BB</strong> we’ll care about the vector nature of velocity. A true (for a professional physicist or student) velocity has a magnitude (what your speedometer reads back) and a direction. So going 50 mph north is a different velocity than going 50 mph east. Same <u>speed</u>, different <u>velocity</u>.</p>
+<section id="sec-circular" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="sec-circular"><span class="header-section-number">4.5</span> Circular Motion</h2>
+<p>Remember that if a velocity changes, then there’s an force acting as a cause and an acceleration is the result. Well, what about driving around a curve keeping your speedometer at 50 mph? This is the one time in <strong>QS&amp;BB</strong> we’ll care about the vector nature of velocity. A true (for a professional physicist or student) velocity has a magnitude (what your speedometer reads back) and a direction. So going 50 mph north <em>is a different velocity</em> than going 50 mph east. Same <u>speed</u>, different <u>velocity</u>.</p>
 <p>Okay, what’s going on with you turning that corner where your direction changes but your speed doesn’t. From the formal definition, the velocity must change 👉 so there must be a force acting 👉 so there is an acceleration.</p>
-<p>It might be easier to think of twirling something overhead. Suppose you tie a ball to a thin rope and get it rotating above your head in a horizontal plane, like our little guy in the margin.</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<div id="fig-erad" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-erad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="screenshot_3696.png" class="img-fluid figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-erad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.3: Twirling a ball over your head in a horizontal plane.
+<p>It might be easier to think of twirling something overhead. Suppose you tie a ball to a thin rope and get it rotating above your head in a horizontal plane, like our little guy in the figure.</p>
+<figure style="text-align:center;" class="figure">
+<img src="screenshot_3696.png" width="80%" style="display:block; margin:auto;" class="figure-img">
+<figcaption>
+wirling a ball over your head in a horizontal plane.
 </figcaption>
+<br>
 </figure>
-</div>
-</div></div><p>You can feel a tug. That is, the ball seems to exert a force on your hand through the rope. But what’s really going on is that the ball wants to go forward (Newton’s first law) and you pull it back incrementally, bit by bit as it goes around. You’re supplying that force necessary to defeat its straight line motion.</p>
-<p>This force-towards-the-center is called “centripetal force” – you’ve maybe heard of “centrifugal force” but that’s different and sometimes called “ficticious” which seems sort of insulting. But when you’re a passenger in a car that’s going around a curve, you feel a force that’s away from the center of the curve…that’s centifugal. But that’s just your body trying to obey that first law and go straight, while you’re in this car going, well, not straight. Where do you get the force that makes you follow the car? The door against your shoulder, the friction of the back of your lap on the seat, and hopefully your seatbelt. Absent those forces which pull you toward the center of the curve, you’d go flying.</p>
-<p>The acceleration that you (or the ball) experience is toward the center of the circle (which we’ll say has radius <span class="math inline">\(R\)</span>, following the direction of the force, and has its own formula and name of “centripetal acceleration” (<span class="math inline">\(a_c\)</span>): <span class="math display">\[
+<p>You can feel a tug. That is, the ball seems to exert a force on your hand through the rope. But what’s really going on is that the ball wants to go straight (Newton’s first law) and you pull it back incrementally, bit by bit as it goes around. You’re supplying that force necessary to defeat its straight line motion aspiration.</p>
+<p>This force-towards-the-center is called “<strong>centripetal force</strong>.”</p>
+<blockquote class="blockquote">
+<p>You’ve maybe heard of “centrifugal force” but that’s different and sometimes called a “ficticious force” which seems sort of insulting. But when you’re a passenger in a car that’s going around a curve, you really feel a force that’s away from the center of the curve…that’s centifugal. But that’s just your body trying to obey that first law and go straight, while you’re in this car going, well, not straight. Where do you get the force that makes you follow the car? The door against your shoulder, the friction of the back of your lap on the seat, and hopefully your seatbelt. Absent those forces which pull you toward the center of the curve, you’d go flying.</p>
+</blockquote>
+<p>The acceleration that you (or the ball) experience is <em>toward the center of the circle</em> (which we’ll say has radius <span class="math inline">\(R\)</span>, following the direction of the force, and has its own formula and name of “centripetal acceleration” (<span class="math inline">\(a_c\)</span>): <span class="math display">\[
 a_c=\frac{v^2}{R} \label{centripetala}
-\]</span> From Newton’s second law, there’s then a centripetal force. That tug you provide to the ball of mass <span class="math inline">\(m\)</span> is: <span class="math display">\[
+\]</span></p>
+<figure style="text-align:center;" class="figure">
+<img src="screenshot_3768.png" width="80%" style="display:block; margin:auto;" class="figure-img">
+<figcaption>
+The velocity, and hence the momentum change as the object goes around the circle. The speed doesn’t.
+</figcaption>
+<br>
+</figure>
+<p>From Newton’s second law, there’s then a centripetal force. That tug you provide to the ball of mass <span class="math inline">\(m\)</span> is: <span class="math display">\[
 \begin{align}
 F_c &amp;= m a_c \nonumber \\
 F_c &amp;=m \frac{v^2}{R} \label{centripetalf}
 \end{align}
 \]</span></p>
+<figure style="text-align:center;" class="figure">
+<img src="screenshot_3769.png" width="100%" style="display:block; margin:auto;" class="figure-img">
+<figcaption>
+Two quantities: the centripatal acceleration (towards the center of the circle) and the centripetal force (also towards the center). You need that pull to the center to follow a curved path.
+</figcaption>
+<br>
+</figure>
 
 
 </section>
@@ -1023,8 +1043,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../mechanics/motion/motion.html" class="pagination-link" aria-label="Motion, Speed, and Acceleration">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Motion, Speed, and Acceleration</span></span>
+      <a href="../../mechanics/motion/motion.html" class="pagination-link" aria-label="Skinny Motion, Speed, and Acceleration">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Skinny Motion, Speed, and Acceleration</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
