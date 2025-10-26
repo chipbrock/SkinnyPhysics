@@ -32,6 +32,9 @@ book:
     - part: electromagnetism/index.qmd
       chapters:
         - electromagnetism/electromagnetism_placeholder/em_placeholder.qmd
+    - part: relativity/index.qmd
+      chapters:
+        - relativity/relativity_placeholder/SR_placeholder.qmd
     - summary.qmd
     - references.qmd
 

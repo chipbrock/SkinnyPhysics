@@ -1,0 +1,16 @@
+---
+author: "Chip Brock"
+number-sections: true
+date: 2025-08-24# (your last edit date)
+categories: [Einstein, special relativity, simultaneity, time dilation, length contraction, $E=mc^$, Lorentz force]
+description: "Gotta move."
+draft: false
+---
+
+------------------------------------------------------------------------
+
+# Placeholder!
+
+at work here.
+
+😵‍💫

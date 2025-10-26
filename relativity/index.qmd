@@ -1,0 +1,9 @@
+---
+title: "Part IV: Special Relativity" # or keep "Part IV. Special Relativity — Overview"
+numbered: false            # <- key: do NOT number this chapter
+toc: false                 # optional: no in-page ToC
+---
+
+This Part introduces Einstein's Theory of Special Relativity, aka SR, aka "relativity." Particle physics uses relativity daily and so in **QS&BB** this odd theory has special significance for us. It's complicated but easy. That is the concepts are challenging but the mathematics is surprisingly high-school-ish!
+
+👈 Read or skim, depending on your background. So many of these concepts have stood the test of time. As always, my goal is to get you ready for the 21st century physics of particle physics and cosmology.

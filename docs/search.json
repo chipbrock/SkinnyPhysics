@@ -347,13 +347,34 @@
     ]
   },
   {
+    "objectID": "relativity/index.html",
+    "href": "relativity/index.html",
+    "title": "Part IV: Special Relativity",
+    "section": "",
+    "text": "This Part introduces Einstein’s Theory of Special Relativity, aka SR, aka “relativity.” Particle physics uses relativity daily and so in QS&BB this odd theory has special significance for us. It’s complicated but easy. That is the concepts are challenging but the mathematics is surprisingly high-school-ish!\n👈 Read or skim, depending on your background. So many of these concepts have stood the test of time. As always, my goal is to get you ready for the 21st century physics of particle physics and cosmology.",
+    "crumbs": [
+      "Part IV: Special Relativity"
+    ]
+  },
+  {
+    "objectID": "relativity/relativity_placeholder/SR_placeholder.html",
+    "href": "relativity/relativity_placeholder/SR_placeholder.html",
+    "title": "7  Placeholder!",
+    "section": "",
+    "text": "at work here.\n😵‍💫",
+    "crumbs": [
+      "Part IV: Special Relativity",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Placeholder!</span>"
+    ]
+  },
+  {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "7  Summary",
+    "title": "8  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever.",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Summary</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Summary</span>"
     ]
   }
 ]
