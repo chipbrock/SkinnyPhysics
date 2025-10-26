@@ -4,9 +4,9 @@
     "href": "index.html",
     "title": "Skinny Physics for QS&BB",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
+    "text": "1 Introduction to Skinny Physics\nI’m guessing that you might come from various backgrounds and since posts in QS&BB may rely on a small bit of background, I’ve created this Skinny Physics collection to help you whether you’re an English major with little physics in your life to an engineer with more.",
     "crumbs": [
-      "Preface"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Skinny Physics</span>"
     ]
   },
   {
@@ -399,6 +399,16 @@
     "crumbs": [
       "Part I: Mechanics",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Skinny Collisions</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#chapter-structure",
+    "href": "index.html#chapter-structure",
+    "title": "Skinny Physics for QS&BB",
+    "section": "1.1 Chapter structure",
+    "text": "1.1 Chapter structure\nEach chapter has the same structure in support of your particular level of preparation:\n\nJust the facts. The equations for those of you who might have had some physics in your background and need a referesher\nDifferent way. There are some places where I introduce ways of approaching thingss in QSBB that you wouldn’t have seen elsewhere. So follow those links for sure.\nGentle explanations of... This is textbook-like, but textbook-lite. From the beginning but not overpowering. Some videos of explanation.\nPointers to topics so you can quickly go to a topic where you need more than just the equations. That’s #4 just above 👆\n\nThe Parts are:\n\nMechanics\n\nMotion\nMomentum and Force\nCollisions\nEnergy\n\nGravitation\n\nCopernicus’ heliocentric proposal\nGalileo’s Astronomy\nKepler’s Astrophysics\nNewton’s Gravitation\n\nElectricity and Magnetism\n\nElectric Charge and Magnetism\nFaraday’s Experiments and Conclusions\nMaxwell’s Theory\nForces on electrical charges\n\nEinstein’s Theory of Special Relativity",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Skinny Physics</span>"
     ]
   }
 ]

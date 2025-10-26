@@ -20,7 +20,7 @@ book:
     logo: images/logo_orange_words.png
   chapters:
     - index.qmd
-    - intro.qmd
+    #- intro.qmd
     - part: mechanics/index.qmd
       chapters:
         - mechanics/motion/motion.qmd

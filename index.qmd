@@ -1,5 +1,32 @@
-# Preface {.unnumbered}
+# Introduction to Skinny Physics
 
-This is a Quarto book.
+I'm guessing that you might come from various backgrounds and since posts in **QS&BB** may rely on a small bit of background, I've created this Skinny Physics collection to help you whether you're an English major with little physics in your life to an engineer with more.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+## Chapter structure
+
+Each chapter has the same structure in support of your particular level of preparation:
+
+1. **Just the facts.** The equations for those of you who might have had some physics in your background and need a referesher
+2. **Different way.** There are some places where I introduce ways of approaching thingss in QSBB that you wouldn't have seen elsewhere. So follow those links for sure.
+4. **Gentle explanations of..**. This is textbook-like, but textbook-lite. From the beginning but not overpowering. Some videos of explanation.
+3. **Pointers** to topics so you can quickly go to a topic where you need more than just the equations. That's #4 just above 👆
+
+The Parts are:
+
+1. Mechanics
+   1. Motion
+   2. Momentum and Force
+   3. Collisions
+   4. Energy
+2. Gravitation
+   1. Copernicus' heliocentric proposal
+   2. Galileo's Astronomy
+   3. Kepler's Astrophysics
+   4. Newton's Gravitation
+3. Electricity and Magnetism
+   1. Electric Charge and Magnetism
+   2. Faraday's Experiments and Conclusions
+   3. Maxwell's Theory
+   4. Forces on electrical charges
+4. Einstein's Theory of Special Relativity
+
