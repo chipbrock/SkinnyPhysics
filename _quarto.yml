@@ -26,6 +26,8 @@ book:
         - mechanics/motion/motion.qmd
         - mechanics/momentum/momentum.qmd
         - mechanics/collisions/collisions.qmd
+        - mechanics/energy/energy.qmd
+        - mechanics/sandbox/energy_sand_1.qmd
     - part: gravitation/index.qmd
       chapters:
         - gravitation/gravitation_placeholder/grav_placeholder.qmd
@@ -57,7 +59,7 @@ format:
           chtml: { scale: 0.9 }
         };
         </script>
-  pdf:
-    documentclass: scrreprt
+  #pdf:
+    #documentclass: scrreprt
 
 editor: visual

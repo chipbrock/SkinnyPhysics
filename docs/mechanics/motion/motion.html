@@ -113,7 +113,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed slimcontent">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -203,6 +203,18 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Skinny Collisions</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../mechanics/energy/energy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Energy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../mechanics/sandbox/energy_sand_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Skinny Energy</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -217,7 +229,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../gravitation/gravitation_placeholder/grav_placeholder.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Placeholder!</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Placeholder!</span></span></a>
   </div>
 </li>
       </ul>
@@ -234,7 +246,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../electromagnetism/electromagnetism_placeholder/em_placeholder.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Placeholder!</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Placeholder!</span></span></a>
   </div>
 </li>
       </ul>
@@ -251,7 +263,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../relativity/relativity_placeholder/SR_placeholder.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Placeholder!</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Placeholder!</span></span></a>
   </div>
 </li>
       </ul>
@@ -259,7 +271,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -308,7 +320,7 @@ window.Quarto = {
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../mechanics/index.html">Part I: Mechanics</a></li><li class="breadcrumb-item"><a href="../../mechanics/motion/motion.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Skinny Motion, Speed, and Acceleration</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -378,11 +390,6 @@ Important
 <li>symbol for average: <span class="math inline">\(&lt;A&gt;\)</span></li>
 <li>symbol for the (nearly) constant acceleration due to gravity close to the Earth’s surface: <span class="math inline">\(g\)</span></li>
 </ul>
-<p><strong>average anything</strong></p>
-<p>Four objects, A, B, C, D…average is:</p>
-<p><span class="math display">\[
-&lt;h&gt; = \frac{A+B+C+D}{4}
-\]</span></p>
 <p><strong>average velocity</strong></p>
 <p>The average speed that an object has after going a distance of <span class="math inline">\(x_f\)</span> after starting at position <span class="math inline">\(x_0\)</span> in a time <span class="math inline">\(\Delta t\)</span> is:</p>
 <p><span class="math display">\[
@@ -404,13 +411,17 @@ x=vt
 <p><strong>definition of acceleration</strong></p>
 <p>Not restricted to constant acceleration: <span class="math display">\[
 a = \frac{v-v_0}{t-t_0}
-\]</span> <strong>Velocity for constant acceleration after given time</strong> <span class="math display">\[
+\]</span></p>
+<p><strong>Velocity for constant acceleration after given time</strong> <span class="math display">\[
 v = v_0 +at
-\]</span> <strong>Distance traveled for constant acceleration</strong> <span class="math display">\[
+\]</span></p>
+<p><strong>Distance traveled for constant acceleration</strong> <span class="math display">\[
 x = x_0 + v_0t + \dfrac{1}{2} at^2
-\]</span> <strong>Velocity for constant acceleration after given distance</strong> <span class="math display">\[
+\]</span></p>
+<p><strong>Velocity for constant acceleration after given distance</strong> <span class="math display">\[
 v^2   = v_0^2 + 2ax
-\]</span> <strong>Distance fallen under constant acceleration due to gravity</strong></p>
+\]</span></p>
+<p><strong>Distance fallen under constant acceleration due to gravity</strong></p>
 <p>Down ↓ presumed to be in the positive direction (same direction as the motion and the force of gravity)</p>
 <p><span class="math display">\[
 y = y_0 + v_0t + \dfrac{1}{2} gt^2
@@ -444,23 +455,42 @@ Tip
 <section id="getting-from-here-to-there-at-constant-speed" class="level3" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="getting-from-here-to-there-at-constant-speed"><span class="header-section-number">2.4.1</span> Getting From Here to There: At Constant Speed</h3>
 <p>Whether it’s runners on a track, the cosmic rays piercing us all the time, orbiting planets, electrons in a wire, electromagnetic waves, quark wavefunctions inside a proton, electrons and holes in a semiconductor, or the stretching of spacetime itself. Everything is about “motion.” Motion is both the easiest and the hardest concept in physics and so much of what comes for us will constantly stretch at ideas about what motion is and how we can describe it. So we need to start at the beginning. Because:</p>
-<blockquote class="blockquote">
-<p><strong>motion: it’s everywhere</strong><br> Almost everything in physics boils down to: motion. (Even boiling.)</p>
-</blockquote>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>📝 motion: it’s everywhere</p>
+</div>
+</div>
+<p>Almost everything in physics boils down to: motion. (Even boiling.)</p>
 <p>But at its most basic, our physics will be all about how to get from <em>here</em> to t<em>here</em> and from <em>then</em> to <em>now</em>, and to be able to explain how that happened and predict what will come next.</p>
-<figure style="text-align:center;" class="figure">
-<p><img src="images/clipboard-2908347734.png" width="80%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
+<div id="fig-LABEL" class="quarto-float quarto-figure quarto-figure-center anchored" width="80%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-LABEL-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/clipboard-2908347734.png" id="fig-LABEL" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-LABEL-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1
 </figcaption>
-<p><br></p>
 </figure>
+</div>
 <p>Characterizing motion is simple in principle! You need two things:</p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3644.png" width="80%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-The complete set of tools to characterize motion.
+<div id="fig-LABEL" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-LABEL-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="screenshot_3644.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-LABEL-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: The complete set of tools to characterize motion.
 </figcaption>
 </figure>
+</div>
 <p>And for everyday motion, that seems reasonable and you already know a lot about that.</p>
 <p>Suppose you’re on a trip and you timed yourself between the two mile markers.</p>
 <p>What was your speed? I know you know this and your brain would quickly calculate:</p>
@@ -471,14 +501,14 @@ The complete set of tools to characterize motion.
 </ul>
 <p>So: <span class="math display">\[
 v=50 \text{ mph}
-\]</span> Now, what if we stop and then start up after a break? How do we refer to the speed then?</p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3646.png" width="80%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-Stopping for a rest
-</figcaption>
-<p><br></p>
+\]</span></p>
+<p>Now, what if we stop and then start up after a break? How do we refer to the speed then?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="screenshot_3646.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Stopping for a rest</figcaption>
 </figure>
+</div>
 </section>
 <section id="sec-averagespeed" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="sec-averagespeed"><span class="header-section-number">2.4.2</span> Average speed</h3>
@@ -488,9 +518,9 @@ Stopping for a rest
 \]</span></p>
 <p>This bracketing notation means “average” or “mean”…the average speed only depends on the beginning and ending points. Since the same number of hours elapsed, as before without the stop, we must have gone faster than the average before the stop and/or faster after the stop. Average speeds are not that unfamiliar, but that’s because you don’t probably think of it that way. But you’ve all asked yourselves the question, “I’ve got to go 100 miles and I think I can travel at 70 mph, so I”ll be home in about one and a half hours.”</p>
 <p>So you’ve known for a long time that</p>
-<p><span class="math display">\[
+<p><span id="eq-speedwords"><span class="math display">\[
 \text{speed} = \dfrac{\text{distance traveled}}{\text{time taken}}
-\]</span></p>
+\tag{2.1}\]</span></span></p>
 <p>is the rate at which distance changes with time.</p>
 </section>
 <section id="speed-in-modern-terms" class="level3" data-number="2.4.3">
@@ -505,13 +535,13 @@ Stopping for a rest
 <li><p>Oh, and we’ll use the subscript <span class="math inline">\(\text{ }_{0}\)</span> to indicate the beginning of some time or location interval—” <span class="math inline">\(t_0\)</span>” or ” <span class="math inline">\(x_0\)</span> ”—in a sequence of events.</p></li>
 <li><p>We’ll use the Greek symbol Delta, <span class="math inline">\(\Delta\)</span> to mean “change of”…this will come up a lot.</p></li>
 </ul>
-<p>With this, then we can “solve” this simple problem: <span class="math display">\[
-\begin{align}
+<p>With this, then we can “solve” this simple problem: <span id="eq-speeddef"><span class="math display">\[\begin{align}
 v &amp;= \text{speed}=\dfrac{\text{distance traveled}}{\text{time taken}} \nonumber \\
-v &amp;=\dfrac{x-x_0}{t-t_0} \label{speeddef} \\
+v &amp;=\dfrac{x-x_0}{t-t_0} \nonumber \\
 &amp;= \dfrac{350-50}{6}=50  \text{mph} \nonumber
 \end{align}
-\]</span> where “<span class="math inline">\(v\)</span>” is the velocity and it’s defined by the middle equation in equation <span class="math inline">\(\ref{speeddef}\)</span>.</p>
+\tag{2.2}\]</span></span></p>
+<p>where “<span class="math inline">\(v\)</span>” is the velocity and it’s defined by the middle equation in equation <a href="#eq-speeddef" class="quarto-xref">Equation&nbsp;<span>2.2</span></a>.</p>
 </section>
 </section>
 <section id="dimensional-analysis" class="level2" data-number="2.5">
@@ -521,19 +551,19 @@ v &amp;=\dfrac{x-x_0}{t-t_0} \label{speeddef} \\
 <p>So if our distance units were feet and our time units were hours, then we would say that the dimensions of velocity could be determined to be: <span class="math display">\[
 \dfrac{[\text{distance}]}{[\text{time}]}=\dfrac{\text{feet}}{\text{hours}} = [v] = \text{feet per hour}
 \]</span></p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3766.png" width="60%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-</figcaption>
-<p><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="screenshot_3766.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>CAPTION</figcaption>
 </figure>
+</div>
 <p>Dimensions of acceleration are a little unfamiliar but we can work them out:</p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3668.png" width="60%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-</figcaption>
-<p><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="screenshot_3668.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>CAPTION</figcaption>
 </figure>
+</div>
 <p>Of course the simplest acceleration is a constant one…that during any time interval, the speed increases and the rate at which the speed increases is constant.</p>
 </section>
 <section id="sec-spacetimediagrams" class="level2" data-number="2.6">
@@ -543,58 +573,73 @@ v &amp;=\dfrac{x-x_0}{t-t_0} \label{speeddef} \\
 <h3 data-number="2.6.1" class="anchored" data-anchor-id="spacespace-diagram-stationary"><span class="header-section-number">2.6.1</span> spacespace diagram, stationary</h3>
 <p>Let’s imagine a pool table. Here it is with a set of x-y axes. Notice that I’ve placed a ball at the intial coordinates (<em>x</em><sub>0</sub>, <em>y</em><sub>0</sub>):</p>
 <p>Wait a while…here it still is:</p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3649.png" width="80%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-Our platform for describing motion. A ball on a pool table…sitting there minding its own business.
+<div id="fig-fig-balltablestill" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig-balltablestill-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="screenshot_3649.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig-balltablestill-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: Our platform for describing motion. A ball on a pool table…sitting there minding its own business.
 </figcaption>
-<p><br></p>
 </figure>
+</div>
 <p>Let’s plot it on an x-y axis set.</p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3656.png" width="80%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-A “space-space” diagram for the ball sitting still. Time marches on for it in that position.
+<div id="fig-fig-ballstillss" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig-ballstillss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="screenshot_3656.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig-ballstillss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.4: A “space-space” diagram for the ball sitting still. Time marches on for it in that position.
 </figcaption>
-<p><br></p>
 </figure>
+</div>
 <p>I call this diagram a <strong>spacespace diagram</strong> since both axes are space coordinates. It’s how you think about things normally. As time progresses, our ball doesn’t move on the table, so the x and y coordinates of the ball at any time are the same.</p>
 </section>
 <section id="spacetime-diagram-stationary" class="level3" data-number="2.6.2">
 <h3 data-number="2.6.2" class="anchored" data-anchor-id="spacetime-diagram-stationary"><span class="header-section-number">2.6.2</span> spacetime diagram, stationary</h3>
 <p>Now supposed I plot the ball’s trajectory (yes, “trajectory”) as a function of space and time.</p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3658.png" width="80%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-A spacetime diagram for the ball sitting still…still.
+<div id="fig-ballstillst" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ballstillst-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="screenshot_3658.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:68.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ballstillst-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.5: A spacetime diagram for the ball sitting still…still.
 </figcaption>
-<p><br></p>
 </figure>
+</div>
 <p>Now you see “movement”…the stationary ball is moving in <em>time</em>. This picture is an example of a <strong>spacetime diagram</strong>. Not very interesting.</p>
 </section>
 <section id="spacespace-diagram-moving" class="level3" data-number="2.6.3">
 <h3 data-number="2.6.3" class="anchored" data-anchor-id="spacespace-diagram-moving"><span class="header-section-number">2.6.3</span> spacespace diagram, moving!</h3>
 <p>Just sitting still isn’t interesting, so let’s roll the ball across the pool table:</p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3665.png" width="60%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-Rolling the ball in a straight line on the pool table. The <span class="math inline">\(y\)</span> coordinate doesn’t change but the <span class="math inline">\(x\)</span> coordinate does.
+<div id="fig-ballconstantss" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ballconstantss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="screenshot_3665.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:68.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ballconstantss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.6: Rolling the ball in a straight line on the pool table. The <span class="math inline">\(y\)</span> coordinate doesn’t change but the <span class="math inline">\(x\)</span> coordinate does.
 </figcaption>
-<p><br></p>
 </figure>
+</div>
 <p>While the ball moves in space, it’s also moving in time but the time coordinate is implied or hidden. The clocks show what it might be if one were to use a stopwatch to monitor its motion for 4 points along the trajectory.</p>
 <p>Since the ball moves only horizontally, <span class="math inline">\(y_0\)</span> doesn’t change and so I can represent the motion in a space (<span class="math inline">\(x\)</span>) and time (<span class="math inline">\(t\)</span>) way and here is the spacetime diagram for this simple situation</p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3666.png" width="80%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-The spacetime diagram for the ball moving at a constant speed long the pool table. The <span class="math inline">\(x\)</span> coordinate changes as time advances and the straight line tells you that the speed is constant.
+<div id="fig-ballconstantst" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ballconstantst-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="screenshot_3666.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:68.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ballconstantst-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.7: The spacetime diagram for the ball moving at a constant speed long the pool table. The <span class="math inline">\(x\)</span> coordinate changes as time advances and the straight line tells you that the speed is constant.
 </figcaption>
-<p><br></p>
 </figure>
+</div>
 <p>Notice that the trajectory in spacetime is a straight line and its slope? The velocity, which is a continuous curve in this diagram, and the dashed line shows it.</p>
 </section>
 </section>
-<section id="graphing-motion" class="level2 page-columns page-full" data-number="2.7">
+<section id="graphing-motion" class="level2" data-number="2.7">
 <h2 data-number="2.7" class="anchored" data-anchor-id="graphing-motion"><span class="header-section-number">2.7</span> Graphing motion</h2>
 <p>This is a model of motion, which for physicists is always a curve in some coordinate system. Here the slope is <span class="math display">\[
 \begin{align}
@@ -603,13 +648,16 @@ v &amp;= \dfrac{\Delta x}{\Delta t} \nonumber
 \end{align}
 \]</span></p>
 <p>We can easily imagine that the motion might not be smooth (like the stopping and starting on the road above) and so the concept of the average is always in play:</p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3667.png" width="80%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-The average speed depends only on the beginning and ending points.
+<div id="fig-beginend" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-beginend-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="screenshot_3667.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:68.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-beginend-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.8: The average speed depends only on the beginning and ending points.
 </figcaption>
-<p><br></p>
 </figure>
+</div>
 <p>The more precisely we sample the motion, the more precisely we converge on an <strong>instantaneous speed</strong>, which you’re familiar with while driving with a speedometer in front of you. You think it’s telling you exaclty what your speed is, but it is actually digitally sampling the rotation of your tires, but very finely.</p>
 <p>In physics:</p>
 <ul>
@@ -617,7 +665,7 @@ The average speed depends only on the beginning and ending points.
 <li>“dynamics” is the subject of forces…which cause the motion</li>
 </ul>
 <p>Galileo introduced the idea of kinematics…he characterized motion without regard to what made the motion happen. Isaac Newton did the first legitimate analysis – model&nbsp;– of dynamics. He explained how to characterize forces and the motions that result. That’s the subject of the next chapter.</p>
-<section id="graphing-accelerated-motion" class="level3 page-columns page-full" data-number="2.7.1">
+<section id="graphing-accelerated-motion" class="level3" data-number="2.7.1">
 <h3 data-number="2.7.1" class="anchored" data-anchor-id="graphing-accelerated-motion"><span class="header-section-number">2.7.1</span> Graphing accelerated motion</h3>
 <p>The rolling ball’s motion in spacetime had the same slope between any two time intervals – a straight line. So the velocity never changes.</p>
 <p>But of course for motion to get started one has begin from rest and get going, so the velocity has to increase in time. That’s what acceleration is.</p>
@@ -625,53 +673,48 @@ The average speed depends only on the beginning and ending points.
 <li>Velocity is the rate at which distance changes in time.</li>
 <li>Acceleration is the rate at which velocity changes in time.</li>
 </ul>
-<p>Here are the two models of motion: <span class="math display">\[
+<p>Here are the two models of motion:</p>
+<p><span id="eq-eq1"><span class="math display">\[
 \begin{align}
-v &amp;=\dfrac{x-x_0}{t-t_0} \text{  model of velocity} \label{eq1} \\
+v &amp;=\dfrac{x-x_0}{t-t_0} \text{  model of velocity} \tag{a} \nonumber \\
 v &amp;= \dfrac{\Delta x}{\Delta t} \text{ and } \nonumber \\
 a &amp;=\dfrac{v-v_0}{t-t_0}  \text{  model of acceleration} \nonumber \\
-a &amp;= \dfrac{\Delta v}{\Delta t} \nonumber
+a &amp;= \dfrac{\Delta v}{\Delta t} \tag{b} \nonumber
 \end{align}
-\]</span> So if the speed is uniform, like the ball above, then the acceleration is zero (since <span class="math inline">\(\Delta v = 0\)</span>).</p>
+\tag{2.3}\]</span></span></p>
+<p>So if the speed is uniform, like the ball above, then the acceleration is zero (since <span class="math inline">\(\Delta v = 0\)</span>).</p>
 <p>If the speed changes in time, then we have accelerated motion since <span class="math inline">\(\Delta v \ne 0\)</span>.</p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3669.png" width="80%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-CAPTION
-</figcaption>
-<p><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="screenshot_3669.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>CAPTION</figcaption>
 </figure>
+</div>
 <p>But sometimes you put on the brakes, and you know that you slow down because you can feel it and the speedometer is telling you that. So in increasing time intervals, the rate at which the speed changes is negative.</p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3670.png" width="80%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-CAPTION
-</figcaption>
-<p><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="screenshot_3670.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>CAPTION</figcaption>
 </figure>
+</div>
 <p>In the diagram, <span class="math inline">\(\Delta v &lt; 0\)</span>. This is a negative acceleration and is called <u>decceleration</u>.</p>
 <p>I’ve concentrated on acceleration and deceleration which are constant…the speed changes at a uniform rate, up or down. But that’s not the only kind. Think about a sprinter. Just after the starting gun, a runner’s speed out of the blocks is high and remains high for the first few steps. As the runner starts to become a little more vertical, air resistance becomes a factor and while the runner goes faster, she does so at a lower rate of speed increase. That’s a non-constant acceleration.</p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3671.png" width="60%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-A sprinter’s changing acceleration. Notice that the slope changes as time increases
-</figcaption>
-<p><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="screenshot_3671.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>A sprinter’s changing acceleration. Notice that the slope changes as time increases</figcaption>
 </figure>
+</div>
 <p>Now you can design a sports video game. All you have to do is measure an athlete’s personal acceleration parameters and code them. I found this years ago for Madden NFL11 of a particular running back:</p>
-<div class="cell page-columns page-full" data-cap-location="margin">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-Madden" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" data-cap-location="margin">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div id="fig-Madden" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-Madden-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="screenshot_3672.png" class="img-fluid figure-img" style="width:80.0%">
+<img src="screenshot_3672.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-Madden-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: Madden NFL11 acceleration coded for an unnamed running back.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Madden-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.9: Madden NFL11 acceleration coded for an unnamed running back.
 </figcaption>
 </figure>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -684,24 +727,30 @@ Figure&nbsp;2.1: Madden NFL11 acceleration coded for an unnamed running back.
 v(t) &amp;\propto t \nonumber \\
 x(t) &amp;\propto t^2 \nonumber
 \end{align}
-\]</span> The symbol <span class="math inline">\(\propto\)</span> means “proportional to” and when we find a relationship like that, we can turn it into an equation by inserting some constant of proportionality. For falling bodies near the earth, the symbol for that constant is called “<span class="math inline">\(g\)</span>” or “little g.” Now we can fully-form the model as: <span class="math display">\[
+\]</span></p>
+<p>The symbol <span class="math inline">\(\propto\)</span> means “proportional to” and when we find a relationship like that, we can turn it into an equation by inserting some constant of proportionality. For falling bodies near the earth, the symbol for that constant is called “<span class="math inline">\(g\)</span>” or “little g.” Now we can fully-form the model as: <span class="math display">\[
 \begin{align}
 v(t) &amp;= gt \nonumber \\
 x(t) &amp;= 1/2gt^2 \nonumber
 \end{align}
-\]</span> There are simplicity reasons for the 1/2…if we’d absorbed that into <span class="math inline">\(g\)</span> then the first equation would have had to change. The value of <span class="math inline">\(g\)</span> comes from experiment and is about <span class="math display">\[
+\]</span></p>
+<p>There are simplicity reasons for the 1/2…if we’d absorbed that into <span class="math inline">\(g\)</span> then the first equation would have had to change. The value of <span class="math inline">\(g\)</span> comes from experiment and is about</p>
+<p><span class="math display">\[
 \begin{equation}
 g = 9.8 \text{ m/s$^2$} = 32 \text{ ft/s$^2$}.  \nonumber \\
 \end{equation}
-\]</span> While this is a story that started with gravity, it’s nonetheless a completely general description of any accelerated motion (your car) if that acceleration is constant. In general, then, we’d use the symbol <span class="math inline">\(a\)</span> and treat falling as a special case of constantly accelerated motion in which case <span class="math inline">\(a=g\)</span>.</p>
-<p>While we defined speed in terms of distance, we can rewrite Equation <span class="math inline">\(\ref{eq1}\)</span>. <span class="math display">\[
+\]</span></p>
+<p>While this is a story that started with gravity, it’s nonetheless a completely general description of any accelerated motion (your car) if that acceleration is constant. In general, then, we’d use the symbol <span class="math inline">\(a\)</span> and treat falling as a special case of constantly accelerated motion in which case <span class="math inline">\(a=g\)</span>.</p>
+<p>While we defined speed in terms of distance, we can rewrite <a href="#eq-eq1" class="quarto-xref">Equation&nbsp;<span>2.3</span></a>.</p>
+<p><span class="math display">\[
 \begin{align}
 \text{For constant speed,}&amp;\text{ no acceleration} \\
 v &amp;=\dfrac{x-x_0}{t-t_0} \nonumber \\
 x-x_0 &amp;=v(t-t_0) \nonumber \text{ let's take our initial time be 0} \\
 x &amp;= x_0 + vt
 \end{align}
-\]</span> And for constant acceleration, we can find a general relationship for distance as well with a simple calculation.</p>
+\]</span></p>
+<p>And for constant acceleration, we can find a general relationship for distance as well with a simple calculation.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -718,7 +767,8 @@ Warning
 </section>
 <section id="sec-equationsofmotion" class="level2" data-number="2.9">
 <h2 data-number="2.9" class="anchored" data-anchor-id="sec-equationsofmotion"><span class="header-section-number">2.9</span> Complete model for motion</h2>
-<p>So collectively, here are our definitions for motion: <span class="math display">\[
+<p>So collectively, here are our definitions for motion:</p>
+<p><span class="math display">\[
 \begin{align}
 \text{Constant speed,}&amp;\text{ no acceleration} \nonumber \\
 x &amp;= x_0 + vt \nonumber \\
@@ -728,35 +778,33 @@ a &amp;= 0 \nonumber \\
 a &amp;=\dfrac{v-v_0}{t-t_0} \nonumber \\
 a &amp;= \dfrac{\Delta v}{\Delta t} \nonumber \\
 \end{align}
-\]</span> And here are the complete set of equations for one-dimentional constant acceleration. Each relation relates two of the three variables: <span class="math inline">\(x, t, v\)</span>. <span class="math display">\[
-\begin{align}
-&amp; \text{1. } \; x = \langle v \rangle t \label{avev} \\
-&amp; \text{2.  } \; v   = v_0 + at \label{vat} \\
-&amp; \text{3. }  \; x   = x_0+v_0 t + \frac{1}{2} at^2 \label{xat}  \\
-&amp; \text{4. }\; v^2   = v_0^2 + 2ax \label{vax}
-\end{align}
 \]</span></p>
-<p>Notice two things. If the motion is at a constant velocity, then setting <span class="math inline">\(a=0\)</span> recovers that special case. And notice that <span class="math inline">\(\eqref{vax}\)</span> does not have time as a variable and that will turn out to be interesting when we talk about energy.</p>
+<p>And here are the complete set of equations for one-dimentional constant acceleration. Each relation relates two of the three variables: <span class="math inline">\(x, t, v\)</span>.</p>
+<p><span id="eq-collective"><span class="math display">\[
+\begin{align}
+&amp; \text{1. } \; x = \langle v \rangle t \tag{a}  \\
+&amp; \text{2.  } \; v   = v_0 + at \tag{b}  \\
+&amp; \text{3. }  \; x   = x_0+v_0 t + \frac{1}{2} at^2 \tag{c} \\
+&amp; \text{4. }\; v^2   = v_0^2 + 2ax \tag{d}  
+\end{align}
+\tag{2.4}\]</span></span></p>
+<p>Notice two things. If the motion is at a constant velocity, then setting <span class="math inline">\(a=0\)</span> recovers that special case. And notice that <a href="#eq-collective" class="quarto-xref">Equation&nbsp;<span>2.4</span></a> (d) does not have time as a variable and that will turn out to be interesting when we talk about energy.</p>
 <hr>
 </section>
-<section id="sec-projectiles" class="level2 page-columns page-full" data-number="2.10">
+<section id="sec-projectiles" class="level2" data-number="2.10">
 <h2 data-number="2.10" class="anchored" data-anchor-id="sec-projectiles"><span class="header-section-number">2.10</span> Projectiles</h2>
 <p>When you throw a ball from centerfield to home plate, the ball executes what looks like a parabollic trajectory. The ball goes forward while it probably rises for a while and then drops toward the ground. That’s two-dimensional motion and Galileo had the insipiration to figure out what was going on and how to do experiments to confirm his hypothesis that the up-and-down would follow the shape of a parabola.</p>
 <p>His insight was that when motion is imparted to an object and the source of the motion is taken away (you throw the ball and it leaves your hand and is then in its own), that something stays with the ball. He called it “impeto” and we call it “momentum.” The ball acquires momentum.</p>
 <p>And he realized that whatever impeto the ball acquires in the horizontal direction is preserved, but the moment the ball leaves your hand, it starts to head toward the Earth. In modern words, we’d say that once released, the ball has a horizontal momentum that stays constant and a vertical momentum that changes and points down. The two motions are in some sense overlaid or shared by the ball.</p>
-<div class="cell page-columns page-full" data-cap-location="margin">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-motion_head2" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" data-cap-location="margin">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-motion_head2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="screenshot_3677.png" class="img-fluid figure-img" style="width:100.0%">
+<div id="fig-fig-motion_head2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig-motion_head2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="screenshot_3677.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-motion_head2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.2: Throwing a ball. The vertical axis is the height above the ground and the horizontal axis is the range. The curve shows the trajectory of a thrown ball in the absence of any air resistance – a perfect parabola. The intitial velocity is shown as the arrow at location 1. At each of the five points the overall velocity is broken into horizontal and vertical components.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig-motion_head2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.10: Throwing a ball. The vertical axis is the height above the ground and the horizontal axis is the range. The curve shows the trajectory of a thrown ball in the absence of any air resistance – a perfect parabola. The intitial velocity is shown as the arrow at location 1. At each of the five points the overall velocity is broken into horizontal and vertical components.
 </figcaption>
 </figure>
-</div>
-</div>
 </div>
 <p>In the figure you can see that the original velocity <span class="math inline">\(v_1\)</span> points up and foward and I’ve broken up this arrow (a vector) into it’s horizontal component which you can see at 1, 2, 3, 4, and 5 is the same length. It’s “impeto” is constant. The vertical component changes at each point – disappearing at the top –&nbsp;and then increasing down as the ball heads to Earth. Gravity wins.</p>
 <p>For QS&amp;BB we’ll not need two dimensional kinematics.</p>
