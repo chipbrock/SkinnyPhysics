@@ -23,40 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -147,7 +113,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed slimcontent">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -327,18 +293,22 @@ window.Quarto = {
   <li><a href="#different-way" id="toc-different-way" class="nav-link active" data-scroll-target="#different-way"><span class="header-section-number">4.1</span> Different way</a></li>
   <li><a href="#just-the-facts" id="toc-just-the-facts" class="nav-link" data-scroll-target="#just-the-facts"><span class="header-section-number">4.2</span> Just the facts:</a></li>
   <li><a href="#pointers-to-topics" id="toc-pointers-to-topics" class="nav-link" data-scroll-target="#pointers-to-topics"><span class="header-section-number">4.3</span> Pointers to topics:</a></li>
-  <li><a href="#sec-threekinds" id="toc-sec-threekinds" class="nav-link" data-scroll-target="#sec-threekinds"><span class="header-section-number">4.4</span> Gentle explanations of Three Kinds of Collisions</a>
+  <li><a href="#lets-start-off-by-congratulating-ourselves" id="toc-lets-start-off-by-congratulating-ourselves" class="nav-link" data-scroll-target="#lets-start-off-by-congratulating-ourselves"><span class="header-section-number">4.4</span> Let’s start off by congratulating ourselves</a>
   <ul class="collapse">
-  <li><a href="#sec-scattering" id="toc-sec-scattering" class="nav-link" data-scroll-target="#sec-scattering"><span class="header-section-number">4.4.1</span> Scattering interactions</a></li>
-  <li><a href="#sec-decay" id="toc-sec-decay" class="nav-link" data-scroll-target="#sec-decay"><span class="header-section-number">4.4.2</span> Decay interactions</a></li>
-  <li><a href="#sec-production" id="toc-sec-production" class="nav-link" data-scroll-target="#sec-production"><span class="header-section-number">4.4.3</span> Production interactions</a></li>
+  <li><a href="#conservation-of-momentum-a-big-deal" id="toc-conservation-of-momentum-a-big-deal" class="nav-link" data-scroll-target="#conservation-of-momentum-a-big-deal"><span class="header-section-number">4.4.1</span> Conservation of momentum – a big deal</a></li>
   </ul></li>
-  <li><a href="#conservation-of-momentum" id="toc-conservation-of-momentum" class="nav-link" data-scroll-target="#conservation-of-momentum"><span class="header-section-number">4.5</span> Conservation of momentum</a></li>
+  <li><a href="#sec-threekinds" id="toc-sec-threekinds" class="nav-link" data-scroll-target="#sec-threekinds"><span class="header-section-number">4.5</span> Gentle explanations of Three Kinds of Collisions</a>
+  <ul class="collapse">
+  <li><a href="#sec-scattering" id="toc-sec-scattering" class="nav-link" data-scroll-target="#sec-scattering"><span class="header-section-number">4.5.1</span> Scattering interactions</a></li>
+  <li><a href="#sec-decay" id="toc-sec-decay" class="nav-link" data-scroll-target="#sec-decay"><span class="header-section-number">4.5.2</span> Decay interactions</a></li>
+  <li><a href="#sec-production" id="toc-sec-production" class="nav-link" data-scroll-target="#sec-production"><span class="header-section-number">4.5.3</span> Production interactions</a></li>
+  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">4.6</span> </a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../mechanics/index.html">Part I: Mechanics</a></li><li class="breadcrumb-item"><a href="../../mechanics/collisions/collisions.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Skinny Collisions</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -377,8 +347,8 @@ window.Quarto = {
 
 
 <hr>
-<p>This is the first of three outlines of some basic physics ideas so that I can refer to them in other posts. If you’d like more, including history and examples, then visit <a href="https://qstbb.pa.msu.edu/storage/ISP220_fall2020/QS&amp;BB2020/intro.html">full textbook</a> for a textbook-level presentation. If you only need the basic simple equations, they’re here. If you’d like some explanation, that’s next!</p>
-<p>Units. Sorry. In QS&amp;BB we won’t care about English versus metric units but for this motion review we’ll sometimes have to convert. I’ll do it for you but you can check me at places like <a href="https://www.unitjuggler.com/index.html">unitjuggler</a>…or often just Google.</p>
+<p>Skinny Physics is meant to be a lightweight (skinny, after all) presentation of some physics that might help you appreciate some of the posts in <strong>QS&amp;BB.</strong> Maybe you’ve had a course in your past and maybe not, so this chapter has some bare bones (skinny, after all) <strong>facts about collisions</strong>.</p>
+<p>So: three sections: (1) Some ideas you might not have had in a previous course. (2) A listing of some collision facts. And, (3) a bit of gentle background behind those facts. If you’d like more, then visit the <a href="https://qstbb.pa.msu.edu/storage/ISP220_fall2020/QS&amp;BB2020/intro.html">full textbook</a> presentation.</p>
 <section id="different-way" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="different-way"><span class="header-section-number">4.1</span> Different way</h2>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
@@ -393,24 +363,24 @@ Important
 <div class="callout-body-container callout-body">
 <p>🫵 In a “normal” physics course, collisions are not a huge focus. Here we do particle physics and there are some bizarre interactions that still obey the rules of “billiard balls” but with surprising outcomes.</p>
 <ol type="1">
-<li>Scattering interactions, including some important terminology <a href="#sec-scattering" class="quarto-xref"><span>Section 4.4.1</span></a></li>
-<li>Decay interactions <a href="#sec-decay" class="quarto-xref"><span>Section 4.4.2</span></a></li>
-<li>Production interactions <a href="#sec-production" class="quarto-xref"><span>Section 4.4.3</span></a></li>
+<li>Scattering interactions, including some <u>important terminology</u> <a href="#sec-scattering" class="quarto-xref"><span>Section 4.5.1</span></a></li>
+<li>Decay interactions <a href="#sec-decay" class="quarto-xref"><span>Section 4.5.2</span></a></li>
+<li>Production interactions <a href="#sec-production" class="quarto-xref"><span>Section 4.5.3</span></a></li>
 </ol>
 </div>
 </div>
 </section>
 <section id="just-the-facts" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="just-the-facts"><span class="header-section-number">4.2</span> Just the facts:</h2>
-<p><strong>some definitions</strong></p>
+<p><strong>A definition:</strong></p>
 <p>When I need to refer to the initial value of some quantity, I’ll subscript that quantity with <span class="math inline">\(_0\)</span>, like <span class="math inline">\(v_0\)</span>. The final value? No subscript.</p>
-<p><strong>momentum conservation</strong></p>
+<p><strong>A fact: momentum conservation</strong></p>
 <p>Assume two colliding objects, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> each with momentum <span class="math inline">\(p(A)\)</span> and <span class="math inline">\(p(B)\)</span>. They collide with intitial momentum for each of <span class="math inline">\(p_0(A)\)</span> and <span class="math inline">\(p_0(B)\)</span>.</p>
-<p><span class="math display">\[
+<p><span id="eq-momconsAB"><span class="math display">\[
 \begin{equation}
-p_0(A) + p_0(B) = p(A) + p(B) \label{momconsAB}
+p_0(A) + p_0(B) = p(A) + p(B) \nonumber
 \end{equation}
-\]</span></p>
+\tag{4.1}\]</span></span></p>
 <p>The momentum of all components at the beginning is equal to the momentum of all components at the end. Period. That’s all we need in this chapter. But it’s full of stuff.</p>
 </section>
 <section id="pointers-to-topics" class="level2" data-number="4.3">
@@ -428,124 +398,152 @@ Tip
 <p>🔐 Bottom line sections with stuff to remember in this chapter:</p>
 <ul>
 <li><p>average speed <a href="../motion/motion.html#sec-averagespeed" class="quarto-xref"><span>Section 2.4.2</span></a></p></li>
-<li><p>spacespace and spacetime diagrams <a href="#sec-decay" class="quarto-xref"><span>Section 4.4.2</span></a></p></li>
+<li><p>spacespace and spacetime diagrams <a href="#sec-decay" class="quarto-xref"><span>Section 4.5.2</span></a></p></li>
 <li><p>the set of equations for 1-dimensional motion <a href="../motion/motion.html#sec-equationsofmotion" class="quarto-xref"><span>Section 2.9</span></a></p></li>
 <li><p>2 dimensional motion: projectiles <a href="../motion/motion.html#sec-projectiles" class="quarto-xref"><span>Section 2.10</span></a></p></li>
 </ul>
 </div>
 </div>
 </section>
-<section id="sec-threekinds" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="sec-threekinds"><span class="header-section-number">4.4</span> Gentle explanations of Three Kinds of Collisions</h2>
-<p>We’ll deal with only a few objects in <strong>QS&amp;BB</strong> at any one time and I’ll give them names like “1” and “2” or “<span class="math inline">\(A\)</span>” and “<span class="math inline">\(B\)</span>” and so on. I’ll also need to assign values of velocity, mass, momentum, and so on. Sometimes I’ll find it convenient to call object <span class="math inline">\(A\)</span>’s momentum to be <span class="math inline">\(p(A)\)</span> and sometimes, <span class="math inline">\(p_A\)</span>. It should be obvious and I’ll try to take the simplest route.</p>
-<p>There are only a few kinds of collisions. And, while I’ll maintain this general term, better is “interaction.” The context will be clear. I hope. 🙄</p>
-<section id="sec-scattering" class="level3" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="sec-scattering"><span class="header-section-number">4.4.1</span> Scattering interactions</h3>
-<p>Think billiard balls. <span class="math display">\[
-\mathbf{A}+\mathbf{B}\to \mathbf{A}+\mathbf{B}
-\]</span></p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3783.png" width="80%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-A and B approach one another at the beginning (the “initial state”) collide (“something happens”), and then go on their way (the “final state.” TIme here flows from top to bottom.
+<section id="lets-start-off-by-congratulating-ourselves" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="lets-start-off-by-congratulating-ourselves"><span class="header-section-number">4.4</span> Let’s start off by congratulating ourselves</h2>
+<section id="conservation-of-momentum-a-big-deal" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="conservation-of-momentum-a-big-deal"><span class="header-section-number">4.4.1</span> Conservation of momentum – a big deal</h3>
+<p>Remember Impulse? It, with Newton’s Third law the key. This idea of “momentum conservation” comes from Isaac Newton, Christiaan Huygens, and Rene Descartes. Let’s give them all a hand: 👏 . And after many years of applause, I’ll bet you’re pretty good at it.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🫵 A conserved quantity in physics is one that is unchanged during a time interval – typically a “before” and “after” some event. These statements are called “ConservationLaws.” There are many but the <strong>Conservation of Momentum</strong> is king of that hill.</p>
+</div>
+</div>
+<p>Let’s manage that clap 👏 so that our identical hands have the same speeds, but they are oppositely-directed. Their velocities are equal and opposite so their momenta are equal and opposite as well. Here’s a picture:</p>
+<div id="fig-clap" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-clap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="clap.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-clap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: The before and after of a one-clap round of applause. Each hand has the same mass. Each hand approaches the other with the same velocity, but of course with opposite signs.
 </figcaption>
-<p><br></p>
 </figure>
+</div>
+<p>Here’s the momentum for either one:</p>
+<p><span class="math display">\[p(\text{hand}) = m(\text{hand})\times v(\text{hand}).\]</span></p>
+<p>Look at this example in order to see how we construct an important argument based on this laudatory expression of appreciation for our Dutchman, Huygens.</p>
+<p>EXAMPLE example_clap_1.md</p>
+<p>Get the picture? Based on an analysis of the clap impulse and Newton’s third law out of it falls one of the most important rules in physics: <strong>Conservation of Momentum</strong>.</p>
+<p>In the example, we started out with the left and right separately, but transformed that picture into the situation of the system (left and right together) at the beginning and the system (left and right together) at the ened. The total momentum of a system –&nbsp;is just the total of all of the momenta in that system. So our momentum flow is:</p>
+<p><span id="eq-momentum_conservation"><span class="math display">\[\begin{align*}
+\vec{p}(\text{total})_0 &amp;=\vec{p}(\text{left})_0 + \vec{p}(\text{right})_0 =\vec{p}(\text{left}) + \vec{p}(\text{right}) = \vec{p}(\text{total})\\                               
+\vec{p}(\text{beginning}) &amp;=\vec{p}(\text{end})   \\
+\end{align*} \tag{4.2}\]</span></span></p>
+<p>In practice the vector symbol <span class="math inline">\(\vec{p}\)</span> means that you first decide what a positive direction is, take away the arrow, and any quantity that points opposite to that positive direction gets a minus sign.</p>
+<p><a href="#eq-momentum_conservation" class="quarto-xref">Equation&nbsp;<span>4.2</span></a> was our hand-clap situation and <a href="#eq-momconsAB" class="quarto-xref">Equation&nbsp;<span>4.1</span></a> is the more general mathematical statement of Momentum Conservation for any two colliding objects.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="screenshot_3780.png" class="img-fluid figure-img"></p>
+<figcaption>Big Deal.</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="sec-threekinds" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="sec-threekinds"><span class="header-section-number">4.5</span> Gentle explanations of Three Kinds of Collisions</h2>
+<p>We’ll deal with only a few objects in <strong>QS&amp;BB</strong> at any one time and I’ll give them names like “1” and “2” or “<span class="math inline">\(A\)</span>” and “<span class="math inline">\(B\)</span>” and so on…or <span class="math inline">\(L\)</span> and <span class="math inline">\(R\)</span>. I’ll also need to assign values of velocity, mass, momentum, and so on. Sometimes I’ll find it convenient to call object <span class="math inline">\(A\)</span>’s momentum to be <span class="math inline">\(p(A)\)</span> and sometimes, <span class="math inline">\(p_A\)</span>. It should be obvious and I’ll try to take the simplest route.</p>
+<p>There are only a few kinds of collisions. And, while I’ll maintain this general term, a better term is an “interaction.” The context will be clear. I hope. 🙄</p>
+<section id="sec-scattering" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="sec-scattering"><span class="header-section-number">4.5.1</span> Scattering interactions</h3>
+<p>Think billiard balls. <span id="eq-billiard"><span class="math display">\[
+\mathbf{A}+\mathbf{B}\to \mathbf{A}+\mathbf{B} \nonumber
+\tag{4.3}\]</span></span></p>
+<div id="fig-LABEL" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-LABEL-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="states.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-LABEL-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.2: A and B approach one another at the beginning (the “initial state”) collide (“something happens”), and then go on their way (the “final state.” TIme here flows from top to bottom.
+</figcaption>
+</figure>
+</div>
 <p>Some object (A) collides with some other object (B) and they go on their way. B could be sitting still or A and B could be each moving towards one another. From your experience, you know that whatever motions A and B had before, those motions are now differently shared after. The only way that A and B are totally unscathed or affected is if they didn’t actually “interact”…like they were in separate rooms or states or planets, or they went through one another like ghosts. Not very good “collisions” in those silly examples.</p>
 <p>“Before” and “After” in collision-land have specific names:</p>
 <ul>
 <li>The <strong>initial state</strong> of a system is the before.</li>
 <li>The <strong>final state</strong> of a system is the after.</li>
-<li>The <em>middle state</em> of a system is where the action is.</li>
+<li>The <em>intermediate state</em> of a system is where the action is.</li>
 </ul>
-<p>There’s more. <em>At the point of contact something happens.</em> Surfaces touching surfaces? If you hear the collision, then those surfaces are vibrating when they “click”… I’ll talk about this sort of thing in some future post. But the point is that the <em>before</em> and <em>after</em> include a “something happens” in the middle, <strong>where the physics happens</strong>. For elementary particles, we want to know what happens in that middle state.</p>
-<p>A and B could be the same sort of object (like two billiard balls), they could be different objects (like a golf ball and a basketball). They could be a ball and a bat. The rules don’t change.</p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3784.png" width="100%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-CAPTION
-</figcaption>
-<p><br></p>
+<p>There’s more. <em>At the point of contact something happens</em> in the middle, <strong>where the physics happens</strong>. For elementary particles, we want to know what happens in that middle state: what models describe as the interaction. For example, it could be electrostatic repulsion.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="screenshot_3784.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3786.png" width="100%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
+</div>
+<p>Here’s an animation of such a collision. You can play with it and we’ll come back to it in the next chapter. But the initial setup of the animation is the collision of two identical objects (hands?) with the same, but oppositely-directed velocities.</p>
+<iframe src="collision-simulation-standalone.html" width="100%" height="480px" style="border:none; border-radius: 8px;">
+</iframe>
+<div id="fig-billiard_same" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="80%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-billiard_same-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="screenshot_3784.png" id="fig-billiard_same" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-billiard_same-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.3
 </figcaption>
-<p><br></p>
 </figure>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3790.png" width="100%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-</figcaption>
-<p><br></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="screenshot_3784.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="screenshot_3786.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>CAPTION</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="screenshot_3790.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>CAPTION</figcaption>
+</figure>
+</div>
 </section>
-<section id="sec-decay" class="level3" data-number="4.4.2">
-<h3 data-number="4.4.2" class="anchored" data-anchor-id="sec-decay"><span class="header-section-number">4.4.2</span> Decay interactions</h3>
-<p>Here’s another kind, where “collision” might not be the best term, but the rules are the same. <span class="math display">\[\mathbf{C}\to \mathbf{A}+ \mathbf{B}\label{decay}\]</span> Here our initial state consists of one thing and the final state consists of two different things. The easiest reaction (that’s a good, inclusive term) to visualize is a firecracker, C, that explodes into two fragments, B and C. Where you had a thing now you’ve got two things.</p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3791.png" width="100%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-</figcaption>
-<p><br></p>
+<section id="sec-decay" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="sec-decay"><span class="header-section-number">4.5.2</span> Decay interactions</h3>
+<p>Here’s another kind, where “collision” might not be the best term, but the rules are the same. <span id="eq-decay"><span class="math display">\[\mathbf{C}\to \mathbf{A}+ \mathbf{B} \tag{4.4}\]</span></span> Here our initial state consists of one thing and the final state consists of two different things. The easiest reaction (that’s a good, inclusive term) to visualize is a firecracker, C, that explodes into two fragments, B and C. Where you had a thing now you’ve got two things.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="screenshot_3791.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>CAPTION</figcaption>
 </figure>
+</div>
 <p>While that everyday example makes sense, for our purposes, this signifies something quantum mechanical in which case the process is an interaction, but more specifically a <em>decay</em>. For example in particle physics there are many examples of an unstable particle that decays into two other particles. We’ll create examples using the [Feynman Diagram techniques])https://chipbrock.github.io/FeynmanDiagramsEveryone/). For example, a Higgs boson can decay into two electrons. So-called Pi meson can decay into an electron and a neutrino. It goes on.</p>
 <p>While I’m on to quantum mechanics processes, there’s another kind of scattering that’s a little odd.</p>
 </section>
-<section id="sec-production" class="level3" data-number="4.4.3">
-<h3 data-number="4.4.3" class="anchored" data-anchor-id="sec-production"><span class="header-section-number">4.4.3</span> Production interactions</h3>
-<p><span class="math display">\[\mathbf{A}+\mathbf{B}\to \mathbf{C}+\mathbf{D} \label{production}\]</span></p>
+<section id="sec-production" class="level3" data-number="4.5.3">
+<h3 data-number="4.5.3" class="anchored" data-anchor-id="sec-production"><span class="header-section-number">4.5.3</span> Production interactions</h3>
+<p><span id="eq-production"><span class="math display">\[\mathbf{A}+\mathbf{B}\to \mathbf{C}+\mathbf{D} \tag{4.5}\]</span></span></p>
 <p>Think about this. You throw a baseball, A, at a bat, B, and the result of that collision is a beagle and a refrigerator. Same rules apply here as to the previous interactions as to how the dog and the fridge move after the collision, but here and in the decay that “in between” state is where the real action is: the how sports equipment becomes a pet and a home appliance.</p>
 <p>So to the motion rules:</p>
-<figure style="text-align:center;" class="figure">
-<p><img src="screenshot_3793.png" width="100%" style="display:block; margin:auto;" class="figure-img"></p>
-<figcaption>
-</figcaption>
-<p><br></p>
-</figure>
-</section>
-</section>
-<section id="conservation-of-momentum" class="level2 page-columns page-full" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="conservation-of-momentum"><span class="header-section-number">4.5</span> Conservation of momentum</h2>
-<p>Impulse is the key. This idea comes from Isaac Newton, Christiaan Huygens, and Rene Descartes. Let’s give them all a hand: 👏 . And after many years of applause, I’ll bet you’re pretty good at it.</p>
-<p>A conserved quantity in physics is one that is unchanged during a time interval – typically a “before” and “after” some event. These statements are called “ConservationLaws.” There are many but the Conservation of Momentum is king of that hill.</p>
-<p>Let’s manage that clap so that our identical hands have the same speeds, but oppositely-directed. So their velocities are equal and opposite. That means that their momenta are related. Here’s a picture:</p>
-<div class="cell page-columns page-full" data-cap-location="margin">
-<div class="sourceCode cell-code" id="cb1" data-cap-location="margin"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #| out.width: “700px”  </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># #| column: screen</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"clap.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display page-columns page-full">
-<div id="fig-clap" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" data-cap-location="margin">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-clap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="clap.png" class="img-fluid figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-clap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.1: The before and after of a round of applause. Each hand has the same mass. Each hand approaches the other with the same velocity, but of course with opposite signs.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>Here’s the momentum for either one:</p>
-<p><span class="math display">\[p(\text{hand}) = m(\text{hand})\times v(\text{hand})\]</span>.</p>
-<p>They stopped dead…right in front of you. What happed to the momentum of the hands? Stopping dead is just a colorful way to say that they both lost their velocities and so they both lost their momenta.</p>
-<p>Look at this example in order to see how we construct an important argument based on this lauditory expression of appreciation for our Dutchman. It’s based on an analysis of the impluse and out of it falls…Newton’s third law.</p>
-<p>Here’s a way of organizing this. The total momentum of a system –&nbsp;is just the total of all of the momenta in that system. So our initial state’s momentum is:</p>
-<p><span class="math display">\[\begin{align*}p(\text{total}) &amp;=p(\text{left}) + p(\text{right}) \\                
-&amp;= p - p \\                
-&amp;= 0
-\end{align*}\]</span></p>
-<p>Do it. You’ll see that the result is that neither your right nor your left hand “win”…they stop in the middle, “dead”…which is our way of saying that the total momentum of that initial state is zero.</p>
-<p>The understanding of this comes from a careful analysis of the situation and what impulse really means. Watch the video for an analysis.</p>
-<p>EXAMPLE example_clap_1.md</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="screenshot_3780.png" class="img-fluid figure-img"></p>
-<figcaption>screenshot_3780</figcaption>
+<p><img src="screenshot_3793.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>CAPTION</figcaption>
 </figure>
 </div>
+</section>
+</section>
+<section id="section" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="section"><span class="header-section-number">4.6</span> </h2>
 
 
 </section>

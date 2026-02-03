@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collision Calculator</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            max-width: 950px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #faf8f3;
+        }
+        
+        .calculator {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 8px;
+        }
+        
+        h3 {
+            color: #4563a7;
+            margin: 0;
+            font-size: 16px;
+        }
+        
+        .diagram {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .object {
+            position: relative;
+        }
+        
+        .circle {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .obj1 { background-color: #4563a7; }
+        .obj2 { background-color: #ff6600; }
+        
+        .arrow {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 11px;
+            color: #666;
+        }
+        
+        .arrow-line {
+            width: 30px;
+            height: 2px;
+            background-color: #666;
+            position: relative;
+        }
+        
+        .arrow-line::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -3px;
+            width: 0;
+            height: 0;
+            border-left: 6px solid #666;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+        }
+        
+        .arrow-line.left {
+            transform: scaleX(-1);
+        }
+        
+        .unit-toggle {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .unit-toggle button {
+            background-color: #4563a7;
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        
+        .unit-toggle button.active {
+            background-color: #ff6600;
+        }
+        
+        .section {
+            margin-bottom: 15px;
+        }
+        
+        .data-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+            padding: 6px 10px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            gap: 15px;
+        }
+        
+        .data-row.total {
+            background-color: #e8f0ff;
+            font-weight: bold;
+            margin-top: 6px;
+        }
+        
+        .field {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .field label {
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        .field input {
+            width: 70px;
+            padding: 4px 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .field .unit {
+            color: #666;
+            font-size: 13px;
+        }
+        
+        .field .value {
+            font-size: 15px;
+            color: #4563a7;
+            font-weight: bold;
+            min-width: 60px;
+            text-align: right;
+        }
+        
+        .separator {
+            margin: 0 10px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="unit-toggle">
+            <button id="mks-btn" class="active" onclick="setUnits('mks')">MKS Units</button>
+            <button id="us-btn" onclick="setUnits('us')">US Units</button>
+        </div>
+        
+        <div class="section">
+            <div class="section-header">
+                <h3>Initial State</h3>
+                <div class="diagram">
+                    <div class="object">
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <div class="circle obj1">1</div>
+                            <div class="arrow">
+                                <div class="arrow-line"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="object">
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <div class="arrow">
+                                <div class="arrow-line left"></div>
+                            </div>
+                            <div class="circle obj2">2</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="data-row">
+                <div class="field">
+                    <label>\(m_0(1) =\)</label>
+                    <input type="number" id="m1" value="2" step="0.1" min="0.1" oninput="calculate()">
+                    <span class="unit" id="mass-unit-1">kg</span>
+                </div>
+                <span class="separator">|</span>
+                <div class="field">
+                    <label>\(v_0(1) =\)</label>
+                    <input type="number" id="v1" value="3" step="0.1" min="0" oninput="calculate()">
+                    <span class="unit" id="vel-unit-1">m/s</span>
+                </div>
+                <span class="separator">|</span>
+                <div class="field">
+                    <label>\(p_0(1) =\)</label>
+                    <span class="value" id="p1-initial">6.00</span>
+                    <span class="unit" id="momentum-unit-1">kg⋅m/s</span>
+                </div>
+                <span class="separator">|</span>
+                <div class="field">
+                    <label>\(KE_0(1) =\)</label>
+                    <span class="value" id="ke1-initial">9.00</span>
+                    <span class="unit">J</span>
+                </div>
+            </div>
+            
+            <div class="data-row">
+                <div class="field">
+                    <label>\(m_0(2) =\)</label>
+                    <input type="number" id="m2" value="1" step="0.1" min="0.1" oninput="calculate()">
+                    <span class="unit" id="mass-unit-2">kg</span>
+                </div>
+                <span class="separator">|</span>
+                <div class="field">
+                    <label>\(v_0(2) =\)</label>
+                    <input type="number" id="v2" value="-2" step="0.1" max="0" oninput="calculate()">
+                    <span class="unit" id="vel-unit-2">m/s</span>
+                </div>
+                <span class="separator">|</span>
+                <div class="field">
+                    <label>\(p_0(2) =\)</label>
+                    <span class="value" id="p2-initial">-2.00</span>
+                    <span class="unit" id="momentum-unit-2">kg⋅m/s</span>
+                </div>
+                <span class="separator">|</span>
+                <div class="field">
+                    <label>\(KE_0(2) =\)</label>
+                    <span class="value" id="ke2-initial">2.00</span>
+                    <span class="unit">J</span>
+                </div>
+            </div>
+            
+            <div class="data-row total">
+                <div class="field">
+                    <label>Total \(p_0 =\)</label>
+                    <span class="value" id="p-total-initial">4.00</span>
+                    <span class="unit" id="momentum-unit-total-1">kg⋅m/s</span>
+                </div>
+                <span class="separator">|</span>
+                <div class="field">
+                    <label>Total \(KE_0 =\)</label>
+                    <span class="value" id="ke-total-initial">11.00</span>
+                    <span class="unit">J</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-header">
+                <h3>Final State</h3>
+                <div class="diagram" id="final-diagram">
+                    <div class="object">
+                        <div style="display: flex; align-items: center; gap: 5px;" id="obj1-final">
+                            <div class="arrow">
+                                <div class="arrow-line left"></div>
+                            </div>
+                            <div class="circle obj1">1</div>
+                        </div>
+                    </div>
+                    <div class="object">
+                        <div style="display: flex; align-items: center; gap: 5px;" id="obj2-final">
+                            <div class="circle obj2">2</div>
+                            <div class="arrow">
+                                <div class="arrow-line"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="data-row">
+                <div class="field">
+                    <label>\(v(1) =\)</label>
+                    <span class="value" id="v1-final">-1.00</span>
+                    <span class="unit" id="vel-unit-3">m/s</span>
+                </div>
+                <span class="separator">|</span>
+                <div class="field">
+                    <label>\(p(1) =\)</label>
+                    <span class="value" id="p1-final">-2.00</span>
+                    <span class="unit" id="momentum-unit-3">kg⋅m/s</span>
+                </div>
+                <span class="separator">|</span>
+                <div class="field">
+                    <label>\(KE(1) =\)</label>
+                    <span class="value" id="ke1-final">2.00</span>
+                    <span class="unit">J</span>
+                </div>
+            </div>
+            
+            <div class="data-row">
+                <div class="field">
+                    <label>\(v(2) =\)</label>
+                    <span class="value" id="v2-final">6.00</span>
+                    <span class="unit" id="vel-unit-4">m/s</span>
+                </div>
+                <span class="separator">|</span>
+                <div class="field">
+                    <label>\(p(2) =\)</label>
+                    <span class="value" id="p2-final">6.00</span>
+                    <span class="unit" id="momentum-unit-4">kg⋅m/s</span>
+                </div>
+                <span class="separator">|</span>
+                <div class="field">
+                    <label>\(KE(2) =\)</label>
+                    <span class="value" id="ke2-final">9.00</span>
+                    <span class="unit">J</span>
+                </div>
+            </div>
+            
+            <div class="data-row total">
+                <div class="field">
+                    <label>Total \(p =\)</label>
+                    <span class="value" id="p-total-final">4.00</span>
+                    <span class="unit" id="momentum-unit-total-2">kg⋅m/s</span>
+                </div>
+                <span class="separator">|</span>
+                <div class="field">
+                    <label>Total \(KE =\)</label>
+                    <span class="value" id="ke-total-final">11.00</span>
+                    <span class="unit">J</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentUnits = 'mks';
+        
+        // Conversion factors
+        const KG_TO_LB = 2.20462;
+        const MS_TO_MPH = 2.23694;
+        const MS_TO_FTS = 3.28084;
+        
+        function setUnits(units) {
+            currentUnits = units;
+            
+            // Update button states
+            document.getElementById('mks-btn').classList.toggle('active', units === 'mks');
+            document.getElementById('us-btn').classList.toggle('active', units === 'us');
+            
+            // Update unit labels
+            if (units === 'mks') {
+                document.getElementById('mass-unit-1').textContent = 'kg';
+                document.getElementById('mass-unit-2').textContent = 'kg';
+                document.getElementById('vel-unit-1').textContent = 'm/s';
+                document.getElementById('vel-unit-2').textContent = 'm/s';
+                document.getElementById('vel-unit-3').textContent = 'm/s';
+                document.getElementById('vel-unit-4').textContent = 'm/s';
+                document.getElementById('momentum-unit-1').textContent = 'kg⋅m/s';
+                document.getElementById('momentum-unit-2').textContent = 'kg⋅m/s';
+                document.getElementById('momentum-unit-3').textContent = 'kg⋅m/s';
+                document.getElementById('momentum-unit-4').textContent = 'kg⋅m/s';
+                document.getElementById('momentum-unit-total-1').textContent = 'kg⋅m/s';
+                document.getElementById('momentum-unit-total-2').textContent = 'kg⋅m/s';
+            } else {
+                document.getElementById('mass-unit-1').textContent = 'lb';
+                document.getElementById('mass-unit-2').textContent = 'lb';
+                document.getElementById('vel-unit-1').textContent = 'mph';
+                document.getElementById('vel-unit-2').textContent = 'mph';
+                document.getElementById('vel-unit-3').textContent = 'mph';
+                document.getElementById('vel-unit-4').textContent = 'mph';
+                document.getElementById('momentum-unit-1').textContent = 'lb⋅ft/s';
+                document.getElementById('momentum-unit-2').textContent = 'lb⋅ft/s';
+                document.getElementById('momentum-unit-3').textContent = 'lb⋅ft/s';
+                document.getElementById('momentum-unit-4').textContent = 'lb⋅ft/s';
+                document.getElementById('momentum-unit-total-1').textContent = 'lb⋅ft/s';
+                document.getElementById('momentum-unit-total-2').textContent = 'lb⋅ft/s';
+            }
+            
+            calculate();
+        }
+        
+        function calculate() {
+            // Get input values
+            let m1 = parseFloat(document.getElementById('m1').value) || 0.1;
+            let v1 = parseFloat(document.getElementById('v1').value) || 0;
+            let m2 = parseFloat(document.getElementById('m2').value) || 0.1;
+            let v2 = parseFloat(document.getElementById('v2').value) || 0;
+            
+            // Enforce direction constraints
+            if (v1 < 0) {
+                document.getElementById('v1').value = 0;
+                v1 = 0;
+            }
+            if (v2 > 0) {
+                document.getElementById('v2').value = 0;
+                v2 = 0;
+            }
+            if (m1 < 0.1) {
+                document.getElementById('m1').value = 0.1;
+                m1 = 0.1;
+            }
+            if (m2 < 0.1) {
+                document.getElementById('m2').value = 0.1;
+                m2 = 0.1;
+            }
+            
+            // Convert to MKS if needed for calculations
+            let m1_calc = m1;
+            let m2_calc = m2;
+            let v1_calc = v1;
+            let v2_calc = v2;
+            
+            if (currentUnits === 'us') {
+                m1_calc = m1 / KG_TO_LB;
+                m2_calc = m2 / KG_TO_LB;
+                v1_calc = v1 / MS_TO_MPH;
+                v2_calc = v2 / MS_TO_MPH;
+            }
+            
+            // Calculate initial momenta and energies (in MKS)
+            const p1_initial_mks = m1_calc * v1_calc;
+            const p2_initial_mks = m2_calc * v2_calc;
+            const ke1_initial = 0.5 * m1_calc * v1_calc * v1_calc;
+            const ke2_initial = 0.5 * m2_calc * v2_calc * v2_calc;
+            const p_total_initial_mks = p1_initial_mks + p2_initial_mks;
+            const ke_total_initial = ke1_initial + ke2_initial;
+            
+            // Calculate final velocities for elastic collision
+            const v1_final_mks = ((m1_calc - m2_calc) * v1_calc + 2 * m2_calc * v2_calc) / (m1_calc + m2_calc);
+            const v2_final_mks = ((m2_calc - m1_calc) * v2_calc + 2 * m1_calc * v1_calc) / (m1_calc + m2_calc);
+            
+            // Calculate final momenta and energies (in MKS)
+            const p1_final_mks = m1_calc * v1_final_mks;
+            const p2_final_mks = m2_calc * v2_final_mks;
+            const ke1_final = 0.5 * m1_calc * v1_final_mks * v1_final_mks;
+            const ke2_final = 0.5 * m2_calc * v2_final_mks * v2_final_mks;
+            const p_total_final_mks = p1_final_mks + p2_final_mks;
+            const ke_total_final = ke1_final + ke2_final;
+            
+            // Convert momentum and velocity to display units if needed
+            let p1_initial_display, p2_initial_display, p_total_initial_display;
+            let p1_final_display, p2_final_display, p_total_final_display;
+            let v1_final_display, v2_final_display;
+            
+            if (currentUnits === 'us') {
+                p1_initial_display = p1_initial_mks * KG_TO_LB * MS_TO_FTS;
+                p2_initial_display = p2_initial_mks * KG_TO_LB * MS_TO_FTS;
+                p_total_initial_display = p_total_initial_mks * KG_TO_LB * MS_TO_FTS;
+                p1_final_display = p1_final_mks * KG_TO_LB * MS_TO_FTS;
+                p2_final_display = p2_final_mks * KG_TO_LB * MS_TO_FTS;
+                p_total_final_display = p_total_final_mks * KG_TO_LB * MS_TO_FTS;
+                v1_final_display = v1_final_mks * MS_TO_MPH;
+                v2_final_display = v2_final_mks * MS_TO_MPH;
+            } else {
+                p1_initial_display = p1_initial_mks;
+                p2_initial_display = p2_initial_mks;
+                p_total_initial_display = p_total_initial_mks;
+                p1_final_display = p1_final_mks;
+                p2_final_display = p2_final_mks;
+                p_total_final_display = p_total_final_mks;
+                v1_final_display = v1_final_mks;
+                v2_final_display = v2_final_mks;
+            }
+            
+            // Update all outputs
+            document.getElementById('p1-initial').textContent = p1_initial_display.toFixed(2);
+            document.getElementById('p2-initial').textContent = p2_initial_display.toFixed(2);
+            document.getElementById('ke1-initial').textContent = ke1_initial.toFixed(2);
+            document.getElementById('ke2-initial').textContent = ke2_initial.toFixed(2);
+            document.getElementById('p-total-initial').textContent = p_total_initial_display.toFixed(2);
+            document.getElementById('ke-total-initial').textContent = ke_total_initial.toFixed(2);
+            
+            document.getElementById('v1-final').textContent = v1_final_display.toFixed(2);
+            document.getElementById('v2-final').textContent = v2_final_display.toFixed(2);
+            document.getElementById('p1-final').textContent = p1_final_display.toFixed(2);
+            document.getElementById('p2-final').textContent = p2_final_display.toFixed(2);
+            document.getElementById('ke1-final').textContent = ke1_final.toFixed(2);
+            document.getElementById('ke2-final').textContent = ke2_final.toFixed(2);
+            document.getElementById('p-total-final').textContent = p_total_final_display.toFixed(2);
+            document.getElementById('ke-total-final').textContent = ke_total_final.toFixed(2);
+            
+            // Update final state diagram arrows based on velocity signs
+            const obj1Final = document.getElementById('obj1-final');
+            const obj2Final = document.getElementById('obj2-final');
+            
+            // Object 1: if v1_final_mks > 0, arrow on right; if < 0, arrow on left
+            if (v1_final_mks >= 0) {
+                obj1Final.innerHTML = `
+                    <div class="circle obj1">1</div>
+                    <div class="arrow">
+                        <div class="arrow-line"></div>
+                    </div>
+                `;
+            } else {
+                obj1Final.innerHTML = `
+                    <div class="arrow">
+                        <div class="arrow-line left"></div>
+                    </div>
+                    <div class="circle obj1">1</div>
+                `;
+            }
+            
+            // Object 2: if v2_final_mks > 0, arrow on right; if < 0, arrow on left
+            if (v2_final_mks >= 0) {
+                obj2Final.innerHTML = `
+                    <div class="circle obj2">2</div>
+                    <div class="arrow">
+                        <div class="arrow-line"></div>
+                    </div>
+                `;
+            } else {
+                obj2Final.innerHTML = `
+                    <div class="arrow">
+                        <div class="arrow-line left"></div>
+                    </div>
+                    <div class="circle obj2">2</div>
+                `;
+            }
+        }
+        
+        // Initial calculation
+        calculate();
+    </script>
+</body>
+</html>

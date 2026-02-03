@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decay: Momentum Conservation</title>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #fafafa;
+        }
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        .slider-container {
+            margin: 8px 0;
+        }
+        .slider-container label {
+            display: block;
+            margin-bottom: 2px;
+            font-weight: 500;
+            color: #333;
+            font-size: 13px;
+        }
+        input[type="range"] {
+            width: 100%;
+            height: 2px;
+            border-radius: 1px;
+            background: #999;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #555;
+            cursor: pointer;
+            border: none;
+            margin-top: -7px;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #555;
+            cursor: pointer;
+            border: none;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 2px;
+            background: #999;
+            border-radius: 1px;
+        }
+        input[type="range"]::-moz-range-track {
+            width: 100%;
+            height: 2px;
+            background: #999;
+            border-radius: 1px;
+        }
+        input[type="range"]::-moz-range-progress {
+            background: #999;
+            height: 2px;
+            border-radius: 1px;
+        }
+        input[type="range"]::-ms-track {
+            width: 100%;
+            height: 2px;
+            background: transparent;
+            border-color: transparent;
+            color: transparent;
+        }
+        input[type="range"]::-ms-fill-lower {
+            background: #999;
+            border-radius: 1px;
+        }
+        input[type="range"]::-ms-fill-upper {
+            background: #999;
+            border-radius: 1px;
+        }
+        input[type="range"]::-ms-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #555;
+            cursor: pointer;
+            border: none;
+        }
+        .value-display {
+            display: inline-block;
+            min-width: 40px;
+            text-align: right;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 13px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        button:active {
+            transform: scale(0.98);
+        }
+        .bottom-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .button-container {
+            flex-shrink: 0;
+        }
+        .physics-container {
+            flex-grow: 1;
+            display: flex;
+            gap: 20px;
+            font-size: 11px;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        .purple-text {
+            color: #9C27B0;
+        }
+        .blue-text {
+            color: #4563a7;
+        }
+        .red-text {
+            color: #ff6600;
+        }
+        #simulation {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <div class="slider-container">
+                <label>Initial Mass: <span class="value-display" id="mass-initial-display">20</span></label>
+                <input type="range" id="mass-initial" min="2" max="38" step="1" value="20">
+            </div>
+            <div class="slider-container">
+                <label>Initial Velocity (→): <span class="value-display" id="vel-initial-display">0.0</span></label>
+                <input type="range" id="velocity-initial" min="0" max="10" step="0.5" value="0">
+            </div>
+            <div class="slider-container">
+                <label>Mass 1: <span class="value-display" id="mass1-display">10</span></label>
+                <input type="range" id="mass1" min="1" max="37" step="1" value="10">
+            </div>
+            <div class="slider-container">
+                <label>Mass 2 (auto): <span class="value-display" id="mass2-display">10</span></label>
+            </div>
+            <div class="slider-container">
+                <label>Velocity 1 (→): <span class="value-display" id="vel1-display">5.0</span></label>
+                <input type="range" id="velocity1" min="0.5" max="10" step="0.5" value="5">
+            </div>
+        </div>
+        <div id="simulation"></div>
+        <div class="bottom-row">
+            <div class="button-container">
+                <button id="runButton">Run</button>
+                <button id="stopButton" style="margin-top: 5px; background: #d32f2f;">Stop</button>
+            </div>
+            <div class="physics-container">
+                <div id="physics-initial"></div>
+                <div id="physics-final"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Calculate v2 from momentum conservation (Q only shown after running)
+        function updateVelocity2AndEnergy() {
+            const M = parseInt(document.getElementById('mass-initial').value);
+            const V = parseFloat(document.getElementById('velocity-initial').value);
+            const m1 = parseInt(document.getElementById('mass1').value);
+            const m2 = M - m1;
+            const v1 = parseFloat(document.getElementById('velocity1').value);
+            
+            // From momentum conservation: M*V = m1*v1 + m2*v2
+            // Therefore: v2 = (M*V - m1*v1) / m2
+            const v2 = (M*V - m1*v1) / m2;
+            
+            // Update display with only v2 (Q will be shown after Run)
+            const arrow2 = v2 >= 0 ? '→' : '←';
+            
+            // Display after velocity 1
+            const vel1Container = document.querySelector('.slider-container:nth-child(5)');
+            let infoDiv = document.getElementById('velocity-info');
+            if (!infoDiv) {
+                infoDiv = document.createElement('div');
+                infoDiv.id = 'velocity-info';
+                infoDiv.style.fontSize = '11px';
+                infoDiv.style.marginTop = '10px';
+                vel1Container.appendChild(infoDiv);
+            }
+            infoDiv.innerHTML = `<span style="color: #ff6600;">Velocity 2 (${arrow2}): ${Math.abs(v2).toFixed(2)}</span>`;
+        }
+
+        // Update displays when sliders change
+        document.getElementById('mass-initial').addEventListener('input', function(e) {
+            const massInitial = parseInt(e.target.value);
+            document.getElementById('mass-initial-display').textContent = massInitial;
+            
+            // Update mass1 max value
+            const mass1Slider = document.getElementById('mass1');
+            const currentMass1 = parseInt(mass1Slider.value);
+            
+            mass1Slider.max = massInitial - 1;
+            
+            if (currentMass1 >= massInitial) {
+                mass1Slider.value = massInitial - 1;
+                document.getElementById('mass1-display').textContent = massInitial - 1;
+            }
+            
+            // Auto-calculate mass2 = massInitial - mass1
+            const mass1 = parseInt(mass1Slider.value);
+            const mass2 = massInitial - mass1;
+            document.getElementById('mass2-display').textContent = mass2;
+            
+            updateVelocity2AndEnergy();
+        });
+        
+        document.getElementById('velocity-initial').addEventListener('input', function(e) {
+            document.getElementById('vel-initial-display').textContent = parseFloat(e.target.value).toFixed(1);
+            updateVelocity2AndEnergy();
+        });
+        
+        document.getElementById('mass1').addEventListener('input', function(e) {
+            const massInitial = parseInt(document.getElementById('mass-initial').value);
+            const mass1 = parseInt(e.target.value);
+            const mass2 = massInitial - mass1;
+            
+            document.getElementById('mass1-display').textContent = mass1;
+            document.getElementById('mass2-display').textContent = mass2;
+            updateVelocity2AndEnergy();
+        });
+        
+        document.getElementById('velocity1').addEventListener('input', function(e) {
+            document.getElementById('vel1-display').textContent = parseFloat(e.target.value).toFixed(1);
+            updateVelocity2AndEnergy();
+        });
+
+        // Initialize velocity and energy display
+        updateVelocity2AndEnergy();
+
+        // Set up SVG
+        const width = 750;
+        const height = 200;
+        const svg = d3.select('#simulation')
+            .append('svg')
+            .attr('width', width)
+            .attr('height', height);
+
+        // Define arrowheads
+        svg.append('defs').selectAll('marker')
+            .data(['arrowpurple', 'arrowblue', 'arrowred'])
+            .enter().append('marker')
+            .attr('id', d => d)
+            .attr('viewBox', '0 -5 10 10')
+            .attr('refX', 8)
+            .attr('refY', 0)
+            .attr('markerWidth', 6)
+            .attr('markerHeight', 6)
+            .attr('orient', 'auto')
+            .append('path')
+            .attr('d', 'M0,-5L10,0L0,5')
+            .attr('fill', d => d === 'arrowpurple' ? '#9C27B0' : d === 'arrowblue' ? '#4563a7' : '#ff6600');
+
+        // Create initial object
+        const initialObj = svg.append('circle')
+            .attr('r', 20)
+            .attr('fill', '#9C27B0')
+            .attr('cx', width/2)
+            .attr('cy', height/2);
+
+        // Create fragment objects (initially hidden)
+        const frag1 = svg.append('circle')
+            .attr('r', 20)
+            .attr('fill', '#4563a7')
+            .attr('cx', width/2)
+            .attr('cy', height/2)
+            .attr('opacity', 0);
+
+        const frag2 = svg.append('circle')
+            .attr('r', 20)
+            .attr('fill', '#ff6600')
+            .attr('cx', width/2)
+            .attr('cy', height/2)
+            .attr('opacity', 0);
+
+        // Create velocity arrows
+        const arrowInitial = svg.append('line')
+            .attr('stroke', '#9C27B0')
+            .attr('stroke-width', 3)
+            .attr('marker-end', 'url(#arrowpurple)')
+            .attr('y1', height/2)
+            .attr('y2', height/2)
+            .attr('opacity', 0);
+
+        const arrow1 = svg.append('line')
+            .attr('stroke', '#4563a7')
+            .attr('stroke-width', 3)
+            .attr('marker-end', 'url(#arrowblue)')
+            .attr('y1', height/2)
+            .attr('y2', height/2)
+            .attr('opacity', 0);
+
+        const arrow2 = svg.append('line')
+            .attr('stroke', '#ff6600')
+            .attr('stroke-width', 3)
+            .attr('marker-end', 'url(#arrowred)')
+            .attr('y1', height/2)
+            .attr('y2', height/2)
+            .attr('opacity', 0);
+
+        // Create labels
+        const labelInitial = svg.append('text')
+            .attr('y', height/2)
+            .attr('dy', 6)
+            .attr('text-anchor', 'middle')
+            .attr('fill', 'white')
+            .attr('font-size', '14px')
+            .attr('font-weight', 'bold')
+            .attr('x', width/2)
+            .text('0');
+
+        const label1 = svg.append('text')
+            .attr('y', height/2)
+            .attr('dy', 6)
+            .attr('text-anchor', 'middle')
+            .attr('fill', 'white')
+            .attr('font-size', '14px')
+            .attr('font-weight', 'bold')
+            .text('1')
+            .attr('opacity', 0);
+
+        const label2 = svg.append('text')
+            .attr('y', height/2)
+            .attr('dy', 6)
+            .attr('text-anchor', 'middle')
+            .attr('fill', 'white')
+            .attr('font-size', '14px')
+            .attr('font-weight', 'bold')
+            .text('2')
+            .attr('opacity', 0);
+
+        // Create velocity text above objects
+        const velInitialText = svg.append('text')
+            .attr('y', height/2 - 30)
+            .attr('text-anchor', 'middle')
+            .attr('fill', '#9C27B0')
+            .attr('font-size', '12px')
+            .attr('font-weight', 'bold')
+            .attr('opacity', 0);
+
+        const vel1Text = svg.append('text')
+            .attr('y', height/2 - 30)
+            .attr('text-anchor', 'middle')
+            .attr('fill', '#4563a7')
+            .attr('font-size', '12px')
+            .attr('font-weight', 'bold')
+            .attr('opacity', 0);
+
+        const vel2Text = svg.append('text')
+            .attr('y', height/2 - 30)
+            .attr('text-anchor', 'middle')
+            .attr('fill', '#ff6600')
+            .attr('font-size', '12px')
+            .attr('font-weight', 'bold')
+            .attr('opacity', 0);
+
+        const physicsInitialDiv = d3.select('#physics-initial');
+        const physicsFinalDiv = d3.select('#physics-final');
+
+        let isRunning = false;
+
+        document.getElementById('runButton').addEventListener('click', function() {
+            if (!isRunning) {
+                isRunning = true;
+                runSimulation();
+            }
+        });
+
+        document.getElementById('stopButton').addEventListener('click', function() {
+            isRunning = false;
+            
+            // Stop all transitions
+            svg.selectAll('*').interrupt();
+            
+            // Reset to initial state
+            const massInitial = parseInt(document.getElementById('mass-initial').value);
+            const velInitial = parseFloat(document.getElementById('velocity-initial').value);
+            const mass1 = parseInt(document.getElementById('mass1').value);
+            const mass2 = massInitial - mass1;  // Calculate mass2 from mass conservation
+            
+            const radius1 = Math.sqrt(mass1) * 5;
+            const radius2 = Math.sqrt(mass2) * 5;
+            const radiusInitial = Math.sqrt(massInitial) * 5;
+            
+            initialObj.attr('r', radiusInitial).attr('cx', width/2).attr('cy', height/2).attr('opacity', 1);
+            frag1.attr('r', radius1).attr('opacity', 0);
+            frag2.attr('r', radius2).attr('opacity', 0);
+            
+            labelInitial.attr('x', width/2).attr('opacity', 1);
+            label1.attr('opacity', 0);
+            label2.attr('opacity', 0);
+            
+            velInitialText.attr('x', width/2).text(`v=${velInitial.toFixed(1)}`).attr('opacity', velInitial !== 0 ? 1 : 0);
+            vel1Text.attr('opacity', 0);
+            vel2Text.attr('opacity', 0);
+            
+            arrowInitial.attr('x1', width/2 + radiusInitial)
+                .attr('x2', width/2 + radiusInitial + velInitial * 10)
+                .attr('visibility', velInitial !== 0 ? 'visible' : 'hidden')
+                .attr('opacity', velInitial !== 0 ? 1 : 0);
+            arrow1.attr('opacity', 0);
+            arrow2.attr('opacity', 0);
+            
+            physicsInitialDiv.html('');
+            physicsFinalDiv.html('');
+        });
+
+        function runSimulation() {
+            // Stop any running animation first
+            svg.selectAll('*').interrupt();
+            
+            const massInitial = parseInt(document.getElementById('mass-initial').value);
+            const velInitial = parseFloat(document.getElementById('velocity-initial').value);
+            const mass1 = parseInt(document.getElementById('mass1').value);
+            const mass2 = massInitial - mass1;  // Calculate mass2 from mass conservation
+            const v1 = parseFloat(document.getElementById('velocity1').value);
+            
+            // Calculate v2 from momentum conservation
+            const v2 = (massInitial * velInitial - mass1 * v1) / mass2;
+            
+            // Calculate Q from energy conservation
+            const ke_initial = 0.5 * massInitial * velInitial * velInitial;
+            const ke_final = 0.5 * mass1 * v1 * v1 + 0.5 * mass2 * v2 * v2;
+            const Q = ke_final - ke_initial;
+            
+            const radius1 = Math.sqrt(mass1) * 5;
+            const radius2 = Math.sqrt(mass2) * 5;
+            const radiusInitial = Math.sqrt(massInitial) * 5;
+            
+            // Initial and final momentum
+            const p_initial = massInitial * velInitial;
+            const p1 = mass1 * v1;
+            const p2 = mass2 * v2;
+            const p_total = p1 + p2;
+            
+            // Display initial conditions with LaTeX
+            const initialInfo = [
+                '<strong style="color: darkgreen;">INITIAL:</strong>',
+                `<span class="purple-text">Parent: \\(m=${massInitial}\\), \\(v=${velInitial.toFixed(1)}\\) → \\(p=${p_initial.toFixed(2)}\\), \\(KE=${ke_initial.toFixed(2)}\\)</span>`
+            ];
+            
+            physicsInitialDiv.html(initialInfo.join('<br>'));
+            MathJax.typesetPromise([document.getElementById('physics-initial')]);
+            
+            // Reset sizes and positions
+            initialObj.attr('r', radiusInitial).attr('cx', width/2).attr('opacity', 1);
+            frag1.attr('r', radius1).attr('cx', width/2).attr('opacity', 0);
+            frag2.attr('r', radius2).attr('cx', width/2).attr('opacity', 0);
+            
+            labelInitial.attr('x', width/2).attr('opacity', 1);
+            label1.attr('x', width/2).attr('opacity', 0);
+            label2.attr('x', width/2).attr('opacity', 0);
+            
+            velInitialText.attr('x', width/2).text(`v=${velInitial.toFixed(1)}`).attr('opacity', velInitial !== 0 ? 1 : 0);
+            vel1Text.attr('x', width/2).attr('opacity', 0);
+            vel2Text.attr('x', width/2).attr('opacity', 0);
+            
+            arrowInitial.attr('x1', width/2 + radiusInitial)
+                .attr('x2', width/2 + radiusInitial + velInitial * 10)
+                .attr('y1', height/2)
+                .attr('y2', height/2)
+                .attr('visibility', velInitial !== 0 ? 'visible' : 'hidden')
+                .attr('opacity', velInitial !== 0 ? 1 : 0);
+            arrow1.attr('opacity', 0);
+            arrow2.attr('opacity', 0);
+            
+            // Animation timing
+            const travelTime = velInitial === 0 ? 0 : 3000; // Time for initial object to travel
+            const decayTime = 1000; // Flash duration
+            const postTime = 20000; // Flight time
+            
+            // Calculate where decay happens
+            const travelDistance = velInitial * travelTime / 100;
+            const decayPos = width/2 + travelDistance;
+            
+            // If initial object is moving, animate it first
+            if (velInitial !== 0) {
+                initialObj.transition()
+                    .ease(d3.easeLinear)
+                    .duration(travelTime)
+                    .attr('cx', decayPos)
+                    .on('end', function() {
+                        // Flash and disappear
+                        d3.select(this).transition()
+                            .duration(decayTime)
+                            .attr('opacity', 0);
+                        
+                        startDecay();
+                    });
+                
+                labelInitial.transition()
+                    .ease(d3.easeLinear)
+                    .duration(travelTime)
+                    .attr('x', decayPos)
+                    .on('end', function() {
+                        d3.select(this).transition()
+                            .duration(decayTime)
+                            .attr('opacity', 0);
+                    });
+                
+                velInitialText.transition()
+                    .ease(d3.easeLinear)
+                    .duration(travelTime)
+                    .attr('x', decayPos)
+                    .on('end', function() {
+                        d3.select(this).transition()
+                            .duration(decayTime)
+                            .attr('opacity', 0);
+                    });
+                
+                arrowInitial.transition()
+                    .ease(d3.easeLinear)
+                    .duration(travelTime)
+                    .attr('x1', decayPos + radiusInitial)
+                    .attr('x2', decayPos + radiusInitial + velInitial * 10)
+                    .on('end', function() {
+                        d3.select(this).transition()
+                            .duration(decayTime)
+                            .attr('opacity', 0);
+                    });
+            } else {
+                // If stationary, just decay immediately
+                setTimeout(() => {
+                    initialObj.transition()
+                        .duration(decayTime)
+                        .attr('opacity', 0);
+                    
+                    labelInitial.transition()
+                        .duration(decayTime)
+                        .attr('opacity', 0);
+                    
+                    startDecay();
+                }, 0);
+            }
+            
+            function startDecay() {
+                // Show fragments
+                frag1.attr('cx', decayPos)
+                    .transition()
+                    .duration(decayTime)
+                    .attr('opacity', 1)
+                    .on('end', function() {
+                        // Fragment 1 flies right, stopping at edge
+                        const maxDistance1 = width - 50 - decayPos; // Leave margin at edge
+                        const naturalDistance1 = v1 * postTime / 10;
+                        const distance1 = Math.min(naturalDistance1, maxDistance1);
+                        const finalPos1 = decayPos + distance1;
+                        const actualDuration1 = naturalDistance1 > maxDistance1 ? (distance1 / naturalDistance1) * postTime : postTime;
+                        
+                        d3.select(this).transition()
+                            .ease(d3.easeLinear)
+                            .duration(actualDuration1)
+                            .attr('cx', finalPos1);
+                    });
+                
+                frag2.attr('cx', decayPos)
+                    .transition()
+                    .duration(decayTime)
+                    .attr('opacity', 1)
+                    .on('end', function() {
+                        // Fragment 2 flies left, stopping at edge
+                        const maxDistance2 = decayPos - 50; // Leave margin at edge
+                        const naturalDistance2 = Math.abs(v2 * postTime / 10);
+                        const distance2 = Math.min(naturalDistance2, maxDistance2);
+                        const finalPos2 = decayPos - distance2;
+                        const actualDuration2 = naturalDistance2 > maxDistance2 ? (distance2 / naturalDistance2) * postTime : postTime;
+                        
+                        d3.select(this).transition()
+                            .ease(d3.easeLinear)
+                            .duration(actualDuration2)
+                            .attr('cx', finalPos2);
+                    });
+                
+                // Show labels
+                label1.attr('x', decayPos)
+                    .transition()
+                    .duration(decayTime)
+                    .attr('opacity', 1)
+                    .on('end', function() {
+                        const maxDistance1 = width - 50 - decayPos;
+                        const naturalDistance1 = v1 * postTime / 10;
+                        const distance1 = Math.min(naturalDistance1, maxDistance1);
+                        const finalPos1 = decayPos + distance1;
+                        const actualDuration1 = naturalDistance1 > maxDistance1 ? (distance1 / naturalDistance1) * postTime : postTime;
+                        
+                        d3.select(this).transition()
+                            .ease(d3.easeLinear)
+                            .duration(actualDuration1)
+                            .attr('x', finalPos1);
+                    });
+                
+                label2.attr('x', decayPos)
+                    .transition()
+                    .duration(decayTime)
+                    .attr('opacity', 1)
+                    .on('end', function() {
+                        const maxDistance2 = decayPos - 50;
+                        const naturalDistance2 = Math.abs(v2 * postTime / 10);
+                        const distance2 = Math.min(naturalDistance2, maxDistance2);
+                        const finalPos2 = decayPos - distance2;
+                        const actualDuration2 = naturalDistance2 > maxDistance2 ? (distance2 / naturalDistance2) * postTime : postTime;
+                        
+                        d3.select(this).transition()
+                            .ease(d3.easeLinear)
+                            .duration(actualDuration2)
+                            .attr('x', finalPos2);
+                    });
+                
+                // Show velocity text
+                vel1Text.attr('x', decayPos)
+                    .text(`v=${v1.toFixed(1)}`)
+                    .transition()
+                    .duration(decayTime)
+                    .attr('opacity', 1)
+                    .on('end', function() {
+                        const maxDistance1 = width - 50 - decayPos;
+                        const naturalDistance1 = v1 * postTime / 10;
+                        const distance1 = Math.min(naturalDistance1, maxDistance1);
+                        const finalPos1 = decayPos + distance1;
+                        const actualDuration1 = naturalDistance1 > maxDistance1 ? (distance1 / naturalDistance1) * postTime : postTime;
+                        
+                        d3.select(this).transition()
+                            .ease(d3.easeLinear)
+                            .duration(actualDuration1)
+                            .attr('x', finalPos1);
+                    });
+                
+                vel2Text.attr('x', decayPos)
+                    .text(`v=${v2.toFixed(2)}`)
+                    .transition()
+                    .duration(decayTime)
+                    .attr('opacity', 1)
+                    .on('end', function() {
+                        const maxDistance2 = decayPos - 50;
+                        const naturalDistance2 = Math.abs(v2 * postTime / 10);
+                        const distance2 = Math.min(naturalDistance2, maxDistance2);
+                        const finalPos2 = decayPos - distance2;
+                        const actualDuration2 = naturalDistance2 > maxDistance2 ? (distance2 / naturalDistance2) * postTime : postTime;
+                        
+                        d3.select(this).transition()
+                            .ease(d3.easeLinear)
+                            .duration(actualDuration2)
+                            .attr('x', finalPos2);
+                    });
+                
+                // Show arrows
+                arrow1.attr('x1', decayPos + radius1)
+                    .attr('x2', decayPos + radius1 + v1 * 10)
+                    .transition()
+                    .duration(decayTime)
+                    .attr('opacity', 1)
+                    .on('end', function() {
+                        const maxDistance1 = width - 50 - decayPos;
+                        const naturalDistance1 = v1 * postTime / 10;
+                        const distance1 = Math.min(naturalDistance1, maxDistance1);
+                        const finalPos1 = decayPos + distance1;
+                        const actualDuration1 = naturalDistance1 > maxDistance1 ? (distance1 / naturalDistance1) * postTime : postTime;
+                        
+                        d3.select(this).transition()
+                            .ease(d3.easeLinear)
+                            .duration(actualDuration1)
+                            .attr('x1', finalPos1 + radius1)
+                            .attr('x2', finalPos1 + radius1 + v1 * 10);
+                        
+                        // Display final conditions
+                        setTimeout(() => {
+                            const ke1_final = 0.5 * mass1 * v1 * v1;
+                            const ke2_final = 0.5 * mass2 * v2 * v2;
+                            const ke_total_final = ke1_final + ke2_final;
+                            
+                            const qColor = Q >= 0 ? '#d32f2f' : '#4CAF50';
+                            const qLabel = Q >= 0 ? 'Energy released' : 'Energy absorbed';
+                            
+                            const finalInfo = [
+                                '<strong style="color: darkgreen;">FINAL:</strong>',
+                                `<span class="blue-text">Frag 1: \\(m=${mass1}\\), \\(v=${v1.toFixed(2)}\\) → \\(p=${p1.toFixed(2)}\\), \\(KE=${ke1_final.toFixed(2)}\\)</span>`,
+                                `<span class="red-text">Frag 2: \\(m=${mass2}\\), \\(v=${v2.toFixed(2)}\\) → \\(p=${p2.toFixed(2)}\\), \\(KE=${ke2_final.toFixed(2)}\\)</span>`,
+                                `<strong style="color: darkgreen;">Total: \\(p=${p_total.toFixed(2)}\\), \\(KE=${ke_total_final.toFixed(2)}\\)</strong>`,
+                                `<strong style="color: ${qColor};">${qLabel}: \\(Q=${Math.abs(Q).toFixed(2)}\\)</strong>`
+                            ];
+                            
+                            physicsFinalDiv.html(finalInfo.join('<br>'));
+                            MathJax.typesetPromise([document.getElementById('physics-final')]);
+                            
+                            // Reset the running flag when animation completes
+                            isRunning = false;
+                        }, 200);
+                    });
+                
+                arrow2.attr('x1', decayPos - radius2)
+                    .attr('x2', decayPos - radius2 + v2 * 10)
+                    .transition()
+                    .duration(decayTime)
+                    .attr('opacity', 1)
+                    .on('end', function() {
+                        const maxDistance2 = decayPos - 50;
+                        const naturalDistance2 = Math.abs(v2 * postTime / 10);
+                        const distance2 = Math.min(naturalDistance2, maxDistance2);
+                        const finalPos2 = decayPos - distance2;
+                        const actualDuration2 = naturalDistance2 > maxDistance2 ? (distance2 / naturalDistance2) * postTime : postTime;
+                        
+                        d3.select(this).transition()
+                            .ease(d3.easeLinear)
+                            .duration(actualDuration2)
+                            .attr('x1', finalPos2 - radius2)
+                            .attr('x2', finalPos2 - radius2 + v2 * 10);
+                    });
+                
+            } // End of startDecay function
+        }
+    </script>
+</body>
+</html>

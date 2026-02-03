@@ -11,29 +11,30 @@ draft: false
 
 # Skinny Motion, Speed, and Acceleration
 
-This is the first of three outlines of some basic physics ideas so that I can refer to them in other posts. If you'd like more, including history and examples, then visit [full textbook](https://qstbb.pa.msu.edu/storage/ISP220_fall2020/QS&BB2020/intro.html) for a textbook-level presentation. If you only need the basic simple equations, they're here. If you'd like some explanation, that's next!
+Skinny Physics is meant to be a lightweight (skinny, after all) presentation of some physics that might help you appreciate some of the posts in **QS&BB.** Maybe you've had a course in your past and maybe not, so this chapter has some bare bones (skinny, after all) **facts about motion**.
 
-Units. Sorry. In QS&BB we won't care about English versus metric units but for this motion review we'll sometimes have to convert. I'll do it for you but you can check me at places like [unitjuggler](https://www.unitjuggler.com/index.html)...or often just Google.
+So: three sections: (1) Some ideas you might not have had in a previous course. (2) A listing of some motion facts. And, (3) a bit of gentle background behind those facts. If you'd like more, then visit the [full textbook](https://qstbb.pa.msu.edu/storage/ISP220_fall2020/QS&BB2020/intro.html) presentation.
 
-## Different way
+## Now for something different:
 
 ::: {.callout-important icon="false"}
-🫵 Even if you know some of the basics of velocity and acceleration, you need to be comfortable with spacetime diagrams in @sec-spacetimediagrams ! That's how we'll pursue Feynman Diagrams.
+🫵 What's different is that even if you know some of the basics of velocity and acceleration, you need to be comfortable with spacetime diagrams in @sec-spacetimediagrams ! That's how we'll pursue Feynman Diagrams.
 :::
 
-## Just the facts:
+## Just some motion facts:
 
 **changes in something**
 
 I'll use:
 
--   $x_0$ to be where we start in distance
--   $x$ to be where we end up (sometimes, I'll be explicit and say "$x_f$" for "final.")
--   We’ll use the Greek symbol Delta, $\Delta$ to mean “change of”…this will come up a lot.
--   change in position is $\Delta x = x_{\text{ended up}}-x_{\text{where we started}} = x-x_0$
--   same goes for time, from $\Delta t= t_{\text{ended up}}-t_{\text{when we started}} = t - t_0$
--   symbol for average: $<A>$
--   symbol for the (nearly) constant acceleration due to gravity close to the Earth's surface: $g$
+1.  $x_0$ to be where we start in distance
+2.  $x$ to be where we end up (sometimes, I'll be explicit and say "$x_f$" for "final.")
+3.  We’ll use the Greek symbol Delta, $\Delta$ to mean “change of”…this will come up a lot.
+    -   Change always means: the end minus the beginning.
+4.  a change in position is $\Delta x = x_{\text{ended up}}-x_{\text{where we started}} = x-x_0$
+5.  same goes for time, from $\Delta t= t_{\text{ended up}}-t_{\text{when we started}} = t - t_0$
+6.  symbol for average: $<A>$
+7.  symbol for the (nearly) constant acceleration due to gravity close to the Earth's surface: $g$, "little g"
 
 **average velocity**
 
@@ -63,19 +64,19 @@ $$
 
 **definition of acceleration**
 
-Not restricted to constant acceleration: $$
-a = \frac{v-v_0}{t-t_0}
-$$
+Not restricted to constant acceleration:
 
-**Velocity for constant acceleration after given time** $$
+$$
+a = \frac{v-v_0}{t-t_0}
+$$ **Velocity for constant acceleration after given time**
+
+$$
 v = v_0 +at
 $$
 
 **Distance traveled for constant acceleration** $$
 x = x_0 + v_0t + \dfrac{1}{2} at^2
-$$
-
-**Velocity for constant acceleration after given distance** $$
+$$ **Velocity for constant acceleration after given distance** $$
 v^2   = v_0^2 + 2ax
 $$
 
@@ -105,7 +106,7 @@ $$
 
 ### Getting From Here to There: At Constant Speed
 
-Whether it’s runners on a track, the cosmic rays piercing us all the time, orbiting planets, electrons in a wire, electromagnetic waves, quark wavefunctions inside a proton, electrons and holes in a semiconductor, or the stretching of spacetime itself. Everything is about "motion." Motion is both the easiest and the hardest concept in physics and so much of what comes for us will constantly stretch at ideas about what motion is and how we can describe it. So we need to start at the beginning. Because:
+Whether it’s runners on a track, the cosmic rays piercing us all the time, orbiting planets, electrons in a wire, electromagnetic waves, quark wavefunctions inside a proton, electrons and holes in a semiconductor, or the stretching of spacetime itself. **Everything is about "motion."** Motion is both the easiest and the hardest concept in physics and so much of what comes for us will constantly stretch at ideas about what motion is and how we can describe it. So we need to start at the beginning. Because:
 
 ::: {.callout-note icon="false"}
 📝 motion: it’s everywhere
@@ -119,7 +120,7 @@ But at its most basic, our physics will be all about how to get from <em>here</e
 
 Characterizing motion is simple in principle! You need two things:
 
-![The complete set of tools to characterize motion.](screenshot_3644.png){#fig-LABEL fig-align="center" width="80%"}
+![The complete set of tools to characterize motion.](screenshot_3644.png){fig-align="center" width="80%"}
 
 And for everyday motion, that seems reasonable and you already know a lot about that.
 
@@ -132,12 +133,11 @@ What was your speed? I know you know this and your brain would quickly calculate
 -   so my speed was 300/6 = 50 "miles per hour," mph
 
 So: $$
-v=50 \text{ mph}
-$$
+v=50 \text{ mph}$$
 
 Now, what if we stop and then start up after a break? How do we refer to the speed then?
 
-![Stopping for a rest](screenshot_3646.png){fig-align="center" width="80%"}
+![Stopping for a rest](screenshot_3646.png){#fig-rest fig-align="center" width="80%"}
 
 ### Average speed {#sec-averagespeed}
 
@@ -175,14 +175,14 @@ Let’s make this more compact by inserting customary symbols to get rid of the 
 
 -   We’ll use the Greek symbol Delta, $\Delta$ to mean “change of”…this will come up a lot.
 
-With this, then we can "solve" this simple problem: $$\begin{align}
+With this, then we can "solve" this simple problem:
+
+$$\begin{align}
 v &= \text{speed}=\dfrac{\text{distance traveled}}{\text{time taken}} \nonumber \\
 v &=\dfrac{x-x_0}{t-t_0} \nonumber \\
 &= \dfrac{350-50}{6}=50  \text{mph} \nonumber
 \end{align}
-$$ {#eq-speeddef}
-
-where "$v$" is the velocity and it's defined by the middle equation in equation @eq-speeddef.
+$$ {#eq-speeddef} where "$v$" is the velocity and it's defined by the middle equation in equation @eq-speeddef.
 
 ## Dimensional Analysis
 
@@ -190,9 +190,9 @@ This might be superfluous for most of your interests, but sometimes it's usefult
 
 The usual way of keeping track of the dimensions is a different kind of bracket: $[A]$ would refer to the "dimension of $A$". For $A=50$ mph, $[A]=$ mph. Get it?
 
-So if our distance units were feet and our time units were hours, then we would say that the dimensions of velocity could be determined to be: $$
-\dfrac{[\text{distance}]}{[\text{time}]}=\dfrac{\text{feet}}{\text{hours}} = [v] = \text{feet per hour}
-$$
+So if our distance units were feet and our time units were hours, then we would say that the dimensions of velocity could be determined to be:
+
+\$\$ \dfrac{[\text{distance}]}{[\text{time}]}=\dfrac{\text{feet}}{\text{hours}} = \[v\] = \text{feet per hour} \$\$
 
 ![CAPTION](screenshot_3766.png){fig-align="center" width="80%"}
 
@@ -212,7 +212,7 @@ Let's imagine a pool table. Here it is with a set of x-y axes. Notice that I've 
 
 Wait a while...here it still is:
 
-![Our platform for describing motion. A ball on a pool table…sitting there minding its own business.](screenshot_3649.png){#fig-fig-balltablestill fig-align="center" width="80%"}
+![Our platform for describing motion. A ball on a pool table…sitting there minding its own business.](screenshot_3649.png){#fig-balltablestill fig-align="center" width="80%"}
 
 Let's plot it on an x-y axis set.
 
@@ -249,9 +249,7 @@ This is a model of motion, which for physicists is always a curve in some coordi
 v &=\dfrac{x-x_0}{t-t_0} \nonumber \\
 v &= \dfrac{\Delta x}{\Delta t} \nonumber
 \end{align}
-$$
-
-We can easily imagine that the motion might not be smooth (like the stopping and starting on the road above) and so the concept of the average is always in play:
+$$ We can easily imagine that the motion might not be smooth (like the stopping and starting on the road above) and so the concept of the average is always in play:
 
 ![The average speed depends only on the beginning and ending points.](screenshot_3667.png){#fig-beginend fig-align="center" width="68%"}
 
@@ -273,18 +271,14 @@ But of course for motion to get started one has begin from rest and get going, s
 -   Velocity is the rate at which distance changes in time.
 -   Acceleration is the rate at which velocity changes in time.
 
-Here are the two models of motion:
-
-$$
+Here are the two models of motion: $$
 \begin{align}
 v &=\dfrac{x-x_0}{t-t_0} \text{  model of velocity} \tag{a} \nonumber \\
 v &= \dfrac{\Delta x}{\Delta t} \text{ and } \nonumber \\
 a &=\dfrac{v-v_0}{t-t_0}  \text{  model of acceleration} \nonumber \\
 a &= \dfrac{\Delta v}{\Delta t} \tag{b} \nonumber
 \end{align}
-$$ {#eq-eq1}
-
-So if the speed is uniform, like the ball above, then the acceleration is zero (since $\Delta v = 0$).
+$$ {#eq-eq1} So if the speed is uniform, like the ball above, then the acceleration is zero (since $\Delta v = 0$).
 
 If the speed changes in time, then we have accelerated motion since $\Delta v \ne 0$.
 
@@ -322,30 +316,20 @@ The symbol $\propto$ means "proportional to" and when we find a relationship lik
 v(t) &= gt \nonumber \\
 x(t) &= 1/2gt^2 \nonumber
 \end{align}
-$$
-
-There are simplicity reasons for the 1/2...if we'd absorbed that into $g$ then the first equation would have had to change. The value of $g$ comes from experiment and is about
-
-$$
+$$ There are simplicity reasons for the 1/2...if we'd absorbed that into $g$ then the first equation would have had to change. The value of $g$ comes from experiment and is about $$
 \begin{equation}
 g = 9.8 \text{ m/s$^2$} = 32 \text{ ft/s$^2$}.  \nonumber \\
 \end{equation}
-$$
+$$ While this is a story that started with gravity, it's nonetheless a completely general description of any accelerated motion (your car) if that acceleration is constant. In general, then, we'd use the symbol $a$ and treat falling as a special case of constantly accelerated motion in which case $a=g$.
 
-While this is a story that started with gravity, it's nonetheless a completely general description of any accelerated motion (your car) if that acceleration is constant. In general, then, we'd use the symbol $a$ and treat falling as a special case of constantly accelerated motion in which case $a=g$.
-
-While we defined speed in terms of distance, we can rewrite @eq-eq1.
-
-$$
+While we defined speed in terms of distance, we can rewrite @eq-eq1. $$
 \begin{align}
 \text{For constant speed,}&\text{ no acceleration} \\
 v &=\dfrac{x-x_0}{t-t_0} \nonumber \\
 x-x_0 &=v(t-t_0) \nonumber \text{ let's take our initial time be 0} \\
 x &= x_0 + vt
 \end{align}
-$$
-
-And for constant acceleration, we can find a general relationship for distance as well with a simple calculation.
+$$ And for constant acceleration, we can find a general relationship for distance as well with a simple calculation.
 
 ::: {.callout-warning icon="false"}
 ⚠️ A bit of algebra is required to derive the complete quartet of equations for motion with a constant acceleration. I do that for you in [equations of motion](./Motion_equations.qmd)
@@ -353,9 +337,7 @@ And for constant acceleration, we can find a general relationship for distance a
 
 ## Complete model for motion {#sec-equationsofmotion}
 
-So collectively, here are our definitions for motion:
-
-$$
+So collectively, here are our definitions for motion: $$
 \begin{align}
 \text{Constant speed,}&\text{ no acceleration} \nonumber \\
 x &= x_0 + vt \nonumber \\
@@ -365,11 +347,7 @@ a &= 0 \nonumber \\
 a &=\dfrac{v-v_0}{t-t_0} \nonumber \\
 a &= \dfrac{\Delta v}{\Delta t} \nonumber \\
 \end{align}
-$$
-
-And here are the complete set of equations for one-dimentional constant acceleration. Each relation relates two of the three variables: $x, t, v$.
-
-$$
+$$ And here are the complete set of equations for one-dimentional constant acceleration. Each relation relates two of the three variables: $x, t, v$. $$
 \begin{align}
 & \text{1. } \; x = \langle v \rangle t \tag{a}  \\ 
 & \text{2.  } \; v   = v_0 + at \tag{b}  \\

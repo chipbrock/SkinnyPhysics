@@ -12,9 +12,9 @@ draft: false
 
 # Skinny Momentum and Force
 
-This is the first of three outlines of some basic physics ideas so that I can refer to them in other posts. If you'd like more, including history and examples, then visit [full textbook](https://qstbb.pa.msu.edu/storage/ISP220_fall2020/QS&BB2020/intro.html) for a textbook-level presentation. If you only need the basic simple equations, they're here. If you'd like some explanation, that's next!
+Skinny Physics is meant to be a lightweight (skinny, after all) presentation of some physics that might help you appreciate some of the posts in **QS&BB.** Maybe you've had a course in your past and maybe not, so this chapter has some bare bones (skinny, after all) **facts about impulse, momentum, and force**.
 
-Units. Sorry. In QS&BB we won't care about English versus metric units but for this motion review we'll sometimes have to convert. I'll do it for you but you can check me at places like [unitjuggler](https://www.unitjuggler.com/index.html)...or often just Google.
+So: three sections: (1) Some ideas you might not have had in a previous course. ("different way") (2) A listing of some impulse, momentum, and force facts. And, (3) a bit of gentle background behind those facts. If you'd like more, then visit the [full textbook](https://qstbb.pa.msu.edu/storage/ISP220_fall2020/QS&BB2020/intro.html) presentation.
 
 ::: {.callout-important icon="false"}
 🫵 Even if you know some of the basics of velocity and acceleration, you need to be comfortable with spacetime diagrams in @sec-spacetimediagrams ! That's how we'll pursue Feynman Diagrams.
@@ -22,21 +22,19 @@ Units. Sorry. In QS&BB we won't care about English versus metric units but for t
 
 ## Just the facts:
 
-### some definitions
+### Some definitions:
 
 -   mass, $m$, is the quantity of matter...but this concept changes over history and is somewhat circular. It has a couple of jobs to do.
--   Job 1: inertia is the reluctance of an object to move and the measure of interia is mass.
+-   Job 1: inertia is the reluctance of an object to move and the measure of inertia is mass.
 -   Job 2: impulse is related and sort of intuitive: push on something hard and it will go faster, push on something for a long time and it will go faster: $F\Delta t$ is proportional to the change in velocity and the proportionality constant is $m$
 
-**impulse** $$
+**A fact: impulse** $$
 \begin{equation}
 F\Delta t = m\Delta v \nonumber
 \end{equation}
 $$
 
-**momentum**
-
-Definition: $$
+**A fact: momentum** $$
 p=mv \nonumber
 $$ How it fits into impulse: $$
 \begin{align}
@@ -45,7 +43,7 @@ F\Delta t &= \Delta p \nonumber \\
 \end{align}
 $$
 
-**force**
+**A fact: force**
 
 from the above:
 
@@ -72,9 +70,9 @@ $$
 -   Circular motion is in Section @sec-circular
 :::
 
-# Gentle explanations of Momentum and Force
+## Gentle explanations of Momentum and Force
 
-## Momentum: Isaac Newton's important idea {#sec-momentum}
+### Momentum: Isaac Newton's important idea {#sec-momentum}
 
 To start something moving from rest? Apply a force. To speed up or slow down something already moving? Apply a force! To cause something to deviate from a straight line? Yes. Another force. To keep something moving at a constant speed? No (net) force required, thank you.
 
@@ -102,9 +100,9 @@ Here’s what we know from experience: applying a force ($F$) to something for a
 
 $$
 \begin{equation}
-F\Delta t \propto \Delta v. \label{impulse1}
+F\Delta t \propto \Delta v. \nonumber 
 \end{equation}
-$$
+$$ {#eq-impulse1}
 
 Increase $F$, $\Delta t$, or both on the left-hand side, and the speed goes up on the right-hand side. The quantity on the left side is called the **Impulse**. It's the sports-quantity. Any game involving a ball or a human body under stress (I guess not chess or checkers) involves impulse and exceptional athletes can control both the $F$ and the $\Delta t$. The quantity on the right implies that the speed changed and of course if the speed changed, then the object accelerated and/or it changed direction.
 
@@ -124,18 +122,11 @@ We'll predominantly use the unit of Newton as the modern measure of a force – 
 
 Suppose I apply a force of $F=100$ pounds for 60 seconds to a Volkswagen and you apply a force of $F=100$ pounds for 60 seconds to a little red wagon. We both begin our efforts at point A:
 
-```{r}
-#| label: fig-motion_head2
-#| fig-cap: "The same force applied to two red objects, of very different sizes"
-#| cap-location: margin
-#| out-width: 80%
-#| echo: false
-knitr::include_graphics("./iwagon.png")
-```
+![The same force applied to two red objects, of very different sizes](iwagon.png){#fig-motion_head2 fig-align="center" width="80%"}
 
 Will the resulting $\Delta v$ at point B be the same for both vehicles?
 
-Of course not. The little red wagon will gain more speed than the Volkswagen (regardless of its color). The VW is more reluctant to be accelerated than the wagon. So Equation \ref{impulse1} is not the whole story. What's missing is just that reluctance that any object has to being accelerated, which has a name: **inertia**. With that we can turn the proportionality in Equation \ref{impulse1} into an equality.
+Of course not. The little red wagon will gain more speed than the Volkswagen (regardless of its color). The VW is more reluctant to be accelerated than the wagon. So @eq-impulse1} is not the whole story. What's missing is just that reluctance that any object has to being accelerated, which has a name: **inertia**. With that we can turn the proportionality in Equation \ref{impulse1} into an equality.
 
 ## Newton's Mass {#sec-mechmass}
 
@@ -161,49 +152,42 @@ This is the most profound and at the same time, the most mundane idea that Newto
 
 ## The "Quantity of Motion": Momentum {#sec-mechmomentum}
 
-We just developed a sense that our hand-built, car-pushing formula, Equation \ref{impulse1} has to depend on speed *and* mass and so we'll just add it in on the right-hand side to get:
+We just developed a sense that our hand-built, car-pushing formula, Equation @eq-impulse1 has to depend on speed *and* mass and so we'll just add it in on the right-hand side to get:
 
 $$
 \begin{equation}
-F\Delta t = m\Delta v  \label{impulse2}
+F\Delta t = m\Delta v \nonumber
 \end{equation}
-$$
+$$ {#eq-impulse2}
 
 Being more explicit, when fleshed out impulse is
 
 $$
 \begin{equation}
-F\Delta t = m(v - v_0) \label{fullimpulse}
+F\Delta t = m(v - v_0). \nonumber 
 \end{equation}
-$$
+$$ {#eq-fullimpulse}
 
-> There’s more to this story<br><br> To be totally correct, the right hand side of Equation \ref{impulse2} can be written as $\Delta (mv)$ which recognizes that the mass might change instead of, or in addition to, the velocity changing. This is how a balloon jumps from your hand when you stop pinching the nozzle, or how a rocket is propelled by ejecting burned propellent out the back. In each case, the mass of the moving object changes and that results in a thrust. But we’ll not encounter that in QS&BB.
+> There’s more to this story<br><br> To be totally correct, the right hand side of Equation @eq-impulse2 can be written as $\Delta (mv)$ which recognizes that the mass might change instead of, or in addition to, the velocity changing. This is how a balloon jumps from your hand when you stop pinching the nozzle, or how a rocket is propelled by ejecting burned propellent out the back. In each case, the mass of the moving object changes and that results in a thrust. But we’ll not encounter that in QS&BB.
 
 This quantity on the right, $mv$ is Newton's definition of momentum. $$
 \begin{equation}
-p = mv \label{momentum}
+p = mv \nonumber
 \end{equation}
-$$
+$$ {#eq-momentum}
 
 So the impulse can be rewritten with the definition in Equation \ref{momentum}:
 
 $$
 \begin{align}
 F\Delta t &= \Delta (mv) \nonumber \\
-F\Delta t &= \Delta p \label{momentumdef} \\
+F\Delta t &= \Delta p \tag{a} \\
 \end{align}
-$$
+$$ {#eq-momentumdef}
 
 The athletic use of this is instinctive and learned...but with muscles and your neurosystem not paper and pencil:
 
-```{r}
-#| label: fig-impulse_balls
-#| fig-cap: "The left-hand version where you want to change the velocity of a ball for example, in baseball, tennis, soccer, and golf…anything with a ball. The right-hand version where you have a fixed goal – like stopping precisely – fits football, gymnastics, and track and field. "
-#| cap-location: margin
-#| out-width: 100%
-#| echo: false
-knitr::include_graphics("screenshot_3684.png")
-```
+![he left-hand version where you want to change the velocity of a ball for example, in baseball, tennis, soccer, and golf…anything with a ball. The right-hand version where you have a fixed goal – like stopping precisely – fits football, gymnastics, and track and field.](screenshot_3684.png){#fig-impulse_balls fig-align="center" width="80%"}
 
 ------------------------------------------------------------------------
 
@@ -221,41 +205,41 @@ Said another way, if you see the motion of any object changing... then somewhere
 
 ## Newton's second law of motion {#sec-secondlaw}
 
-One quick change of Equation \ref{momentum}:
+One quick change of @eq-momentum:
 
 $$
 \begin{align}
 F\Delta t &= \Delta p \nonumber \\
-F &= \frac{\Delta p}{\Delta t} \label{newtons2} \\
+F &= \frac{\Delta p}{\Delta t} \tag{a} \\
 \text{since: }&=\Delta p = \Delta (mv) \nonumber \\
 \text{if the mass is constant: } \nonumber \\
 F &= \Delta p =m\Delta v \nonumber\\
 F &= m \frac{\Delta v}{\Delta t} \nonumber \\
 \text{and since: } &= \frac{\Delta v}{\Delta t} = a \nonumber \\
-F &= ma \label{newtons2b}
+F &= ma \tag{b}
 \end{align}
-$$ A couple of these are suitable for a T-shirt: Equation \ref{newtons2} is formally "Newton's Second law of Motion" in its most general physics-major form. Equation \ref{newtons2b} is the T-shirt version for motion in which the mass of an object undergoing a push doesn't change.
+$$ {#eq-newtons2} A couple of these are suitable for a T-shirt: @eq-newtons2 (a) is formally "Newton's Second law of Motion" in its most general physics-major form. @eq-newtons2 (b) is the T-shirt version for motion in which the mass of an object undergoing a push doesn't change.
 
 ### Newton's three laws of motion {#sec-newtonslaws}
 
 If there's a second law, there must be a first one and there is...and a third one. Here they are for completeness:
 
 1.  An object with constant velociy will retain that constant velocity of zero or another value.
-2.  Best expressed as an equation as \eqref{newtons2}.
+2.  Best expressed as an equation as @eq-newtons2 (a).
 3.  For every force that object A applies to object B, an equal and opposite force will be appled by B to A.
 
 The Third law is very useful for solving problems, but that's not what we're about in **QS&BB**.
 
 ### Weight {#sec-weight}
 
-There's an important special case of Equation \ref{newtons2b} which has to do with the earth and, well, everything that's not nailed down. The earth attracts all objects with a force (which we'll talk about in a bit) that appears to be constant and has a particular value of acceleration, that of gravity., We affectionately call it $g$. So your weight is the force that the earth applies to you and so we simply have: $$
+There's an important special case of Equation @eq-newtons2b (b) which has to do with the earth and, well, everything that's not nailed down. The earth attracts all objects with a force (which we'll talk about in a bit) that appears to be constant and has a particular value of acceleration, that of gravity., We affectionately call it $g$. So your weight is the force that the earth applies to you and so we simply have: $$
 \begin{align}
 F &= ma \text{ ...now modify for gravitational force}\nonumber \\
 F &= W \text{ for the special force called "weight"} \nonumber \\
-a &= g \text{ for the special acceleration of gravity} \nonumber\\
-W &=mg \text{ which is weight on earth} \label{weight}
+a &= g \text{ for the special acceleration of gravity} \nonumber \\
+W &=mg \text{ which is weight on earth} \tag{a}
 \end{align}
-$$ Two caveats:
+$$ {#eq-weight} Two caveats:
 
 1.  We call this $g$ "little g" and it's only got a specific value for the earth. There are different little g's for other planets, moons, or stars.
 2.  The force of gravity is actually not constant – stay tuned. But miles above tthe earth it's still so close to $g$ that we often pretend that it's constant. (Stay tuned for the Gravitation chapter.)
@@ -263,7 +247,7 @@ $$ Two caveats:
 So little g is an important number:
 
 -   In the american system, $g = 32$ feet/second$^2$ , 32 ft/s$^2$
--   For the rest of the world, $g = 9.8$ meters/second$^2$, 9.8 m/s\$^2^
+-   For the rest of the world, $g = 9.8$ meters/second$^2$, 9.8 m/s$^2$
 
 (Notice the units for acceleration.)
 
@@ -275,15 +259,7 @@ Okay, what's going on with you turning that corner where your direction changes 
 
 It might be easier to think of twirling something overhead. Suppose you tie a ball to a thin rope and get it rotating above your head in a horizontal plane, like our little guy in the figure.
 
-<figure style="text-align:center;">
-
-<img src="screenshot_3696.png" width="80%" style="display:block; margin:auto;"/>
-
-<figcaption>wirling a ball over your head in a horizontal plane.</figcaption>
-
-<br>
-
-</figure>
+![wirling a ball over your head in a horizontal plane.](screenshot_3696.png){#fig-LABEL fig-align="center" width="80%"}
 
 You can feel a tug. That is, the ball seems to exert a force on your hand through the rope. But what's really going on is that the ball wants to go straight (Newton's first law) and you pull it back incrementally, bit by bit as it goes around. You're supplying that force necessary to defeat its straight line motion aspiration.
 
@@ -295,29 +271,15 @@ The acceleration that you (or the ball) experience is *toward the center of the 
 a_c=\frac{v^2}{R} \label{centripetala}
 $$
 
-<figure style="text-align:center;">
+![The velocity, and hence the momentum change as the object goes around the circle. The speed doesn't.](screenshot_3768.png){fig-align="center" width="80%"}
 
-<img src="screenshot_3768.png" width="80%" style="display:block; margin:auto;"/>
+From Newton's second law, there's then a centripetal force. That tug you provide to the ball of mass $m$ is:
 
-<figcaption>The velocity, and hence the momentum change as the object goes around the circle. The speed doesn't.</figcaption>
-
-<br>
-
-</figure>
-
-From Newton's second law, there's then a centripetal force. That tug you provide to the ball of mass $m$ is: $$
+$$
 \begin{align}
 F_c &= m a_c \nonumber \\
-F_c &=m \frac{v^2}{R} \label{centripetalf}
+F_c &=m \frac{v^2}{R} \tag{a}
 \end{align}
-$$
+$$ {#eq-centripetalf}
 
-<figure style="text-align:center;">
-
-<img src="screenshot_3769.png" width="100%" style="display:block; margin:auto;"/>
-
-<figcaption>Two quantities: the centripatal acceleration (towards the center of the circle) and the centripetal force (also towards the center). You need that pull to the center to follow a curved path.</figcaption>
-
-<br>
-
-</figure>
+![Two quantities: the centripatal acceleration (towards the center of the circle) and the centripetal force (also towards the center). You need that pull to the center to follow a curved path.](screenshot_3769.png){fig-align="center" width="80%"}

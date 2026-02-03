@@ -9,6 +9,7 @@
 		}
 	],
 	"settings": {
-		"quarto.render.renderOnSave": true
+		"quarto.render.renderOnSave": true,
+		"terminal.integrated.enableVisualBell": false
 	}
 }

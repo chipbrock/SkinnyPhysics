@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Collision Simulation</title>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #fafafa;
+        }
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        .slider-container {
+            margin: 8px 0;
+        }
+        .slider-container label {
+            display: block;
+            margin-bottom: 2px;
+            font-weight: 500;
+            color: #333;
+            font-size: 13px;
+        }
+        input[type="range"] {
+            width: 100%;
+            height: 2px;
+            border-radius: 1px;
+            background: #999;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #555;
+            cursor: pointer;
+            border: none;
+            margin-top: -7px;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #555;
+            cursor: pointer;
+            border: none;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 2px;
+            background: #999;
+            border-radius: 1px;
+        }
+        input[type="range"]::-moz-range-track {
+            width: 100%;
+            height: 2px;
+            background: #999;
+            border-radius: 1px;
+        }
+        input[type="range"]::-moz-range-progress {
+            background: #999;
+            height: 2px;
+            border-radius: 1px;
+        }
+        input[type="range"]::-ms-track {
+            width: 100%;
+            height: 2px;
+            background: transparent;
+            border-color: transparent;
+            color: transparent;
+        }
+        input[type="range"]::-ms-fill-lower {
+            background: #999;
+            border-radius: 1px;
+        }
+        input[type="range"]::-ms-fill-upper {
+            background: #999;
+            border-radius: 1px;
+        }
+        input[type="range"]::-ms-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #555;
+            cursor: pointer;
+            border: none;
+        }
+        .value-display {
+            display: inline-block;
+            min-width: 40px;
+            text-align: right;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 13px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        button:active {
+            transform: scale(0.98);
+        }
+        .bottom-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .button-container {
+            flex-shrink: 0;
+        }
+        .physics-container {
+            flex-grow: 1;
+            display: flex;
+            gap: 20px;
+            font-size: 11px;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        .blue-text {
+            color: #4563a7;
+        }
+        .red-text {
+            color: #ff6600;
+        }
+        #simulation {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <div class="slider-container">
+                <label>Velocity 1 (→): <span class="value-display" id="vel1-display">5.0</span></label>
+                <input type="range" id="velocity1" min="0" max="10" step="0.5" value="5">
+            </div>
+            <div class="slider-container">
+                <label>Velocity 2 (←): <span class="value-display" id="vel2-display">5.0</span></label>
+                <input type="range" id="velocity2" min="0" max="10" step="0.5" value="5">
+            </div>
+            <div class="slider-container">
+                <label>Mass 1: <span class="value-display" id="mass1-display">10</span></label>
+                <input type="range" id="mass1" min="1" max="19" step="1" value="10">
+            </div>
+            <div class="slider-container">
+                <label>Mass 2: <span class="value-display" id="mass2-display">10</span></label>
+                <input type="range" id="mass2" min="1" max="19" step="1" value="10">
+            </div>
+        </div>
+        <div id="simulation"></div>
+        <div class="bottom-row">
+            <div class="button-container">
+                <button id="runButton">Run</button>
+                <button id="stopButton" style="margin-top: 5px; background: #d32f2f;">Stop</button>
+            </div>
+            <div class="physics-container">
+                <div id="physics-initial"></div>
+                <div id="physics-final"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update displays when sliders change
+        document.getElementById('velocity1').addEventListener('input', function(e) {
+            document.getElementById('vel1-display').textContent = parseFloat(e.target.value).toFixed(1);
+        });
+        document.getElementById('velocity2').addEventListener('input', function(e) {
+            document.getElementById('vel2-display').textContent = parseFloat(e.target.value).toFixed(1);
+        });
+        document.getElementById('mass1').addEventListener('input', function(e) {
+            document.getElementById('mass1-display').textContent = e.target.value;
+        });
+        document.getElementById('mass2').addEventListener('input', function(e) {
+            document.getElementById('mass2-display').textContent = e.target.value;
+        });
+
+        // Run simulation
+        // Track last animation parameters
+        let lastParams = { velocity1: 5, velocity2: 5, mass1: 10, mass2: 10 };
+
+        document.getElementById('runButton').addEventListener('click', function() {
+            const velocity1 = parseFloat(document.getElementById('velocity1').value);
+            const velocity2 = parseFloat(document.getElementById('velocity2').value);
+            const mass1 = parseInt(document.getElementById('mass1').value);
+            const mass2 = parseInt(document.getElementById('mass2').value);
+            
+            lastParams = { velocity1, velocity2, mass1, mass2 };
+            
+            runCollision(velocity1, velocity2, mass1, mass2);
+        });
+
+        document.getElementById('stopButton').addEventListener('click', function() {
+            // Stop all active transitions
+            d3.selectAll('*').interrupt();
+        });
+
+        function runCollision(velocity1, velocity2, mass1, mass2) {
+            // Clear previous simulation
+            d3.select('#simulation').selectAll('*').remove();
+            
+            const width = 700;
+            const height = 100;
+            
+            const svg = d3.select('#simulation')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height)
+                .attr('style', 'background: #f9f9f9; border: 1px solid #ddd; border-radius: 4px;');
+            
+            // Calculate physics
+            const v1_initial = velocity1;
+            const v2_initial = -velocity2;
+            
+            const v1_final = ((mass1 - mass2) * v1_initial + 2 * mass2 * v2_initial) / (mass1 + mass2);
+            const v2_final = ((mass2 - mass1) * v2_initial + 2 * mass1 * v1_initial) / (mass1 + mass2);
+            
+            // Smaller size scaling
+            const totalMass = mass1 + mass2;
+            const avgMass = totalMass / 2;
+            const radius1 = 10 + (mass1 / avgMass) * 10;
+            const radius2 = 10 + (mass2 / avgMass) * 10;
+            
+            // Center line
+            svg.append('line')
+                .attr('x1', width/2)
+                .attr('y1', 0)
+                .attr('x2', width/2)
+                .attr('y2', height)
+                .attr('stroke', '#ccc')
+                .attr('stroke-dasharray', '5,5');
+            
+            // Ground line
+            svg.append('line')
+                .attr('x1', 0)
+                .attr('y1', height/2)
+                .attr('x2', width)
+                .attr('y2', height/2)
+                .attr('stroke', '#333')
+                .attr('stroke-width', 2);
+            
+            // Arrow markers
+            const defs = svg.append('defs');
+            
+            defs.append('marker')
+                .attr('id', 'arrowblue')
+                .attr('markerWidth', 10)
+                .attr('markerHeight', 10)
+                .attr('refX', 9)
+                .attr('refY', 3)
+                .attr('orient', 'auto')
+                .append('polygon')
+                .attr('points', '0 0, 10 3, 0 6')
+                .attr('fill', '#4563a7');
+            
+            defs.append('marker')
+                .attr('id', 'arrowred')
+                .attr('markerWidth', 10)
+                .attr('markerHeight', 10)
+                .attr('refX', 9)
+                .attr('refY', 3)
+                .attr('orient', 'auto')
+                .append('polygon')
+                .attr('points', '0 0, 10 3, 0 6')
+                .attr('fill', '#ff6600');
+            
+            // Create objects - position stationary ones at center
+            let start1, start2;
+            
+            if (v1_initial === 0) {
+                // Object 1 stationary - put it at center
+                start1 = width / 2;
+                start2 = width - 100;
+            } else if (velocity2 === 0) {
+                // Object 2 stationary - put it at center  
+                start1 = 100;
+                start2 = width / 2;
+            } else {
+                // Both moving - normal positions
+                start1 = 100;
+                start2 = width - 100;
+            }
+            
+            const obj1 = svg.append('circle')
+                .attr('cx', start1)
+                .attr('cy', height/2)
+                .attr('r', radius1)
+                .attr('fill', '#4563a7')
+                .attr('opacity', 0.4);
+            
+            const obj2 = svg.append('circle')
+                .attr('cx', start2)
+                .attr('cy', height/2)
+                .attr('r', radius2)
+                .attr('fill', '#ff6600')
+                .attr('opacity', 0.4);
+            
+            // Velocity arrows - position at leading edge of each ball
+            // When velocity is 0, arrow has zero length (invisible)
+            const arrow1Start = v1_initial === 0 ? start1 : start1 + (v1_initial > 0 ? radius1 : -radius1);
+            const arrow1End = v1_initial === 0 ? start1 : arrow1Start + v1_initial * 10;
+            
+            const arrow1 = svg.append('line')
+                .attr('x1', arrow1Start)
+                .attr('y1', height/2)
+                .attr('x2', arrow1End)
+                .attr('y2', height/2)
+                .attr('stroke', '#4563a7')
+                .attr('stroke-width', 3)
+                .attr('marker-end', 'url(#arrowblue)')
+                .attr('visibility', v1_initial !== 0 ? 'visible' : 'hidden');
+            
+            const arrow2Start = v2_initial === 0 ? start2 : start2 + (v2_initial < 0 ? -radius2 : radius2);
+            const arrow2End = v2_initial === 0 ? start2 : arrow2Start + v2_initial * 10;
+            
+            const arrow2 = svg.append('line')
+                .attr('x1', arrow2Start)
+                .attr('y1', height/2)
+                .attr('x2', arrow2End)
+                .attr('y2', height/2)
+                .attr('stroke', '#ff6600')
+                .attr('stroke-width', 3)
+                .attr('marker-end', 'url(#arrowred)')
+                .attr('visibility', v2_initial !== 0 ? 'visible' : 'hidden');
+            
+            // Labels - Blue and Red
+            const label1 = svg.append('text')
+                .attr('x', start1)
+                .attr('y', height/2 - radius1 - 5)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '11px')
+                .attr('font-weight', 'bold')
+                .text(`Blue (m=${mass1})`);
+            
+            const label2 = svg.append('text')
+                .attr('x', start2)
+                .attr('y', height/2 - radius2 - 5)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '11px')
+                .attr('font-weight', 'bold')
+                .text(`Red (m=${mass2})`);
+            
+            // Velocity display
+            const vel1Text = svg.append('text')
+                .attr('x', start1)
+                .attr('y', height/2 + radius1 + 15)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '10px')
+                .text(`v=${v1_initial.toFixed(1)}`);
+            
+            const vel2Text = svg.append('text')
+                .attr('x', start2)
+                .attr('y', height/2 + radius2 + 15)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '10px')
+                .text(`v=${v2_initial.toFixed(1)}`);
+            
+            // Physics info displays - now outside SVG in HTML divs
+            const physicsInitialDiv = d3.select('#physics-initial');
+            const physicsFinalDiv = d3.select('#physics-final');
+            
+            // Calculate physics values
+            const p1_initial = mass1 * v1_initial;
+            const p2_initial = mass2 * v2_initial;
+            const p_total_initial = p1_initial + p2_initial;
+            const ke1_initial = 0.5 * mass1 * v1_initial * v1_initial;
+            const ke2_initial = 0.5 * mass2 * v2_initial * v2_initial;
+            const ke_total_initial = ke1_initial + ke2_initial;
+            
+            const p1_final = mass1 * v1_final;
+            const p2_final = mass2 * v2_final;
+            const p_total_final = p1_final + p2_final;
+            const ke1_final = 0.5 * mass1 * v1_final * v1_final;
+            const ke2_final = 0.5 * mass2 * v2_final * v2_final;
+            const ke_total_final = ke1_final + ke2_final;
+            
+            // Display initial conditions in HTML div with LaTeX
+            const initialInfo = [
+                '<strong>INITIAL:</strong>',
+                `<span class="blue-text">Blue: \\(m=${mass1}\\), \\(v=${v1_initial.toFixed(1)}\\) → \\(p=${p1_initial.toFixed(2)}\\), \\(KE=${ke1_initial.toFixed(2)}\\)</span>`,
+                `<span class="red-text">Red: \\(m=${mass2}\\), \\(v=${v2_initial.toFixed(1)}\\) → \\(p=${p2_initial.toFixed(2)}\\), \\(KE=${ke2_initial.toFixed(2)}\\)</span>`,
+                `<strong>Total: \\(p=${p_total_initial.toFixed(2)}\\), \\(KE=${ke_total_initial.toFixed(2)}\\)</strong>`
+            ];
+            
+            physicsInitialDiv.html(initialInfo.join('<br>'));
+            MathJax.typesetPromise([document.getElementById('physics-initial')]);
+            
+            // Calculate collision point based on velocities
+            const totalDistance = start2 - start1;
+            
+            // Handle special cases for zero velocities
+            let collisionPos1, collisionPos2, timeToCollision;
+            
+            if (v1_initial === 0 && velocity2 === 0) {
+                // Both stationary - no collision animation
+                collisionPos1 = start1;
+                collisionPos2 = start2;
+                timeToCollision = 0;
+            } else if (v1_initial === 0) {
+                // Object 1 is stationary, object 2 moves to it
+                collisionPos1 = start1;
+                collisionPos2 = start1 + radius1 + radius2;
+                const distance2 = start2 - collisionPos2;
+                timeToCollision = (distance2 / velocity2) * 100;
+            } else if (velocity2 === 0) {
+                // Object 2 is stationary, object 1 moves to it
+                collisionPos2 = start2;
+                collisionPos1 = start2 - radius1 - radius2;
+                const distance1 = collisionPos1 - start1;
+                timeToCollision = (distance1 / v1_initial) * 100;
+            } else {
+                // Both moving - calculate meeting point for CENTERS
+                const velocitySum = v1_initial + velocity2;
+                const distanceRatio1 = v1_initial / velocitySum;
+                const meetingPointCenter = start1 + totalDistance * distanceRatio1;
+                
+                // Ball centers should be (radius1 + radius2) apart at collision
+                collisionPos1 = meetingPointCenter - radius2;
+                collisionPos2 = meetingPointCenter + radius1;
+                
+                const distance1 = collisionPos1 - start1;
+                const distance2 = start2 - collisionPos2;
+                
+                const timeToCollision1 = (distance1 / v1_initial) * 100;
+                const timeToCollision2 = (distance2 / velocity2) * 100;
+                timeToCollision = (timeToCollision1 + timeToCollision2) / 2;
+            }
+            
+            const postDistance = 200;
+            const postDuration1 = v1_final === 0 ? 1000 : Math.abs((postDistance / v1_final) * 100);
+            const postDuration2 = v2_final === 0 ? 1000 : Math.abs((postDistance / v2_final) * 100);
+            
+            // Animate objects
+            obj1.transition()
+                .ease(d3.easeLinear)
+                .duration(timeToCollision)
+                .attr('cx', collisionPos1)
+                .on('end', function() {
+                    if (v1_final !== 0) {
+                        d3.select(this).transition()
+                            .ease(d3.easeLinear)
+                            .duration(postDuration1)
+                            .attr('cx', collisionPos1 + (v1_final > 0 ? postDistance : -postDistance));
+                    }
+                });
+            
+            obj2.transition()
+                .ease(d3.easeLinear)
+                .duration(timeToCollision)
+                .attr('cx', collisionPos2)
+                .on('end', function() {
+                    if (v2_final !== 0) {
+                        d3.select(this).transition()
+                            .ease(d3.easeLinear)
+                            .duration(postDuration2)
+                            .attr('cx', collisionPos2 + (v2_final > 0 ? postDistance : -postDistance));
+                    }
+                });
+            
+            // Animate arrows
+            arrow1.transition()
+                .ease(d3.easeLinear)
+                .duration(timeToCollision)
+                .attr('x1', v1_initial === 0 ? collisionPos1 : collisionPos1 + radius1)
+                .attr('x2', v1_initial === 0 ? collisionPos1 : collisionPos1 + radius1 + v1_initial * 10)
+                .on('end', function() {
+                    const finalStart = v1_final === 0 ? collisionPos1 : collisionPos1 + (v1_final > 0 ? radius1 : -radius1);
+                    const finalEnd = v1_final === 0 ? collisionPos1 : finalStart + v1_final * 10;
+                    
+                    d3.select(this)
+                        .attr('x1', finalStart)
+                        .attr('x2', finalEnd)
+                        .attr('marker-end', v1_final !== 0 ? 'url(#arrowblue)' : 'none')
+                        .attr('visibility', v1_final !== 0 ? 'visible' : 'hidden')
+                        .attr('stroke-width', 3)
+                        .attr('stroke', '#4563a7');
+                        
+                    if (v1_final !== 0) {
+                        const finalPos = collisionPos1 + (v1_final > 0 ? postDistance : -postDistance);
+                        const elem = d3.select(this);
+                        elem.attr('marker-end', 'url(#arrowblue)')
+                            .attr('stroke', '#4563a7')
+                            .attr('stroke-width', 3)
+                            .attr('visibility', 'visible');
+                        elem.transition()
+                            .ease(d3.easeLinear)
+                            .duration(postDuration1)
+                            .attr('x1', finalPos + (v1_final > 0 ? radius1 : -radius1))
+                            .attr('x2', finalPos + (v1_final > 0 ? radius1 : -radius1) + v1_final * 10);
+                    }
+                });
+            
+            arrow2.transition()
+                .ease(d3.easeLinear)
+                .duration(timeToCollision)
+                .attr('x1', v2_initial === 0 ? collisionPos2 : collisionPos2 - radius2)
+                .attr('x2', v2_initial === 0 ? collisionPos2 : collisionPos2 - radius2 + v2_initial * 10)
+                .on('end', function() {
+                    const finalStart = v2_final === 0 ? collisionPos2 : collisionPos2 + (v2_final > 0 ? radius2 : -radius2);
+                    const finalEnd = v2_final === 0 ? collisionPos2 : finalStart + v2_final * 10;
+                    
+                    d3.select(this)
+                        .attr('x1', finalStart)
+                        .attr('x2', finalEnd)
+                        .attr('marker-end', v2_final !== 0 ? 'url(#arrowred)' : 'none')
+                        .attr('visibility', v2_final !== 0 ? 'visible' : 'hidden')
+                        .attr('stroke-width', 3);
+                        
+                    if (v2_final !== 0) {
+                        const finalPos = collisionPos2 + (v2_final > 0 ? postDistance : -postDistance);
+                        const elem = d3.select(this);
+                        elem.attr('marker-end', 'url(#arrowred)')
+                            .attr('stroke', '#ff6600')
+                            .attr('stroke-width', 3)
+                            .attr('visibility', 'visible');
+                        elem.transition()
+                            .ease(d3.easeLinear)
+                            .duration(postDuration2)
+                            .attr('x1', finalPos + (v2_final > 0 ? radius2 : -radius2))
+                            .attr('x2', finalPos + (v2_final > 0 ? radius2 : -radius2) + v2_final * 10);
+                    }
+                });
+            
+            // Animate labels
+            label1.transition()
+                .ease(d3.easeLinear)
+                .duration(timeToCollision)
+                .attr('x', collisionPos1)
+                .on('end', function() {
+                    if (v1_final !== 0) {
+                        d3.select(this).transition()
+                            .ease(d3.easeLinear)
+                            .duration(postDuration1)
+                            .attr('x', collisionPos1 + (v1_final > 0 ? postDistance : -postDistance));
+                    }
+                });
+            
+            label2.transition()
+                .ease(d3.easeLinear)
+                .duration(timeToCollision)
+                .attr('x', collisionPos2)
+                .on('end', function() {
+                    if (v2_final !== 0) {
+                        d3.select(this).transition()
+                            .ease(d3.easeLinear)
+                            .duration(postDuration2)
+                            .attr('x', collisionPos2 + (v2_final > 0 ? postDistance : -postDistance));
+                    }
+                });
+            
+            // Animate velocity text
+            vel1Text.transition()
+                .ease(d3.easeLinear)
+                .duration(timeToCollision)
+                .attr('x', collisionPos1)
+                .on('end', function() {
+                    d3.select(this).text(`v=${v1_final.toFixed(1)}`);
+                    
+                    if (v1_final !== 0) {
+                        d3.select(this).transition()
+                            .ease(d3.easeLinear)
+                            .duration(postDuration1)
+                            .attr('x', collisionPos1 + (v1_final > 0 ? postDistance : -postDistance));
+                    }
+                    
+                    setTimeout(() => {
+                        // Display final conditions in HTML div with LaTeX
+                        const finalInfo = [
+                            '<strong style="color: darkgreen;">FINAL:</strong>',
+                            `<span class="blue-text">Blue: \\(m=${mass1}\\), \\(v=${v1_final.toFixed(1)}\\) → \\(p=${p1_final.toFixed(2)}\\), \\(KE=${ke1_final.toFixed(2)}\\)</span>`,
+                            `<span class="red-text">Red: \\(m=${mass2}\\), \\(v=${v2_final.toFixed(1)}\\) → \\(p=${p2_final.toFixed(2)}\\), \\(KE=${ke2_final.toFixed(2)}\\)</span>`,
+                            `<strong style="color: darkgreen;">Total: \\(p=${p_total_final.toFixed(2)}\\), \\(KE=${ke_total_final.toFixed(2)}\\)</strong>`
+                        ];
+                        
+                        physicsFinalDiv.html(finalInfo.join('<br>'));
+                        MathJax.typesetPromise([document.getElementById('physics-final')]);
+                    }, 200);
+                });
+            
+            vel2Text.transition()
+                .ease(d3.easeLinear)
+                .duration(timeToCollision)
+                .attr('x', collisionPos2)
+                .on('end', function() {
+                    d3.select(this).text(`v=${v2_final.toFixed(1)}`);
+                    
+                    if (v2_final !== 0) {
+                        d3.select(this).transition()
+                            .ease(d3.easeLinear)
+                            .duration(postDuration2)
+                            .attr('x', collisionPos2 + (v2_final > 0 ? postDistance : -postDistance));
+                    }
+                });
+        }
+    </script>
+</body>
+</html>

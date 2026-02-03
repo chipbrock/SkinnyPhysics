@@ -1,0 +1,228 @@
+---
+title: "Interactive Collision Simulation"
+format: html
+---
+
+## Two Objects Colliding
+
+Adjust the sliders to see how elastic collisions work!
+
+```{ojs}
+//| echo: false
+
+viewof velocity1 = Inputs.range([1, 10], {value: 5, step: 0.5, label: "Velocity 1 (→)"})
+viewof velocity2 = Inputs.range([1, 10], {value: 5, step: 0.5, label: "Velocity 2 (←)"})
+viewof mass1 = Inputs.range([1, 20], {value: 10, step: 1, label: "Mass 1"})
+viewof mass2 = Inputs.range([1, 20], {value: 10, step: 1, label: "Mass 2"})
+```
+
+```{ojs}
+//| echo: false
+
+{
+  // Calculate final velocities (elastic collision)
+  const v1_initial = velocity1;
+  const v2_initial = -velocity2;  // negative because moving left
+  
+  const v1_final = ((mass1 - mass2) * v1_initial + 2 * mass2 * v2_initial) / (mass1 + mass2);
+  const v2_final = ((mass2 - mass1) * v2_initial + 2 * mass1 * v1_initial) / (mass1 + mass2);
+  
+  // Calculate momentum
+  const p_initial = mass1 * v1_initial + mass2 * v2_initial;
+  const p_final = mass1 * v1_final + mass2 * v2_final;
+  
+  // Canvas setup
+  const width = 700;
+  const height = 400;
+  const svg = d3.create("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("style", "background: #f9f9f9");
+  
+  // Before collision (top half)
+  const beforeY = height * 0.25;
+  const afterY = height * 0.75;
+  
+  // Title for before
+  svg.append("text")
+    .attr("x", width / 2)
+    .attr("y", 30)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "16px")
+    .attr("font-weight", "bold")
+    .text("Before Collision");
+  
+  // Title for after
+  svg.append("text")
+    .attr("x", width / 2)
+    .attr("y", height / 2 + 30)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "16px")
+    .attr("font-weight", "bold")
+    .text("After Collision");
+  
+  // Center lines
+  svg.append("line")
+    .attr("x1", width/2)
+    .attr("y1", 50)
+    .attr("x2", width/2)
+    .attr("y2", height/2 - 20)
+    .attr("stroke", "#ccc")
+    .attr("stroke-dasharray", "5,5");
+    
+  svg.append("line")
+    .attr("x1", width/2)
+    .attr("y1", height/2 + 50)
+    .attr("x2", width/2)
+    .attr("y2", height - 20)
+    .attr("stroke", "#ccc")
+    .attr("stroke-dasharray", "5,5");
+  
+  // Object 1 before (blue, left side)
+  const radius1 = Math.sqrt(mass1) * 4;
+  const radius2 = Math.sqrt(mass2) * 4;
+  
+  svg.append("circle")
+    .attr("cx", width * 0.25)
+    .attr("cy", beforeY)
+    .attr("r", radius1)
+    .attr("fill", "blue")
+    .attr("opacity", 0.7);
+  
+  // Arrow for object 1 before
+  svg.append("line")
+    .attr("x1", width * 0.25)
+    .attr("y1", beforeY)
+    .attr("x2", width * 0.25 + v1_initial * 15)
+    .attr("y2", beforeY)
+    .attr("stroke", "blue")
+    .attr("stroke-width", 3)
+    .attr("marker-end", "url(#arrowblue)");
+  
+  // Object 2 before (red, right side)
+  svg.append("circle")
+    .attr("cx", width * 0.75)
+    .attr("cy", beforeY)
+    .attr("r", radius2)
+    .attr("fill", "red")
+    .attr("opacity", 0.7);
+  
+  // Arrow for object 2 before
+  svg.append("line")
+    .attr("x1", width * 0.75)
+    .attr("y1", beforeY)
+    .attr("x2", width * 0.75 + v2_initial * 15)
+    .attr("y2", beforeY)
+    .attr("stroke", "red")
+    .attr("stroke-width", 3)
+    .attr("marker-end", "url(#arrowred)");
+  
+  // Labels before
+  svg.append("text")
+    .attr("x", width * 0.25)
+    .attr("y", beforeY + radius1 + 20)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "12px")
+    .text(`m=${mass1}, v=${v1_initial.toFixed(1)}`);
+  
+  svg.append("text")
+    .attr("x", width * 0.75)
+    .attr("y", beforeY + radius2 + 20)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "12px")
+    .text(`m=${mass2}, v=${velocity2.toFixed(1)}`);
+  
+  // Object 1 after (slightly left of center)
+  svg.append("circle")
+    .attr("cx", width * 0.45)
+    .attr("cy", afterY)
+    .attr("r", radius1)
+    .attr("fill", "blue")
+    .attr("opacity", 0.7);
+  
+  // Arrow for object 1 after
+  svg.append("line")
+    .attr("x1", width * 0.45)
+    .attr("y1", afterY)
+    .attr("x2", width * 0.45 + v1_final * 15)
+    .attr("y2", afterY)
+    .attr("stroke", "blue")
+    .attr("stroke-width", 3)
+    .attr("marker-end", "url(#arrowblue)");
+  
+  // Object 2 after (slightly right of center)
+  svg.append("circle")
+    .attr("cx", width * 0.55)
+    .attr("cy", afterY)
+    .attr("r", radius2)
+    .attr("fill", "red")
+    .attr("opacity", 0.7);
+  
+  // Arrow for object 2 after
+  svg.append("line")
+    .attr("x1", width * 0.55)
+    .attr("y1", afterY)
+    .attr("x2", width * 0.55 + v2_final * 15)
+    .attr("y2", afterY)
+    .attr("stroke", "red")
+    .attr("stroke-width", 3)
+    .attr("marker-end", "url(#arrowred)");
+  
+  // Labels after
+  svg.append("text")
+    .attr("x", width * 0.45)
+    .attr("y", afterY + radius1 + 20)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "12px")
+    .text(`m=${mass1}, v=${v1_final.toFixed(1)}`);
+  
+  svg.append("text")
+    .attr("x", width * 0.55)
+    .attr("y", afterY + radius2 + 20)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "12px")
+    .text(`m=${mass2}, v=${v2_final.toFixed(1)}`);
+  
+  // Arrow markers
+  svg.append("defs").append("marker")
+    .attr("id", "arrowblue")
+    .attr("markerWidth", 10)
+    .attr("markerHeight", 10)
+    .attr("refX", 8)
+    .attr("refY", 3)
+    .attr("orient", "auto")
+    .append("polygon")
+    .attr("points", "0 0, 10 3, 0 6")
+    .attr("fill", "blue");
+  
+  svg.append("defs").append("marker")
+    .attr("id", "arrowred")
+    .attr("markerWidth", 10)
+    .attr("markerHeight", 10)
+    .attr("refX", 8)
+    .attr("refY", 3)
+    .attr("orient", "auto")
+    .append("polygon")
+    .attr("points", "0 0, 10 3, 0 6")
+    .attr("fill", "red");
+  
+  // Momentum info at bottom
+  svg.append("text")
+    .attr("x", width / 2)
+    .attr("y", height - 5)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "14px")
+    .attr("font-weight", "bold")
+    .text(`Momentum: Initial = ${p_initial.toFixed(2)}, Final = ${p_final.toFixed(2)} (Conserved: ${Math.abs(p_initial - p_final) < 0.01})`);
+  
+  return svg.node();
+}
+```
+
+## How It Works
+
+- **Blue object** (left) moves right with velocity `velocity1`
+- **Red object** (right) moves left with velocity `velocity2`  
+- After collision, velocities change based on conservation of momentum and energy
+- Object size represents mass (larger = heavier)
+- Momentum is always conserved!

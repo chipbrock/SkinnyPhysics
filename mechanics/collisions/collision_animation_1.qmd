@@ -1,0 +1,437 @@
+---
+title: "Interactive Collision Animation"
+format: html
+---
+
+## Two Objects Colliding
+
+Adjust the sliders and click **"Run Collision"** to see the animation!
+
+```{ojs}
+//| echo: false
+
+viewof velocity1 = Inputs.range([0, 10], {value: 5, step: 0.5, label: "Velocity 1 (→)"})
+viewof velocity2 = Inputs.range([0, 10], {value: 5, step: 0.5, label: "Velocity 2 (←)"})
+viewof mass1 = Inputs.range([1, 20], {value: 10, step: 1, label: "Mass 1"})
+viewof mass2 = Inputs.range([1, 20], {value: 10, step: 1, label: "Mass 2"})
+viewof runButton = Inputs.button("Run Collision")
+```
+
+```{ojs}
+//| echo: false
+
+{
+  // Trigger animation when button clicked
+  runButton;
+  
+  const width = 700;
+  const height = 300;
+  
+  const svg = d3.create("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("style", "background: #f9f9f9; border: 1px solid #ddd;");
+  
+  // Calculate physics
+  const v1_initial = velocity1;
+  const v2_initial = -velocity2;
+  
+  const v1_final = ((mass1 - mass2) * v1_initial + 2 * mass2 * v2_initial) / (mass1 + mass2);
+  const v2_final = ((mass2 - mass1) * v2_initial + 2 * mass1 * v1_initial) / (mass1 + mass2);
+  
+  // Better size scaling - make mass differences more visible
+  const totalMass = mass1 + mass2;
+  const avgMass = totalMass / 2;
+  const radius1 = 15 + (mass1 / avgMass) * 15;  // range from ~15 to ~45
+  const radius2 = 15 + (mass2 / avgMass) * 15;
+  
+  // Center line
+  svg.append("line")
+    .attr("x1", width/2)
+    .attr("y1", 0)
+    .attr("x2", width/2)
+    .attr("y2", height)
+    .attr("stroke", "#ccc")
+    .attr("stroke-dasharray", "5,5");
+  
+  // Ground line
+  svg.append("line")
+    .attr("x1", 0)
+    .attr("y1", height/2)
+    .attr("x2", width)
+    .attr("y2", height/2)
+    .attr("stroke", "#333")
+    .attr("stroke-width", 2);
+  
+  // Arrow marker definitions
+  svg.append("defs").append("marker")
+    .attr("id", "arrowblue")
+    .attr("markerWidth", 10)
+    .attr("markerHeight", 10)
+    .attr("refX", 9)
+    .attr("refY", 3)
+    .attr("orient", "auto")
+    .append("polygon")
+    .attr("points", "0 0, 10 3, 0 6")
+    .attr("fill", "darkblue");
+  
+  svg.append("defs").append("marker")
+    .attr("id", "arrowred")
+    .attr("markerWidth", 10)
+    .attr("markerHeight", 10)
+    .attr("refX", 9)
+    .attr("refY", 3)
+    .attr("orient", "auto")
+    .append("polygon")
+    .attr("points", "0 0, 10 3, 0 6")
+    .attr("fill", "darkred");
+  
+  // Create objects - position stationary ones closer to center
+  let start1, start2;
+  
+  if (v1_initial === 0) {
+    // Object 1 stationary - put it at left-center
+    start1 = width * 0.3;
+    start2 = width - 100;
+  } else if (velocity2 === 0) {
+    // Object 2 stationary - put it at right-center  
+    start1 = 100;
+    start2 = width * 0.7;
+  } else {
+    // Both moving - normal positions
+    start1 = 100;
+    start2 = width - 100;
+  }
+  
+  const obj1 = svg.append("circle")
+    .attr("cx", start1)
+    .attr("cy", height/2)
+    .attr("r", radius1)
+    .attr("fill", "blue")
+    .attr("opacity", 0.4);
+  
+  const obj2 = svg.append("circle")
+    .attr("cx", start2)
+    .attr("cy", height/2)
+    .attr("r", radius2)
+    .attr("fill", "red")
+    .attr("opacity", 0.4);
+  
+  // Velocity arrows
+  const arrow1 = svg.append("line")
+    .attr("x1", 100)
+    .attr("y1", height/2)
+    .attr("x2", 100 + v1_initial * 10)
+    .attr("y2", height/2)
+    .attr("stroke", "darkblue")
+    .attr("stroke-width", 3)
+    .attr("marker-end", "url(#arrowblue)");
+  
+  const arrow2 = svg.append("line")
+    .attr("x1", width - 100)
+    .attr("y1", height/2)
+    .attr("x2", width - 100 + v2_initial * 10)
+    .attr("y2", height/2)
+    .attr("stroke", "darkred")
+    .attr("stroke-width", 3)
+    .attr("marker-end", "url(#arrowred)");
+  
+  // Labels
+  const label1 = svg.append("text")
+    .attr("x", 100)
+    .attr("y", height/2 - radius1 - 10)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "12px")
+    .attr("font-weight", "bold")
+    .text(`m=${mass1}`);
+  
+  const label2 = svg.append("text")
+    .attr("x", width - 100)
+    .attr("y", height/2 - radius2 - 10)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "12px")
+    .attr("font-weight", "bold")
+    .text(`m=${mass2}`);
+  
+  // Velocity display
+  const vel1Text = svg.append("text")
+    .attr("x", 100)
+    .attr("y", height/2 + radius1 + 20)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "11px")
+    .text(`v=${v1_initial.toFixed(1)}`);
+  
+  const vel2Text = svg.append("text")
+    .attr("x", width - 100)
+    .attr("y", height/2 + radius2 + 20)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "11px")
+    .text(`v=${velocity2.toFixed(1)}`);
+  
+  // Momentum display
+  const momentumText = svg.append("text")
+    .attr("x", width/2)
+    .attr("y", 30)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "14px")
+    .attr("font-weight", "bold")
+    .text("Click 'Run Collision' to start");
+  
+  // Physics info display - Initial conditions (left side)
+  const physicsInfoInitial = svg.append("text")
+    .attr("x", 10)
+    .attr("y", height - 80)
+    .attr("font-size", "11px")
+    .attr("font-family", "monospace");
+  
+  // Physics info display - Final conditions (right side)
+  const physicsInfoFinal = svg.append("text")
+    .attr("x", width/2 + 10)
+    .attr("y", height - 80)
+    .attr("font-size", "11px")
+    .attr("font-family", "monospace");
+  
+  // Calculate initial physics
+  const p1_initial = mass1 * v1_initial;
+  const p2_initial = mass2 * v2_initial;
+  const p_total_initial = p1_initial + p2_initial;
+  const ke1_initial = 0.5 * mass1 * v1_initial * v1_initial;
+  const ke2_initial = 0.5 * mass2 * v2_initial * v2_initial;
+  const ke_total_initial = ke1_initial + ke2_initial;
+  
+  // Calculate final physics
+  const p1_final = mass1 * v1_final;
+  const p2_final = mass2 * v2_final;
+  const p_total_final = p1_final + p2_final;
+  const ke1_final = 0.5 * mass1 * v1_final * v1_final;
+  const ke2_final = 0.5 * mass2 * v2_final * v2_final;
+  const ke_total_final = ke1_final + ke2_final;
+  
+  // Display initial conditions
+  const initialInfo = [
+    "INITIAL CONDITIONS:",
+    `Object 1: m=${mass1}, v=${v1_initial.toFixed(1)} → p=${p1_initial.toFixed(2)}, KE=${ke1_initial.toFixed(2)}`,
+    `Object 2: m=${mass2}, v=${v2_initial.toFixed(1)} → p=${p2_initial.toFixed(2)}, KE=${ke2_initial.toFixed(2)}`,
+    `Total:    p=${p_total_initial.toFixed(2)}, KE=${ke_total_initial.toFixed(2)}`
+  ];
+  
+  physicsInfoInitial.selectAll("tspan")
+    .data(initialInfo)
+    .enter()
+    .append("tspan")
+    .attr("x", 10)
+    .attr("dy", (d, i) => i === 0 ? 0 : 14)
+    .text(d => d);
+  
+  // Calculate where they actually collide based on their velocities
+  // They start at different positions and move toward each other
+  const totalDistance = start2 - start1;
+  
+  // Handle special cases for zero velocities
+  let collisionPos1, collisionPos2, timeToCollision;
+  
+  if (v1_initial === 0 && velocity2 === 0) {
+    // Both stationary - no collision animation
+    collisionPos1 = start1;
+    collisionPos2 = start2;
+    timeToCollision = 0;
+  } else if (v1_initial === 0) {
+    // Object 1 is stationary, object 2 moves to it
+    collisionPos1 = start1;
+    collisionPos2 = start1 + radius1 + radius2;
+    const distance2 = start2 - collisionPos2;
+    timeToCollision = (distance2 / velocity2) * 100;
+  } else if (velocity2 === 0) {
+    // Object 2 is stationary, object 1 moves to it
+    collisionPos2 = start2;
+    collisionPos1 = start2 - radius1 - radius2;
+    const distance1 = collisionPos1 - start1;
+    timeToCollision = (distance1 / v1_initial) * 100;
+  } else {
+    // Both moving - calculate meeting point
+    const velocitySum = v1_initial + velocity2;
+    const distanceRatio1 = v1_initial / velocitySum;
+    const meetingPoint = start1 + totalDistance * distanceRatio1;
+    
+    collisionPos1 = meetingPoint - radius1;
+    collisionPos2 = meetingPoint + radius2;
+    
+    const distance1 = collisionPos1 - start1;
+    const distance2 = start2 - collisionPos2;
+    
+    const timeToCollision1 = (distance1 / v1_initial) * 100;
+    const timeToCollision2 = (distance2 / velocity2) * 100;
+    timeToCollision = (timeToCollision1 + timeToCollision2) / 2;
+  }
+  
+  // Post-collision: each moves independently at its new velocity
+  const postDistance = 200; // Fixed distance to travel after collision
+  const postDuration1 = v1_final === 0 ? 1000 : Math.abs((postDistance / v1_final) * 100);
+  const postDuration2 = v2_final === 0 ? 1000 : Math.abs((postDistance / v2_final) * 100);
+  
+  // Update momentum text during animation
+  setTimeout(() => {
+    momentumText.text(`Approaching collision...`);
+  }, 100);
+  
+  // Animate towards collision with LINEAR easing (constant velocity)
+  // Both objects use the SAME duration so they arrive simultaneously
+  obj1.transition()
+    .ease(d3.easeLinear)
+    .duration(timeToCollision)
+    .attr("cx", collisionPos1)
+    .on("end", function() {
+      // Collision happens!
+      momentumText.text(`Collision!`);
+      // After collision, animate away at new velocity (or stay if v=0)
+      if (v1_final !== 0) {
+        d3.select(this).transition()
+          .ease(d3.easeLinear)
+          .duration(postDuration1)
+          .attr("cx", collisionPos1 + (v1_final > 0 ? postDistance : -postDistance));
+      }
+    });
+  
+  obj2.transition()
+    .ease(d3.easeLinear)
+    .duration(timeToCollision)
+    .attr("cx", collisionPos2)
+    .on("end", function() {
+      if (v2_final !== 0) {
+        d3.select(this).transition()
+          .ease(d3.easeLinear)
+          .duration(postDuration2)
+          .attr("cx", collisionPos2 + (v2_final > 0 ? postDistance : -postDistance));
+      }
+    });
+  
+  // Animate arrows
+  arrow1.transition()
+    .ease(d3.easeLinear)
+    .duration(timeToCollision)
+    .attr("x1", collisionPos1)
+    .attr("x2", collisionPos1 + v1_initial * 10)
+    .on("end", function() {
+      d3.select(this)
+        .attr("x2", collisionPos1 + v1_final * 10);
+      if (v1_final !== 0) {
+        d3.select(this).transition()
+          .ease(d3.easeLinear)
+          .duration(postDuration1)
+          .attr("x1", collisionPos1 + (v1_final > 0 ? postDistance : -postDistance))
+          .attr("x2", collisionPos1 + (v1_final > 0 ? postDistance : -postDistance) + v1_final * 10);
+      }
+    });
+  
+  arrow2.transition()
+    .ease(d3.easeLinear)
+    .duration(timeToCollision)
+    .attr("x1", collisionPos2)
+    .attr("x2", collisionPos2 + v2_initial * 10)
+    .on("end", function() {
+      d3.select(this)
+        .attr("x2", collisionPos2 + v2_final * 10);
+      if (v2_final !== 0) {
+        d3.select(this).transition()
+          .ease(d3.easeLinear)
+          .duration(postDuration2)
+          .attr("x1", collisionPos2 + (v2_final > 0 ? postDistance : -postDistance))
+          .attr("x2", collisionPos2 + (v2_final > 0 ? postDistance : -postDistance) + v2_final * 10);
+      }
+    });
+  
+  // Animate labels
+  label1.transition()
+    .ease(d3.easeLinear)
+    .duration(timeToCollision)
+    .attr("x", collisionPos1)
+    .on("end", function() {
+      if (v1_final !== 0) {
+        d3.select(this).transition()
+          .ease(d3.easeLinear)
+          .duration(postDuration1)
+          .attr("x", collisionPos1 + (v1_final > 0 ? postDistance : -postDistance));
+      }
+    });
+  
+  label2.transition()
+    .ease(d3.easeLinear)
+    .duration(timeToCollision)
+    .attr("x", collisionPos2)
+    .on("end", function() {
+      if (v2_final !== 0) {
+        d3.select(this).transition()
+          .ease(d3.easeLinear)
+          .duration(postDuration2)
+          .attr("x", collisionPos2 + (v2_final > 0 ? postDistance : -postDistance));
+      }
+    });
+  
+  vel1Text.transition()
+    .ease(d3.easeLinear)
+    .duration(timeToCollision)
+    .attr("x", collisionPos1)
+    .on("end", function() {
+      d3.select(this).text(`v=${v1_final.toFixed(1)}`);
+      
+      if (v1_final !== 0) {
+        d3.select(this).transition()
+          .ease(d3.easeLinear)
+          .duration(postDuration1)
+          .attr("x", collisionPos1 + (v1_final > 0 ? postDistance : -postDistance));
+      }
+      
+      setTimeout(() => {
+        momentumText.text(`COLLISION COMPLETE - Momentum & Energy Conserved!`);
+        
+        // Display final conditions next to initial
+        const finalInfo = [
+          "FINAL CONDITIONS:",
+          `Object 1: m=${mass1}, v=${v1_final.toFixed(1)} → p=${p1_final.toFixed(2)}, KE=${ke1_final.toFixed(2)}`,
+          `Object 2: m=${mass2}, v=${v2_final.toFixed(1)} → p=${p2_final.toFixed(2)}, KE=${ke2_final.toFixed(2)}`,
+          `Total:    p=${p_total_final.toFixed(2)}, KE=${ke_total_final.toFixed(2)}`
+        ];
+        
+        physicsInfoFinal.selectAll("tspan")
+          .data(finalInfo)
+          .enter()
+          .append("tspan")
+          .attr("x", width/2 + 10)
+          .attr("dy", (d, i) => i === 0 ? 0 : 14)
+          .text(d => d)
+          .style("fill", "darkgreen");
+      }, 200);
+    });
+  
+  vel2Text.transition()
+    .ease(d3.easeLinear)
+    .duration(timeToCollision)
+    .attr("x", collisionPos2)
+    .on("end", function() {
+      d3.select(this).text(`v=${v2_final.toFixed(1)}`);
+      
+      if (v2_final !== 0) {
+        d3.select(this).transition()
+          .ease(d3.easeLinear)
+          .duration(postDuration2)
+          .attr("x", collisionPos2 + (v2_final > 0 ? postDistance : -postDistance));
+      }
+    });
+  
+  return svg.node();
+}
+```
+
+## How It Works
+
+- Click **"Run Collision"** to start the animation
+- Objects move toward each other from opposite sides
+- They collide at the center
+- After collision, they bounce away with new velocities
+- Momentum is conserved throughout!
+
+Try different mass and velocity combinations:
+- Equal masses → velocities exchange
+- Heavy mass 1 + light mass 2 → mass 1 barely slows down
+- Light mass 1 + heavy mass 2 → mass 1 bounces back hard!
+- **Pool stop-shot:** Equal masses, set velocity2=0 → after collision, object 1 stops and object 2 moves!

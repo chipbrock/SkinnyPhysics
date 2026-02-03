@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Interactive Collision Animation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="collision_animation_1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="collision_animation_1_files/libs/quarto-html/quarto.js"></script>
+<script src="collision_animation_1_files/libs/quarto-html/popper.min.js"></script>
+<script src="collision_animation_1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="collision_animation_1_files/libs/quarto-html/anchor.min.js"></script>
+<link href="collision_animation_1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="collision_animation_1_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="collision_animation_1_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="collision_animation_1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="collision_animation_1_files/libs/bootstrap/bootstrap-c0367b04c37547644fece4185067e4a7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script type="module" src="collision_animation_1_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="collision_animation_1_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Interactive Collision Animation</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="two-objects-colliding" class="level2">
+<h2 class="anchored" data-anchor-id="two-objects-colliding">Two Objects Colliding</h2>
+<p>Adjust the sliders and click <strong>“Run Collision”</strong> to see the animation!</p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="13" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 12;"><span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>viewof velocity1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Velocity 1 (→)"</span>})</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>viewof velocity2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Velocity 2 (←)"</span>})</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>viewof mass1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">20</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Mass 1"</span>})</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>viewof mass2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">20</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Mass 2"</span>})</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>viewof runButton <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Run Collision"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="21" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 20;"><span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Trigger animation when button clicked</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  runButton<span class="op">;</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">700</span><span class="op">;</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">300</span><span class="op">;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">create</span>(<span class="st">"svg"</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> width)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> height)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"style"</span><span class="op">,</span> <span class="st">"background: #f9f9f9; border: 1px solid #ddd;"</span>)<span class="op">;</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Calculate physics</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> v1_initial <span class="op">=</span> velocity1<span class="op">;</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> v2_initial <span class="op">=</span> <span class="op">-</span>velocity2<span class="op">;</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> v1_final <span class="op">=</span> ((mass1 <span class="op">-</span> mass2) <span class="op">*</span> v1_initial <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> mass2 <span class="op">*</span> v2_initial) <span class="op">/</span> (mass1 <span class="op">+</span> mass2)<span class="op">;</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> v2_final <span class="op">=</span> ((mass2 <span class="op">-</span> mass1) <span class="op">*</span> v2_initial <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> mass1 <span class="op">*</span> v1_initial) <span class="op">/</span> (mass1 <span class="op">+</span> mass2)<span class="op">;</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Better size scaling - make mass differences more visible</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> totalMass <span class="op">=</span> mass1 <span class="op">+</span> mass2<span class="op">;</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> avgMass <span class="op">=</span> totalMass <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> radius1 <span class="op">=</span> <span class="dv">15</span> <span class="op">+</span> (mass1 <span class="op">/</span> avgMass) <span class="op">*</span> <span class="dv">15</span><span class="op">;</span>  <span class="co">// range from ~15 to ~45</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> radius2 <span class="op">=</span> <span class="dv">15</span> <span class="op">+</span> (mass2 <span class="op">/</span> avgMass) <span class="op">*</span> <span class="dv">15</span><span class="op">;</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Center line</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> width<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> width<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> height)</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"#ccc"</span>)</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> <span class="st">"5,5"</span>)<span class="op">;</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Ground line</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> height<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> width)</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> height<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"#333"</span>)</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Arrow marker definitions</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"defs"</span>)<span class="op">.</span><span class="fu">append</span>(<span class="st">"marker"</span>)</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"arrowblue"</span>)</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"markerWidth"</span><span class="op">,</span> <span class="dv">10</span>)</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"markerHeight"</span><span class="op">,</span> <span class="dv">10</span>)</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"refX"</span><span class="op">,</span> <span class="dv">9</span>)</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"refY"</span><span class="op">,</span> <span class="dv">3</span>)</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"orient"</span><span class="op">,</span> <span class="st">"auto"</span>)</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"polygon"</span>)</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"points"</span><span class="op">,</span> <span class="st">"0 0, 10 3, 0 6"</span>)</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"darkblue"</span>)<span class="op">;</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"defs"</span>)<span class="op">.</span><span class="fu">append</span>(<span class="st">"marker"</span>)</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"arrowred"</span>)</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"markerWidth"</span><span class="op">,</span> <span class="dv">10</span>)</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"markerHeight"</span><span class="op">,</span> <span class="dv">10</span>)</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"refX"</span><span class="op">,</span> <span class="dv">9</span>)</span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"refY"</span><span class="op">,</span> <span class="dv">3</span>)</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"orient"</span><span class="op">,</span> <span class="st">"auto"</span>)</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"polygon"</span>)</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"points"</span><span class="op">,</span> <span class="st">"0 0, 10 3, 0 6"</span>)</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"darkred"</span>)<span class="op">;</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Create objects - position stationary ones closer to center</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> start1<span class="op">,</span> start2<span class="op">;</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (v1_initial <span class="op">===</span> <span class="dv">0</span>) {</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Object 1 stationary - put it at left-center</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>    start1 <span class="op">=</span> width <span class="op">*</span> <span class="fl">0.3</span><span class="op">;</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>    start2 <span class="op">=</span> width <span class="op">-</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (velocity2 <span class="op">===</span> <span class="dv">0</span>) {</span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Object 2 stationary - put it at right-center  </span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>    start1 <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>    start2 <span class="op">=</span> width <span class="op">*</span> <span class="fl">0.7</span><span class="op">;</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Both moving - normal positions</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>    start1 <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>    start2 <span class="op">=</span> width <span class="op">-</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> obj1 <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> start1)</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cy"</span><span class="op">,</span> height<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> radius1)</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"blue"</span>)</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="fl">0.4</span>)<span class="op">;</span></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> obj2 <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> start2)</span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cy"</span><span class="op">,</span> height<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> radius2)</span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"red"</span>)</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="fl">0.4</span>)<span class="op">;</span></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Velocity arrows</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> arrow1 <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> <span class="dv">100</span>)</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> height<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> <span class="dv">100</span> <span class="op">+</span> v1_initial <span class="op">*</span> <span class="dv">10</span>)</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> height<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"darkblue"</span>)</span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">3</span>)</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"marker-end"</span><span class="op">,</span> <span class="st">"url(#arrowblue)"</span>)<span class="op">;</span></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> arrow2 <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> width <span class="op">-</span> <span class="dv">100</span>)</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> height<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> width <span class="op">-</span> <span class="dv">100</span> <span class="op">+</span> v2_initial <span class="op">*</span> <span class="dv">10</span>)</span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> height<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"darkred"</span>)</span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">3</span>)</span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"marker-end"</span><span class="op">,</span> <span class="st">"url(#arrowred)"</span>)<span class="op">;</span></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Labels</span></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> label1 <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="dv">100</span>)</span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> height<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> radius1 <span class="op">-</span> <span class="dv">10</span>)</span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"12px"</span>)</span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"font-weight"</span><span class="op">,</span> <span class="st">"bold"</span>)</span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">text</span>(<span class="vs">`m=</span><span class="sc">${</span>mass1<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> label2 <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> width <span class="op">-</span> <span class="dv">100</span>)</span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> height<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> radius2 <span class="op">-</span> <span class="dv">10</span>)</span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"12px"</span>)</span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"font-weight"</span><span class="op">,</span> <span class="st">"bold"</span>)</span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">text</span>(<span class="vs">`m=</span><span class="sc">${</span>mass2<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Velocity display</span></span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> vel1Text <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="dv">100</span>)</span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> height<span class="op">/</span><span class="dv">2</span> <span class="op">+</span> radius1 <span class="op">+</span> <span class="dv">20</span>)</span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"11px"</span>)</span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">text</span>(<span class="vs">`v=</span><span class="sc">${</span>v1_initial<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> vel2Text <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> width <span class="op">-</span> <span class="dv">100</span>)</span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> height<span class="op">/</span><span class="dv">2</span> <span class="op">+</span> radius2 <span class="op">+</span> <span class="dv">20</span>)</span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"11px"</span>)</span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">text</span>(<span class="vs">`v=</span><span class="sc">${</span>velocity2<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Momentum display</span></span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> momentumText <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> width<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> <span class="dv">30</span>)</span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"14px"</span>)</span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"font-weight"</span><span class="op">,</span> <span class="st">"bold"</span>)</span>
+<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">text</span>(<span class="st">"Click 'Run Collision' to start"</span>)<span class="op">;</span></span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Physics info display - Initial conditions (left side)</span></span>
+<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> physicsInfoInitial <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="dv">10</span>)</span>
+<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> height <span class="op">-</span> <span class="dv">80</span>)</span>
+<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"11px"</span>)</span>
+<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"font-family"</span><span class="op">,</span> <span class="st">"monospace"</span>)<span class="op">;</span></span>
+<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Physics info display - Final conditions (right side)</span></span>
+<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> physicsInfoFinal <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> width<span class="op">/</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">10</span>)</span>
+<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> height <span class="op">-</span> <span class="dv">80</span>)</span>
+<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"11px"</span>)</span>
+<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"font-family"</span><span class="op">,</span> <span class="st">"monospace"</span>)<span class="op">;</span></span>
+<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Calculate initial physics</span></span>
+<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> p1_initial <span class="op">=</span> mass1 <span class="op">*</span> v1_initial<span class="op">;</span></span>
+<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> p2_initial <span class="op">=</span> mass2 <span class="op">*</span> v2_initial<span class="op">;</span></span>
+<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> p_total_initial <span class="op">=</span> p1_initial <span class="op">+</span> p2_initial<span class="op">;</span></span>
+<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> ke1_initial <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> mass1 <span class="op">*</span> v1_initial <span class="op">*</span> v1_initial<span class="op">;</span></span>
+<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> ke2_initial <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> mass2 <span class="op">*</span> v2_initial <span class="op">*</span> v2_initial<span class="op">;</span></span>
+<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> ke_total_initial <span class="op">=</span> ke1_initial <span class="op">+</span> ke2_initial<span class="op">;</span></span>
+<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Calculate final physics</span></span>
+<span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> p1_final <span class="op">=</span> mass1 <span class="op">*</span> v1_final<span class="op">;</span></span>
+<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> p2_final <span class="op">=</span> mass2 <span class="op">*</span> v2_final<span class="op">;</span></span>
+<span id="cb2-203"><a href="#cb2-203" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> p_total_final <span class="op">=</span> p1_final <span class="op">+</span> p2_final<span class="op">;</span></span>
+<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> ke1_final <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> mass1 <span class="op">*</span> v1_final <span class="op">*</span> v1_final<span class="op">;</span></span>
+<span id="cb2-205"><a href="#cb2-205" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> ke2_final <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> mass2 <span class="op">*</span> v2_final <span class="op">*</span> v2_final<span class="op">;</span></span>
+<span id="cb2-206"><a href="#cb2-206" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> ke_total_final <span class="op">=</span> ke1_final <span class="op">+</span> ke2_final<span class="op">;</span></span>
+<span id="cb2-207"><a href="#cb2-207" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-208"><a href="#cb2-208" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Display initial conditions</span></span>
+<span id="cb2-209"><a href="#cb2-209" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> initialInfo <span class="op">=</span> [</span>
+<span id="cb2-210"><a href="#cb2-210" aria-hidden="true" tabindex="-1"></a>    <span class="st">"INITIAL CONDITIONS:"</span><span class="op">,</span></span>
+<span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a>    <span class="vs">`Object 1: m=</span><span class="sc">${</span>mass1<span class="sc">}</span><span class="vs">, v=</span><span class="sc">${</span>v1_initial<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs"> → p=</span><span class="sc">${</span>p1_initial<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">, KE=</span><span class="sc">${</span>ke1_initial<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">`</span><span class="op">,</span></span>
+<span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a>    <span class="vs">`Object 2: m=</span><span class="sc">${</span>mass2<span class="sc">}</span><span class="vs">, v=</span><span class="sc">${</span>v2_initial<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs"> → p=</span><span class="sc">${</span>p2_initial<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">, KE=</span><span class="sc">${</span>ke2_initial<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">`</span><span class="op">,</span></span>
+<span id="cb2-213"><a href="#cb2-213" aria-hidden="true" tabindex="-1"></a>    <span class="vs">`Total:    p=</span><span class="sc">${</span>p_total_initial<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">, KE=</span><span class="sc">${</span>ke_total_initial<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">;</span></span>
+<span id="cb2-215"><a href="#cb2-215" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-216"><a href="#cb2-216" aria-hidden="true" tabindex="-1"></a>  physicsInfoInitial<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"tspan"</span>)</span>
+<span id="cb2-217"><a href="#cb2-217" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">data</span>(initialInfo)</span>
+<span id="cb2-218"><a href="#cb2-218" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb2-219"><a href="#cb2-219" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"tspan"</span>)</span>
+<span id="cb2-220"><a href="#cb2-220" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="dv">10</span>)</span>
+<span id="cb2-221"><a href="#cb2-221" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"dy"</span><span class="op">,</span> (d<span class="op">,</span> i) <span class="kw">=&gt;</span> i <span class="op">===</span> <span class="dv">0</span> <span class="op">?</span> <span class="dv">0</span> <span class="op">:</span> <span class="dv">14</span>)</span>
+<span id="cb2-222"><a href="#cb2-222" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">text</span>(d <span class="kw">=&gt;</span> d)<span class="op">;</span></span>
+<span id="cb2-223"><a href="#cb2-223" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-224"><a href="#cb2-224" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Calculate where they actually collide based on their velocities</span></span>
+<span id="cb2-225"><a href="#cb2-225" aria-hidden="true" tabindex="-1"></a>  <span class="co">// They start at different positions and move toward each other</span></span>
+<span id="cb2-226"><a href="#cb2-226" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> totalDistance <span class="op">=</span> start2 <span class="op">-</span> start1<span class="op">;</span></span>
+<span id="cb2-227"><a href="#cb2-227" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-228"><a href="#cb2-228" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Handle special cases for zero velocities</span></span>
+<span id="cb2-229"><a href="#cb2-229" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> collisionPos1<span class="op">,</span> collisionPos2<span class="op">,</span> timeToCollision<span class="op">;</span></span>
+<span id="cb2-230"><a href="#cb2-230" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-231"><a href="#cb2-231" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (v1_initial <span class="op">===</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> velocity2 <span class="op">===</span> <span class="dv">0</span>) {</span>
+<span id="cb2-232"><a href="#cb2-232" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Both stationary - no collision animation</span></span>
+<span id="cb2-233"><a href="#cb2-233" aria-hidden="true" tabindex="-1"></a>    collisionPos1 <span class="op">=</span> start1<span class="op">;</span></span>
+<span id="cb2-234"><a href="#cb2-234" aria-hidden="true" tabindex="-1"></a>    collisionPos2 <span class="op">=</span> start2<span class="op">;</span></span>
+<span id="cb2-235"><a href="#cb2-235" aria-hidden="true" tabindex="-1"></a>    timeToCollision <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-236"><a href="#cb2-236" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (v1_initial <span class="op">===</span> <span class="dv">0</span>) {</span>
+<span id="cb2-237"><a href="#cb2-237" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Object 1 is stationary, object 2 moves to it</span></span>
+<span id="cb2-238"><a href="#cb2-238" aria-hidden="true" tabindex="-1"></a>    collisionPos1 <span class="op">=</span> start1<span class="op">;</span></span>
+<span id="cb2-239"><a href="#cb2-239" aria-hidden="true" tabindex="-1"></a>    collisionPos2 <span class="op">=</span> start1 <span class="op">+</span> radius1 <span class="op">+</span> radius2<span class="op">;</span></span>
+<span id="cb2-240"><a href="#cb2-240" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> distance2 <span class="op">=</span> start2 <span class="op">-</span> collisionPos2<span class="op">;</span></span>
+<span id="cb2-241"><a href="#cb2-241" aria-hidden="true" tabindex="-1"></a>    timeToCollision <span class="op">=</span> (distance2 <span class="op">/</span> velocity2) <span class="op">*</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb2-242"><a href="#cb2-242" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (velocity2 <span class="op">===</span> <span class="dv">0</span>) {</span>
+<span id="cb2-243"><a href="#cb2-243" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Object 2 is stationary, object 1 moves to it</span></span>
+<span id="cb2-244"><a href="#cb2-244" aria-hidden="true" tabindex="-1"></a>    collisionPos2 <span class="op">=</span> start2<span class="op">;</span></span>
+<span id="cb2-245"><a href="#cb2-245" aria-hidden="true" tabindex="-1"></a>    collisionPos1 <span class="op">=</span> start2 <span class="op">-</span> radius1 <span class="op">-</span> radius2<span class="op">;</span></span>
+<span id="cb2-246"><a href="#cb2-246" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> distance1 <span class="op">=</span> collisionPos1 <span class="op">-</span> start1<span class="op">;</span></span>
+<span id="cb2-247"><a href="#cb2-247" aria-hidden="true" tabindex="-1"></a>    timeToCollision <span class="op">=</span> (distance1 <span class="op">/</span> v1_initial) <span class="op">*</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb2-248"><a href="#cb2-248" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb2-249"><a href="#cb2-249" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Both moving - calculate meeting point</span></span>
+<span id="cb2-250"><a href="#cb2-250" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> velocitySum <span class="op">=</span> v1_initial <span class="op">+</span> velocity2<span class="op">;</span></span>
+<span id="cb2-251"><a href="#cb2-251" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> distanceRatio1 <span class="op">=</span> v1_initial <span class="op">/</span> velocitySum<span class="op">;</span></span>
+<span id="cb2-252"><a href="#cb2-252" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> meetingPoint <span class="op">=</span> start1 <span class="op">+</span> totalDistance <span class="op">*</span> distanceRatio1<span class="op">;</span></span>
+<span id="cb2-253"><a href="#cb2-253" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-254"><a href="#cb2-254" aria-hidden="true" tabindex="-1"></a>    collisionPos1 <span class="op">=</span> meetingPoint <span class="op">-</span> radius1<span class="op">;</span></span>
+<span id="cb2-255"><a href="#cb2-255" aria-hidden="true" tabindex="-1"></a>    collisionPos2 <span class="op">=</span> meetingPoint <span class="op">+</span> radius2<span class="op">;</span></span>
+<span id="cb2-256"><a href="#cb2-256" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-257"><a href="#cb2-257" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> distance1 <span class="op">=</span> collisionPos1 <span class="op">-</span> start1<span class="op">;</span></span>
+<span id="cb2-258"><a href="#cb2-258" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> distance2 <span class="op">=</span> start2 <span class="op">-</span> collisionPos2<span class="op">;</span></span>
+<span id="cb2-259"><a href="#cb2-259" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-260"><a href="#cb2-260" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> timeToCollision1 <span class="op">=</span> (distance1 <span class="op">/</span> v1_initial) <span class="op">*</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb2-261"><a href="#cb2-261" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> timeToCollision2 <span class="op">=</span> (distance2 <span class="op">/</span> velocity2) <span class="op">*</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb2-262"><a href="#cb2-262" aria-hidden="true" tabindex="-1"></a>    timeToCollision <span class="op">=</span> (timeToCollision1 <span class="op">+</span> timeToCollision2) <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb2-263"><a href="#cb2-263" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-264"><a href="#cb2-264" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-265"><a href="#cb2-265" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Post-collision: each moves independently at its new velocity</span></span>
+<span id="cb2-266"><a href="#cb2-266" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> postDistance <span class="op">=</span> <span class="dv">200</span><span class="op">;</span> <span class="co">// Fixed distance to travel after collision</span></span>
+<span id="cb2-267"><a href="#cb2-267" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> postDuration1 <span class="op">=</span> v1_final <span class="op">===</span> <span class="dv">0</span> <span class="op">?</span> <span class="dv">1000</span> <span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>((postDistance <span class="op">/</span> v1_final) <span class="op">*</span> <span class="dv">100</span>)<span class="op">;</span></span>
+<span id="cb2-268"><a href="#cb2-268" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> postDuration2 <span class="op">=</span> v2_final <span class="op">===</span> <span class="dv">0</span> <span class="op">?</span> <span class="dv">1000</span> <span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>((postDistance <span class="op">/</span> v2_final) <span class="op">*</span> <span class="dv">100</span>)<span class="op">;</span></span>
+<span id="cb2-269"><a href="#cb2-269" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-270"><a href="#cb2-270" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Update momentum text during animation</span></span>
+<span id="cb2-271"><a href="#cb2-271" aria-hidden="true" tabindex="-1"></a>  <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb2-272"><a href="#cb2-272" aria-hidden="true" tabindex="-1"></a>    momentumText<span class="op">.</span><span class="fu">text</span>(<span class="vs">`Approaching collision...`</span>)<span class="op">;</span></span>
+<span id="cb2-273"><a href="#cb2-273" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span> <span class="dv">100</span>)<span class="op">;</span></span>
+<span id="cb2-274"><a href="#cb2-274" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-275"><a href="#cb2-275" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Animate towards collision with LINEAR easing (constant velocity)</span></span>
+<span id="cb2-276"><a href="#cb2-276" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Both objects use the SAME duration so they arrive simultaneously</span></span>
+<span id="cb2-277"><a href="#cb2-277" aria-hidden="true" tabindex="-1"></a>  obj1<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb2-278"><a href="#cb2-278" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-279"><a href="#cb2-279" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">duration</span>(timeToCollision)</span>
+<span id="cb2-280"><a href="#cb2-280" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> collisionPos1)</span>
+<span id="cb2-281"><a href="#cb2-281" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">"end"</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb2-282"><a href="#cb2-282" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Collision happens!</span></span>
+<span id="cb2-283"><a href="#cb2-283" aria-hidden="true" tabindex="-1"></a>      momentumText<span class="op">.</span><span class="fu">text</span>(<span class="vs">`Collision!`</span>)<span class="op">;</span></span>
+<span id="cb2-284"><a href="#cb2-284" aria-hidden="true" tabindex="-1"></a>      <span class="co">// After collision, animate away at new velocity (or stay if v=0)</span></span>
+<span id="cb2-285"><a href="#cb2-285" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (v1_final <span class="op">!==</span> <span class="dv">0</span>) {</span>
+<span id="cb2-286"><a href="#cb2-286" aria-hidden="true" tabindex="-1"></a>        d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb2-287"><a href="#cb2-287" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-288"><a href="#cb2-288" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">duration</span>(postDuration1)</span>
+<span id="cb2-289"><a href="#cb2-289" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> collisionPos1 <span class="op">+</span> (v1_final <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> postDistance <span class="op">:</span> <span class="op">-</span>postDistance))<span class="op">;</span></span>
+<span id="cb2-290"><a href="#cb2-290" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-291"><a href="#cb2-291" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb2-292"><a href="#cb2-292" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-293"><a href="#cb2-293" aria-hidden="true" tabindex="-1"></a>  obj2<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb2-294"><a href="#cb2-294" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-295"><a href="#cb2-295" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">duration</span>(timeToCollision)</span>
+<span id="cb2-296"><a href="#cb2-296" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> collisionPos2)</span>
+<span id="cb2-297"><a href="#cb2-297" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">"end"</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb2-298"><a href="#cb2-298" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (v2_final <span class="op">!==</span> <span class="dv">0</span>) {</span>
+<span id="cb2-299"><a href="#cb2-299" aria-hidden="true" tabindex="-1"></a>        d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb2-300"><a href="#cb2-300" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-301"><a href="#cb2-301" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">duration</span>(postDuration2)</span>
+<span id="cb2-302"><a href="#cb2-302" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> collisionPos2 <span class="op">+</span> (v2_final <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> postDistance <span class="op">:</span> <span class="op">-</span>postDistance))<span class="op">;</span></span>
+<span id="cb2-303"><a href="#cb2-303" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-304"><a href="#cb2-304" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb2-305"><a href="#cb2-305" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-306"><a href="#cb2-306" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Animate arrows</span></span>
+<span id="cb2-307"><a href="#cb2-307" aria-hidden="true" tabindex="-1"></a>  arrow1<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb2-308"><a href="#cb2-308" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-309"><a href="#cb2-309" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">duration</span>(timeToCollision)</span>
+<span id="cb2-310"><a href="#cb2-310" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> collisionPos1)</span>
+<span id="cb2-311"><a href="#cb2-311" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> collisionPos1 <span class="op">+</span> v1_initial <span class="op">*</span> <span class="dv">10</span>)</span>
+<span id="cb2-312"><a href="#cb2-312" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">"end"</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb2-313"><a href="#cb2-313" aria-hidden="true" tabindex="-1"></a>      d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)</span>
+<span id="cb2-314"><a href="#cb2-314" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> collisionPos1 <span class="op">+</span> v1_final <span class="op">*</span> <span class="dv">10</span>)<span class="op">;</span></span>
+<span id="cb2-315"><a href="#cb2-315" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (v1_final <span class="op">!==</span> <span class="dv">0</span>) {</span>
+<span id="cb2-316"><a href="#cb2-316" aria-hidden="true" tabindex="-1"></a>        d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb2-317"><a href="#cb2-317" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-318"><a href="#cb2-318" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">duration</span>(postDuration1)</span>
+<span id="cb2-319"><a href="#cb2-319" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> collisionPos1 <span class="op">+</span> (v1_final <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> postDistance <span class="op">:</span> <span class="op">-</span>postDistance))</span>
+<span id="cb2-320"><a href="#cb2-320" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> collisionPos1 <span class="op">+</span> (v1_final <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> postDistance <span class="op">:</span> <span class="op">-</span>postDistance) <span class="op">+</span> v1_final <span class="op">*</span> <span class="dv">10</span>)<span class="op">;</span></span>
+<span id="cb2-321"><a href="#cb2-321" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-322"><a href="#cb2-322" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb2-323"><a href="#cb2-323" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-324"><a href="#cb2-324" aria-hidden="true" tabindex="-1"></a>  arrow2<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb2-325"><a href="#cb2-325" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-326"><a href="#cb2-326" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">duration</span>(timeToCollision)</span>
+<span id="cb2-327"><a href="#cb2-327" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> collisionPos2)</span>
+<span id="cb2-328"><a href="#cb2-328" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> collisionPos2 <span class="op">+</span> v2_initial <span class="op">*</span> <span class="dv">10</span>)</span>
+<span id="cb2-329"><a href="#cb2-329" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">"end"</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb2-330"><a href="#cb2-330" aria-hidden="true" tabindex="-1"></a>      d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)</span>
+<span id="cb2-331"><a href="#cb2-331" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> collisionPos2 <span class="op">+</span> v2_final <span class="op">*</span> <span class="dv">10</span>)<span class="op">;</span></span>
+<span id="cb2-332"><a href="#cb2-332" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (v2_final <span class="op">!==</span> <span class="dv">0</span>) {</span>
+<span id="cb2-333"><a href="#cb2-333" aria-hidden="true" tabindex="-1"></a>        d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb2-334"><a href="#cb2-334" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-335"><a href="#cb2-335" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">duration</span>(postDuration2)</span>
+<span id="cb2-336"><a href="#cb2-336" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> collisionPos2 <span class="op">+</span> (v2_final <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> postDistance <span class="op">:</span> <span class="op">-</span>postDistance))</span>
+<span id="cb2-337"><a href="#cb2-337" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> collisionPos2 <span class="op">+</span> (v2_final <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> postDistance <span class="op">:</span> <span class="op">-</span>postDistance) <span class="op">+</span> v2_final <span class="op">*</span> <span class="dv">10</span>)<span class="op">;</span></span>
+<span id="cb2-338"><a href="#cb2-338" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-339"><a href="#cb2-339" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb2-340"><a href="#cb2-340" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-341"><a href="#cb2-341" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Animate labels</span></span>
+<span id="cb2-342"><a href="#cb2-342" aria-hidden="true" tabindex="-1"></a>  label1<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb2-343"><a href="#cb2-343" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-344"><a href="#cb2-344" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">duration</span>(timeToCollision)</span>
+<span id="cb2-345"><a href="#cb2-345" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> collisionPos1)</span>
+<span id="cb2-346"><a href="#cb2-346" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">"end"</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb2-347"><a href="#cb2-347" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (v1_final <span class="op">!==</span> <span class="dv">0</span>) {</span>
+<span id="cb2-348"><a href="#cb2-348" aria-hidden="true" tabindex="-1"></a>        d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb2-349"><a href="#cb2-349" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-350"><a href="#cb2-350" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">duration</span>(postDuration1)</span>
+<span id="cb2-351"><a href="#cb2-351" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> collisionPos1 <span class="op">+</span> (v1_final <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> postDistance <span class="op">:</span> <span class="op">-</span>postDistance))<span class="op">;</span></span>
+<span id="cb2-352"><a href="#cb2-352" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-353"><a href="#cb2-353" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb2-354"><a href="#cb2-354" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-355"><a href="#cb2-355" aria-hidden="true" tabindex="-1"></a>  label2<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb2-356"><a href="#cb2-356" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-357"><a href="#cb2-357" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">duration</span>(timeToCollision)</span>
+<span id="cb2-358"><a href="#cb2-358" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> collisionPos2)</span>
+<span id="cb2-359"><a href="#cb2-359" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">"end"</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb2-360"><a href="#cb2-360" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (v2_final <span class="op">!==</span> <span class="dv">0</span>) {</span>
+<span id="cb2-361"><a href="#cb2-361" aria-hidden="true" tabindex="-1"></a>        d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb2-362"><a href="#cb2-362" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-363"><a href="#cb2-363" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">duration</span>(postDuration2)</span>
+<span id="cb2-364"><a href="#cb2-364" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> collisionPos2 <span class="op">+</span> (v2_final <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> postDistance <span class="op">:</span> <span class="op">-</span>postDistance))<span class="op">;</span></span>
+<span id="cb2-365"><a href="#cb2-365" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-366"><a href="#cb2-366" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb2-367"><a href="#cb2-367" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-368"><a href="#cb2-368" aria-hidden="true" tabindex="-1"></a>  vel1Text<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb2-369"><a href="#cb2-369" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-370"><a href="#cb2-370" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">duration</span>(timeToCollision)</span>
+<span id="cb2-371"><a href="#cb2-371" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> collisionPos1)</span>
+<span id="cb2-372"><a href="#cb2-372" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">"end"</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb2-373"><a href="#cb2-373" aria-hidden="true" tabindex="-1"></a>      d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">text</span>(<span class="vs">`v=</span><span class="sc">${</span>v1_final<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-374"><a href="#cb2-374" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb2-375"><a href="#cb2-375" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (v1_final <span class="op">!==</span> <span class="dv">0</span>) {</span>
+<span id="cb2-376"><a href="#cb2-376" aria-hidden="true" tabindex="-1"></a>        d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb2-377"><a href="#cb2-377" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-378"><a href="#cb2-378" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">duration</span>(postDuration1)</span>
+<span id="cb2-379"><a href="#cb2-379" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> collisionPos1 <span class="op">+</span> (v1_final <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> postDistance <span class="op">:</span> <span class="op">-</span>postDistance))<span class="op">;</span></span>
+<span id="cb2-380"><a href="#cb2-380" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-381"><a href="#cb2-381" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb2-382"><a href="#cb2-382" aria-hidden="true" tabindex="-1"></a>      <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb2-383"><a href="#cb2-383" aria-hidden="true" tabindex="-1"></a>        momentumText<span class="op">.</span><span class="fu">text</span>(<span class="vs">`COLLISION COMPLETE - Momentum &amp; Energy Conserved!`</span>)<span class="op">;</span></span>
+<span id="cb2-384"><a href="#cb2-384" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-385"><a href="#cb2-385" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Display final conditions next to initial</span></span>
+<span id="cb2-386"><a href="#cb2-386" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> finalInfo <span class="op">=</span> [</span>
+<span id="cb2-387"><a href="#cb2-387" aria-hidden="true" tabindex="-1"></a>          <span class="st">"FINAL CONDITIONS:"</span><span class="op">,</span></span>
+<span id="cb2-388"><a href="#cb2-388" aria-hidden="true" tabindex="-1"></a>          <span class="vs">`Object 1: m=</span><span class="sc">${</span>mass1<span class="sc">}</span><span class="vs">, v=</span><span class="sc">${</span>v1_final<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs"> → p=</span><span class="sc">${</span>p1_final<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">, KE=</span><span class="sc">${</span>ke1_final<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">`</span><span class="op">,</span></span>
+<span id="cb2-389"><a href="#cb2-389" aria-hidden="true" tabindex="-1"></a>          <span class="vs">`Object 2: m=</span><span class="sc">${</span>mass2<span class="sc">}</span><span class="vs">, v=</span><span class="sc">${</span>v2_final<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs"> → p=</span><span class="sc">${</span>p2_final<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">, KE=</span><span class="sc">${</span>ke2_final<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">`</span><span class="op">,</span></span>
+<span id="cb2-390"><a href="#cb2-390" aria-hidden="true" tabindex="-1"></a>          <span class="vs">`Total:    p=</span><span class="sc">${</span>p_total_final<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">, KE=</span><span class="sc">${</span>ke_total_final<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb2-391"><a href="#cb2-391" aria-hidden="true" tabindex="-1"></a>        ]<span class="op">;</span></span>
+<span id="cb2-392"><a href="#cb2-392" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-393"><a href="#cb2-393" aria-hidden="true" tabindex="-1"></a>        physicsInfoFinal<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"tspan"</span>)</span>
+<span id="cb2-394"><a href="#cb2-394" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">data</span>(finalInfo)</span>
+<span id="cb2-395"><a href="#cb2-395" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb2-396"><a href="#cb2-396" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">append</span>(<span class="st">"tspan"</span>)</span>
+<span id="cb2-397"><a href="#cb2-397" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> width<span class="op">/</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">10</span>)</span>
+<span id="cb2-398"><a href="#cb2-398" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"dy"</span><span class="op">,</span> (d<span class="op">,</span> i) <span class="kw">=&gt;</span> i <span class="op">===</span> <span class="dv">0</span> <span class="op">?</span> <span class="dv">0</span> <span class="op">:</span> <span class="dv">14</span>)</span>
+<span id="cb2-399"><a href="#cb2-399" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">text</span>(d <span class="kw">=&gt;</span> d)</span>
+<span id="cb2-400"><a href="#cb2-400" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"darkgreen"</span>)<span class="op">;</span></span>
+<span id="cb2-401"><a href="#cb2-401" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span> <span class="dv">200</span>)<span class="op">;</span></span>
+<span id="cb2-402"><a href="#cb2-402" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb2-403"><a href="#cb2-403" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-404"><a href="#cb2-404" aria-hidden="true" tabindex="-1"></a>  vel2Text<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb2-405"><a href="#cb2-405" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-406"><a href="#cb2-406" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">duration</span>(timeToCollision)</span>
+<span id="cb2-407"><a href="#cb2-407" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> collisionPos2)</span>
+<span id="cb2-408"><a href="#cb2-408" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">"end"</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb2-409"><a href="#cb2-409" aria-hidden="true" tabindex="-1"></a>      d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">text</span>(<span class="vs">`v=</span><span class="sc">${</span>v2_final<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-410"><a href="#cb2-410" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb2-411"><a href="#cb2-411" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (v2_final <span class="op">!==</span> <span class="dv">0</span>) {</span>
+<span id="cb2-412"><a href="#cb2-412" aria-hidden="true" tabindex="-1"></a>        d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb2-413"><a href="#cb2-413" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-414"><a href="#cb2-414" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">duration</span>(postDuration2)</span>
+<span id="cb2-415"><a href="#cb2-415" aria-hidden="true" tabindex="-1"></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> collisionPos2 <span class="op">+</span> (v2_final <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> postDistance <span class="op">:</span> <span class="op">-</span>postDistance))<span class="op">;</span></span>
+<span id="cb2-416"><a href="#cb2-416" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-417"><a href="#cb2-417" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb2-418"><a href="#cb2-418" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-419"><a href="#cb2-419" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()<span class="op">;</span></span>
+<span id="cb2-420"><a href="#cb2-420" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</section>
+<section id="how-it-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-works">How It Works</h2>
+<ul>
+<li>Click <strong>“Run Collision”</strong> to start the animation</li>
+<li>Objects move toward each other from opposite sides</li>
+<li>They collide at the center</li>
+<li>After collision, they bounce away with new velocities</li>
+<li>Momentum is conserved throughout!</li>
+</ul>
+<p>Try different mass and velocity combinations: - Equal masses → velocities exchange - Heavy mass 1 + light mass 2 → mass 1 barely slows down - Light mass 1 + heavy mass 2 → mass 1 bounces back hard! - <strong>Pool stop-shot:</strong> Equal masses, set velocity2=0 → after collision, object 1 stops and object 2 moves!</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ilxudmlld29mIHZlbG9jaXR5MSA9IElucHV0cy5yYW5nZShbMCwgMTBdLCB7dmFsdWU6IDUsIHN0ZXA6IDAuNSwgbGFiZWw6IFwiVmVsb2NpdHkgMSAo4oaSKVwifSlcbnZpZXdvZiB2ZWxvY2l0eTIgPSBJbnB1dHMucmFuZ2UoWzAsIDEwXSwge3ZhbHVlOiA1LCBzdGVwOiAwLjUsIGxhYmVsOiBcIlZlbG9jaXR5IDIgKOKGkClcIn0pXG52aWV3b2YgbWFzczEgPSBJbnB1dHMucmFuZ2UoWzEsIDIwXSwge3ZhbHVlOiAxMCwgc3RlcDogMSwgbGFiZWw6IFwiTWFzcyAxXCJ9KVxudmlld29mIG1hc3MyID0gSW5wdXRzLnJhbmdlKFsxLCAyMF0sIHt2YWx1ZTogMTAsIHN0ZXA6IDEsIGxhYmVsOiBcIk1hc3MgMlwifSlcbnZpZXdvZiBydW5CdXR0b24gPSBJbnB1dHMuYnV0dG9uKFwiUnVuIENvbGxpc2lvblwiKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiXG57XG4gIC8vIFRyaWdnZXIgYW5pbWF0aW9uIHdoZW4gYnV0dG9uIGNsaWNrZWRcbiAgcnVuQnV0dG9uO1xuICBcbiAgY29uc3Qgd2lkdGggPSA3MDA7XG4gIGNvbnN0IGhlaWdodCA9IDMwMDtcbiAgXG4gIGNvbnN0IHN2ZyA9IGQzLmNyZWF0ZShcInN2Z1wiKVxuICAgIC5hdHRyKFwid2lkdGhcIiwgd2lkdGgpXG4gICAgLmF0dHIoXCJoZWlnaHRcIiwgaGVpZ2h0KVxuICAgIC5hdHRyKFwic3R5bGVcIiwgXCJiYWNrZ3JvdW5kOiAjZjlmOWY5OyBib3JkZXI6IDFweCBzb2xpZCAjZGRkO1wiKTtcbiAgXG4gIC8vIENhbGN1bGF0ZSBwaHlzaWNzXG4gIGNvbnN0IHYxX2luaXRpYWwgPSB2ZWxvY2l0eTE7XG4gIGNvbnN0IHYyX2luaXRpYWwgPSAtdmVsb2NpdHkyO1xuICBcbiAgY29uc3QgdjFfZmluYWwgPSAoKG1hc3MxIC0gbWFzczIpICogdjFfaW5pdGlhbCArIDIgKiBtYXNzMiAqIHYyX2luaXRpYWwpIC8gKG1hc3MxICsgbWFzczIpO1xuICBjb25zdCB2Ml9maW5hbCA9ICgobWFzczIgLSBtYXNzMSkgKiB2Ml9pbml0aWFsICsgMiAqIG1hc3MxICogdjFfaW5pdGlhbCkgLyAobWFzczEgKyBtYXNzMik7XG4gIFxuICAvLyBCZXR0ZXIgc2l6ZSBzY2FsaW5nIC0gbWFrZSBtYXNzIGRpZmZlcmVuY2VzIG1vcmUgdmlzaWJsZVxuICBjb25zdCB0b3RhbE1hc3MgPSBtYXNzMSArIG1hc3MyO1xuICBjb25zdCBhdmdNYXNzID0gdG90YWxNYXNzIC8gMjtcbiAgY29uc3QgcmFkaXVzMSA9IDE1ICsgKG1hc3MxIC8gYXZnTWFzcykgKiAxNTsgIC8vIHJhbmdlIGZyb20gfjE1IHRvIH40NVxuICBjb25zdCByYWRpdXMyID0gMTUgKyAobWFzczIgLyBhdmdNYXNzKSAqIDE1O1xuICBcbiAgLy8gQ2VudGVyIGxpbmVcbiAgc3ZnLmFwcGVuZChcImxpbmVcIilcbiAgICAuYXR0cihcIngxXCIsIHdpZHRoLzIpXG4gICAgLmF0dHIoXCJ5MVwiLCAwKVxuICAgIC5hdHRyKFwieDJcIiwgd2lkdGgvMilcbiAgICAuYXR0cihcInkyXCIsIGhlaWdodClcbiAgICAuYXR0cihcInN0cm9rZVwiLCBcIiNjY2NcIilcbiAgICAuYXR0cihcInN0cm9rZS1kYXNoYXJyYXlcIiwgXCI1LDVcIik7XG4gIFxuICAvLyBHcm91bmQgbGluZVxuICBzdmcuYXBwZW5kKFwibGluZVwiKVxuICAgIC5hdHRyKFwieDFcIiwgMClcbiAgICAuYXR0cihcInkxXCIsIGhlaWdodC8yKVxuICAgIC5hdHRyKFwieDJcIiwgd2lkdGgpXG4gICAgLmF0dHIoXCJ5MlwiLCBoZWlnaHQvMilcbiAgICAuYXR0cihcInN0cm9rZVwiLCBcIiMzMzNcIilcbiAgICAuYXR0cihcInN0cm9rZS13aWR0aFwiLCAyKTtcbiAgXG4gIC8vIEFycm93IG1hcmtlciBkZWZpbml0aW9uc1xuICBzdmcuYXBwZW5kKFwiZGVmc1wiKS5hcHBlbmQoXCJtYXJrZXJcIilcbiAgICAuYXR0cihcImlkXCIsIFwiYXJyb3dibHVlXCIpXG4gICAgLmF0dHIoXCJtYXJrZXJXaWR0aFwiLCAxMClcbiAgICAuYXR0cihcIm1hcmtlckhlaWdodFwiLCAxMClcbiAgICAuYXR0cihcInJlZlhcIiwgOSlcbiAgICAuYXR0cihcInJlZllcIiwgMylcbiAgICAuYXR0cihcIm9yaWVudFwiLCBcImF1dG9cIilcbiAgICAuYXBwZW5kKFwicG9seWdvblwiKVxuICAgIC5hdHRyKFwicG9pbnRzXCIsIFwiMCAwLCAxMCAzLCAwIDZcIilcbiAgICAuYXR0cihcImZpbGxcIiwgXCJkYXJrYmx1ZVwiKTtcbiAgXG4gIHN2Zy5hcHBlbmQoXCJkZWZzXCIpLmFwcGVuZChcIm1hcmtlclwiKVxuICAgIC5hdHRyKFwiaWRcIiwgXCJhcnJvd3JlZFwiKVxuICAgIC5hdHRyKFwibWFya2VyV2lkdGhcIiwgMTApXG4gICAgLmF0dHIoXCJtYXJrZXJIZWlnaHRcIiwgMTApXG4gICAgLmF0dHIoXCJyZWZYXCIsIDkpXG4gICAgLmF0dHIoXCJyZWZZXCIsIDMpXG4gICAgLmF0dHIoXCJvcmllbnRcIiwgXCJhdXRvXCIpXG4gICAgLmFwcGVuZChcInBvbHlnb25cIilcbiAgICAuYXR0cihcInBvaW50c1wiLCBcIjAgMCwgMTAgMywgMCA2XCIpXG4gICAgLmF0dHIoXCJmaWxsXCIsIFwiZGFya3JlZFwiKTtcbiAgXG4gIC8vIENyZWF0ZSBvYmplY3RzIC0gcG9zaXRpb24gc3RhdGlvbmFyeSBvbmVzIGNsb3NlciB0byBjZW50ZXJcbiAgbGV0IHN0YXJ0MSwgc3RhcnQyO1xuICBcbiAgaWYgKHYxX2luaXRpYWwgPT09IDApIHtcbiAgICAvLyBPYmplY3QgMSBzdGF0aW9uYXJ5IC0gcHV0IGl0IGF0IGxlZnQtY2VudGVyXG4gICAgc3RhcnQxID0gd2lkdGggKiAwLjM7XG4gICAgc3RhcnQyID0gd2lkdGggLSAxMDA7XG4gIH0gZWxzZSBpZiAodmVsb2NpdHkyID09PSAwKSB7XG4gICAgLy8gT2JqZWN0IDIgc3RhdGlvbmFyeSAtIHB1dCBpdCBhdCByaWdodC1jZW50ZXIgIFxuICAgIHN0YXJ0MSA9IDEwMDtcbiAgICBzdGFydDIgPSB3aWR0aCAqIDAuNztcbiAgfSBlbHNlIHtcbiAgICAvLyBCb3RoIG1vdmluZyAtIG5vcm1hbCBwb3NpdGlvbnNcbiAgICBzdGFydDEgPSAxMDA7XG4gICAgc3RhcnQyID0gd2lkdGggLSAxMDA7XG4gIH1cbiAgXG4gIGNvbnN0IG9iajEgPSBzdmcuYXBwZW5kKFwiY2lyY2xlXCIpXG4gICAgLmF0dHIoXCJjeFwiLCBzdGFydDEpXG4gICAgLmF0dHIoXCJjeVwiLCBoZWlnaHQvMilcbiAgICAuYXR0cihcInJcIiwgcmFkaXVzMSlcbiAgICAuYXR0cihcImZpbGxcIiwgXCJibHVlXCIpXG4gICAgLmF0dHIoXCJvcGFjaXR5XCIsIDAuNCk7XG4gIFxuICBjb25zdCBvYmoyID0gc3ZnLmFwcGVuZChcImNpcmNsZVwiKVxuICAgIC5hdHRyKFwiY3hcIiwgc3RhcnQyKVxuICAgIC5hdHRyKFwiY3lcIiwgaGVpZ2h0LzIpXG4gICAgLmF0dHIoXCJyXCIsIHJhZGl1czIpXG4gICAgLmF0dHIoXCJmaWxsXCIsIFwicmVkXCIpXG4gICAgLmF0dHIoXCJvcGFjaXR5XCIsIDAuNCk7XG4gIFxuICAvLyBWZWxvY2l0eSBhcnJvd3NcbiAgY29uc3QgYXJyb3cxID0gc3ZnLmFwcGVuZChcImxpbmVcIilcbiAgICAuYXR0cihcIngxXCIsIDEwMClcbiAgICAuYXR0cihcInkxXCIsIGhlaWdodC8yKVxuICAgIC5hdHRyKFwieDJcIiwgMTAwICsgdjFfaW5pdGlhbCAqIDEwKVxuICAgIC5hdHRyKFwieTJcIiwgaGVpZ2h0LzIpXG4gICAgLmF0dHIoXCJzdHJva2VcIiwgXCJkYXJrYmx1ZVwiKVxuICAgIC5hdHRyKFwic3Ryb2tlLXdpZHRoXCIsIDMpXG4gICAgLmF0dHIoXCJtYXJrZXItZW5kXCIsIFwidXJsKCNhcnJvd2JsdWUpXCIpO1xuICBcbiAgY29uc3QgYXJyb3cyID0gc3ZnLmFwcGVuZChcImxpbmVcIilcbiAgICAuYXR0cihcIngxXCIsIHdpZHRoIC0gMTAwKVxuICAgIC5hdHRyKFwieTFcIiwgaGVpZ2h0LzIpXG4gICAgLmF0dHIoXCJ4MlwiLCB3aWR0aCAtIDEwMCArIHYyX2luaXRpYWwgKiAxMClcbiAgICAuYXR0cihcInkyXCIsIGhlaWdodC8yKVxuICAgIC5hdHRyKFwic3Ryb2tlXCIsIFwiZGFya3JlZFwiKVxuICAgIC5hdHRyKFwic3Ryb2tlLXdpZHRoXCIsIDMpXG4gICAgLmF0dHIoXCJtYXJrZXItZW5kXCIsIFwidXJsKCNhcnJvd3JlZClcIik7XG4gIFxuICAvLyBMYWJlbHNcbiAgY29uc3QgbGFiZWwxID0gc3ZnLmFwcGVuZChcInRleHRcIilcbiAgICAuYXR0cihcInhcIiwgMTAwKVxuICAgIC5hdHRyKFwieVwiLCBoZWlnaHQvMiAtIHJhZGl1czEgLSAxMClcbiAgICAuYXR0cihcInRleHQtYW5jaG9yXCIsIFwibWlkZGxlXCIpXG4gICAgLmF0dHIoXCJmb250LXNpemVcIiwgXCIxMnB4XCIpXG4gICAgLmF0dHIoXCJmb250LXdlaWdodFwiLCBcImJvbGRcIilcbiAgICAudGV4dChgbT0ke21hc3MxfWApO1xuICBcbiAgY29uc3QgbGFiZWwyID0gc3ZnLmFwcGVuZChcInRleHRcIilcbiAgICAuYXR0cihcInhcIiwgd2lkdGggLSAxMDApXG4gICAgLmF0dHIoXCJ5XCIsIGhlaWdodC8yIC0gcmFkaXVzMiAtIDEwKVxuICAgIC5hdHRyKFwidGV4dC1hbmNob3JcIiwgXCJtaWRkbGVcIilcbiAgICAuYXR0cihcImZvbnQtc2l6ZVwiLCBcIjEycHhcIilcbiAgICAuYXR0cihcImZvbnQtd2VpZ2h0XCIsIFwiYm9sZFwiKVxuICAgIC50ZXh0KGBtPSR7bWFzczJ9YCk7XG4gIFxuICAvLyBWZWxvY2l0eSBkaXNwbGF5XG4gIGNvbnN0IHZlbDFUZXh0ID0gc3ZnLmFwcGVuZChcInRleHRcIilcbiAgICAuYXR0cihcInhcIiwgMTAwKVxuICAgIC5hdHRyKFwieVwiLCBoZWlnaHQvMiArIHJhZGl1czEgKyAyMClcbiAgICAuYXR0cihcInRleHQtYW5jaG9yXCIsIFwibWlkZGxlXCIpXG4gICAgLmF0dHIoXCJmb250LXNpemVcIiwgXCIxMXB4XCIpXG4gICAgLnRleHQoYHY9JHt2MV9pbml0aWFsLnRvRml4ZWQoMSl9YCk7XG4gIFxuICBjb25zdCB2ZWwyVGV4dCA9IHN2Zy5hcHBlbmQoXCJ0ZXh0XCIpXG4gICAgLmF0dHIoXCJ4XCIsIHdpZHRoIC0gMTAwKVxuICAgIC5hdHRyKFwieVwiLCBoZWlnaHQvMiArIHJhZGl1czIgKyAyMClcbiAgICAuYXR0cihcInRleHQtYW5jaG9yXCIsIFwibWlkZGxlXCIpXG4gICAgLmF0dHIoXCJmb250LXNpemVcIiwgXCIxMXB4XCIpXG4gICAgLnRleHQoYHY9JHt2ZWxvY2l0eTIudG9GaXhlZCgxKX1gKTtcbiAgXG4gIC8vIE1vbWVudHVtIGRpc3BsYXlcbiAgY29uc3QgbW9tZW50dW1UZXh0ID0gc3ZnLmFwcGVuZChcInRleHRcIilcbiAgICAuYXR0cihcInhcIiwgd2lkdGgvMilcbiAgICAuYXR0cihcInlcIiwgMzApXG4gICAgLmF0dHIoXCJ0ZXh0LWFuY2hvclwiLCBcIm1pZGRsZVwiKVxuICAgIC5hdHRyKFwiZm9udC1zaXplXCIsIFwiMTRweFwiKVxuICAgIC5hdHRyKFwiZm9udC13ZWlnaHRcIiwgXCJib2xkXCIpXG4gICAgLnRleHQoXCJDbGljayAnUnVuIENvbGxpc2lvbicgdG8gc3RhcnRcIik7XG4gIFxuICAvLyBQaHlzaWNzIGluZm8gZGlzcGxheSAtIEluaXRpYWwgY29uZGl0aW9ucyAobGVmdCBzaWRlKVxuICBjb25zdCBwaHlzaWNzSW5mb0luaXRpYWwgPSBzdmcuYXBwZW5kKFwidGV4dFwiKVxuICAgIC5hdHRyKFwieFwiLCAxMClcbiAgICAuYXR0cihcInlcIiwgaGVpZ2h0IC0gODApXG4gICAgLmF0dHIoXCJmb250LXNpemVcIiwgXCIxMXB4XCIpXG4gICAgLmF0dHIoXCJmb250LWZhbWlseVwiLCBcIm1vbm9zcGFjZVwiKTtcbiAgXG4gIC8vIFBoeXNpY3MgaW5mbyBkaXNwbGF5IC0gRmluYWwgY29uZGl0aW9ucyAocmlnaHQgc2lkZSlcbiAgY29uc3QgcGh5c2ljc0luZm9GaW5hbCA9IHN2Zy5hcHBlbmQoXCJ0ZXh0XCIpXG4gICAgLmF0dHIoXCJ4XCIsIHdpZHRoLzIgKyAxMClcbiAgICAuYXR0cihcInlcIiwgaGVpZ2h0IC0gODApXG4gICAgLmF0dHIoXCJmb250LXNpemVcIiwgXCIxMXB4XCIpXG4gICAgLmF0dHIoXCJmb250LWZhbWlseVwiLCBcIm1vbm9zcGFjZVwiKTtcbiAgXG4gIC8vIENhbGN1bGF0ZSBpbml0aWFsIHBoeXNpY3NcbiAgY29uc3QgcDFfaW5pdGlhbCA9IG1hc3MxICogdjFfaW5pdGlhbDtcbiAgY29uc3QgcDJfaW5pdGlhbCA9IG1hc3MyICogdjJfaW5pdGlhbDtcbiAgY29uc3QgcF90b3RhbF9pbml0aWFsID0gcDFfaW5pdGlhbCArIHAyX2luaXRpYWw7XG4gIGNvbnN0IGtlMV9pbml0aWFsID0gMC41ICogbWFzczEgKiB2MV9pbml0aWFsICogdjFfaW5pdGlhbDtcbiAgY29uc3Qga2UyX2luaXRpYWwgPSAwLjUgKiBtYXNzMiAqIHYyX2luaXRpYWwgKiB2Ml9pbml0aWFsO1xuICBjb25zdCBrZV90b3RhbF9pbml0aWFsID0ga2UxX2luaXRpYWwgKyBrZTJfaW5pdGlhbDtcbiAgXG4gIC8vIENhbGN1bGF0ZSBmaW5hbCBwaHlzaWNzXG4gIGNvbnN0IHAxX2ZpbmFsID0gbWFzczEgKiB2MV9maW5hbDtcbiAgY29uc3QgcDJfZmluYWwgPSBtYXNzMiAqIHYyX2ZpbmFsO1xuICBjb25zdCBwX3RvdGFsX2ZpbmFsID0gcDFfZmluYWwgKyBwMl9maW5hbDtcbiAgY29uc3Qga2UxX2ZpbmFsID0gMC41ICogbWFzczEgKiB2MV9maW5hbCAqIHYxX2ZpbmFsO1xuICBjb25zdCBrZTJfZmluYWwgPSAwLjUgKiBtYXNzMiAqIHYyX2ZpbmFsICogdjJfZmluYWw7XG4gIGNvbnN0IGtlX3RvdGFsX2ZpbmFsID0ga2UxX2ZpbmFsICsga2UyX2ZpbmFsO1xuICBcbiAgLy8gRGlzcGxheSBpbml0aWFsIGNvbmRpdGlvbnNcbiAgY29uc3QgaW5pdGlhbEluZm8gPSBbXG4gICAgXCJJTklUSUFMIENPTkRJVElPTlM6XCIsXG4gICAgYE9iamVjdCAxOiBtPSR7bWFzczF9LCB2PSR7djFfaW5pdGlhbC50b0ZpeGVkKDEpfSDihpIgcD0ke3AxX2luaXRpYWwudG9GaXhlZCgyKX0sIEtFPSR7a2UxX2luaXRpYWwudG9GaXhlZCgyKX1gLFxuICAgIGBPYmplY3QgMjogbT0ke21hc3MyfSwgdj0ke3YyX2luaXRpYWwudG9GaXhlZCgxKX0g4oaSIHA9JHtwMl9pbml0aWFsLnRvRml4ZWQoMil9LCBLRT0ke2tlMl9pbml0aWFsLnRvRml4ZWQoMil9YCxcbiAgICBgVG90YWw6ICAgIHA9JHtwX3RvdGFsX2luaXRpYWwudG9GaXhlZCgyKX0sIEtFPSR7a2VfdG90YWxfaW5pdGlhbC50b0ZpeGVkKDIpfWBcbiAgXTtcbiAgXG4gIHBoeXNpY3NJbmZvSW5pdGlhbC5zZWxlY3RBbGwoXCJ0c3BhblwiKVxuICAgIC5kYXRhKGluaXRpYWxJbmZvKVxuICAgIC5lbnRlcigpXG4gICAgLmFwcGVuZChcInRzcGFuXCIpXG4gICAgLmF0dHIoXCJ4XCIsIDEwKVxuICAgIC5hdHRyKFwiZHlcIiwgKGQsIGkpID0+IGkgPT09IDAgPyAwIDogMTQpXG4gICAgLnRleHQoZCA9PiBkKTtcbiAgXG4gIC8vIENhbGN1bGF0ZSB3aGVyZSB0aGV5IGFjdHVhbGx5IGNvbGxpZGUgYmFzZWQgb24gdGhlaXIgdmVsb2NpdGllc1xuICAvLyBUaGV5IHN0YXJ0IGF0IGRpZmZlcmVudCBwb3NpdGlvbnMgYW5kIG1vdmUgdG93YXJkIGVhY2ggb3RoZXJcbiAgY29uc3QgdG90YWxEaXN0YW5jZSA9IHN0YXJ0MiAtIHN0YXJ0MTtcbiAgXG4gIC8vIEhhbmRsZSBzcGVjaWFsIGNhc2VzIGZvciB6ZXJvIHZlbG9jaXRpZXNcbiAgbGV0IGNvbGxpc2lvblBvczEsIGNvbGxpc2lvblBvczIsIHRpbWVUb0NvbGxpc2lvbjtcbiAgXG4gIGlmICh2MV9pbml0aWFsID09PSAwICYmIHZlbG9jaXR5MiA9PT0gMCkge1xuICAgIC8vIEJvdGggc3RhdGlvbmFyeSAtIG5vIGNvbGxpc2lvbiBhbmltYXRpb25cbiAgICBjb2xsaXNpb25Qb3MxID0gc3RhcnQxO1xuICAgIGNvbGxpc2lvblBvczIgPSBzdGFydDI7XG4gICAgdGltZVRvQ29sbGlzaW9uID0gMDtcbiAgfSBlbHNlIGlmICh2MV9pbml0aWFsID09PSAwKSB7XG4gICAgLy8gT2JqZWN0IDEgaXMgc3RhdGlvbmFyeSwgb2JqZWN0IDIgbW92ZXMgdG8gaXRcbiAgICBjb2xsaXNpb25Qb3MxID0gc3RhcnQxO1xuICAgIGNvbGxpc2lvblBvczIgPSBzdGFydDEgKyByYWRpdXMxICsgcmFkaXVzMjtcbiAgICBjb25zdCBkaXN0YW5jZTIgPSBzdGFydDIgLSBjb2xsaXNpb25Qb3MyO1xuICAgIHRpbWVUb0NvbGxpc2lvbiA9IChkaXN0YW5jZTIgLyB2ZWxvY2l0eTIpICogMTAwO1xuICB9IGVsc2UgaWYgKHZlbG9jaXR5MiA9PT0gMCkge1xuICAgIC8vIE9iamVjdCAyIGlzIHN0YXRpb25hcnksIG9iamVjdCAxIG1vdmVzIHRvIGl0XG4gICAgY29sbGlzaW9uUG9zMiA9IHN0YXJ0MjtcbiAgICBjb2xsaXNpb25Qb3MxID0gc3RhcnQyIC0gcmFkaXVzMSAtIHJhZGl1czI7XG4gICAgY29uc3QgZGlzdGFuY2UxID0gY29sbGlzaW9uUG9zMSAtIHN0YXJ0MTtcbiAgICB0aW1lVG9Db2xsaXNpb24gPSAoZGlzdGFuY2UxIC8gdjFfaW5pdGlhbCkgKiAxMDA7XG4gIH0gZWxzZSB7XG4gICAgLy8gQm90aCBtb3ZpbmcgLSBjYWxjdWxhdGUgbWVldGluZyBwb2ludFxuICAgIGNvbnN0IHZlbG9jaXR5U3VtID0gdjFfaW5pdGlhbCArIHZlbG9jaXR5MjtcbiAgICBjb25zdCBkaXN0YW5jZVJhdGlvMSA9IHYxX2luaXRpYWwgLyB2ZWxvY2l0eVN1bTtcbiAgICBjb25zdCBtZWV0aW5nUG9pbnQgPSBzdGFydDEgKyB0b3RhbERpc3RhbmNlICogZGlzdGFuY2VSYXRpbzE7XG4gICAgXG4gICAgY29sbGlzaW9uUG9zMSA9IG1lZXRpbmdQb2ludCAtIHJhZGl1czE7XG4gICAgY29sbGlzaW9uUG9zMiA9IG1lZXRpbmdQb2ludCArIHJhZGl1czI7XG4gICAgXG4gICAgY29uc3QgZGlzdGFuY2UxID0gY29sbGlzaW9uUG9zMSAtIHN0YXJ0MTtcbiAgICBjb25zdCBkaXN0YW5jZTIgPSBzdGFydDIgLSBjb2xsaXNpb25Qb3MyO1xuICAgIFxuICAgIGNvbnN0IHRpbWVUb0NvbGxpc2lvbjEgPSAoZGlzdGFuY2UxIC8gdjFfaW5pdGlhbCkgKiAxMDA7XG4gICAgY29uc3QgdGltZVRvQ29sbGlzaW9uMiA9IChkaXN0YW5jZTIgLyB2ZWxvY2l0eTIpICogMTAwO1xuICAgIHRpbWVUb0NvbGxpc2lvbiA9ICh0aW1lVG9Db2xsaXNpb24xICsgdGltZVRvQ29sbGlzaW9uMikgLyAyO1xuICB9XG4gIFxuICAvLyBQb3N0LWNvbGxpc2lvbjogZWFjaCBtb3ZlcyBpbmRlcGVuZGVudGx5IGF0IGl0cyBuZXcgdmVsb2NpdHlcbiAgY29uc3QgcG9zdERpc3RhbmNlID0gMjAwOyAvLyBGaXhlZCBkaXN0YW5jZSB0byB0cmF2ZWwgYWZ0ZXIgY29sbGlzaW9uXG4gIGNvbnN0IHBvc3REdXJhdGlvbjEgPSB2MV9maW5hbCA9PT0gMCA/IDEwMDAgOiBNYXRoLmFicygocG9zdERpc3RhbmNlIC8gdjFfZmluYWwpICogMTAwKTtcbiAgY29uc3QgcG9zdER1cmF0aW9uMiA9IHYyX2ZpbmFsID09PSAwID8gMTAwMCA6IE1hdGguYWJzKChwb3N0RGlzdGFuY2UgLyB2Ml9maW5hbCkgKiAxMDApO1xuICBcbiAgLy8gVXBkYXRlIG1vbWVudHVtIHRleHQgZHVyaW5nIGFuaW1hdGlvblxuICBzZXRUaW1lb3V0KCgpID0+IHtcbiAgICBtb21lbnR1bVRleHQudGV4dChgQXBwcm9hY2hpbmcgY29sbGlzaW9uLi4uYCk7XG4gIH0sIDEwMCk7XG4gIFxuICAvLyBBbmltYXRlIHRvd2FyZHMgY29sbGlzaW9uIHdpdGggTElORUFSIGVhc2luZyAoY29uc3RhbnQgdmVsb2NpdHkpXG4gIC8vIEJvdGggb2JqZWN0cyB1c2UgdGhlIFNBTUUgZHVyYXRpb24gc28gdGhleSBhcnJpdmUgc2ltdWx0YW5lb3VzbHlcbiAgb2JqMS50cmFuc2l0aW9uKClcbiAgICAuZWFzZShkMy5lYXNlTGluZWFyKVxuICAgIC5kdXJhdGlvbih0aW1lVG9Db2xsaXNpb24pXG4gICAgLmF0dHIoXCJjeFwiLCBjb2xsaXNpb25Qb3MxKVxuICAgIC5vbihcImVuZFwiLCBmdW5jdGlvbigpIHtcbiAgICAgIC8vIENvbGxpc2lvbiBoYXBwZW5zIVxuICAgICAgbW9tZW50dW1UZXh0LnRleHQoYENvbGxpc2lvbiFgKTtcbiAgICAgIC8vIEFmdGVyIGNvbGxpc2lvbiwgYW5pbWF0ZSBhd2F5IGF0IG5ldyB2ZWxvY2l0eSAob3Igc3RheSBpZiB2PTApXG4gICAgICBpZiAodjFfZmluYWwgIT09IDApIHtcbiAgICAgICAgZDMuc2VsZWN0KHRoaXMpLnRyYW5zaXRpb24oKVxuICAgICAgICAgIC5lYXNlKGQzLmVhc2VMaW5lYXIpXG4gICAgICAgICAgLmR1cmF0aW9uKHBvc3REdXJhdGlvbjEpXG4gICAgICAgICAgLmF0dHIoXCJjeFwiLCBjb2xsaXNpb25Qb3MxICsgKHYxX2ZpbmFsID4gMCA/IHBvc3REaXN0YW5jZSA6IC1wb3N0RGlzdGFuY2UpKTtcbiAgICAgIH1cbiAgICB9KTtcbiAgXG4gIG9iajIudHJhbnNpdGlvbigpXG4gICAgLmVhc2UoZDMuZWFzZUxpbmVhcilcbiAgICAuZHVyYXRpb24odGltZVRvQ29sbGlzaW9uKVxuICAgIC5hdHRyKFwiY3hcIiwgY29sbGlzaW9uUG9zMilcbiAgICAub24oXCJlbmRcIiwgZnVuY3Rpb24oKSB7XG4gICAgICBpZiAodjJfZmluYWwgIT09IDApIHtcbiAgICAgICAgZDMuc2VsZWN0KHRoaXMpLnRyYW5zaXRpb24oKVxuICAgICAgICAgIC5lYXNlKGQzLmVhc2VMaW5lYXIpXG4gICAgICAgICAgLmR1cmF0aW9uKHBvc3REdXJhdGlvbjIpXG4gICAgICAgICAgLmF0dHIoXCJjeFwiLCBjb2xsaXNpb25Qb3MyICsgKHYyX2ZpbmFsID4gMCA/IHBvc3REaXN0YW5jZSA6IC1wb3N0RGlzdGFuY2UpKTtcbiAgICAgIH1cbiAgICB9KTtcbiAgXG4gIC8vIEFuaW1hdGUgYXJyb3dzXG4gIGFycm93MS50cmFuc2l0aW9uKClcbiAgICAuZWFzZShkMy5lYXNlTGluZWFyKVxuICAgIC5kdXJhdGlvbih0aW1lVG9Db2xsaXNpb24pXG4gICAgLmF0dHIoXCJ4MVwiLCBjb2xsaXNpb25Qb3MxKVxuICAgIC5hdHRyKFwieDJcIiwgY29sbGlzaW9uUG9zMSArIHYxX2luaXRpYWwgKiAxMClcbiAgICAub24oXCJlbmRcIiwgZnVuY3Rpb24oKSB7XG4gICAgICBkMy5zZWxlY3QodGhpcylcbiAgICAgICAgLmF0dHIoXCJ4MlwiLCBjb2xsaXNpb25Qb3MxICsgdjFfZmluYWwgKiAxMCk7XG4gICAgICBpZiAodjFfZmluYWwgIT09IDApIHtcbiAgICAgICAgZDMuc2VsZWN0KHRoaXMpLnRyYW5zaXRpb24oKVxuICAgICAgICAgIC5lYXNlKGQzLmVhc2VMaW5lYXIpXG4gICAgICAgICAgLmR1cmF0aW9uKHBvc3REdXJhdGlvbjEpXG4gICAgICAgICAgLmF0dHIoXCJ4MVwiLCBjb2xsaXNpb25Qb3MxICsgKHYxX2ZpbmFsID4gMCA/IHBvc3REaXN0YW5jZSA6IC1wb3N0RGlzdGFuY2UpKVxuICAgICAgICAgIC5hdHRyKFwieDJcIiwgY29sbGlzaW9uUG9zMSArICh2MV9maW5hbCA+IDAgPyBwb3N0RGlzdGFuY2UgOiAtcG9zdERpc3RhbmNlKSArIHYxX2ZpbmFsICogMTApO1xuICAgICAgfVxuICAgIH0pO1xuICBcbiAgYXJyb3cyLnRyYW5zaXRpb24oKVxuICAgIC5lYXNlKGQzLmVhc2VMaW5lYXIpXG4gICAgLmR1cmF0aW9uKHRpbWVUb0NvbGxpc2lvbilcbiAgICAuYXR0cihcIngxXCIsIGNvbGxpc2lvblBvczIpXG4gICAgLmF0dHIoXCJ4MlwiLCBjb2xsaXNpb25Qb3MyICsgdjJfaW5pdGlhbCAqIDEwKVxuICAgIC5vbihcImVuZFwiLCBmdW5jdGlvbigpIHtcbiAgICAgIGQzLnNlbGVjdCh0aGlzKVxuICAgICAgICAuYXR0cihcIngyXCIsIGNvbGxpc2lvblBvczIgKyB2Ml9maW5hbCAqIDEwKTtcbiAgICAgIGlmICh2Ml9maW5hbCAhPT0gMCkge1xuICAgICAgICBkMy5zZWxlY3QodGhpcykudHJhbnNpdGlvbigpXG4gICAgICAgICAgLmVhc2UoZDMuZWFzZUxpbmVhcilcbiAgICAgICAgICAuZHVyYXRpb24ocG9zdER1cmF0aW9uMilcbiAgICAgICAgICAuYXR0cihcIngxXCIsIGNvbGxpc2lvblBvczIgKyAodjJfZmluYWwgPiAwID8gcG9zdERpc3RhbmNlIDogLXBvc3REaXN0YW5jZSkpXG4gICAgICAgICAgLmF0dHIoXCJ4MlwiLCBjb2xsaXNpb25Qb3MyICsgKHYyX2ZpbmFsID4gMCA/IHBvc3REaXN0YW5jZSA6IC1wb3N0RGlzdGFuY2UpICsgdjJfZmluYWwgKiAxMCk7XG4gICAgICB9XG4gICAgfSk7XG4gIFxuICAvLyBBbmltYXRlIGxhYmVsc1xuICBsYWJlbDEudHJhbnNpdGlvbigpXG4gICAgLmVhc2UoZDMuZWFzZUxpbmVhcilcbiAgICAuZHVyYXRpb24odGltZVRvQ29sbGlzaW9uKVxuICAgIC5hdHRyKFwieFwiLCBjb2xsaXNpb25Qb3MxKVxuICAgIC5vbihcImVuZFwiLCBmdW5jdGlvbigpIHtcbiAgICAgIGlmICh2MV9maW5hbCAhPT0gMCkge1xuICAgICAgICBkMy5zZWxlY3QodGhpcykudHJhbnNpdGlvbigpXG4gICAgICAgICAgLmVhc2UoZDMuZWFzZUxpbmVhcilcbiAgICAgICAgICAuZHVyYXRpb24ocG9zdER1cmF0aW9uMSlcbiAgICAgICAgICAuYXR0cihcInhcIiwgY29sbGlzaW9uUG9zMSArICh2MV9maW5hbCA+IDAgPyBwb3N0RGlzdGFuY2UgOiAtcG9zdERpc3RhbmNlKSk7XG4gICAgICB9XG4gICAgfSk7XG4gIFxuICBsYWJlbDIudHJhbnNpdGlvbigpXG4gICAgLmVhc2UoZDMuZWFzZUxpbmVhcilcbiAgICAuZHVyYXRpb24odGltZVRvQ29sbGlzaW9uKVxuICAgIC5hdHRyKFwieFwiLCBjb2xsaXNpb25Qb3MyKVxuICAgIC5vbihcImVuZFwiLCBmdW5jdGlvbigpIHtcbiAgICAgIGlmICh2Ml9maW5hbCAhPT0gMCkge1xuICAgICAgICBkMy5zZWxlY3QodGhpcykudHJhbnNpdGlvbigpXG4gICAgICAgICAgLmVhc2UoZDMuZWFzZUxpbmVhcilcbiAgICAgICAgICAuZHVyYXRpb24ocG9zdER1cmF0aW9uMilcbiAgICAgICAgICAuYXR0cihcInhcIiwgY29sbGlzaW9uUG9zMiArICh2Ml9maW5hbCA+IDAgPyBwb3N0RGlzdGFuY2UgOiAtcG9zdERpc3RhbmNlKSk7XG4gICAgICB9XG4gICAgfSk7XG4gIFxuICB2ZWwxVGV4dC50cmFuc2l0aW9uKClcbiAgICAuZWFzZShkMy5lYXNlTGluZWFyKVxuICAgIC5kdXJhdGlvbih0aW1lVG9Db2xsaXNpb24pXG4gICAgLmF0dHIoXCJ4XCIsIGNvbGxpc2lvblBvczEpXG4gICAgLm9uKFwiZW5kXCIsIGZ1bmN0aW9uKCkge1xuICAgICAgZDMuc2VsZWN0KHRoaXMpLnRleHQoYHY9JHt2MV9maW5hbC50b0ZpeGVkKDEpfWApO1xuICAgICAgXG4gICAgICBpZiAodjFfZmluYWwgIT09IDApIHtcbiAgICAgICAgZDMuc2VsZWN0KHRoaXMpLnRyYW5zaXRpb24oKVxuICAgICAgICAgIC5lYXNlKGQzLmVhc2VMaW5lYXIpXG4gICAgICAgICAgLmR1cmF0aW9uKHBvc3REdXJhdGlvbjEpXG4gICAgICAgICAgLmF0dHIoXCJ4XCIsIGNvbGxpc2lvblBvczEgKyAodjFfZmluYWwgPiAwID8gcG9zdERpc3RhbmNlIDogLXBvc3REaXN0YW5jZSkpO1xuICAgICAgfVxuICAgICAgXG4gICAgICBzZXRUaW1lb3V0KCgpID0+IHtcbiAgICAgICAgbW9tZW50dW1UZXh0LnRleHQoYENPTExJU0lPTiBDT01QTEVURSAtIE1vbWVudHVtICYgRW5lcmd5IENvbnNlcnZlZCFgKTtcbiAgICAgICAgXG4gICAgICAgIC8vIERpc3BsYXkgZmluYWwgY29uZGl0aW9ucyBuZXh0IHRvIGluaXRpYWxcbiAgICAgICAgY29uc3QgZmluYWxJbmZvID0gW1xuICAgICAgICAgIFwiRklOQUwgQ09ORElUSU9OUzpcIixcbiAgICAgICAgICBgT2JqZWN0IDE6IG09JHttYXNzMX0sIHY9JHt2MV9maW5hbC50b0ZpeGVkKDEpfSDihpIgcD0ke3AxX2ZpbmFsLnRvRml4ZWQoMil9LCBLRT0ke2tlMV9maW5hbC50b0ZpeGVkKDIpfWAsXG4gICAgICAgICAgYE9iamVjdCAyOiBtPSR7bWFzczJ9LCB2PSR7djJfZmluYWwudG9GaXhlZCgxKX0g4oaSIHA9JHtwMl9maW5hbC50b0ZpeGVkKDIpfSwgS0U9JHtrZTJfZmluYWwudG9GaXhlZCgyKX1gLFxuICAgICAgICAgIGBUb3RhbDogICAgcD0ke3BfdG90YWxfZmluYWwudG9GaXhlZCgyKX0sIEtFPSR7a2VfdG90YWxfZmluYWwudG9GaXhlZCgyKX1gXG4gICAgICAgIF07XG4gICAgICAgIFxuICAgICAgICBwaHlzaWNzSW5mb0ZpbmFsLnNlbGVjdEFsbChcInRzcGFuXCIpXG4gICAgICAgICAgLmRhdGEoZmluYWxJbmZvKVxuICAgICAgICAgIC5lbnRlcigpXG4gICAgICAgICAgLmFwcGVuZChcInRzcGFuXCIpXG4gICAgICAgICAgLmF0dHIoXCJ4XCIsIHdpZHRoLzIgKyAxMClcbiAgICAgICAgICAuYXR0cihcImR5XCIsIChkLCBpKSA9PiBpID09PSAwID8gMCA6IDE0KVxuICAgICAgICAgIC50ZXh0KGQgPT4gZClcbiAgICAgICAgICAuc3R5bGUoXCJmaWxsXCIsIFwiZGFya2dyZWVuXCIpO1xuICAgICAgfSwgMjAwKTtcbiAgICB9KTtcbiAgXG4gIHZlbDJUZXh0LnRyYW5zaXRpb24oKVxuICAgIC5lYXNlKGQzLmVhc2VMaW5lYXIpXG4gICAgLmR1cmF0aW9uKHRpbWVUb0NvbGxpc2lvbilcbiAgICAuYXR0cihcInhcIiwgY29sbGlzaW9uUG9zMilcbiAgICAub24oXCJlbmRcIiwgZnVuY3Rpb24oKSB7XG4gICAgICBkMy5zZWxlY3QodGhpcykudGV4dChgdj0ke3YyX2ZpbmFsLnRvRml4ZWQoMSl9YCk7XG4gICAgICBcbiAgICAgIGlmICh2Ml9maW5hbCAhPT0gMCkge1xuICAgICAgICBkMy5zZWxlY3QodGhpcykudHJhbnNpdGlvbigpXG4gICAgICAgICAgLmVhc2UoZDMuZWFzZUxpbmVhcilcbiAgICAgICAgICAuZHVyYXRpb24ocG9zdER1cmF0aW9uMilcbiAgICAgICAgICAuYXR0cihcInhcIiwgY29sbGlzaW9uUG9zMiArICh2Ml9maW5hbCA+IDAgPyBwb3N0RGlzdGFuY2UgOiAtcG9zdERpc3RhbmNlKSk7XG4gICAgICB9XG4gICAgfSk7XG4gIFxuICByZXR1cm4gc3ZnLm5vZGUoKTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgndmVsb2NpdHkxJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3ZlbG9jaXR5MicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdtYXNzMScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdtYXNzMicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdydW5CdXR0b24nKSJ9XX0=
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../..";
+window._ojs.paths.runtimeToRoot = "../../../../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
