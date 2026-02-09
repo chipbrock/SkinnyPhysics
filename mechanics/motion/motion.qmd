@@ -1,8 +1,7 @@
 ---
 author: "Chip Brock"
 number-sections: true
-date: 2025-08-24# (your last edit date)
-categories: [Mechanics, physics, velocity]
+date: 2026-02-08 
 description: "Gotta move."
 draft: false
 ---
@@ -13,15 +12,21 @@ draft: false
 
 Skinny Physics is meant to be a lightweight (skinny, after all) presentation of some physics that might help you appreciate some of the posts in **QS&BB.** Maybe you've had a course in your past and maybe not, so this chapter has some bare bones (skinny, after all) **facts about motion, speed, and acceleration**.
 
-So: three sections: (1) Some ideas you might not have had in a previous course ("different way"). (2) A listing of some motion facts. And, (3) a bit of gentle background behind those facts. If you'd like more, then visit the [full textbook](https://qstbb.pa.msu.edu/storage/ISP220_fall2020/QS&BB2020/intro.html) presentation.
+So: three sections:
 
-## Different way
+1.  Some ideas you might not have had in a previous course ("**Different way**") 😎.
+
+2.  A listing of some **motion facts** 🎯.
+
+3.  And, a bit of **gentle background** behind those facts 🐰. If you'd like more, then visit the [full textbook](https://qstbb.pa.msu.edu/storage/ISP220_fall2020/QS&BB2020/intro.html) presentation.
+
+## Different way 😎:
 
 ::: {.callout-important icon="false"}
 🫵 Even if you know some of the basics of velocity and acceleration, you need to be comfortable with spacetime diagrams in @sec-spacetimediagrams ! That's how we'll pursue Feynman Diagrams.
 :::
 
-## Just the facts:
+## Just the facts 🎯:
 
 **Some defintions:**
 
@@ -34,6 +39,9 @@ I'll use:
 -   same goes for time, from $\Delta t= t_{\text{ended up}}-t_{\text{when we started}} = t - t_0$
 -   symbol for average: $<A>$
 -   symbol for the (nearly) constant acceleration due to gravity close to the Earth's surface: $g$
+-   Space and time are going to be our friends. If time doesn’t march on, we’ve not moved. But what is time? “Tubby…paused. ‘Time,’ he added slowly – ’time is what keeps everything from happening at once…”[^motion-1] We’ll see time take on a new meaning.
+
+[^motion-1]: This is often attributed to Einstein, Woody Allen, and John Wheeler! It actually comes from Ray Cummings’ short story *The Time Professor* from 1921. Stick with me. You’ll learn all sorts of odd facts.
 
 **A fact: average velocity**
 
@@ -101,14 +109,14 @@ $$
 -   2 dimensional motion: projectiles @sec-projectiles
 :::
 
-## Gentle explanations of Velocity and Acceleration
+## Gentle explanations of Velocity and Acceleration 🐰
 
 ### Getting From Here to There: At Constant Speed
 
 Whether it’s runners on a track, the cosmic rays piercing us all the time, orbiting planets, electrons in a wire, electromagnetic waves, quark wavefunctions inside a proton, electrons and holes in a semiconductor, or the stretching of spacetime itself. Everything is about "motion." Motion is both the easiest and the hardest concept in physics and so much of what comes for us will constantly stretch at ideas about what motion is and how we can describe it. So we need to start at the beginning. Because:
 
-::: {.callout-note icon="false"}
-📝 motion: it’s everywhere
+::: {.callout-important icon="false"}
+🫵 motion: it’s everywhere
 :::
 
 Almost everything in physics boils down to: motion. (Even boiling.)
@@ -182,6 +190,22 @@ v &=\dfrac{x-x_0}{t-t_0} \nonumber \\
 $$ {#eq-speeddef}
 
 where "$v$" is the velocity and it's defined by the middle equation in equation @eq-speeddef.
+
+::: {.callout-note icon="false"}
+## ✏️ A written example
+
+✏️ Let’s go “up north” (which in Michigan is a thing), but we’ll do it at a constant speed.
+
+[a constant speed trip](./examples/up_north.html)
+:::
+
+::: {.callout-note icon="false"}
+## ✏️ A written example
+
+✏️ But that doesn’t make sense. How about a more sensible trip with starts and stops...and state police?
+
+[a more realistic driving trip](./examples/up_north_realistic.html)
+:::
 
 ## Dimensional Analysis
 

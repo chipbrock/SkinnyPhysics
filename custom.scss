@@ -3,7 +3,8 @@
 
 /*-- scss:rules --*/
 
-/* body text + lists */
+/* body text + lists - CHANGED TO PALATINO */
+/* OLD HELVETICA VERSION:
 #quarto-document-content p {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.1rem;
@@ -12,6 +13,21 @@
 #quarto-document-content ol {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.1rem;
+}
+*/
+
+/* NEW PALATINO VERSION */
+#quarto-document-content p {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  font-weight: 500;
+}
+#quarto-document-content ul,
+#quarto-document-content ol {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
 }
 
 /* Make section/chapter numbers match heading text color */
@@ -101,7 +117,7 @@ a:hover {
 /*-- scss:functions --*/
 /* (optional) */
 
-/* links */
+/* links - duplicate, keeping for compatibility */
 a {
   color: #4563a7 !important;
   text-decoration: none;

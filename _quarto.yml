@@ -1,6 +1,13 @@
 project:
   type: book
   output-dir: docs
+  resources:
+    - "mechanics/motion/examples/*.html"
+    - "mechanics/motion/examples/*_files/"
+    - "mechanics/motion/examples/*.png"
+    - "mechanics/momentum/examples/*.html"
+    - "mechanics/momentum/examples/*_files/"
+    - "mechanics/momentum/examples/*.png"
 
 book:
   title: "Skinny Physics for QS&BB"

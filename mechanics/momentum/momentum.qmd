@@ -170,7 +170,7 @@ $$ {#eq-fullimpulse}
 
 > There’s more to this story<br><br> To be totally correct, the right hand side of Equation @eq-impulse2 can be written as $\Delta (mv)$ which recognizes that the mass might change instead of, or in addition to, the velocity changing. This is how a balloon jumps from your hand when you stop pinching the nozzle, or how a rocket is propelled by ejecting burned propellent out the back. In each case, the mass of the moving object changes and that results in a thrust. But we’ll not encounter that in QS&BB.
 
-This quantity on the right, $mv$ is Newton's definition of momentum. $$
+This quantity on the right, $mv$ is Newton's **definition of momentum.** $$
 \begin{equation}
 p = mv \nonumber
 \end{equation}
@@ -190,6 +190,17 @@ The athletic use of this is instinctive and learned...but with muscles and your 
 ![he left-hand version where you want to change the velocity of a ball for example, in baseball, tennis, soccer, and golf…anything with a ball. The right-hand version where you have a fixed goal – like stopping precisely – fits football, gymnastics, and track and field.](screenshot_3684.png){#fig-impulse_balls fig-align="center" width="80%"}
 
 ------------------------------------------------------------------------
+
+::: {.callout-note icon="false"}
+## A written example
+
+✏️ Let's get a picture of momentum in action. Maybe the biggest moving thing that humans make: aircraft carriers. The Nimitz class aircraft carriers (10 of them) are among the largest naval vessels ever produced. (The new Gerald Ford class are more modern but about the same size.) Here are some details, approximates used for easy calculations.
+
+-   Mass: 80 Million kg, $80 \times 10^6$ kg.
+-   top speed: 32 knots or 37 mph or 16.5 m/s
+
+[momentum of an aircraft carrier](./examples/Nimitz_1_E2.html)
+:::
 
 So, repeat after me:
 
