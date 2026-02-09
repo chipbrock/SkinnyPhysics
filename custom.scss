@@ -3,6 +3,11 @@
 
 /*-- scss:rules --*/
 
+/* Set base font size to match old Rmarkdown */
+html {
+  font-size: 14px;
+}
+
 /* body text + lists - CHANGED TO PALATINO */
 /* OLD HELVETICA VERSION:
 #quarto-document-content p {
