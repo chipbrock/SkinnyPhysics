@@ -34,7 +34,7 @@
     "href": "mechanics/motion/motion.html",
     "title": "2  Skinny Motion, Speed, and Acceleration",
     "section": "",
-    "text": "2.1 Different way 😎:\nSkinny Physics is meant to be a lightweight (skinny, after all) presentation of some physics that might help you appreciate some of the posts in QS&BB. Maybe you’ve had a course in your past and maybe not, so this chapter has some bare bones (skinny, after all) facts about motion, speed, and acceleration.\nSo: three sections:",
+    "text": "2.1 Different way 😎:\nSkinny Physics is meant to be a lightweight (skinny, after all) presentation of physics that might help you appreciate some of the posts in QS&BB. Maybe you’ve had a course in your past or maybe not. This chapter shows some bare bones (skinny, after all) facts about motion, speed, and acceleration.\nSo: three sections:",
     "crumbs": [
       "Part I: Mechanics",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Skinny Motion, Speed, and Acceleration</span>"
@@ -63,11 +63,11 @@
     ]
   },
   {
-    "objectID": "mechanics/motion/motion.html#pointers-to-topics",
-    "href": "mechanics/motion/motion.html#pointers-to-topics",
+    "objectID": "mechanics/motion/motion.html#anchors-to-topics",
+    "href": "mechanics/motion/motion.html#anchors-to-topics",
     "title": "2  Skinny Motion, Speed, and Acceleration",
-    "section": "2.3 Pointers to topics:",
-    "text": "2.3 Pointers to topics:\n\n\n\n\n\n\nTip\n\n\n\n🔐 Bottom line sections with stuff to remember in this chapter:\n\naverage speed Section 2.4.2\nspacespace and spacetime diagrams Section 2.6\nthe set of equations for 1-dimensional motion Section 2.9\n2 dimensional motion: projectiles Section 2.10",
+    "section": "2.3 Anchors to topics ⚓️:",
+    "text": "2.3 Anchors to topics ⚓️:\n\n\n\n\n\n\nTip\n\n\n\n🔐 Bottom line sections with stuff to remember in this chapter:\n\naverage speed Section 2.4.2\nspacespace and spacetime diagrams Section 2.6\nthe set of equations for 1-dimensional motion Section 2.9\n2 dimensional motion: projectiles Section 2.10",
     "crumbs": [
       "Part I: Mechanics",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Skinny Motion, Speed, and Acceleration</span>"
