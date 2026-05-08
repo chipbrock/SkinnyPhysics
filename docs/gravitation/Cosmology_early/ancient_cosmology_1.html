@@ -6,11 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Chip Brock">
-<meta name="dcterms.date" content="2025-08-24">
-<meta name="description" content="Gotta move.">
 
-<title>9&nbsp; Placeholder! – Skinny Physics for QS&amp;BB</title>
+<title>6&nbsp; Skinny Ancient Cosmology. – Skinny Physics for QS&amp;BB</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../electromagnetism/index.html" rel="next">
-<link href="../../gravitation/Cosmology_early/Tycho_Kepler_cosmology_1.html" rel="prev">
+<link href="../../gravitation/Cosmology_early/Copernicus_cosmology_1.html" rel="next">
+<link href="../../gravitation/index.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,6 +78,35 @@ window.MathJax = {
 };
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -116,7 +142,7 @@ window.MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../gravitation/index.html">Part II: Gravitation</a></li><li class="breadcrumb-item"><a href="../../gravitation/gravitation_placeholder/grav_placeholder.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Placeholder!</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../gravitation/index.html">Part II: Gravitation</a></li><li class="breadcrumb-item"><a href="../../gravitation/Cosmology_early/ancient_cosmology_1.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Skinny Ancient Cosmology.</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -193,7 +219,7 @@ window.MathJax = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../gravitation/Cosmology_early/ancient_cosmology_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../../gravitation/Cosmology_early/ancient_cosmology_1.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Skinny Ancient Cosmology.</span></span></a>
   </div>
 </li>
@@ -211,7 +237,7 @@ window.MathJax = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../gravitation/gravitation_placeholder/grav_placeholder.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../gravitation/gravitation_placeholder/grav_placeholder.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Placeholder!</span></span></a>
   </div>
 </li>
@@ -268,41 +294,35 @@ window.MathJax = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#different-way" id="toc-different-way" class="nav-link active" data-scroll-target="#different-way"><span class="header-section-number">6.1</span> Different way 😎:</a></li>
+  <li><a href="#just-the-facts" id="toc-just-the-facts" class="nav-link" data-scroll-target="#just-the-facts"><span class="header-section-number">6.2</span> Just the facts 🎯:</a></li>
+  <li><a href="#anchors-to-topics" id="toc-anchors-to-topics" class="nav-link" data-scroll-target="#anchors-to-topics"><span class="header-section-number">6.3</span> Anchors to topics ⚓️:</a></li>
+  <li><a href="#gentle-explanations-of-ancient-cosmology" id="toc-gentle-explanations-of-ancient-cosmology" class="nav-link" data-scroll-target="#gentle-explanations-of-ancient-cosmology"><span class="header-section-number">6.4</span> Gentle explanations of <strong>Ancient</strong> Cosmology 🐇</a>
+  <ul class="collapse">
+  <li><a href="#sec-greeks" id="toc-sec-greeks" class="nav-link" data-scroll-target="#sec-greeks"><span class="header-section-number">6.4.1</span> Greeks</a></li>
+  <li><a href="#sec-ptolemy" id="toc-sec-ptolemy" class="nav-link" data-scroll-target="#sec-ptolemy"><span class="header-section-number">6.4.2</span> Ptolemy</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../gravitation/index.html">Part II: Gravitation</a></li><li class="breadcrumb-item"><a href="../../gravitation/gravitation_placeholder/grav_placeholder.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Placeholder!</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../gravitation/index.html">Part II: Gravitation</a></li><li class="breadcrumb-item"><a href="../../gravitation/Cosmology_early/ancient_cosmology_1.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Skinny Ancient Cosmology.</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Placeholder!</span></h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Ptolemy</div>
-    <div class="quarto-category">Copernicus</div>
-    <div class="quarto-category">Galileo</div>
-    <div class="quarto-category">Kepler's Laws</div>
-    <div class="quarto-category">Newton's Gravitation</div>
-  </div>
-  </div>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Skinny Ancient Cosmology.</span></h1>
+</div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Chip Brock </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 24, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -312,11 +332,170 @@ window.MathJax = {
 </header>
 
 
+<p>tex— author: “Chip Brock” number-sections: true date: 2025-08-24 description: “Early Cosmology” draft: false —</p>
 <hr>
-<p>at work here.</p>
-<p>😵‍💫</p>
+<p>Skinny Physics is meant to be a lightweight (skinny, after all) presentation of some physics that might help you appreciate some of the posts in <strong>QS&amp;BB.</strong> Maybe you’ve had a course in your past and maybe not, so this chapter has some bare bones (skinny, after all) <strong>facts about Ancient Cosmology</strong>.</p>
+<p>So: three sections:</p>
+<ol type="1">
+<li><p>Some ideas you might not have had in a previous course (“<strong>Different way</strong>”) 😎. Better read this.</p></li>
+<li><p>Just a bare listing of some <strong>Ancient Cosmology facts</strong> 🎯.</p></li>
+<li><p>…and, a bit of <strong>gentle background</strong> behind those facts 🐇.</p>
+<p>(If you’d like more, then visit the <a href="https://qstbb.pa.msu.edu/storage/ISP220_fall2020/QS&amp;BB2020/intro.html">full textbook</a> presentation.)</p></li>
+</ol>
+<section id="different-way" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="different-way"><span class="header-section-number">6.1</span> Different way 😎:</h2>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🫵 There are some myths about the Earth-centered solution to the solar system arrangement.</p>
+</div>
+</div>
+<ol type="1">
+<li>The Greeks were very sophisticated in their modeling of the solar system in the Hellenistic<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and Greek-Egyptian-Roman periods. <a href="../../mechanics/collisions/collisions.html#sec-scattering" class="quarto-xref"><span>Section 4.5.1</span></a></li>
+<li>From the Pythagorean period<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> through…well, forever after…everyone know that the Earth was not flat, but spherical.</li>
+</ol>
+</section>
+<section id="just-the-facts" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="just-the-facts"><span class="header-section-number">6.2</span> Just the facts 🎯:</h2>
+<p><strong>Complete facts about the universe, more than normal for “Just the facts”</strong></p>
+<ul>
+<li>The Sun is at the center of the solar system, which is a part of our galaxy, the “Milky Way.” Our galaxy is a spiral galaxy with a radius of about 50,000 light years (10kly). There are about 200 billion stars in our galaxy.</li>
+<li>In turn, the Milky Way is a part of a cluster of galaxies called the “Local Group” which is a group of just under 50 galaxies all bound by gravity to one another in the group. It has a radius of about 5 million light years (5Mly), contains 3 large galaxies (Milky Way [90kly], Andromeda M31 [140kly], Triangulum Galaxy M33 [55kly], 46 dwarf galaxies, and 700 billion stars.</li>
+<li>The Local Group is gravitationally bound to the Virgo Supercluster 200 galaxy groups, 2500 large galaxies, and 50,000 dwarf galaxies with 200 trillion stars. All within 100Mly in radius.</li>
+<li>Within a billion light years, there are “walls” of galactic superclusters and enormous voids. There are 100 superclusters in this region and 250,000 trillion stars.</li>
+<li>The visible universe of 14Bly as a whole contains 10 million superclusters and 25 billion galaxy groups accounting for 30 billion trillion stars.</li>
+</ul>
+<p><strong>Some facts about the solar system</strong></p>
+<ul>
+<li>The solar system consists of the Sun and 8 planets and maybe 200 dwarf planets (including Pluto) which are bound to the Sun, but with size and orbital dynamics that are different from the larger 8 planets.</li>
+<li>Which are: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.</li>
+<li>The Earth has 1 satellite (the Moon) but there are 757 other moons in the solary system.</li>
+<li>There are roughly 4500 comets in the solar system.</li>
+<li>Before the advent of telescopes, the only planets visible to the naked eye were: Mercury, Venus, Earth, Mars, Jupiter, Saturn, and the ancients included the Moon. This was the inventory before Galileo found four moons of Jupiter.</li>
+</ul>
+<p><strong>Some old observations:</strong></p>
+<ul>
+<li>The stars all appear to circle around the Earth as if the Earth were at the center of a great sphere – the “<strong>celestial sphere</strong>.”</li>
+<li>From our Earth-bound perspective, the Sun, Moon, and planets also circle around us as if they’re on orbits that the ancients also mentally attached to rotating spheres…which we can see through.</li>
+<li>The Greeks through Galileo were stuck on the idea that all of the motions of the heavenly bodies follow circular orbits.</li>
+<li>For 2000 years the Earth was believed by all to be at the center of not only the solar system but the universe as a whole.</li>
+<li>👉 We know that the Sun is at the center and Earth orbits it every year. The other planets orbit the Sun at different rates – so they have different “years.” When the Earth passes by a slower moving planet like Mars, in can appear to be receeding –&nbsp;going backwards relative to the Earth (think about runners on a track with an inside runner passing an outside runner).
+<ul>
+<li>From the Earth, this behavior is evident during successive nights. The background stars – those of the 30 billion trillion which we can see – act as a coordinate system of sorts. If Mars is near one star on a night, then each successive night, it will appear to advance towards the East relative to that star. But at some point, the Earth passes Mars and to an Earth-bound observer, Mars appears to go toward the West each night. Then, after weeks, it will regain its Eastward location relative to the stars each night. This is called “<strong>Retrograde Motion</strong>” and was seriously confusing to everyone before Copernicus.</li>
+</ul></li>
+<li>The other obseration that the Greeks knew was that the seasons appear to have different durations.</li>
+</ul>
+<p><strong>Facts from Skinny Ancient Cosmology</strong></p>
+<p>The first working (gave right answers to predicted planetary positions at any time) model of the universe was due to the Greek, Roman, Egyptian Claudius Ptolemaios (“Ptolemy”) of Alexandria (approximately 90 CE – 168 CE). His epicycular model was just a calculational tool, not necessarily a model that matched what planets actually do.</p>
+</section>
+<section id="anchors-to-topics" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="anchors-to-topics"><span class="header-section-number">6.3</span> Anchors to topics ⚓️:</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🔐 Bottom line sections with stuff to remember in this chapter:</p>
+<ul>
+<li><p>Greeks <a href="#sec-greeks" class="quarto-xref"><span>Section 6.4.1</span></a></p></li>
+<li><p>Ptolemy <a href="#sec-ptolemy" class="quarto-xref"><span>Section 6.4.2</span></a></p></li>
+<li><p>the set of equations for 1-dimensional motion <a href="../../mechanics/motion/motion.html#sec-equationsofmotion" class="quarto-xref"><span>Section 2.9</span></a></p></li>
+<li><p>2 dimensional motion: projectiles <a href="../../mechanics/motion/motion.html#sec-projectiles" class="quarto-xref"><span>Section 2.10</span></a></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="gentle-explanations-of-ancient-cosmology" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="gentle-explanations-of-ancient-cosmology"><span class="header-section-number">6.4</span> Gentle explanations of <strong>Ancient</strong> Cosmology 🐇</h2>
+<p>Big subject, this “cosmology” one, limited to the universe and all. SkinnyPhysics isn’t the place for a signficant history lesson. But history plays a role about how models of cosmology developted.</p>
+<section id="sec-greeks" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="sec-greeks"><span class="header-section-number">6.4.1</span> Greeks</h3>
+<p>What did the Greeks observe? Well, of course they observed essentially the same things that we observe and the same things that the Babylonians and Egyptians observed. The Babylonians had a lot of data, but all they did was describe what they saw. The Greeks were the first to actually try to <strong>explain</strong> what they saw and for them, this was a job for Philosophers and Mathematicians. This is where they were first: using mathematical (meaning: geometrical) arguments to learn facts about the heavens. There were intellectual giants who set themselves on this task from the period between Plato (roughly 425 - 347 BCE) in Athens and Ptolemy (roughly 90 - 168 CE) one of many Alexander the Great’s cities called Alexandria…the one in Egypt.</p>
+<p>Among their accomplishments were: * a determination of the radius of the Earth, which was pretty close; * an understanding of solar eclipses as a near-perfect blocking of the Sun by the Moon; * an estimate of the distance from the Earth to the Moon (<span class="math inline">\(D_M\)</span>) in terms of the radius of the Earth (<span class="math inline">\(R_E\)</span>): about, <span class="math inline">\(D_M = ~60 \times R_E\)</span>; * the creation of a very large and sophisticated star catalog, of course just positions of the stars as there were no telescopes.</p>
+<p>The Greeks were very clever and invented the idea of not just describing Nature but trying to explain phenomena by interpreting measurements using mathematics. Explanation required some mechanism.</p>
+<p>They maintained a commitment, underscored by Aristotle: all motions in the heavens (for Aristotle, beyond the Moon) are uniform angular motions in circular orbits around the Earth. The Earth was the center. The stars are in a sphere outside of Saturn’s orbit.</p>
+<p>The model that Aristotle created (he was no mathematician and so his “modeling” was simpley descriptive) was built from a complicated set of coupled spheres that had four different axes in order to simulate the daily and annual motions of the planets and also their retrograde behavior. Actually, he stole it from its inventor, Eudoxus of Cnidus (roughly 408 BCE - 355 BCE), a buddy of Plato’s. While Eudoxus built models for each of the planets (and Moon and Sun), Aristotle put them all together into one big model of the whole shebang. He required 57 different spheres. (Often called “crystaline spheres” credited to Aristotle, but that’s not correct. He never said that. It’s a medieval term,)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="spheres.png" class="img-fluid figure-img"></p>
+<figcaption>Aristotle’s model of the universe. On the right, is a standard medieval/renaissance picture of Aristotle’s model…by that point, a mandate of the Church. On the left is my rendition of all of the spheres that Aristotle required to realize all of the separate motions using Eudoxus’ tool.</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-ptolemy" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="sec-ptolemy"><span class="header-section-number">6.4.2</span> Ptolemy</h3>
+<p>The Aristotelian model failed to explain a number of directly observable things:</p>
+<ol type="1">
+<li><p>First, Venus and Mercury seemed to be related to the Sun, always very near it. That seemed hard to understand if the Sun, Mercury, and Venus all rotated around the Earth.</p></li>
+<li><p>Second, Venus seemed to change its brightness in ways that no other planet did.</p></li>
+<li><p>Third, some planets appeared to suddenly go backwards!</p></li>
+<li><p>And fourth, the seasons should have been all the same durations in Aristotle’s model (times from solstice to equinox to solstice to equinox)…but they are not the same number of days.</p></li>
+</ol>
+<p>Various modifications were suggested in the second century, BCE, and two mathematical tricks were invented by the brilliant mathematician, Apollonius of Perga (240 BCE – c. 190 BCE). He invented two constructions that might account for some of the above anomalies. The eccentric and eplicycle models.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="apollonius.png" class="img-fluid figure-img"></p>
+<figcaption>Two of Apollonius’ constructions for planetary orbits (in this case, the Sun) around the Earth. The left is the “eccentric” model which offsets the center of the orbit by a quantity called the “eccentric, <span class="math inline">\(e\)</span>” which is called the “eccentric circle.” Notice that the center of the orbit is not where the Earth is located. If the planet is the Sun, then that could explain #1 and #4 above. On the right is the “epicycle” model. Here, the planet orbits a point in space (A) clockwise, which itself orbits the Earth counterclockwise. The little path that the planet takes is called an “epicycle” and the center of the epicycle orbits the Earth on the larger circle (EA) which is called the “deferent.” Overlaid is the eccentric model and Apollonius proved that these are geometrically equivalent constructions.</figcaption>
+</figure>
+</div>
+<p>What Ptolemy did is reverse the sense of the epicycle rotation to be counterclockwise. That changes everything and causes the planet to execute a loop at a point it its orbit. This is shown in the next figure which follows a planet (►) around the Earth in four different places around the deferent. Notice that ► follows the dashed circle – the epicycle – which itself orbits at a distinct rate about its center which is attached to the deferent at the ○ and which in turn, is also orbiting the Earth itself. The parameters of the epicycle radius, and the rates of rotation of the epicycle and deferent determine the motion of the planet as viewed from the Earth.</p>
+<p>Ptolemy fixed the radius of the deferent for each planet to be 60 in aribtrary units and adjusted (like a modern fit) the radii of the epicycles to reproduce what we see. From Babylonian, latter Greek, and his own observations, he fit each planet with 4 points. It’s an amazing bit of astrophysics, because full-on astrophysics it was.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="app_epicycles.png" class="img-fluid figure-img"></p>
+<figcaption>app_epicycles</figcaption>
+</figure>
+</div>
+<p>The next figure shows Mars using Ptolemy’s actual numbers. That value of 39.3 gives Mars’ relative positions throughout the Martian year.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="mars_retrograde.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>mars_retrograde</figcaption>
+</figure>
+</div>
+<p>There are two other features of what Ptolemy had to do to make it provide accurate predictions. Notice that there are three points in space near the Earth which are offset from one another by <span class="math inline">\(e\)</span> , and eccentricity. The distance from Earth to D is <span class="math inline">\(e\)</span> and the deferent circle is centered at D. Then there is another point, which is called the “equant” (Q here) which is also offset from D by <span class="math inline">\(e\)</span>. The rate at which the deferent orbits is not uniform relative to D, but is uniform relative to Q. This was the only way he could make it all work.</p>
+<p>This is taking huge liberties with Aristotle’s requirement that all heavenly objects must execute perfect circular motions and that those motions must be at uniform rates.</p>
+<p>If one feeds Ptolemy’s model with modern fit parameters…it gives absolutely accurate results today.</p>
+<p>👉 If all you care about is turning a mathematical crank and getting predictions that match experiment, then Ptolemy did a great job.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Wait! <br>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🤨 <strong>Wait:</strong> So what’s wrong wih that if he got accurate results? <br><br> 😎 <strong>Glad you asked:</strong> It’s not a model of how the planets actually move. That’s a modern expectation of a mature physics model and if such a framework works, but seems unlikely to be an actual picture of what the world actually does, then there’s probably something good in the model, but it needs work.</p>
+</div>
+</div>
+<p>Ptolemy wrote his whole system in a huge, complicated book which he called <em>Syntaxis Mathematica</em> (now somtimes “<em>Syntaxis</em>”) and which the Islamic astronomers renamed, <em>Almagest</em>, which is a corruption of the Greek term for “greatest.” Because it was.</p>
+<p>Ptolemy knew that using his complicated tool was a tough assignment and so he later wrote a second book called Handy Tables, which produced specific predictions kinds with tables that a user could read from. A handbook on how to get results and possibly the first example of numerical tables in the history of science.</p>
+<p>Then later, he realized that his collection of individual planetary pieces was not a whole universe :::::</p>
 
 
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The Hellenistic period roughly begins with Alexander the Great’s death in 323 BCE when his generals split up his kingdom and established a separate Egyptian-Greek state. It generally ends with Cleopatra’s death in 30 BCE, the last of a long line of Greek-Egyptian rulers descended from that first general.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Around 500 BCE.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -738,13 +917,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../gravitation/Cosmology_early/Tycho_Kepler_cosmology_1.html" class="pagination-link" aria-label="Skinny Tycho and Kepler Cosmology">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Skinny Tycho and Kepler Cosmology</span></span>
+      <a href="../../gravitation/index.html" class="pagination-link" aria-label="Part II: Gravitation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Part II: Gravitation</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../electromagnetism/index.html" class="pagination-link" aria-label="Part III: Electromagnetism">
-        <span class="nav-page-text">Part III: Electromagnetism</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../gravitation/Cosmology_early/Copernicus_cosmology_1.html" class="pagination-link" aria-label="Skinny Copernicus Cosmology">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Skinny Copernicus Cosmology</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
