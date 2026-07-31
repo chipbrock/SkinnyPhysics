@@ -1,15 +1,24 @@
 # Introduction to Skinny Physics
 
-I'm guessing that you might come from various backgrounds and since posts in **QS&BB** may rely on a small bit of background, I've created this Skinny Physics collection to help you whether you're an Humanities major with little physics in your past life to an engineer with more.
+I'm guessing that you might come from various backgrounds and since posts in **QS&BB** may rely on a small bit of background, I've created this Skinny Physics collection to help you whether you're an humanities major with little physics in your past life or an engineer with more.
+
+## The approach
+To follow my posts and to appreciate particle physics you don't need a whole textbook, you need a friend. My approach in Skinny Physics is to present some facts and weave worked-out examples among them. Most of these will have relevance for my articles and some might just be for fun and connection with your life.
+
+I have a confession: in Engineering School I had a professor who taught a course in Systems Engineering and he never once gave a lecture. From the first day to the last he worked out examples. Each tied to the ones before and when strung together...well, it was a whole narrative, soup to nuts. 
+
+I don't think I need to do that here, but you'll find examples that should take you quickly through a concept. Learning or remembering. Same result. 
+
+> So few words, and lots of examples
 
 ## Chapter structure
 
 Each chapter has the same structure in support of your particular level of preparation:
 
-1.  **Just the facts.** The equations for those of you who might have had some physics in your background and need a referesher
-2.  **Different way.** There are some places where I introduce ways of approaching thingss in QSBB that you wouldn't have seen elsewhere. So follow those links for sure.
-3.  **Gentle explanations of..**. This is textbook-like, but textbook-lite. From the beginning but not overpowering. Some videos of explanation.
-4.  **Pointers** to topics so you can quickly go to a topic where you need more than just the equations. That's #4 just above 👆
+1. **Different way.** There are some places where I introduce ways of approaching things in QSBB that you wouldn't have seen elsewhere. So follow those links for sure.
+2. **Just the facts.** The equations for those of you who might have had some physics in your background and need a referesher
+3. **Gentle explanations of..**. This is textbook-like, but textbook-lite. From the beginning but not overpowering. Lots of written examples. Some videos examples.
+4. **Pointers** to topics so you can quickly go to a topic where you need more than just the equations. That's #4 just above 👆
 
 The Parts are:
 
@@ -29,3 +38,20 @@ The Parts are:
     3.  Maxwell's Theory
     4.  Forces on electrical charges
 4.  Einstein's Theory of Special Relativity
+
+## Some important definitions and my conventions:
+
+I'll use:
+
+-   A subscript "0" for any quantity that is meant to be the beginning of a process or sequence of events:
+-   $x_0$ to be where we start in distance
+-   $x$ (no subscript) to be where we end up (sometimes, I'll be explicit and say "$x_f$" for "final.")
+-   We’ll use the Greek symbol Delta, $\Delta$ to mean “change of”…this will come up a lot.
+-   change in position is $\Delta x = x_{\text{ended up}}-x_{\text{where we started}} = x-x_0$
+-   same goes for time, from $\Delta t= t_{\text{ended up}}-t_{\text{when we started}} = t - t_0$
+-   the symbol for average: $\bar{A}$ or $\langle
+    A\rangle$
+-   the symbol for the (nearly) constant acceleration due to gravity close to the Earth's surface: $g$, aka "little gee"
+-   Space and time are going to be our friends. If time doesn’t march on, we’ve not moved. But what is time? “Tubby…paused. ‘Time,’ he added slowly – ’time is what keeps everything from happening at once…”[^motion-1] We’ll see time take on a new meaning.
+
+[^motion-1]: This is often attributed to Einstein, Woody Allen, and John Wheeler! It actually comes from Ray Cummings’ short story *The Time Professor* from 1921. Stick with me. You’ll learn all sorts of odd facts.

@@ -4,9 +4,32 @@ numbered: false            # <- key: do NOT number this chapter
 toc: false                 # optional: no in-page ToC
 ---
 
-This Part introduces mechanics — the core of classical physics and a source of important concepts for **QS&BB**, not to mention a lot of vocabulary of physics...velocity, momentum, force, energy, and so on.
+This Part introduces mechanics — the core of classical physics and a source of important concepts for **QS&BB**, not to mention a lot of vocabulary of physics. In this group I cover:
+
+1. velocity
+2. momentum and force
+3. collisions
+4. energy and
+5. gravitation and early cosmology
 
 👈 Read or skim, depending on your background. So many of these concepts have stood the test of time. As always, my goal is to get you ready for the 21st century physics of particle physics and cosmology.
+
+## Some definitions and my conventions:
+
+I'll use:
+
+-   A subscript "0" for any quantity that is meant to be the beginning of a process or sequence of events:
+-   $x_0$ to be where we start in distance
+-   $x$ (no subscript) to be where we end up (sometimes, I'll be explicit and say "$x_f$" for "final.")
+-   We’ll use the Greek symbol Delta, $\Delta$ to mean “change of”…this will come up a lot.
+-   change in position is $\Delta x = x_{\text{ended up}}-x_{\text{where we started}} = x-x_0$
+-   same goes for time, from $\Delta t= t_{\text{ended up}}-t_{\text{when we started}} = t - t_0$
+-   the symbol for average: $\bar{A}$ or $\langle
+    A\rangle$
+-   the symbol for the (nearly) constant acceleration due to gravity close to the Earth's surface: $g$, aka "little gee"
+-   Space and time are going to be our friends. If time doesn’t march on, we’ve not moved. But what is time? “Tubby…paused. ‘Time,’ he added slowly – ’time is what keeps everything from happening at once…”[^motion-1] We’ll see time take on a new meaning.
+
+[^motion-1]: This is often attributed to Einstein, Woody Allen, and John Wheeler! It actually comes from Ray Cummings’ short story *The Time Professor* from 1921. Stick with me. You’ll learn all sorts of odd facts.
 
 
 

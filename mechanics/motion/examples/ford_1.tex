@@ -1,0 +1,104 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{book}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+\frontmatter
+
+\mainmatter
+\section{Example: USS Gerald R. Ford}\label{example-uss-gerald-r.-ford}
+
+\textbf{The Question:} The USS Gerald R. Ford class aircraft carrier is the lead supercarrier class in the US Navy. It carries about 4200 sailors and aviators and supports nearly 100 fixed wing aircraft. The Gerald R. Ford has a top speed that's classified, but it is at least 30 knots (34 mph). It displaces approximately 100,000 tons.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={USS Gerald R. Ford}]{screenshot_4010.png}}
+\caption{USS Gerald R. Ford}
+\end{figure}
+
+Suppose it was cruising at that speed in open water and came to a complete stop (an unusual maneuver) in 20 minutes, what would be its deceleration if it's constant?
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{The Answer:}
+
+What do we know:
+\begin{align}
+v_0 &=30 \text{ knots} = 15.4 \text{ m/s}  \nonumber \\
+v &= 0  \nonumber \\
+t &=20 \text{ min}=1200 s  \nonumber
+\end{align}
+So we need to find the acceleration --- which we expect to be negative because it's slowing down:
+\begin{align}
+v &= v_0+at \nonumber \\
+a &= \frac{v-v_0}{t}  \nonumber \\
+&= \frac{0-15.4}{1200} = -\frac{15.4}{1200} \nonumber \\
+a &= -0.013 \text{ m/s}^2  \nonumber
+\end{align}
+
+As a comparison, a large semi-truck with a mass of 36,000 kg traveling at 34 mph would experience a deceleration of about 16 m/s\(^2\) and take about 5 seconds or so to stop. The folks on the aircraft carrier will hardly know they're stopping!
+
+\backmatter
+\end{document}

@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Chip Brock">
+<meta name="dcterms.date" content="2025-08-24">
+
+<title>3&nbsp; Skinny Momentum and Force – Skinny Physics for QS&amp;BB</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../mechanics/collisions/collisions.html" rel="next">
+<link href="../../mechanics/motion/motion_3.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e41092be18ef0ffc2c1c2ff2d651518c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+window.MathJax = {
+  tex: {
+    tags: 'ams',
+    tagSide: 'right',
+    packages: {'[+]': ['ams']}
+  },
+  chtml: { scale: 0.9 }
+};
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Skinny Physics for QS&amp;BB</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://chipbrock.github.io/qsandbb/"> <i class="bi bi-arrow-up-right-circle-fill" role="img" aria-label="QS&amp;BB">
+</i> 
+<span class="menu-text">QS&amp;BB</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../mechanics/index.html">Part I: Mechanics</a></li><li class="breadcrumb-item"><a href="../../mechanics/momentum/momentum.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Skinny Momentum and Force</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../images/logo_orange_words.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Skinny Physics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../mechanics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part I: Mechanics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../mechanics/motion/motion_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Skinny Motion, Speed, and Acceleration</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../mechanics/momentum/momentum.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Skinny Momentum and Force</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../mechanics/collisions/collisions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Skinny Collisions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../mechanics/energy/energy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Skinny Energy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../gravitation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part II: Gravitation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../gravitation/Cosmology_early/ancient_cosmology_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Skinny Ancient Cosmology.</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../gravitation/Cosmology_early/Copernicus_cosmology_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Skinny Copernicus Cosmology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../gravitation/Cosmology_early/Tycho_Kepler_cosmology_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Skinny Tycho and Kepler Cosmology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../gravitation/gravitation_placeholder/grav_placeholder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Placeholder!</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../electromagnetism/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part III: Electromagnetism</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../electromagnetism/electromagnetism_placeholder/em_placeholder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Placeholder!</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../relativity/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part IV: Special Relativity</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../relativity/relativity_placeholder/SR_placeholder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Placeholder!</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#just-the-facts" id="toc-just-the-facts" class="nav-link active" data-scroll-target="#just-the-facts"><span class="header-section-number">3.1</span> Just the facts 🎯:</a></li>
+  <li><a href="#anchors-to-topics" id="toc-anchors-to-topics" class="nav-link" data-scroll-target="#anchors-to-topics"><span class="header-section-number">3.2</span> Anchors to topics ⚓️:</a></li>
+  <li><a href="#gentle-explanations-of-momentum-and-force" id="toc-gentle-explanations-of-momentum-and-force" class="nav-link" data-scroll-target="#gentle-explanations-of-momentum-and-force"><span class="header-section-number">3.3</span> Gentle explanations of Momentum and Force 🐇</a>
+  <ul class="collapse">
+  <li><a href="#sec-momentum" id="toc-sec-momentum" class="nav-link" data-scroll-target="#sec-momentum"><span class="header-section-number">3.3.1</span> Momentum: Isaac Newton’s important idea</a></li>
+  <li><a href="#impulse-every-sport" id="toc-impulse-every-sport" class="nav-link" data-scroll-target="#impulse-every-sport"><span class="header-section-number">3.3.2</span> Impulse – Every sport</a></li>
+  <li><a href="#inertia" id="toc-inertia" class="nav-link" data-scroll-target="#inertia"><span class="header-section-number">3.3.3</span> Inertia</a></li>
+  </ul></li>
+  <li><a href="#sec-mechmass" id="toc-sec-mechmass" class="nav-link" data-scroll-target="#sec-mechmass"><span class="header-section-number">3.4</span> Newton’s Mass</a></li>
+  <li><a href="#sec-mechmomentum" id="toc-sec-mechmomentum" class="nav-link" data-scroll-target="#sec-mechmomentum"><span class="header-section-number">3.5</span> The “Quantity of Motion”: Momentum</a>
+  <ul class="collapse">
+  <li><a href="#example-impulse-sports-and-a-batted-ball" id="toc-example-impulse-sports-and-a-batted-ball" class="nav-link" data-scroll-target="#example-impulse-sports-and-a-batted-ball"><span class="header-section-number">3.5.1</span> Example: Impulse, sports, and a batted ball</a></li>
+  <li><a href="#example-that-aircraft-carrier-again" id="toc-example-that-aircraft-carrier-again" class="nav-link" data-scroll-target="#example-that-aircraft-carrier-again"><span class="header-section-number">3.5.2</span> Example: That aircraft carrier again</a></li>
+  </ul></li>
+  <li><a href="#sec-secondlaw" id="toc-sec-secondlaw" class="nav-link" data-scroll-target="#sec-secondlaw"><span class="header-section-number">3.6</span> Newton’s second law of motion</a>
+  <ul class="collapse">
+  <li><a href="#sec-newtonslaws" id="toc-sec-newtonslaws" class="nav-link" data-scroll-target="#sec-newtonslaws"><span class="header-section-number">3.6.1</span> Newton’s three laws of motion</a></li>
+  <li><a href="#sec-weight" id="toc-sec-weight" class="nav-link" data-scroll-target="#sec-weight"><span class="header-section-number">3.6.2</span> Weight</a></li>
+  </ul></li>
+  <li><a href="#sec-circular" id="toc-sec-circular" class="nav-link" data-scroll-target="#sec-circular"><span class="header-section-number">3.7</span> Circular Motion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../mechanics/index.html">Part I: Mechanics</a></li><li class="breadcrumb-item"><a href="../../mechanics/momentum/momentum.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Skinny Momentum and Force</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Skinny Momentum and Force</span></h1>
+<p class="subtitle lead">Learning momentum by Example</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Chip Brock </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 24, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<hr>
+<p>Skinny Physics is meant to be a lightweight presentation of physics that might help you appreciate some of the posts in <strong>QS&amp;BB.</strong> This chapter shows some bare bones (skinny, after all!) <strong>facts about impulse, momentum, and force</strong>.</p>
+<p>There are three sections:</p>
+<ol type="1">
+<li><p>Some ideas you might not have had in a previous course (“<strong>Different way</strong>”) 😎. Better read this.</p></li>
+<li><p>Just a bare listing of some <strong>momentum facts</strong> 🎯.</p></li>
+<li><p>…and, a bit of <strong>gentle background</strong> behind those facts woven around with worked-out examples 🐇.</p>
+<p>(If you’d like more, then visit a <a href="https://qstbb.pa.msu.edu/storage/ISP220_fall2020/QS&amp;BB2020/intro.html">full textbook</a> presentation.)</p></li>
+</ol>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🫵 You’ll find that my needs for force and momentum are pretty one-dimensional. Not boring at parties, but our motions will often be only in one direction. So vector signs will not be often used and “direction” will be represented with just a sign. Also, if you’ve had physics before, you’ll see no angular momentum here.</p>
+</div>
+</div>
+<section id="just-the-facts" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="just-the-facts"><span class="header-section-number">3.1</span> Just the facts 🎯:</h2>
+<p>Some definitions:</p>
+<ul>
+<li>mass, <span class="math inline">\(m\)</span>, is the quantity of matter…but this concept changes over history and is somewhat circular. It has a couple of jobs to do.</li>
+<li>Job 1: <strong>inertia</strong> is the reluctance of an object to move and the measure of inertia is <strong>mass</strong>.</li>
+<li>Job 2: <strong>impulse</strong> is related and sort of intuitive: push on something hard and it will go faster, push on something for a long time and it will go faster: <span class="math inline">\(F\Delta t\)</span> is proportional to the change in velocity and the proportionality constant is <span class="math inline">\(m\)</span></li>
+</ul>
+<p><strong>A fact: impulse</strong> <span class="math display">\[
+\begin{equation}
+F\Delta t = m\Delta v \nonumber
+\end{equation}
+\]</span></p>
+<p><strong>A fact: momentum</strong> <span class="math display">\[
+p=mv \nonumber
+\]</span> How it fits into impulse: <span class="math display">\[
+\begin{align}
+F\Delta t &amp;= \Delta (mv) \text{ and since }p = mv, \nonumber \\
+F\Delta t &amp;= \Delta p \nonumber \\
+\end{align}
+\]</span></p>
+<p><strong>A fact: force</strong></p>
+<p>from the above:</p>
+<p><span class="math display">\[
+\begin{align}
+\text{rearranging impulse: }F &amp;= \frac{\Delta p}{\Delta t} \nonumber \\
+\text{if the mass is constant } F &amp;= ma \nonumber
+\end{align}
+\]</span></p>
+</section>
+<section id="anchors-to-topics" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="anchors-to-topics"><span class="header-section-number">3.2</span> Anchors to topics ⚓️:</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🔐 Bottom line sections with stuff to remember in this chapter:</p>
+<ul>
+<li><p>impulse is in Section <a href="#sec-momentum" class="quarto-xref"><span>Section 3.3.1</span></a></p></li>
+<li><p>mass is in Section <a href="#sec-mechmass" class="quarto-xref"><span>Section 3.4</span></a></p></li>
+<li><p>momentum is in Section <a href="#sec-mechmomentum" class="quarto-xref"><span>Section 3.5</span></a></p></li>
+<li><p>Newton’s second law of motion is in Section <a href="#sec-secondlaw" class="quarto-xref"><span>Section 3.6</span></a></p></li>
+<li><p>Circular motion is in Section <a href="#sec-circular" class="quarto-xref"><span>Section 3.7</span></a></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="gentle-explanations-of-momentum-and-force" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="gentle-explanations-of-momentum-and-force"><span class="header-section-number">3.3</span> Gentle explanations of Momentum and Force 🐇</h2>
+<section id="sec-momentum" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="sec-momentum"><span class="header-section-number">3.3.1</span> Momentum: Isaac Newton’s important idea</h3>
+<p>To start something moving from rest? Apply a force. Here’s what he said:</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🫵 Whenever there’s a change of velocity on any object, a force is at work: since acceleration is a change in velocity, forces are responsible for acceleration. Note: because velocity is technically a vector, then changing direction is also changing velocity.</p>
+</div>
+</div>
+<p>Let’s start slowly and sneak up on this idea. Impulsively.</p>
+</section>
+<section id="impulse-every-sport" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="impulse-every-sport"><span class="header-section-number">3.3.2</span> Impulse – Every sport</h3>
+<p>In <strong>QS&amp;BB</strong> we don’t need much depth, but we do need three important concepts…the ones that underpinned Newton’s system: <strong>force</strong>, <strong>mass</strong>, and <strong>momentum</strong>. Let’s move:</p>
+<blockquote class="blockquote">
+<p>Newton: To get something up to speed, you need to push it or shove it — either <em>a sharp collision or a steady push</em> increases the speed of an object. Push harder? More speed. Push longer? Again, more speed.</p>
+</blockquote>
+<p>Let’s imagine a force, <span class="math inline">\(F\)</span> that pushes during some time interval, <span class="math inline">\(\Delta t\)</span>. A whack means that <span class="math inline">\(\Delta t\)</span> is small (like a golf club hitting a ball) while a steady shove – a force – (like a rugby scrum) means that <span class="math inline">\(\Delta t\)</span> is larger.</p>
+<p>We have the beginnings of a model:</p>
+<p><span id="eq-impulse1"><span class="math display">\[\begin{equation}
+F\Delta t \propto \Delta v. \nonumber
+\end{equation}
+\tag{3.1}\]</span></span></p>
+<p>Increase <span class="math inline">\(F\)</span>, <span class="math inline">\(\Delta t\)</span>, or both on the left-hand side, and the speed goes up on the right-hand side. The quantity on the left side is called the <strong>Impulse</strong>. It’s the sports-quantity. Any game involving a ball or a human body under stress (probably not chess or poker) involves impulse and exceptional athletes can control both the <span class="math inline">\(F\)</span> and the <span class="math inline">\(\Delta t\)</span>. The quantity on the right implies that the speed changed and of course if the speed changed, then the object accelerated and/or it changed direction.</p>
+<p>We need to refine the model. But first some units and language:</p>
+<blockquote class="blockquote">
+<p><strong>May the force be with you by so many different names</strong> We will use forces many times in <strong>QS&amp;BB</strong>, which is a common quantity in our lives. If you’re from the United States, when you step on the bathroom scale it reports back your weight in the <a href="https://en.wikipedia.org/wiki/Imperial_and_US_customary_measurement_systems">Imperial Measurement System</a> (or “customary measures system”) as <strong>Pounds</strong>, lbs. In a minute, you’ll see why that’s confusing when comparing to the rest of the world where the bathroom scale would report <strong>kilograms.</strong> Weight is a force. Kilograms is not a force.</p>
+<p>The unit of force in the <a href="https://en.wikipedia.org/wiki/International_System_of_Units">International System of Units (SI)</a> , which includes the older “metric system” or MKS (Meter, Kilogram, Second) is the <strong>Newton</strong>, N. If you go to the gas station in Berlin, you’ll fill your tires to a pressure measured in Pascals, which is Newtons per square meter. Of course up the street from me, our Michigan gas station reports pounds per square inch for my pressure.</p>
+</blockquote>
+<p>We’ll predominantly use the unit of Newton as the modern measure of a force – like the rest of the civilized world. I’ll not obsess with units and so I’m happy for you to rely on Mr.&nbsp;Google in almost all instances.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🔐 Type this into your browser: “convert 10 pounds into newtons” and you’ll be rewarded with the answer and a tool for all kinds of unit conversions. You’re welcome.</p>
+</div>
+</div>
+</section>
+<section id="inertia" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="inertia"><span class="header-section-number">3.3.3</span> Inertia</h3>
+<p><em>Pressing</em> forward (see what I did there?). Let’s think about pushing.</p>
+<p>Suppose I apply a force of <span class="math inline">\(F=100\)</span> pounds for 60 seconds to a Volkswagen and you apply a force of <span class="math inline">\(F=100\)</span> pounds for 60 seconds to a little red wagon. We both begin our efforts at point A:</p>
+<div id="fig-motion_head2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-motion_head2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="iwagon.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-motion_head2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: The same force applied to two red objects, of very different sizes
+</figcaption>
+</figure>
+</div>
+<p>Will the resulting <span class="math inline">\(\Delta v\)</span> at point B be the same for both vehicles?</p>
+<p>Of course not. The little red wagon will gain more speed than the Volkswagen (regardless of its color). The VW is more reluctant to be accelerated than the wagon. So <a href="#eq-impulse1" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>} is not the whole story. What’s missing is just that reluctance that any object has to being accelerated, which has a name: <strong>inertia</strong>. With that we can turn the proportionality in Equation <span class="math inline">\(\ref{impulse1}\)</span> into an equation.</p>
+</section>
+</section>
+<section id="sec-mechmass" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="sec-mechmass"><span class="header-section-number">3.4</span> Newton’s Mass</h2>
+<p>Mass is a toughy and we’ll see over and over how complicated it is – right to the current day. Here’s how he defined it in the <em>Principia</em>:</p>
+<blockquote class="blockquote">
+<p>“Mass is the quantity of matter arising from its density and bulk conjointly.”</p>
+</blockquote>
+<p>There you go. Useful? …no?</p>
+<p>You do perfectly well to accept the idea that mass is the <strong>quantitative measure of an object’s reluctance to be coaxed into changing its motion.</strong></p>
+<p>Here begins our love-hate relationship with mass. This much works:</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🫵 <em>Inertia</em> is an object’s resistance to being accelerated and the <em>measure of an object’s inertia</em> is its <em>mass</em>.</p>
+</div>
+</div>
+<p>This is the most profound and at the same time, the most mundane idea that Newton had!</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🔐 At the deep level of elementary particles, mass confuses us, perhaps in a different way from how it confuses engineering freshmen. We think that mass may actually not be an actual property of object, but rather a result of an object’s interaction with a spooky field that sprang into existence just after the birth of the Universe. Now, in the 21st century, we’ve got a whole new set of neuroses about this subject, as understanding it occupies almost the entire Particle Physics community. So, Mass has been a problematic subject since its beginning in Newton’s hands.</p>
+</div>
+</div>
+</section>
+<section id="sec-mechmomentum" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="sec-mechmomentum"><span class="header-section-number">3.5</span> The “Quantity of Motion”: Momentum</h2>
+<p>We just developed a sense that our hand-built, car-pushing formula, Equation <a href="#eq-impulse1" class="quarto-xref">Equation&nbsp;<span>3.1</span></a> has to depend on speed <em>and</em> mass and so we’ll just add it in on the right-hand side to get:</p>
+<p><span id="eq-impulse2"><span class="math display">\[\begin{equation}
+F\Delta t = m\Delta v \nonumber
+\end{equation}
+\tag{3.2}\]</span></span></p>
+<p>Being more explicit, when fleshed out impulse is</p>
+<p><span id="eq-fullimpulse"><span class="math display">\[\begin{equation}
+F\Delta t = m(v - v_0). \nonumber
+\end{equation}
+\tag{3.3}\]</span></span></p>
+<blockquote class="blockquote">
+<p>There’s more to this story. To be totally correct, the right hand side of Equation <a href="#eq-impulse2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> can be written as <span class="math inline">\(\Delta (mv)\)</span> which recognizes that the mass might change instead of, or in addition to, the velocity changing. This is how a balloon jumps from your hand when you stop pinching the nozzle, or how a rocket is propelled by ejecting burned propellant out the back. In each case, the mass of the moving object changes and that results in a thrust.</p>
+</blockquote>
+<p>This quantity on the right, <span class="math inline">\(mv\)</span> is Newton’s <strong>definition of momentum.</strong> <span id="eq-momentum"><span class="math display">\[
+\begin{equation}
+p = mv \nonumber
+\end{equation}
+\tag{3.4}\]</span></span></p>
+<p>So the impulse can be rewritten with the definition in Equation <span class="math inline">\(\ref{momentum}\)</span>:</p>
+<p><span id="eq-momentumdef"><span class="math display">\[\begin{align}
+F\Delta t &amp;= \Delta (mv) \nonumber \\
+F\Delta t &amp;= \Delta p \tag{a} \\
+F\Delta t &amp;= p_f-p_0 \\
+\end{align}
+\tag{3.5}\]</span></span></p>
+<p>The athletic use of this is instinctive and learned…but with muscles and your neurosystem not paper and pencil:</p>
+<div id="fig-impulse_balls" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-impulse_balls-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="screenshot_3684.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-impulse_balls-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: he left-hand version where you want to change the velocity of a ball for example, in baseball, tennis, soccer, and golf…anything with a ball. The right-hand version where you have a fixed goal – like stopping precisely – fits football, gymnastics, and track and field.
+</figcaption>
+</figure>
+</div>
+<section id="example-impulse-sports-and-a-batted-ball" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="example-impulse-sports-and-a-batted-ball"><span class="header-section-number">3.5.1</span> Example: Impulse, sports, and a batted ball</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A video example 🎥 TEXT (Under Construction 🚧&nbsp;👷‍♂️ placeholder for an example 🔎 XXXX)</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="example-that-aircraft-carrier-again" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="example-that-aircraft-carrier-again"><span class="header-section-number">3.5.2</span> Example: That aircraft carrier again</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>✏️ Let’s get a picture of momentum in action. Maybe the biggest moving thing that humans make: aircraft carriers. The Nimitz class aircraft carriers (10 of them) are among the largest naval vessels ever produced. (The new Gerald Ford class are more modern but about the same size.) Here are some details, approximates used for easy calculations.</p>
+<ul>
+<li>Mass: 80 Million kg, <span class="math inline">\(80 \times 10^6\)</span> kg.</li>
+<li>top speed: 32 knots or 37 mph or 16.5 m/s</li>
+</ul>
+<p><a href="./examples/_output/Nimitz_1_E2.html"><strong>The momentum of an aircraft carrier</strong></a></p>
+</div>
+</div>
+<p>So, repeat after me:</p>
+<ul>
+<li><p>If there is no net force on an object</p>
+<ul>
+<li><p>its motion doesn’t change</p>
+<p>👉 if its speed was zero…it stays zero</p>
+<p>👉 if its speed was 55 mph…it stays at 55 mph</p></li>
+</ul></li>
+</ul>
+<p>Said another way, if you see the motion of any object changing… then somewhere there is a force actiing (it might be invisible, like a magnetic field).</p>
+</section>
+</section>
+<section id="sec-secondlaw" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="sec-secondlaw"><span class="header-section-number">3.6</span> Newton’s second law of motion</h2>
+<p>One quick change of <a href="#eq-momentum" class="quarto-xref">Equation&nbsp;<span>3.4</span></a>:</p>
+<p><span id="eq-newtons2"><span class="math display">\[\begin{align}
+F\Delta t &amp;= \Delta p \nonumber \\
+F &amp;= \frac{\Delta p}{\Delta t} \tag{a} \\
+\text{since: }&amp;=\Delta p = \Delta (mv) \nonumber \\
+\text{if the mass is constant: } \nonumber \\
+F &amp;= \Delta p =m\Delta v \nonumber\\
+F &amp;= m \frac{\Delta v}{\Delta t} \nonumber \\
+\text{and since: } &amp;= \frac{\Delta v}{\Delta t} = a \nonumber \\
+F &amp;= ma \tag{b}
+\end{align}
+\tag{3.6}\]</span></span></p>
+<p>A couple of these are suitable for a T-shirt: <a href="#eq-newtons2" class="quarto-xref">Equation&nbsp;<span>3.6</span></a> (a) is formally “Newton’s Second law of Motion” in its most general physics-major form. <a href="#eq-newtons2" class="quarto-xref">Equation&nbsp;<span>3.6</span></a> (b) is the T-shirt version for motion in which the mass of an object undergoing a push doesn’t change.</p>
+<section id="sec-newtonslaws" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="sec-newtonslaws"><span class="header-section-number">3.6.1</span> Newton’s three laws of motion</h3>
+<p>If there’s a second law, there must be a first one and there is…and a third one. Here they are for completeness:</p>
+<ol type="1">
+<li>An object with constant velociy will retain that constant velocity of zero or another value.</li>
+<li>Best expressed as an equation as <span class="citation" data-cites="3eq-newtons2">(<a href="../../references.html#ref-3eq-newtons2" role="doc-biblioref"><strong>3eq-newtons2?</strong></a>)</span> (a).</li>
+<li>For every force that object A applies to object B, an equal and opposite force will be appled by B to A.</li>
+</ol>
+<p>The Third law is very useful for solving problems, but that’s not what we’re about in <strong>QS&amp;BB</strong>.</p>
+</section>
+<section id="sec-weight" class="level3" data-number="3.6.2">
+<h3 data-number="3.6.2" class="anchored" data-anchor-id="sec-weight"><span class="header-section-number">3.6.2</span> Weight</h3>
+<p>There’s an important special case of Equation <span class="quarto-unresolved-ref">?eq-newtons2b</span> (b) which has to do with the earth and, well, everything that’s not nailed down. The earth attracts all objects with a force (which we’ll talk about in a bit) that appears to be constant and has a particular value of acceleration, that of gravity., We affectionately call it <span class="math inline">\(g\)</span>. So your weight is the force that the earth applies to you and so we simply have: <span id="eq-weight"><span class="math display">\[\begin{align}
+F &amp;= ma \text{ ...now modify for gravitational force}\nonumber \\
+F &amp;= W \text{ for the special force called "weight"} \nonumber \\
+a &amp;= g \text{ for the special acceleration of gravity} \nonumber \\
+W &amp;=mg \text{ which is weight on earth} \tag{a}
+\end{align}
+\tag{3.7}\]</span></span> Two caveats:</p>
+<ol type="1">
+<li>We call this <span class="math inline">\(g\)</span> “little g” and it’s only got a specific value for the earth. There are different little g’s for other planets, moons, or stars.</li>
+<li>The force of gravity is actually not constant – stay tuned. But miles above tthe earth it’s still so close to <span class="math inline">\(g\)</span> that we often pretend that it’s constant. (Stay tuned for the Gravitation chapter.)</li>
+</ol>
+<p>So little g is an important number:</p>
+<ul>
+<li>In the American system, <span class="math inline">\(g = 32\)</span> feet/second<span class="math inline">\(^2\)</span> , 32 ft/s<span class="math inline">\(^2\)</span></li>
+<li>For the rest of the world, <span class="math inline">\(g = 9.8\)</span> meters/second<span class="math inline">\(^2\)</span>, 9.8 m/s<span class="math inline">\(^2\)</span></li>
+<li>(Notice the units for acceleration.)</li>
+</ul>
+</section>
+</section>
+<section id="sec-circular" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="sec-circular"><span class="header-section-number">3.7</span> Circular Motion</h2>
+<p>Remember that if a velocity changes, then there’s an force acting as a cause and an acceleration is the result. Well, what about driving around a curve keeping your speedometer at 50 mph? This is the one time in <strong>QS&amp;BB</strong> we’ll care about the vector nature of velocity. A true (for a professional physicist or student) velocity has a magnitude (what your speedometer reads back) and a direction. So going 50 mph north <em>is a different velocity</em> than going 50 mph east. Same <u>speed</u>, different <u>velocity</u>.</p>
+<p>Okay, what’s going on with you turning that corner where your direction changes but your speed doesn’t. From the formal definition, the velocity must change 👉 so there must be a force acting 👉 so there is an acceleration.</p>
+<p>It might be easier to think of twirling something overhead. Suppose you tie a ball to a thin rope and get it rotating above your head in a horizontal plane, like our little guy in the figure.</p>
+<div id="fig-LABEL" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-LABEL-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="screenshot_3696.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-LABEL-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3: wirling a ball over your head in a horizontal plane.
+</figcaption>
+</figure>
+</div>
+<p>You can feel a tug. That is, the ball seems to exert a force on your hand through the rope. But what’s really going on is that the ball wants to go straight (Newton’s first law) and you pull it back incrementally, bit by bit as it goes around. You’re supplying that force necessary to defeat its straight line motion aspiration.</p>
+<p>This force-towards-the-center is called “<strong>centripetal force</strong>.”</p>
+<blockquote class="blockquote">
+<p>You’ve maybe heard of “centrifugal force” but that’s different and sometimes called a “ficticious force” which seems sort of insulting. But when you’re a passenger in a car that’s going around a curve, you really feel a force that’s away from the center of the curve…that’s centifugal. But that’s just your body trying to obey that first law and go straight, while you’re in this car going, well, not straight. Where do you get the force that makes you follow the car? The door against your shoulder, the friction of the back of your lap on the seat, and hopefully your seatbelt. Absent those forces which pull you toward the center of the curve, you’d go flying.</p>
+</blockquote>
+<p>The acceleration that you (or the ball) experience is <em>toward the center of the circle</em> (which we’ll say has radius <span class="math inline">\(R\)</span>, following the direction of the force, and has its own formula and name of “centripetal acceleration” (<span class="math inline">\(a_c\)</span>):</p>
+<p><span class="math display">\[
+a_c=\frac{v^2}{R}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="screenshot_3768.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>The velocity, and hence the momentum change as the object goes around the circle. The speed doesn’t.</figcaption>
+</figure>
+</div>
+<p>From Newton’s second law, there’s then a centripetal force. That tug you provide to the ball of mass <span class="math inline">\(m\)</span> is:</p>
+<p><span id="eq-centripetalf"><span class="math display">\[\begin{align}
+F_c &amp;= m a_c \nonumber \\
+F_c &amp;=m \frac{v^2}{R} \tag{a}
+\end{align}
+\tag{3.8}\]</span></span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="screenshot_3769.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Two quantities: the centripatal acceleration (towards the center of the circle) and the centripetal force (also towards the center). You need that pull to the center to follow a curved path.</figcaption>
+</figure>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../mechanics/motion/motion_3.html" class="pagination-link" aria-label="Skinny Motion, Speed, and Acceleration">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Skinny Motion, Speed, and Acceleration</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../mechanics/collisions/collisions.html" class="pagination-link" aria-label="Skinny Collisions">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Skinny Collisions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

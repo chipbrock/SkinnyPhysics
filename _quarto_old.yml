@@ -1,0 +1,75 @@
+project:
+  type: book
+  output-dir: docs
+  resources:
+    - "mechanics/motion/examples/*.html"
+    - "mechanics/motion/examples/*_files/"
+    - "mechanics/motion/examples/*.png"
+    - "mechanics/momentum/examples/*.html"
+    - "mechanics/momentum/examples/*_files/"
+    - "mechanics/momentum/examples/*.png"
+
+book:
+  title: "Skinny Physics for QS&BB"
+  author: "Chip Brock"
+  date: "2025-09-12"
+  search:
+    location: sidebar
+    type: textbox
+  navbar:
+    right:
+      - icon: arrow-up-right-circle-fill
+        href: https://chipbrock.github.io/qsandbb/
+        aria-label: QS&BB
+        text: QS&BB
+  sidebar:
+    search: true
+    logo: images/logo_orange_words.png
+  chapters:
+    - index.qmd
+    #- intro.qmd
+    - part: mechanics/index.qmd
+      chapters:
+        - mechanics/motion/motion.qmd
+        - mechanics/motion/examples/ford_1.qmd
+        - mechanics/momentum/momentum.qmd
+        - mechanics/collisions/collisions.qmd
+        - mechanics/energy/energy.qmd
+    - part: gravitation/index.qmd
+      chapters:
+        - gravitation/Cosmology_early/ancient_cosmology_1.qmd
+        - gravitation/Cosmology_early/Copernicus_cosmology_1.qmd
+        - gravitation/Cosmology_early/Tycho_Kepler_cosmology_1.qmd
+        - gravitation/gravitation_placeholder/grav_placeholder.qmd
+    - part: electromagnetism/index.qmd
+      chapters:
+        - electromagnetism/electromagnetism_placeholder/em_placeholder.qmd
+    - part: relativity/index.qmd
+      chapters:
+        - relativity/relativity_placeholder/SR_placeholder.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: [cosmo, brand, custom.scss]
+    html-math-method: mathjax
+    # Force-enable AMS numbering for MathJax v3
+    include-in-header:
+      text: |
+        <script>
+        window.MathJax = {
+          tex: {
+            tags: 'ams',         // number align, gather, etc.
+            tagSide: 'right',    // numbers on the right
+            packages: {'[+]': ['ams']} // be explicit about AMS package
+          },
+          chtml: { scale: 0.9 }
+        };
+        </script>
+  #pdf:
+    #documentclass: scrreprt
+
+editor: visual

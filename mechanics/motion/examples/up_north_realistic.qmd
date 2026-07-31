@@ -1,4 +1,5 @@
-# Example: a realistic trip.
+# Motion
+## Example: a realistic trip.
 
 ------------------------------------------------------------------------
 

@@ -1,21 +1,28 @@
 ---
 author: "Chip Brock"
 number-sections: true
-date: 2025-08-24# (your last edit date)
-categories: [Mechanics, physics, velocity]
-description: "Gotta move."
+date: 2025-08-24 
+description: "Banging things together."
 draft: false
 ---
 
 ------------------------------------------------------------------------
 
-# Skinny Collisions
+# Skinny Collisions {#sec-collisions}
 
-Skinny Physics is meant to be a lightweight (skinny, after all) presentation of some physics that might help you appreciate some of the posts in **QS&BB.** Maybe you've had a course in your past and maybe not, so this chapter has some bare bones (skinny, after all) **facts about collisions**.
+Skinny Physics is meant to be a lightweight (skinny, after all) presentation of some physics that might help you appreciate some of the posts in **QS&BB.** Maybe you've had a course in y∫our past and maybe not, so this chapter has some bare bones (skinny, after all) **facts about collisions**.
 
-So: three sections: (1) Some ideas you might not have had in a previous course. ("different way")(2) A listing of some collision facts. And, (3) a bit of gentle background behind those facts. If you'd like more, then visit the [full textbook](https://qstbb.pa.msu.edu/storage/ISP220_fall2020/QS&BB2020/intro.html) presentation.
+So: three sections:
 
-## Different way
+1.  Some ideas you might not have had in a previous course ("**Different way**") 😎. Better read this.
+
+2.  Just a bare listing of some **motion facts** 🎯.
+
+3.  ...and, a bit of **gentle background** behind those facts 🐇.
+
+    (If you'd like more, then visit the [full textbook](https://qstbb.pa.msu.edu/storage/ISP220_fall2020/QS&BB2020/intro.html) presentation.)
+
+## Different way 😎:
 
 ::: {.callout-important icon="false"}
 🫵 In a "normal" physics course, collisions are not a huge focus. Here we do particle physics and there are some bizarre interactions that still obey the rules of "billiard balls" but with surprising outcomes.
@@ -25,11 +32,11 @@ So: three sections: (1) Some ideas you might not have had in a previous course. 
 3.  Production interactions @sec-production
 :::
 
-## Just the facts:
+## Just the facts 🎯:
 
-### A definition:
+**A definition:**
 
-When I need to refer to the initial value of some quantity, I'll subscript that quantity with $_0$, like $v_0$. The final value? No subscript.
+Remember, when I need to refer to the initial value of some quantity, I'll subscript that quantity with $_0$, like $p_0$. The final value? No subscript.
 
 **A fact: momentum conservation**
 
@@ -43,7 +50,7 @@ $$ {#eq-momconsAB}
 
 The momentum of all components at the beginning is equal to the momentum of all components at the end. Period. That's all we need in this chapter. But it's full of stuff.
 
-## Pointers to topics:
+## Anchors to topics ⚓️:
 
 ::: {.callout-tip icon="false"}
 🔐 Bottom line sections with stuff to remember in this chapter:
@@ -57,14 +64,14 @@ The momentum of all components at the beginning is equal to the momentum of all 
 -   2 dimensional motion: projectiles @sec-projectiles
 :::
 
-## Gentle explanations of Collisions
+## Gentle explanations of Collisions 🐇
 
 ### Conservation of momentum – a big deal
 
 Remember Impulse? It, with Newton's Third law the key. This idea of "momentum conservation" comes from Isaac Newton, Christiaan Huygens, and Rene Descartes. Let's give them all a hand: 👏 . And after many years of applause, I'll bet you're pretty good at it.
 
 ::: {.callout-important icon="false"}
-🫵 A conserved quantity in physics is one that is unchanged during a time interval – typically a “before” and “after” some event. These statements are called “ConservationLaws.” There are many but the **Conservation of Momentum** is king of that hill.
+🫵 A conserved quantity in physics is one that is unchanged during a time interval – typically a “before” and “after” some event. These statements are called “Conservation Laws.” There are many but the **Conservation of Momentum** is king of that hill.
 :::
 
 Let's manage that clap 👏 so that our identical hands have the same speeds, but they are oppositely-directed. Their velocities are equal and opposite so their momenta are equal and opposite as well. Here's a picture:
@@ -75,17 +82,31 @@ Here's the momentum for either one:
 
 $$p(\text{hand}) = m(\text{hand})\times v(\text{hand}).$$
 
-Look at this example in order to see how we construct an important argument based on this laudatory expression of appreciation for our Dutchman, Huygens.
+Look at this example in order to see how we construct an important argument based on this laudatory expression of appreciation for our Dutchman, Huygens. The starting point is Newton's 3rd law and recalling "impulse" – that a force applied to an object over a time period (a "push") causes a change in that object's momentum:
+
+$$
+\begin{equation}
+F\Delta t = m\Delta v. \nonumber
+\end{equation}
+$$
+
+While impulse is relevant for any applied force, it's especially relevant for collisions: jumping on a floor, a bat hitting a ball, a racket hitting a ball, a car collision, a football tackle. The sports examples go on and on. It's what an airbag does for you. Think about a collision of a car with a wall – the car has some initial momentum and then it has zero momentum. That change is then distributed between the force that occupants feel and the time that the force is distributed. Said another way, $F\Delta t$ is fixed to be that momentum change
+
+$$ \Delta p = p(\text{final}) - p(\text{initial})  = 0 - p(\text{initial})= -p(\text{initial}).$$
+
+The safety concern is $F$...that can break bones. So in order to minimize $F$ to the occupants, car designers learned to make $\Delta t$ as long as possible and hence, the airbag was born. (Don't worry about the sign...it means that the initial momentum direction points in the opposite direction of the force direction.)
 
 ::: {style="padding:56.25% 0 0 0;position:relative;"}
-<iframe src="https://player.vimeo.com/video/1161955932?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="SP_mechanics">
+<iframe src="https://player.vimeo.com/video/1181373694?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="skinny_p_conservation">
 
 </iframe>
 :::
 
-Get the picture? Based on an analysis of the clap impulse and Newton's third law out of it falls one of the most important rules in physics: **Conservation of Momentum**.
+```{=html}
+<script src="https://player.vimeo.com/api/player.js"></script>
+```
 
-[video](https://vimeo.com/1161955932?share=copy&fl=sv&fe=ci)
+<br> Get the picture? Based on an analysis of the clap impulse and Newton's third law out of it falls one of the most important rules in physics: **Conservation of Momentum**.
 
 In the example, we started out with the left and right separately, but transformed that picture into the situation of the system (left and right together) at the beginning and the system (left and right together) at the ened. The total momentum of a system – is just the total of all of the momenta in that system. So our momentum flow is:
 
@@ -126,19 +147,17 @@ There's more. *At the point of contact something happens* in the middle, **where
 
 ![](screenshot_3784.png){fig-align="center" width="80%"}
 
-Here's an animation of such a collision. You can play with it and we'll come back to it in the next chapter. But the initial setup of the animation is the collision of two identical objects (hands?) with the same, but oppositely-directed velocities.
+![CAPTION](screenshot_3786.png){fig-align="center" width="80%"}
 
-<iframe src="collision-simulation-standalone.html" width="100%" height="480px" style="border:none; border-radius: 8px;">
+Here's an animation that you can play with for either of these collisions (the first one is just a special case of the second!). You can play with it and we'll come back to it in the next chapter. But the initial setup of the animation is the collision of two identical objects (hands?) with the same, but oppositely-directed velocities.
+
+<iframe src="collision-simulation-standalone_worked.html" width="100%" height="480px" style="border:none; border-radius: 8px;">
 
 </iframe>
 
-![](screenshot_3784.png){#fig-billiard_same fig-align="center" width="80%"}
+Then there is a special-case collision in which two objects collide and then stick together as one unit. We'll talk more about that in the next chapter. For now, we can name it: "Completely Inelastic Collision."
 
-![](screenshot_3784.png){fig-align="center" width="80%"}
-
-![CAPTION](screenshot_3786.png){fig-align="center" width="80%"}
-
-![CAPTION](screenshot_3790.png){fig-align="center" width="100%"}
+![CAPTION](screenshot_3790.png){fig-align="center" width="80%"}
 
 ### Decay interactions {#sec-decay}
 
@@ -160,4 +179,6 @@ So to the motion rules:
 
 ![CAPTION](screenshot_3793.png){fig-align="center" width="80%"}
 
-##
+Yeah. Quantum mechanics is strange.
+
+## The Stop Shot

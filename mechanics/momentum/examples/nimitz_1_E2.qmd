@@ -1,6 +1,5 @@
-# The Big Mo, Force and Momentum
-
-## Example 2: a very big aircraft carrier. so big.
+# Momentum
+## Example: a very big aircraft carrier. so big.
 
 ### The Question
 **The Question:** The Nimitz class aircraft carriers (10 of them) are among the largest naval vessels ever produced. (The new Gerald Ford class are more modern but about the same size.) Here are some details, approximates used for easy calculations.

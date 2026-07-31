@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../mechanics/motion/motion.html" rel="next">
+<link href="../mechanics/motion/motion_3.html" rel="next">
 <link href="../index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -78,6 +78,35 @@ window.MathJax = {
 };
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -155,7 +184,7 @@ window.MathJax = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../mechanics/motion/motion.html" class="sidebar-item-text sidebar-link">
+  <a href="../mechanics/motion/motion_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Skinny Motion, Speed, and Acceleration</span></span></a>
   </div>
 </li>
@@ -288,10 +317,39 @@ window.MathJax = {
 </header>
 
 
-<p>This Part introduces mechanics — the core of classical physics and a source of important concepts for <strong>QS&amp;BB</strong>, not to mention a lot of vocabulary of physics…velocity, momentum, force, energy, and so on.</p>
+<p>This Part introduces mechanics — the core of classical physics and a source of important concepts for <strong>QS&amp;BB</strong>, not to mention a lot of vocabulary of physics. In this group I cover:</p>
+<ol type="1">
+<li>velocity</li>
+<li>momentum and force</li>
+<li>collisions</li>
+<li>energy and</li>
+<li>gravitation and early cosmology</li>
+</ol>
 <p>👈 Read or skim, depending on your background. So many of these concepts have stood the test of time. As always, my goal is to get you ready for the 21st century physics of particle physics and cosmology.</p>
+<section id="some-definitions-and-my-conventions" class="level2">
+<h2 class="anchored" data-anchor-id="some-definitions-and-my-conventions">Some definitions and my conventions:</h2>
+<p>I’ll use:</p>
+<ul>
+<li>A subscript “0” for any quantity that is meant to be the beginning of a process or sequence of events:</li>
+<li><span class="math inline">\(x_0\)</span> to be where we start in distance</li>
+<li><span class="math inline">\(x\)</span> (no subscript) to be where we end up (sometimes, I’ll be explicit and say “<span class="math inline">\(x_f\)</span>” for “final.”)</li>
+<li>We’ll use the Greek symbol Delta, <span class="math inline">\(\Delta\)</span> to mean “change of”…this will come up a lot.</li>
+<li>change in position is <span class="math inline">\(\Delta x = x_{\text{ended up}}-x_{\text{where we started}} = x-x_0\)</span></li>
+<li>same goes for time, from <span class="math inline">\(\Delta t= t_{\text{ended up}}-t_{\text{when we started}} = t - t_0\)</span></li>
+<li>the symbol for average: <span class="math inline">\(\bar{A}\)</span> or <span class="math inline">\(\langle
+A\rangle\)</span></li>
+<li>the symbol for the (nearly) constant acceleration due to gravity close to the Earth’s surface: <span class="math inline">\(g\)</span>, aka “little gee”</li>
+<li>Space and time are going to be our friends. If time doesn’t march on, we’ve not moved. But what is time? “Tubby…paused. ‘Time,’ he added slowly – ’time is what keeps everything from happening at once…”<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> We’ll see time take on a new meaning.</li>
+</ul>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>This is often attributed to Einstein, Woody Allen, and John Wheeler! It actually comes from Ray Cummings’ short story <em>The Time Professor</em> from 1921. Stick with me. You’ll learn all sorts of odd facts.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -718,7 +776,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../mechanics/motion/motion.html" class="pagination-link" aria-label="Skinny Motion, Speed, and Acceleration">
+      <a href="../mechanics/motion/motion_3.html" class="pagination-link" aria-label="Skinny Motion, Speed, and Acceleration">
         <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Skinny Motion, Speed, and Acceleration</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

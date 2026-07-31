@@ -1,0 +1,53 @@
+project:
+  type: default
+  output-dir: _output
+
+format:
+  html:
+    theme: cosmo
+    html-math-method: mathjax
+    include-in-header:
+      text: |
+        <script>
+        window.MathJax = {
+          tex: {
+            tags: 'ams',
+            tagSide: 'right',
+            packages: {'[+]': ['ams']}
+          },
+          chtml: { scale: 0.9 }
+        };
+        </script>
+        <style>
+        html {font-size: 14px !important;}
+        #quarto-content {
+          background-color: #F3F2EE;
+          padding: 12px 0px 8px 24px;
+          margin: 0px 0px 16px 0px;
+        }
+        p {
+          font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+          font-size: 1.4rem;
+          line-height: 1.8rem;
+          font-weight: 500;
+        }
+        h1, h2, h3, h4 {
+          font-family: Helvetica, sans-serif;
+        }
+        h2 {
+          color: #E59B41;
+          font-size: 1.9rem !important;
+        }
+        h3 {
+          color: #629093;
+          font-size: 1.6rem !important;
+        }
+        a {
+          color: #4563a7 !important;
+          text-decoration: none;
+        }
+        a:hover {
+          color: #ff6600 !important;
+          text-decoration: underline;
+        }
+        </style>

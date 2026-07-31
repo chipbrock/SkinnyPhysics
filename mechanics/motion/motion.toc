@@ -1,0 +1,23 @@
+\contentsline {chapter}{Skinny Motion, Speed, and Acceleration}{3}{chapter*.2}%
+\contentsline {section}{Different way 😎:}{3}{section*.3}%
+\contentsline {section}{Just the facts 🎯:}{3}{section*.4}%
+\contentsline {section}{Anchors to topics ⚓️:}{5}{section*.5}%
+\contentsline {section}{Gentle explanations of Velocity and Acceleration 🐇}{5}{section*.6}%
+\contentsline {subsection}{Getting From Here to There: At Constant Speed}{5}{section*.7}%
+\contentsline {subsection}{Average speed}{7}{section*.8}%
+\contentsline {subsection}{Speed in Modern Terms}{7}{section*.9}%
+\contentsline {section}{Gravity}{8}{section*.10}%
+\contentsline {section}{Complete model for motion}{10}{section*.11}%
+\contentsline {subsection}{Maybe some examples?}{10}{section*.20}%
+\contentsline {section}{✏️ A written example}{10}{section*.21}%
+\contentsline {section}{✏️ A written example}{11}{section*.22}%
+\contentsline {section}{A video example}{11}{section*.23}%
+\contentsline {section}{A written example}{11}{section*.24}%
+\contentsline {section}{Dimensional Analysis}{11}{section*.25}%
+\contentsline {section}{Spacespace and Spacetime Diagrams}{13}{section*.26}%
+\contentsline {subsection}{spacespace diagram: stationary object}{13}{section*.27}%
+\contentsline {subsection}{spacetime diagram: stationary object}{13}{section*.28}%
+\contentsline {subsection}{spacespace diagram: moving object}{15}{section*.29}%
+\contentsline {section}{Graphing motion}{16}{section*.30}%
+\contentsline {subsection}{Graphing accelerated motion}{17}{section*.31}%
+\contentsline {section}{Projectiles}{20}{section*.36}%
