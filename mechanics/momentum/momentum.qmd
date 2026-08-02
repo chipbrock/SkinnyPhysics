@@ -114,17 +114,7 @@ We need to refine the model. But first some units and language:
 >
 > The unit of force in the [International System of Units (SI)](https://en.wikipedia.org/wiki/International_System_of_Units) , which includes the older “metric system” or MKS (Meter, Kilogram, Second) is the **Newton**, N. If you go to the gas station in Berlin, you’ll fill your tires to a pressure measured in Pascals, which is Newtons per square meter. Of course up the street from me, our Michigan gas station reports pounds per square inch for my pressure.
 
-We'll predominantly use the unit of Newton as the modern measure of a force – like the rest of the civilized world. I'll not obsess with units and so I'm happy for you to rely on Mr. Google in almost all instances.
-
-::: {.callout-note title="Example" icon="false"}
-✏️  TEXT [**Unit conversions**](LINK.html)
-(Under Construction 🚧 👷‍♂️  placeholder for an example 🔎 unit conversions)
-
-:::
-
-::: {.callout-tip icon="false"}
-🔐 Type this into your browser: "convert 10 pounds into newtons" and you'll be rewarded with the answer and a tool for all kinds of unit conversions. You're welcome.
-:::
+We'll predominantly use the unit of Newton as the modern measure of a force – like the rest of the civilized world. I'll not obsess with units and so I'm happy for you to rely on Mr. Google in almost all instances: just type your conversion goal into the searchbar. You can find an example back in the Motion chapter.
 
 ## Inertia and Newton's Mass {#sec-mechmass}
 

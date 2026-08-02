@@ -82,35 +82,6 @@ a:hover {
 }
 </style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -123,43 +94,30 @@ window.Quarto = {
 
 
 
-<section id="motion" class="level1">
-<h1>Motion</h1>
-<section id="example-x-merry." class="level2">
-<h2 class="anchored" data-anchor-id="example-x-merry.">Example X: merry.</h2>
-<p><strong>The Question:</strong> The link in the document needs to be:</p>
-<pre><code>&lt;!-- write it ---------------------&gt;
-
-&lt;div class="penoutexample" markdown="1"&gt;
-&gt;🖥️ 🖋 📓 &lt;br&gt;  
-&gt;Please study Example X and answer Question Y:  [tug of war](./examples/mechanics/tug_1_EX_QY.html){target="_blank"}
-&lt;!--- Tug of war ---&gt;
-&lt;/div&gt;
-
-`[TODO: create a capa question]` </code></pre>
-<p>Remember that images will have to be hand-ftp’d to the server inside of ../../images/motion/</p>
-<p>images must be:</p>
-<p><code>&lt;img src="../../images/motion/michigan.png" width="500px" /&gt;</code></p>
-<p><img src="../../images/motion/michigan.png" width="500px">`</p>
-<p><img src="../../images/motion/michigan.png" width="500px"></p>
-<p>Remember that the book directory has to have the images fed to it in order to make it up to the website</p>
+<section id="momentum" class="level1">
+<h1>MOMENTUM</h1>
+<section id="example-title" class="level2">
+<h2 class="anchored" data-anchor-id="example-title">Example: TITLE</h2>
+<p><strong>The Questions:</strong> TEXT.</p>
+<ol type="1">
+<li>QUIESTION1</li>
+</ol>
+<div id="fig-LABEL" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-LABEL-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="apple_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-LABEL-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Apples
+</figcaption>
+</figure>
+</div>
 <hr>
 <p><strong>The Answer:</strong></p>
-<p>words</p>
-<p>Then move the html into the _book directory</p>
-<!-- write it --------------------->
-<div class="penout" data-markdown="1">
-<blockquote class="blockquote">
-<p>🖥️ Please answer a question:</p>
-<p><a href="https://loncapa.msu.eduXXXX" target="_blank">Question Y for points</a> <!--- how fast? ---></p>
-</blockquote>
-</div>
-<!-- back to normal -------------->
-<p>The answer to the speed question, (b) comes directly from the manipulation of the centripetal force equation, <span class="math inline">\(\eqref{vcentrip}\)</span>: <span class="math display">\[
-\begin{align*}
-v_B^2 &amp;= \frac{F_C R_B}{m} \nonumber \\
-v_A^2 &amp;= \frac{F_C R_A}{m} \nonumber\end{align*}
-\]</span> Since Bertha’s radius is larger than Arnie’s radius and since for friction, the force is independent of the radius for each…then Bertha is moving much faster and so requires a larger centripetal force.</p>
+<ol type="1">
+<li>QUESTION1ANSWER</li>
+<li></li>
+</ol>
 </section>
 </section>
 

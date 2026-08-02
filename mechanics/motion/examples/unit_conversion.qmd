@@ -1,0 +1,51 @@
+# Motion
+## Example: Unit conversions
+"Units" are a pain and students can get themselves into a mess trying to change from one brand to another. Whether it's SI units (meters, kg, seconds) into Imperial units (feet, pounds, seconds) or something more complicated, it can be confusing. 
+
+In QS&BB I don't make a big deal out of it, plus one can use an infinity of tools to convert almost anything into anything. I usually just use Mr Google in the search bar. Or: Use this tool and type in "100 mph in km per hour" and see what you get.
+
+Calculate it:        
+<form target="_blank" action="http://www.google.com/search" method="get">
+    <input type="text" name="q" size="80%"/>
+</form>
+
+Feel free to use this when units are an issue or you want to calculate anything by writing out the formula.
+
+**The Question:** What is 60 mph in meters per second (m/s)? 
+
+**The Answer:**
+
+Conversion formulae look like equations, but they're a little sneaky. Suppose I want to convert $10 to €...Today, $1 will get you 0.87€. How do we formalize this relationship?
+
+It's not  correct to say that 
+$$ 1 = 0.87$$
+is it. But there is a sort of equivalency in saying that
+$$ \$1 = 0.87\text{€}$$
+but it's not a real "equals" in a mathematical way. So I'll invent a new connector that I'll call "equivalence," $\iff$ so now we can make an almost mathematical statement:
+$$ \$1 \iff 0.87\text{€}.$$
+Now let me define a new..."one": 
+$$\begin{equation} 
+1 \iff \frac{\$1}{0.87\text{€}} \iff \frac{0.87\text{€}}{\$1}
+\end{equation}$$
+and for the purposes of unit conversions, we can add factors of this "1" judiciously to make the conversion. So to convert 50€ to $, I'd set up this relationship, choosing the right hand representation of that "1" from Equivalence 1.
+
+$$
+\begin{align}
+x (\$) &\iff 50\text{€} \times 1 \nonumber \\
+x (\$) &\iff 50\text{€} \times \frac{\$1}{0.87\text{€}} = \$\frac{50}{0.87} \nonumber \\
+x (\$) & = \$57.47 \nonumber.
+\end{align}
+$$
+Notice that the € symbols "cancel" leaving the $ symbol. Once I start doing arithmetic, I converted my "equivalence" notation to "equal."
+
+That was simple, but what about our problem? Just how you would go about this depends on what you know, which might be a little or might be a lot. For example, since I was in high school I've remembered that 1 inch is 2.54 centimeters, that 1 mile is 5280 feet, and of course 1 hour is 60 minutes and 1 minute is 60 seconds and a meter is 100 cm. Without looking anything up, I can do the conversion with those things that I remember (you might remember smarter conversions). Let's go:
+$$
+\begin{align}
+x (m/s) &\iff 60 \; \frac{mile}{h} \nonumber \\
+x (m/s) &\iff 60 \; \frac{mile}{h} \times 1 \times 1 \times 1 \times 1 \times 1 \times 1 \nonumber \\
+x (m/s) &\iff 60 \; \frac{mile}{h} \times \frac{1\;h}{60 \;min}\times \frac{1\;min}{60 \;s}\times \frac{5280 \;ft}{1 \;mile}\times \frac{12 \;in}{1 \;mile}\times \frac{2.54 \;cm}{1 \;in}\times \frac{1 \;m}{100 \;cm} \nonumber \\
+x (m/s) &= 60 \;\frac{mile}{h} \times 0.447 \; \frac{m \; h}{mile\; s} \nonumber \\
+x (m/s) &= 26.8 \;m/s \nonumber
+\end{align}
+$$
+Sometimes unit conversions are linear… just a number or series of numbers multiplied. But sometimes they're more complicated like converting Celsius to Fahrenheit where there is an offset for the freezing point of water of 32 F is 0 C, and boiling of 210 F is 100 C...and then there's a linear relation between those two states of water. We'll not go there. Just telling the whole story. 📖

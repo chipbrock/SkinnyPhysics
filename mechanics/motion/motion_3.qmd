@@ -62,6 +62,13 @@ $$v^2   = v_0^2 + 2ax$$
 **A fact: Distance fallen under constant acceleration due to gravity**
 Down ↓ presumed to be in the positive direction (same direction as the motion and the force of gravity) 
 $$y = y_0 + v_0t + \dfrac{1}{2} gt^2$$
+**A fact: Units are a part of the world!**
+We need to convert one unit to another all the time. But I won't make a big deal of it and expect you to go to Mr Google when you need to do a conversion. For example, type into the search bar "100 mph in km/h" and you'll get an interactive tool with that answer (160 km/h) and the ability to change the question. 
+
+### Example: unit conversion
+::: {.callout-note title="Example" icon="false"}
+✏️  Here's how to do it so you can appreciate what's behind the scenes:  [**How to do unit Conversions**](./examples/_output/unit_conversion.html)
+:::
 
 ## Gentle Examples of Velocity and Acceleration 🐇
 
